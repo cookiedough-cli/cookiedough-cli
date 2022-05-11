@@ -1,26 +1,61 @@
 #!/usr/bin/node
-const { exec } = require('child_process');
+
 const { program } = require('commander');
+const { exec } = require('child_process');
+const { get_sys } = require('./util');
+const { 
+    log, 
+    error, 
+    warn 
+} = console;
 
 let cond = false;
+let options = null;
 
-program.requiredOption('--type, -t', 'project type', 'node');
-program.option('--lang, -l', 'project language', 'js');
+// name of pkg manager to call, will be determined from guessing based on the architecture of teh system itself
+/**
+ * win32 - try winget
+ * darwin/freebsd/whatever unix - apt/snap/etc 
+ */
+let pkg_handle = null;
+const sys = get_sys();
+log(sys);
+
+function installDependency(name) {
+    
+    // call spawn that installs it for the given system
+    log('todo: install %s', name);
+}
+
+function setCondState(error, stdout) { 
+    if(error) {
+        if(options.Noerror) {
+            warn('ignoring error, installing necessary dependencies: python3');
+            installDependency(options.Lang);
+        }
+        else {
+            throw error;
+        }
+    }
+    cond = stdout ? true : false;
+    log(`has ${options.Lang} installed: %s`, cond);
+    if(!cond) {
+        log('installing necessary dependencies');
+        installPython();
+    }
+    return setup();
+}
+
+program.requiredOption('--project-type, -type <type>', 'project type', 'node');
+program.option('--language, -lang <language>', 'project language', 'js');
+program.option('--suppress-errors, -noerror', 'try to fix errors during runtime', false);
 program.parse(process.argv)
-// console.log(program.opts());
+options = program.opts();
+log(options);
 
+exec('where python', setCondState);
 
-exec('where python', (err, _, stderr) => {
-    if(err || stderr) {
-        throw err || stderr;
-    }
-    cond = true;
-});
-
-setTimeout(() => {
-    if(cond) {
-       
-        // .help('h').argv
-        // process.exit(0);
-    }
-}, 1000);
+function setup() {
+    log(options);
+    log('todo: setup script');
+}

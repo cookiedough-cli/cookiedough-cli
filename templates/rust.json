@@ -1,0 +1,8 @@
+{
+    "options": {
+        "compiler": [
+            "rustc",
+            "cargo"
+        ]
+    }
+} 

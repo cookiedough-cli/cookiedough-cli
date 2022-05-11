@@ -1,0 +1,1 @@
+rustc src/main.rs
