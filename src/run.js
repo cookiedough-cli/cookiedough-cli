@@ -2,7 +2,7 @@
 
 const { program } = require('commander');
 // const { exec } = require('child_process');
-const { parse_config } = require('./util');
+const parse_config  = require('./util');
 let options = null;
 
 

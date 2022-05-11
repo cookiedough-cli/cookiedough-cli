@@ -1,11 +1,11 @@
 import { arch, platform, type } from 'os';
 const { log } = console;
-import { verifiable_tags } from './internal/tags';
+import { verifiableTags } from './internal/tags';
 import { SystemOverview } from './types';
 
-export const input_to_tag = (
+export const verifyTag = (
 	i: string
-): string => verifiable_tags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i))).shift().tag;
+): string => verifiableTags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i))).shift().tag;
 
 /**
  *
@@ -44,4 +44,4 @@ function createProject (
     log(config);
 }
 
-export default (options) => createProject(input_to_tag(options.Lang), options);
+module.exports = (options) => createProject(verifyTag(options.Lang), options);

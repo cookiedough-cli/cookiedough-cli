@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.input_to_tag = exports.verifiable_tags = void 0;
-exports.verifiable_tags = [
+exports.verifiableTags = void 0;
+exports.verifiableTags = [
     {
         allowed_inputs: ['python', 'py', 'python3', 'python27'],
         tag: 'py'
@@ -27,8 +27,3 @@ exports.verifiable_tags = [
         tag: 'ts'
     }
 ];
-const input_to_tag = (i) => {
-    const matcher = exports.verifiable_tags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i)));
-    return matcher.shift().tag;
-};
-exports.input_to_tag = input_to_tag;

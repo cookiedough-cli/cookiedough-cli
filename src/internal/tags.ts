@@ -1,6 +1,6 @@
 import { VerifiableTag } from '../types';
 
-export const verifiable_tags: VerifiableTag[] = [
+export const verifiableTags: VerifiableTag[] = [
     {
         allowed_inputs: ['python', 'py', 'python3', 'python27'],
         tag: 'py'
