@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "checkJs": false,
+        "module": "CommonJS",
+        "target": "ES2022",
+        "outDir": "bin",
+        "baseUrl": ".",
+		"declaration": true
+    },
+    "include": [
+        "src/run.js"
+    ]
+}

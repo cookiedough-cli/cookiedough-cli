@@ -1,0 +1,8 @@
+{
+    "entryPoints": [
+        "./src/run.js"
+    ],
+    "darkHighlightTheme": "dark-plus",
+    "out": "reference",
+    "includeVersion": true
+}
