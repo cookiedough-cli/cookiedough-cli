@@ -2,7 +2,7 @@
 
 const { program } = require('commander');
 const { exec } = require('child_process');
-const { get_sys } = require('./util');
+const { get_sys, parse_config } = require('./util');
 const { 
     log, 
     error, 
@@ -46,12 +46,11 @@ function setCondState(error, stdout) {
     return setup();
 }
 
-program.requiredOption('--project-type, -type <type>', 'project type', 'node');
-program.option('--language, -lang <language>', 'project language', 'js');
+program.requiredOption('--language, -lang <language>', 'project language', 'js');
 program.option('--suppress-errors, -noerror', 'try to fix errors during runtime', false);
 program.parse(process.argv)
 options = program.opts();
-log(options);
+parse_config(options);
 
 exec('where python', setCondState);
 
