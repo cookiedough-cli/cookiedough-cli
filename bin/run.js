@@ -1,14 +1,14 @@
 #!/usr/bin/node
 const { exec } = require('child_process');
+const { program } = require('commander');
+
 let cond = false;
-(function() {
-    var P = ["\\", "|", "/", "-"];
-    var x = 0;
-    if(!cond) return setInterval(function() {
-      process.stdout.write("\r" + P[x++]);
-      x &= 3;
-    }, 250);
-  })();
+
+program.requiredOption('--type, -t', 'project type', 'node');
+program.option('--lang, -l', 'project language', 'js');
+program.parse(process.argv)
+// console.log(program.opts());
+
 
 exec('where python', (err, _, stderr) => {
     if(err || stderr) {
@@ -19,7 +19,8 @@ exec('where python', (err, _, stderr) => {
 
 setTimeout(() => {
     if(cond) {
-        console.log('placeholder: build process start');
-        process.exit(0);
+       
+        // .help('h').argv
+        // process.exit(0);
     }
 }, 1000);
