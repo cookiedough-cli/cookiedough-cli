@@ -9,6 +9,8 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+/*.h
+/my_library
 
 # Prerequisites
 *.d

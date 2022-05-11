@@ -1,2 +1,2 @@
--build:
-gcc lib/main.c -o exe
+-build: main.c 
+	gcc -o main.o main.c 
