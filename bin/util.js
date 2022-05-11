@@ -1,29 +1,26 @@
 const { arch, platform, type } = require('os');
+const { DEF_JS_CONFIG } = require('../templates/node');
+const { log } = console;
 
-const DEF_CONFIG = {
-    type: 'node',
-    language: 'commonjs',
-    x_opts: {
-        compiler: 'none',
-        bundler: 'none',
-        build_system: 'make',
-        pkg: {
-            scripts: {
-                'w:server': 'nodemon tools/dev-server',
-                'dev': 'npm-run-all -p w:server'
-            },
-            dependencies: [
-                'express',
-                'html-chunk-loader'
-            ],
-            devDependencies: [
-                'nodemon',
-                'npm-run-all',
-                'eslint'
-            ]
-        }
-    },
+/**
+ * 
+ * @returns System Architecture Specs for setup process compatibility
+ */
+function get_sys() {
+    return {
+        arch: arch(),
+        platform: platform(),
+        type: type()
+    };
 };
+
+/**
+ * 
+ * @param {*} depname name of system-specific dependency to install for given package manager in system
+ */
+function install_sys(depname) {
+    log('todo: install dep %s', depname);
+}
 
 /**
  * 
@@ -35,23 +32,39 @@ function createConfig(to_sys_stamp) {
     return {...to_sys_stamp, sys: get_sys()}
 }
 
-
-function get_sys() {
-    return {
-        arch: arch(),
-        platform: platform(),
-        type: type()
-    };
-};
+function createProject(tag, clean_config) {
+    // this will have the final config ready to be parsed into the build process 
+    // todo
+    log('create %s project:', tag);
+    log(clean_config);
+}
 
 module.exports.parse_config = function(options) {
     switch(options.Lang) {
+        case 'python':
+        case 'py':
+        case 'python3':
+        case 'python27':
+            return createProject('py', createConfig(options));
+        case 'c':
+        case 'make':
+            return createProject('c', createConfig(options));
+        case 'cpp':
+        case 'c++':
+        case 'cmake':
+            return createProject('cpp', createConfig(options));
+        case 'golang':
+        case 'go':
+            return createProject('go', createConfig(options));
+        case 'nodejs':
+        case 'js':
+        case 'javascript':
+            return createProject('js', createConfig(options));
+        case 'node':
+        case 'ts':
+        case 'typescript':
+            return createProject('ts', createConfig(options));
         default:
-            return createConfig(DEF_CONFIG);
+            return createProject(createConfig(DEF_JS_CONFIG));
     }
-    // todo - enumerate dependencies for the system in a given type based on the submitted user options
-}
-
-module.exports.install_dependency = function(depname) {
-    console.log('todo: install dep %s', depname);
 }
