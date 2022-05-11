@@ -1,0 +1,28 @@
+{
+    "languages": [
+        "commonjs", 
+        "esm", 
+        "typescript",
+        "none"
+    ],
+    "compiler": [
+        "babel",
+        "swc",
+        "esbuild",
+        "none"
+    ],
+    "bundler": [
+        "esbuild",
+        "webpack",
+        "rollup",
+        "none"
+    ],
+    "build-system": [
+        "esbuild",
+        "gulp",
+        "make",
+        "npm",
+        "works",
+        "none"
+    ]
+}

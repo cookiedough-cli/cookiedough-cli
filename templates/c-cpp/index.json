@@ -1,0 +1,12 @@
+{
+    "preset": [
+        "c", 
+        "cpp"
+    ],
+    "compiler": [
+        "msvc",
+        "clang",
+        "gcc",
+        "g++"
+    ]
+}

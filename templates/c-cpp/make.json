@@ -1,0 +1,5 @@
+{
+    "type": "make",
+    "compiler": "gcc",
+    "standard": "c17"
+}
