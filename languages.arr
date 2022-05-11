@@ -1,2 +1,0 @@
-languages=(['py','python'],['js','javascript'],['ts','typescript'],['c','make'],['cpp','cmake'], ['rs', 'rust'])
-modes=i(languages):([27,3],['node','deno'],['node','deno'],['exe','lib'],['exe','lib'], ['rustc','cargo'])
