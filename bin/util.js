@@ -1,7 +1,7 @@
 const { arch, platform, type } = require('os');
 const { DEF_JS_CONFIG } = require('../templates/node');
 const { log } = console;
-
+const { map_input_to_tag } = require('./tags');
 /**
  * 
  * @returns System Architecture Specs for setup process compatibility
@@ -32,39 +32,13 @@ function createConfig(to_sys_stamp) {
     return {...to_sys_stamp, sys: get_sys()}
 }
 
-function createProject(tag, clean_config) {
+function createProject(tag, options) {
     // this will have the final config ready to be parsed into the build process 
     // todo
     log('create %s project:', tag);
-    log(clean_config);
+    log(options);
+    const config = createConfig(options);
+    log(config);
 }
 
-module.exports.parse_config = function(options) {
-    switch(options.Lang) {
-        case 'python':
-        case 'py':
-        case 'python3':
-        case 'python27':
-            return createProject('py', createConfig(options));
-        case 'c':
-        case 'make':
-            return createProject('c', createConfig(options));
-        case 'cpp':
-        case 'c++':
-        case 'cmake':
-            return createProject('cpp', createConfig(options));
-        case 'golang':
-        case 'go':
-            return createProject('go', createConfig(options));
-        case 'nodejs':
-        case 'js':
-        case 'javascript':
-            return createProject('js', createConfig(options));
-        case 'node':
-        case 'ts':
-        case 'typescript':
-            return createProject('ts', createConfig(options));
-        default:
-            return createProject(createConfig(DEF_JS_CONFIG));
-    }
-}
+module.exports.parse_config = (options) => createProject(map_input_to_tag(options.Lang), options);

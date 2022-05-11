@@ -18,31 +18,10 @@ let options = null;
  */
 let pkg_handle = null;
 
-program.requiredOption('--language, -lang <language>', 'project language', 'js');
+program.requiredOption('--language, -lang <language>', 'project language');
 program.option('--suppress-errors, -noerror', 'try to fix errors during runtime', false);
 program.parse(process.argv)
 options = program.opts();
 const config = parse_config(options);
 
-log(config);
-
-// some test stuff
-// function setCondState(error, stdout) { 
-//     if(error) {
-//         if(options.Noerror) {
-//             warn('ignoring error, installing necessary dependencies: python3');
-//             installDependency(options.Lang);
-//         }
-//         else {
-//             throw error;
-//         }
-//     }
-//     cond = stdout ? true : false;
-//     log(`has ${options.Lang} installed: %s`, cond);
-//     if(!cond) {
-//         log('installing necessary dependencies');
-//         installPython();
-//     }
-//     return setup();
-// }
-
+// log(config);
