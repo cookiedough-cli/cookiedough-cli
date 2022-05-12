@@ -1,10 +1,10 @@
 $Bin="bin"
 $Ref="reference"
 if (Test-Path $Bin) {
-	Remove-Item $Bin
+	ECHO Y | Remove-Item $Bin
 }
 if (Test-Path $Ref) {
-	Remove-Item $Ref
+	ECHO Y | Remove-Item $Ref
 }
 
 yarn build:docs

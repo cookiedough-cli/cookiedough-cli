@@ -24,7 +24,11 @@ export const verifiableTags: VerifiableTag[] = [
     {
         allowed_inputs: ['node', 'ts', 'typescript'],
         tag: 'ts'
-    }
+    },
+	{
+		allowed_inputs: ['rust', 'rs', 'cargo', 'rustc'],
+		tag: 'rs'
+	}
 ];
 
 
