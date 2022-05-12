@@ -2,12 +2,13 @@
  * @module Utilities
  */
 import { arch, platform, type } from 'os';
-const { log } = console;
+const { log, error } = console;
 import { verifiableTags } from './internal/tags';
 import {
 	SystemOverview,
 	DirtyConfig,
-	AllowedTag
+	AllowedTag,
+	FromInlineOptions
 } from './types';
 
 /**
@@ -16,9 +17,18 @@ import {
  * @returns a validated tag string from the enumerated types
  */
 export const verifyTag = (
-	i: string
-): AllowedTag => <AllowedTag>verifiableTags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i))).shift().tag;
-
+	i: string,
+	throwable: boolean
+): AllowedTag => {
+	const match = verifiableTags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i)));
+	if(match.length === 0) {
+		const err_msg = `language ${i} is not a valid configuration choice`;
+		if(throwable) throw err_msg;
+		error(err_msg);
+		process.exit(1);
+	}
+	return <AllowedTag>match.shift().tag;
+}
 /**
  *
  * @returns System Architecture Specs for setup process compatibility
@@ -28,7 +38,8 @@ SystemOverview {
     return {
         arch: arch(),
         platform: platform(),
-        type: type()
+        type: type(),
+		cwd: process.cwd()
     };
 }
 
@@ -52,7 +63,7 @@ function createConfig (
  */
 function createProject (
 	tag: AllowedTag,
-	options
+	options: FromInlineOptions
 ): void {
     // this will have the final config ready to be parsed into the build process
     // todo
@@ -62,4 +73,6 @@ function createProject (
     log(config);
 }
 
-export default (options) => createProject(verifyTag(options.Lang), options);
+export default (
+	options: FromInlineOptions
+): void => createProject(verifyTag(options.Lang, options.Error), options);

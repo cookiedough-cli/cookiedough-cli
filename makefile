@@ -1,4 +1,5 @@
-remove:
+all: .remove .build
+.remove:
 	rm -rf bin && rm -rf reference
-build:
+.build:
 	yarn build:docs && yarn build:release
