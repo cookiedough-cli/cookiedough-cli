@@ -1,6 +1,6 @@
 {
     "entryPoints": [
-        "./src/run.js"
+        "./src/index.ts"
     ],
     "darkHighlightTheme": "dark-plus",
     "out": "reference",

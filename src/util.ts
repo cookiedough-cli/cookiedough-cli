@@ -1,11 +1,15 @@
 import { arch, platform, type } from 'os';
 const { log } = console;
 import { verifiableTags } from './internal/tags';
-import { SystemOverview } from './types';
+import {
+	SystemOverview,
+	DirtyConfig,
+	AllowedTag
+} from './types';
 
 export const verifyTag = (
 	i: string
-): string => verifiableTags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i))).shift().tag;
+): AllowedTag => <AllowedTag>verifiableTags.filter(tag => (tag.tag === i || tag.allowed_inputs.includes(i))).shift().tag;
 
 /**
  *
@@ -27,21 +31,22 @@ SystemOverview {
  * @returns
  */
 function createConfig (
-	to_sys_stamp: object // config parsed from inline user input in yargs
-) {
-    return {...to_sys_stamp, sys: getSysInfo()};
+	tag: AllowedTag,
+	options: object // config parsed from inline user input in yargs
+): DirtyConfig<AllowedTag> {
+    return {...options, tag, sys: getSysInfo()};
 }
 
 function createProject (
-	tag: string,
+	tag: AllowedTag,
 	options
 ): void {
     // this will have the final config ready to be parsed into the build process
     // todo
     log('create %s project:', tag);
     log(options);
-    const config = createConfig(options);
+    const config = createConfig(tag, options);
     log(config);
 }
 
-module.exports = (options) => createProject(verifyTag(options.Lang), options);
+export default (options) => createProject(verifyTag(options.Lang), options);
