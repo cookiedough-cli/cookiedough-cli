@@ -1,12 +1,31 @@
 #!/usr/bin/node
-import { program } from 'commander';
-import parse_config from './util';
-let options = null;
+import inquirer from 'inquirer';
+import followup from './internal/followup';
+import { TemplateName } from './types';
+const TemplateNames: TemplateName[] = [
+	'node',
+	'deno',
+	'go',
+	'c',
+	'c++',
+	'rust',
+	'python'
+];
 
-program.requiredOption('--language, -lang <language>', 'project language');
-program.option('--throw-errors, -error', 'run silently and ignore errors', true);
-program.parse(process.argv)
-options = program.opts();
-const config = parse_config(options);
+const path_arg = process.argv[2] ?? '.';
 
+inquirer.prompt([
+	{
+		type: 'list',
+		name: 'template',
+		message: 'choose project template',
+		choices: TemplateNames
+	}
+])
+.then((options: { template: TemplateName }) => {
+	const { template } = options;
+	return followup(template, path_arg);
+});
+
+// const config = parse_config(options);
 // log(config);

@@ -9,17 +9,21 @@
   "license": "MIT",
   "scripts": {
     "build:docs": "typedoc",
-    "build:release": "tsc"
+    "build:release": "tsc",
+    "run:test": "node bin -tag"
   },
   "devDependencies": {
+    "@types/inquirer": "^8.2.1",
     "@types/node": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
-    "commander": "^9.2.0",
     "eslint": "^8.15.0",
     "typedoc": "^0.22.15",
     "typedoc-plugin-markdown": "^3.12.1",
     "typescript": "^4.6.4",
     "yargs": "^17.4.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.4"
   }
 }

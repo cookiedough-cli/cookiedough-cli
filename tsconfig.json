@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "allowJs": true,
+		"esModuleInterop": true,
         "checkJs": false,
         "module": "CommonJS",
         "target": "ES2022",

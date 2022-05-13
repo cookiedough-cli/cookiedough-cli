@@ -22,8 +22,6 @@ export interface CLIOption<T> {
 /**
  * Runtime Types
  */
-// tags for a given project type
-export type AllowedTag = 'go' | 'py' | 'js' | 'ts' | 'c' | 'cpp';
 // templates for a given tag
 export type WebTemplate = 'full' | 'back' | 'front' | 'db';
 export type GenericTemplate = 'exe' | 'lib';
@@ -36,24 +34,21 @@ export type SystemOverview = {
 	cwd      : string;
 }
 
-export type VerifiableTag = {
-    allowed_inputs : string[];
-    tag            : string;
-}
-
-export interface DirtyConfig<AllowedTag> {
-	tag      : AllowedTag;
+export interface CLIConfig {
+	template      : '';
 	sys     ?: SystemOverview;
-	xConfig ?: xBuildConfig<AllowedTag>;
 }
+export type TemplateName =
+'node'   |
+'deno'   |
+'go'     |
+'c'      |
+'c++'	 |
+'rust'   |
+'python' ;
 
 
-export interface xBuildConfig<AllowedTag> {
-	buildTag     : AllowedTag;
-	buildTemplate: AnyTemplate;
-}
-
-export type BuildTemplate<AllowedTag> = {
-	tag     : AllowedTag;
-	xConfig : xBuildConfig<AllowedTag>;
-}
+export * as NodeOptions from './node-preset';
+export * as GoOptions from './go-preset';
+export * as COptions from './c-preset';
+export * as PyOptions from './py-preset';
