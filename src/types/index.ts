@@ -47,8 +47,3 @@ export type TemplateName =
 'rust'   |
 'python' ;
 
-
-export * as NodeOptions from './node-preset';
-export * as GoOptions from './go-preset';
-export * as COptions from './c-preset';
-export * as PyOptions from './py-preset';

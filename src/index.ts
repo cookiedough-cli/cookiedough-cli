@@ -11,9 +11,7 @@ const TemplateNames: TemplateName[] = [
 	'rust',
 	'python'
 ];
-
 const path_arg = process.argv[2] ?? '.';
-
 inquirer.prompt([
 	{
 		type: 'list',
@@ -22,10 +20,7 @@ inquirer.prompt([
 		choices: TemplateNames
 	}
 ])
-.then((options: { template: TemplateName }) => {
-	const { template } = options;
-	return followup(template, path_arg);
-});
+.then((options: { template: TemplateName }) => followup(options.template, path_arg, inquirer));
 
 // const config = parse_config(options);
 // log(config);

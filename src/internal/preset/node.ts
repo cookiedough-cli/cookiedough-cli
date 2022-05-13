@@ -19,3 +19,24 @@ export interface PackageConfig {
 	build_preset    ?: NodeBuildPreset; // which build system to set up if any
 	pkgr_preset     : NodePkgMgrPreset; // which process to install packages with
 }
+
+
+export function prompt_node(p: string, inquirer) {
+	inquirer.prompt([
+		{
+			type: 'list',
+			name: 'pkg_mgr',
+			message: 'choose preferred package manager',
+			choices: NodePkgMgrPresets
+		},
+		{
+			type: 'list',
+			name: 'build_tools',
+			message: 'choose build environment',
+			choices: NodeBuildPresets
+		}
+	]).then(answers => {
+		console.log(`node project at ${p}`);
+		console.log(answers);
+	});
+}
