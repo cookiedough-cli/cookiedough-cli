@@ -1,7 +1,7 @@
 {
     "languages": [
-        "commonjs", 
-        "esm", 
+        "commonjs",
+        "esm",
         "typescript",
         "none"
     ],
@@ -24,5 +24,10 @@
         "npm",
         "works",
         "none"
-    ]
+    ],
+	"pkg_pref": [
+		"npm",
+		"yarn",
+		"pnpm"
+	]
 }

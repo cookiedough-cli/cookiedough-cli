@@ -6,6 +6,7 @@ module.exports = {
         bundler: 'none',
         build_system: 'make',
         pkg: {
+			process: 'npm',
             scripts: {
                 'w:server': 'nodemon tools/dev-server',
                 'dev': 'npm-run-all -p w:server'
