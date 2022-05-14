@@ -1,14 +1,14 @@
 import { ProjectFileMap } from '../../../types';
 import { getSysInfo } from '../../../util';
 import { NodeUserPreferences } from './types';
+import { NodePresetPackageMapper } from './mapper';
 import {
 	NodePkgPresets,
 	NodePkgMgrPresets,
 	NodeBuildPresets,
 	NodeCompilerPresets,
 	NodeBundlerPresets,
-	NodePresetPackageMapper
-} from './constants';
+} from './presets';
 
 export function prompt_node(p: string, inquirer) {
 	inquirer.prompt([
@@ -41,11 +41,19 @@ export function prompt_node(p: string, inquirer) {
 			name: 'bundler',
 			message: 'choose bundler option',
 			choices: NodeBundlerPresets
+		},
+		{
+			type: 'confirm',
+			name: 'eslint',
+			message: 'setup linter?',
+			choices: ['yes', 'no']
 		}
 	]).then((answers: NodeUserPreferences) => {
 		console.log(`node project at ${p}`);
+		console.log(answers);
 		// console.log(answers);
-		NodePresetPackageMapper(answers);
+		const requiredPacakges = NodePresetPackageMapper(answers);
+		console.log(requiredPacakges);
 		// const mapper: ProjectFileMap = {
 		// 	base_path: p,
 		// 	sys: getSysInfo(),

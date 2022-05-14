@@ -18,5 +18,6 @@ export const PackageJSONDefaults = {
 	name: 'btb-node-template',
 	version: '0.1.0',
 	main: 'index.js',
-	license: 'MIT'
+	license: 'MIT',
+	private: true
 };

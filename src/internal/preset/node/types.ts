@@ -35,4 +35,5 @@ export type NodeUserPreferences = {
 	build_tools: NodeBuildPreset;
 	compiler: NodeCompilerPreset;
 	bundler: NodeBundlerPreset;
+	eslint: boolean;
 }
