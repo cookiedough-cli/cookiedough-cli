@@ -1,4 +1,5 @@
-export function prompt_deno(p: string, inquirer) {
+
+export function prompt_go(p: string, inquirer) {
 	inquirer.prompt([
 		{
 			type: 'list',

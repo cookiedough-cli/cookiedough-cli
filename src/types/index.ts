@@ -22,11 +22,6 @@ export interface CLIOption<T> {
 /**
  * Runtime Types
  */
-// templates for a given tag
-export type WebTemplate = 'full' | 'back' | 'front' | 'db';
-export type GenericTemplate = 'exe' | 'lib';
-export type AnyTemplate = WebTemplate | GenericTemplate;
-
 export type SystemOverview = {
 	arch     : string;
 	platform : string;
@@ -47,3 +42,19 @@ export type TemplateName =
 'rust'   |
 'python' ;
 
+export type PreloadedFileData = {
+	extension: string;
+	filename: string;
+	path: string; //has to have <base> replaced with context when loaded as towrite w/ content
+	is_source: boolean;
+}
+
+export interface ToWriteFileData extends PreloadedFileData {
+	content ?: string;
+}
+
+export interface ProjectFileMap {
+	sys: SystemOverview;
+	base_path: string;
+	files ?: ToWriteFileData[];
+}
