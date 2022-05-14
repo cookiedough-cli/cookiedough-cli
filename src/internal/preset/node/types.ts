@@ -18,7 +18,7 @@ export type NodeBundlerPreset =
 'webpack'  |
 'esbuild'  |
 'rollup'   |
-'snowpack' |
+'swcpack'  |
 'none'	   ;
 
 export type NodeBuildPreset =

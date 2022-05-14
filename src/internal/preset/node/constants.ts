@@ -29,31 +29,64 @@ export const NodeCompilerPresets: NodeCompilerPreset[] = [
 ];
 
 export const NodeBundlerPresets: NodeBundlerPreset[] = [
-	'webpack', 'rollup', 'snowpack', 'esbuild', 'none'
+	'webpack', 'rollup', 'swcpack', 'esbuild', 'none'
 ];
 
+type NodeModule = [string, string];
+
+const GulpModules: NodeModule[] = [
+	['gulp-cli', '-g'],
+	['gulp', '-D']
+];
+
+const WebpackModules: NodeModule[] = [
+	['webpack', '-D'],
+	['webpack-cli', '-D']
+];
+
+const SWCBaseModules: NodeModule[] = [
+	['@swc/cli', '-D'],
+	['@swc/core', '-D']
+];
 
 export const NodePresetPackageMapper = (np: NodeUserPreferences) => {
-	type NodeModule = [string, string];
-	// name of pkg, dev ^
 	const needsPackage: NodeModule[] = [];
 
-	// todo - figure out an optimized ordering for this
-	if(np.pkg_mgr === 'yarn') {
-		needsPackage.push(['yarn', '-g']);
+	if(np.pkg_mgr === 'yarn' || np.pkg_mgr === 'pnpm') {
+		needsPackage.push([np.pkg_mgr, '-g']);
 	}
+
+	switch(np.build_tools) {
+		case 'gulp':
+			GulpModules.forEach(m => needsPackage.push(m));
+	}
+
 	if(np.preset === 'ts') {
 		needsPackage.push(['typescript', '-D']);
-		if(np.bundler == 'webpack') {
-			needsPackage.push(['ts-loader', '-D']);
-		}
-
-		if(np.compiler === 'babel') {
-			needsPackage.push(['@babel/core', '-D']);
-			needsPackage.push(['@babel/plugin-transform-typescript', '-D']);
-		}
 	}
 
+	switch(np.compiler) {
+		case 'swc':
+			SWCBaseModules.forEach(m => needsPackage.push(m));
+			break;
+		case 'babel':
+			needsPackage.push(['@babel/core', '-D']);
+			if(np.preset === 'ts') needsPackage.push(['@babel/plugin-transform-typescript', '-D']);
+	}
+
+	switch(np.bundler) {
+		case 'webpack':
+			WebpackModules.forEach(m => needsPackage.push(m));
+			if(np.preset == 'ts') needsPackage.push(['ts-loader', '-D']);
+			if(np.compiler === 'swc') needsPackage.push(['swc-loader', '-D']);
+			if(np.compiler === 'babel') needsPackage.push(['babel-loader', '-D']);
+			break;
+		case 'rollup':
+			needsPackage.push(['rollup', '-D']);
+			break;
+		case 'swcpack':
+			needsPackage.push(['swcpack', '-D']);
+	}
 	// todo - set up installer
 	console.log(np);
 	console.log(needsPackage);
