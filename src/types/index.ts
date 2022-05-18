@@ -66,4 +66,5 @@ export type DizzyFileSuffix =
 '.bob'  	|
 '.bootstrap'|
 '.make'		|
+'.conf'		|
 ''
