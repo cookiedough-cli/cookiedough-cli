@@ -26,7 +26,7 @@ export type NodeBuildPreset =
 'gulp'	   |
 'grunt'    |
 'make' 	   |
-'none(npm)';
+'default(npm)';
 
 
 export type NodeUserPreferences = {

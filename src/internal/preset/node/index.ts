@@ -8,7 +8,20 @@ import {
 	NodeBuildPresets,
 	NodeCompilerPresets,
 	NodeBundlerPresets,
+	NodeModule
 } from './presets';
+
+function preset_to_filemap(args: {
+	root: string,
+	options: NodeUserPreferences,
+	packages: NodeModule[]
+}) {
+	const { options, packages, root } = args;
+	console.log(options);
+	console.log(packages);
+	console.log(`node project at ${root}`);
+	console.log(getSysInfo());
+}
 
 export function prompt_node(p: string, inquirer) {
 	inquirer.prompt([
@@ -45,19 +58,12 @@ export function prompt_node(p: string, inquirer) {
 		{
 			type: 'confirm',
 			name: 'eslint',
-			message: 'setup linter?',
+			message: 'setup eslint?',
 			choices: ['yes', 'no']
 		}
-	]).then((answers: NodeUserPreferences) => {
-		console.log(`node project at ${p}`);
-		console.log(answers);
-		// console.log(answers);
-		const requiredPacakges = NodePresetPackageMapper(answers);
-		console.log(requiredPacakges);
-		// const mapper: ProjectFileMap = {
-		// 	base_path: p,
-		// 	sys: getSysInfo(),
-
-		// };
-	});
+	]).then((answers: NodeUserPreferences) => preset_to_filemap({
+			options: answers,
+			packages: NodePresetPackageMapper(answers),
+			root: p
+		}));
 }

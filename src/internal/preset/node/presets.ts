@@ -21,25 +21,26 @@ export const NodePkgMgrPresets: NodePkgMgrPreset[] = [
 ];
 
 export const NodeBuildPresets: NodeBuildPreset[] = [
-	'make',
+	'default(npm)',
 	'gulp',
 	'grunt',
-	'esbuild', 'none(npm)'
+	'esbuild',
+	'make'
 ];
 
 export const NodeCompilerPresets: NodeCompilerPreset[] = [
+	'none',
 	'babel',
 	'swc',
 	'esbuild',
-	'none'
 ];
 
 export const NodeBundlerPresets: NodeBundlerPreset[] = [
-	'webpack',
+	'none',
 	'rollup',
+	'webpack',
 	'swcpack',
 	'esbuild',
-	'none'
 ];
 
 export const GulpModules: NodeModule[] = [
