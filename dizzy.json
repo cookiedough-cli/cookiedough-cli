@@ -1,0 +1,6 @@
+{
+	"outPath": "test_output",
+	"customFiles": {
+		".gitignore": "foo,bar"
+	}
+}
