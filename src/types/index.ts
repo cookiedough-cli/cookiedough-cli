@@ -1,6 +1,12 @@
 /**
  * Runtime Types
  */
+export type InquirerPrompt = {
+	type   : string;
+	name   : string;
+	message: string;
+	choices: string[];
+}
 export type SystemOverview = {
 	arch     : string;
 	platform : string;

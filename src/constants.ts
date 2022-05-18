@@ -1,4 +1,8 @@
-import { TemplateName, Tuple } from './types';
+import {
+	TemplateName,
+	Tuple,
+	InquirerPrompt
+} from './types';
 
 export const TemplateNames: TemplateName[] = [
 	'node',
@@ -17,4 +21,12 @@ export const InlineOptions: Tuple[] = [
 	['--custom-files', '-cf']
 ];
 
+export const templateInquiry: InquirerPrompt = {
+	type: 'list',
+	name: 'template',
+	message: 'choose project template',
+	choices: TemplateNames
+};
+
 export { TemplateName } from './types';
+

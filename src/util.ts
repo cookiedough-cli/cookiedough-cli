@@ -3,6 +3,7 @@
  */
 
 import { arch, platform, type } from 'os';
+import { statSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
 import { SystemOverview } from './types';
 /**
@@ -19,6 +20,25 @@ SystemOverview {
     };
 }
 
+export function validWritePath (
+	p: string
+): boolean {
+	try {
+		if(statSync(p).isDirectory()) {
+			return true;
+		}
+		if(statSync(p).isFile()) {
+			return false;
+		}
+		if(!existsSync(p)) {
+			mkdirSync(p);
+			return true;
+		}
+	}
+	catch(_) {
+		return false;
+	}
+}
 
 export function replacePathBase (
 	sl: string,
