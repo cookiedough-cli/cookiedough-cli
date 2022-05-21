@@ -17,10 +17,12 @@ function preset_to_filemap(args: {
 	packages: NodeModule[]
 }) {
 	const { options, packages, root } = args;
-	console.log(options);
-	console.log(packages);
-	console.log(`node project at ${root}`);
-	console.log(getSysInfo());
+	console.log({
+		build_root: root,
+		build_host: getSysInfo(),
+		build_options: options,
+		build_packages: packages
+	});
 }
 
 export function prompt_node(p: string, inquirer) {

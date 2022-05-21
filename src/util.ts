@@ -3,8 +3,7 @@
  */
 
 import { arch, platform, type } from 'os';
-import { statSync, existsSync, mkdirSync } from 'fs';
-import { join } from 'path';
+import { existsSync, mkdirSync } from 'fs';
 import { SystemOverview } from './types';
 /**
  *
@@ -20,24 +19,12 @@ SystemOverview {
     };
 }
 
-export function validWritePath (
-	p: string
-): boolean {
-	try {
-		if(statSync(p).isDirectory()) {
-			return true;
-		}
-		if(statSync(p).isFile()) {
-			return false;
-		}
-		if(!existsSync(p)) {
-			mkdirSync(p);
-			return true;
-		}
+export function createValidWritePath (p: string)
+: string {
+	if(!existsSync(p) && (p !== process.cwd())) {
+		mkdirSync(p);
 	}
-	catch(_) {
-		return false;
-	}
+	return p;
 }
 
 export function replacePathBase (

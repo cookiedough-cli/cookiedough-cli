@@ -1,5 +1,5 @@
 {
-	"outPath": "test_out",
+	"outPath": "testo",
 	"customFiles": {
 		".gitignore": "foo,bar"
 	}
