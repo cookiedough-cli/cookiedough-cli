@@ -5,6 +5,8 @@
 import { arch, platform, type } from 'os';
 import { existsSync, mkdirSync } from 'fs';
 import { SystemOverview } from './types';
+import { Tuple } from './types/index';
+import { execSync } from 'child_process';
 /**
  *
  * @returns System Architecture Specs for setup process compatibility
@@ -32,4 +34,10 @@ export function replacePathBase (
 	path_base: string
 ): string {
 	return sl.replace('<base>', path_base);
+}
+
+export function runCmdList(...list: Tuple[]) {
+	for(const cmd of list) {
+		// todo
+	}
 }

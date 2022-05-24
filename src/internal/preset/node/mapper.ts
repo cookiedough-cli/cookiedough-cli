@@ -1,4 +1,5 @@
-import { NodeUserPreferences } from './types';
+import { NodeUserPreferences, NodePackagePreset, NodePkgMgrPreset} from './types';
+import { Tuple } from '../../../types';
 import {
 	NodeModule,
 	SWCBaseModules,
@@ -73,3 +74,14 @@ export const NodePresetPackageMapper = (
 	}
 	return needsPackage;
 };
+
+export function presetToInstallPrefix(p: NodePkgMgrPreset) {
+	switch(p) {
+		case 'yarn':
+			return 'yarn add ';
+		case 'pnpm':
+			return 'pnpm add';
+		default:
+			return 'npm i ';
+	}
+}
