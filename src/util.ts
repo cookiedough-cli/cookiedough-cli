@@ -11,7 +11,7 @@ import { execSync } from 'child_process';
  *
  * @returns System Architecture Specs for setup process compatibility
  */
-export function getSysInfo():
+export function useSysInfo():
 SystemOverview {
     return {
         arch: arch(),
@@ -21,7 +21,7 @@ SystemOverview {
     };
 }
 
-export function createValidWritePath (p: string)
+export function useValidWritePath(p: string)
 : string {
 	if(!existsSync(p) && (p !== process.cwd())) {
 		mkdirSync(p);
@@ -29,14 +29,7 @@ export function createValidWritePath (p: string)
 	return p;
 }
 
-export function replacePathBase (
-	sl: string,
-	path_base: string
-): string {
-	return sl.replace('<base>', path_base);
-}
-
-export function runCmdList(...list: Tuple[]) {
+export function useCmdList(...list: Tuple[]) {
 	for(const cmd of list) {
 		// todo
 	}

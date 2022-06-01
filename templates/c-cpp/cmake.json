@@ -1,5 +1,0 @@
-{
-    "type": "cmake",
-    "compiler": "g++",
-    "standard": "c++20"
-}

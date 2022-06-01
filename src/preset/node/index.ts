@@ -1,5 +1,5 @@
 import { ProjectFileMap } from '../../types';
-import { getSysInfo, runCmdList } from '../../util';
+import { useSysInfo, useCmdList } from '../../util';
 import { NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './mapper';
 import { PackageJSONDefaults } from './default-files';
@@ -23,12 +23,12 @@ function preset_to_filemap(args: {
 	};
 	console.log({
 		build_root: root,
-		build_host: getSysInfo(),
+		build_host: useSysInfo(),
 		build_options: options,
 		build_packages: packages
 	});
 	console.log(pkgJSON);
-	runCmdList(...packages);
+	useCmdList(...packages);
 }
 
 export function prompt_node(p: string, inquirer) {

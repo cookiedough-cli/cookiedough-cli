@@ -1,6 +1,6 @@
 #!/usr/bin/node
 import inquirer from 'inquirer';
-import { createValidWritePath } from './util';
+import { useValidWritePath } from './util';
 import { join, resolve } from 'path';
 import {
 	TemplateName,
@@ -23,15 +23,15 @@ function bob() {
 		warn('no outpath set in dizzy, using cwd / inline');
 		wPath = pathRoot;
 	}
-	wPath = createValidWritePath(join(pathRoot, dizzy.outPath ?? ''));
+	wPath = useValidWritePath(join(pathRoot, dizzy.outPath ?? ''));
 	// main inquiry process
-	inquirer.prompt([templateInquiry]).then((options: { template: TemplateName }) => prompt_new(options.template, wPath, inquirer));
+	inquirer.prompt([templateInquiry]).then((options: { template: TemplateName }) => prompt(options.template, wPath, inquirer));
 }
 bob();
 
 
 
-function prompt_new(tag: TemplateName, _path: string, inquirer) {
+function prompt(tag: TemplateName, _path: string, inquirer) {
 	switch(tag) {
 		case 'c':
 		case 'c++':
