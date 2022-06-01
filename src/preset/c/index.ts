@@ -3,8 +3,12 @@ import {
 	CStandards,
 	CCStandards
 } from './constants';
+import { Inquirer } from 'inquirer';
 
-export function prompt_c(p: string, inquirer) {
+export function useCPrompt(
+	p: string,
+	inquirer: Inquirer
+) {
 	inquirer.prompt([
 		{
 			type: 'list',

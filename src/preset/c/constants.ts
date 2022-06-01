@@ -1,7 +1,8 @@
 import {
 	CStandard,
 	CCStandard
-} from './types';
+} from '../types';
+
 
 export const CStandards: CStandard[] = [
 	'C99',

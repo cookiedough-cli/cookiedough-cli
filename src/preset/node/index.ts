@@ -1,5 +1,8 @@
 import { ProjectFileMap } from '../../types';
-import { useSysInfo, useCmdList } from '../../util';
+import {
+	useSysInfo,
+	useCmdList
+} from '../../util';
 import { NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './mapper';
 import { PackageJSONDefaults } from './default-files';
@@ -11,8 +14,8 @@ import {
 	NodeBundlerPresets,
 	NodeModule
 } from './presets';
-
-function preset_to_filemap(args: {
+import { Inquirer } from 'inquirer';
+function usePreseToFilemap(args: {
 	root: string,
 	options: NodeUserPreferences,
 	packages: NodeModule[]
@@ -31,7 +34,10 @@ function preset_to_filemap(args: {
 	useCmdList(...packages);
 }
 
-export function prompt_node(p: string, inquirer) {
+export function useNodePrompt(
+	p: string,
+	inquirer: Inquirer
+) {
 	inquirer.prompt([
 		{
 			type: 'list',
@@ -69,7 +75,7 @@ export function prompt_node(p: string, inquirer) {
 			message: 'setup eslint?',
 			choices: ['yes', 'no']
 		}
-	]).then((answers: NodeUserPreferences) => preset_to_filemap({
+	]).then((answers: NodeUserPreferences) => usePreseToFilemap({
 			options: answers,
 			packages: NodePresetPackageMapper(answers),
 			root: p

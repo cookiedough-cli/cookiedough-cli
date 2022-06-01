@@ -1,5 +1,8 @@
-
-export function prompt_go(p: string, inquirer) {
+import { Inquirer } from 'inquirer';
+export function useGoPrompt(
+	p: string,
+	inquirer: Inquirer
+) {
 	inquirer.prompt([
 		{
 			type: 'list',

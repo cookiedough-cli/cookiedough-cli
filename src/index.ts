@@ -1,18 +1,24 @@
 #!/usr/bin/node
 import inquirer from 'inquirer';
 import { useValidWritePath } from './util';
-import { join, resolve } from 'path';
+import {
+	join,
+	resolve
+} from 'path';
 import {
 	TemplateName,
 	templateInquiry
 } from './constants';
-import { prompt_node } from './preset/node';
-import { prompt_py } from './preset/py';
-import { prompt_c } from './preset/c';
-import { prompt_deno } from './preset/deno';
-import { prompt_go } from './preset/go';
+import { useNodePrompt } from './preset/node';
+import { usePyPrompt } from './preset/py';
+import { useCPrompt } from './preset/c';
+import { useDenoPrompt } from './preset/deno';
+import { useGoPrompt } from './preset/go';
 
-const { warn } = console;
+const {
+	warn,
+	error
+} = console;
 
 function bob() {
 	let wPath: string;
@@ -31,21 +37,25 @@ bob();
 
 
 
-function prompt(tag: TemplateName, _path: string, inquirer) {
+function prompt(
+	tag: TemplateName,
+	path: string,
+	inquirer: inquirer.Inquirer
+) {
 	switch(tag) {
 		case 'c':
 		case 'c++':
-			return prompt_c(_path, inquirer);
+			return useCPrompt(path, inquirer);
 		case 'go':
-			return prompt_go(_path, inquirer);
+			return useGoPrompt(path, inquirer);
 		case 'deno':
-			return prompt_deno(_path, inquirer);
+			return useDenoPrompt(path, inquirer);
 		case 'python':
-			return prompt_py(_path, inquirer);
+			return usePyPrompt(path, inquirer);
 		case 'node':
-			return prompt_node(_path, inquirer);
+			return useNodePrompt(path, inquirer);
 		default:
-			console.error('template name resolution error');
+			error('template name invalid');
 			process.exit(1);
 	}
 }

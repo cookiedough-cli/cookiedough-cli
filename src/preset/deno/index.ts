@@ -1,4 +1,7 @@
-export function prompt_deno(p: string, inquirer) {
+export function useDenoPrompt(
+	p: string,
+	inquirer
+) {
 	inquirer.prompt([
 		{
 			type: 'list',

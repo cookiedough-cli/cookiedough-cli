@@ -1,4 +1,9 @@
-export function prompt_py(p: string, inquirer) {
+import inquirer from 'inquirer';
+
+export function usePyPrompt(
+	p: string,
+	inquirer: inquirer.Inquirer
+) {
 	inquirer.prompt([
 		{
 			type: 'list',
