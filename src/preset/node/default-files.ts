@@ -1,4 +1,4 @@
-import { PreloadedFileData, ToWriteFileData } from '../../../types';
+import { PreloadedFileData, ToWriteFileData } from '../../types';
 export const MinFileMap: PreloadedFileData[] = [
 	{
 		is_source: true,

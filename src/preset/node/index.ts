@@ -1,6 +1,6 @@
-import { ProjectFileMap } from '../../../types';
-import { getSysInfo, runCmdList } from '../../../util';
-import { NodeUserPreferences } from './types';
+import { ProjectFileMap } from '../../types';
+import { getSysInfo, runCmdList } from '../../util';
+import { NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './mapper';
 import { PackageJSONDefaults } from './default-files';
 import {

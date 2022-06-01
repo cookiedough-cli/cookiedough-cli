@@ -8,6 +8,11 @@ export function prompt_go(p: string, inquirer) {
 			choices: [
 				'todo',
 			]
+		},
+		{
+			type: 'string',
+			name: 'pkgName',
+			message: 'name your module'
 		}
 	]).then(answers => {
 		console.log(`go project at ${p}`);

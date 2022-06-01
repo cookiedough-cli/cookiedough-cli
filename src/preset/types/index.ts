@@ -1,3 +1,18 @@
+export type DenoPackagePreset =
+'simple-cli'	  |
+'simple-webserver'|
+'simple-library'  ;
+
+export type GoPackagePreset =
+'simple-cli'	  |
+'simple-webserver'|
+'simple-library'  ;
+
+export type PythonVersion =
+'latest' |
+'3.8' 	 |
+'2.7'	 ;
+
 export type NodePackagePreset =
 'commonjs' |
 'esm' 	   |

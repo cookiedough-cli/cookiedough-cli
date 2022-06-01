@@ -1,4 +1,4 @@
-import { GoPackagePreset } from './types';
+import { GoPackagePreset } from '../types';
 
 export const GoPackagePresets: GoPackagePreset[] = [
 	'simple-cli',

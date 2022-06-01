@@ -1,7 +1,0 @@
-{
-    "name": "btb-generated-project",
-    "version": "0.1.0",
-    "main": "index.js",
-	"repository": "git@github.com:abschill/bob-the-builder.git",
-  	"homepage": "https://github.com/abschill/bob-the-builder"
-  }

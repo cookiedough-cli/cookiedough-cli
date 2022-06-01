@@ -1,5 +1,5 @@
-import { NodeUserPreferences, NodePackagePreset, NodePkgMgrPreset} from './types';
-import { Tuple } from '../../../types';
+import { NodeUserPreferences, NodePackagePreset, NodePkgMgrPreset} from '../types';
+import { Tuple } from '../../types';
 import {
 	NodeModule,
 	SWCBaseModules,
