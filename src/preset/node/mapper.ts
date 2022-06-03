@@ -73,14 +73,3 @@ export const NodePresetPackageMapper = (
 	}
 	return needsPackage;
 };
-
-export function presetToInstallPrefix(p: NodePkgMgrPreset) {
-	switch(p) {
-		case 'yarn':
-			return 'yarn add ';
-		case 'pnpm':
-			return 'pnpm add';
-		default:
-			return 'npm i ';
-	}
-}

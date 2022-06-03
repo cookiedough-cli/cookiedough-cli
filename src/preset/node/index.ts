@@ -6,7 +6,6 @@ import {
 } from '../../util';
 import { NodePkgMgrPreset, NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './mapper';
-import { PackageJSONDefaults } from './default-files';
 import {
 	NodePkgPresets,
 	NodePkgMgrPresets,
@@ -31,7 +30,7 @@ function _actionFromPMgr(
 	}
 }
 
-function usePreseToFilemap(args: {
+function usePresetToFilemap(args: {
 	root: string,
 	options: NodeUserPreferences,
 	packages: NodeModule[]
@@ -102,7 +101,7 @@ export function useNodePrompt(
 			message: 'setup eslint?',
 			choices: ['yes', 'no']
 		}
-	]).then((answers: NodeUserPreferences) => usePreseToFilemap({
+	]).then((answers: NodeUserPreferences) => usePresetToFilemap({
 			options: answers,
 			packages: NodePresetPackageMapper(answers),
 			root: p

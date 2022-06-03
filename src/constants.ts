@@ -11,7 +11,7 @@ export const TemplateNames: TemplateName[] = [
 	'c',
 	'c++',
 	'rust',
-	'python'
+	//'python'
 ];
 
 export const InlineOptions: Tuple[] = [
