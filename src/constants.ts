@@ -18,7 +18,7 @@ export const InlineOptions: Tuple[] = [
 	['--dry-run', '-dry'],
 	['--config-path', '-c'],
 	['--template-name', '-t'],
-	['--custom-files', '-cf']
+	['--custom-template', '-ct']
 ];
 
 export const templateInquiry: InquirerPrompt = {

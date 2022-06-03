@@ -21,16 +21,24 @@ SystemOverview {
     };
 }
 
-export function useValidWritePath(p: string)
-: string {
+export function useValidWritePath(
+	p: string
+): string {
 	if(!existsSync(p) && (p !== process.cwd())) {
 		mkdirSync(p);
 	}
 	return p;
 }
 
-export function useCmdList(...list: Tuple[]) {
-	for(const cmd of list) {
-		// todo
-	}
+export function _call(
+	cmd: string
+): void {
+	execSync(cmd);
+}
+
+export function _callFrom(
+	from: string,
+	cmd: string
+): void {
+	execSync(`cd ${from} && ${cmd}`);
 }

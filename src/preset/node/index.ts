@@ -1,9 +1,10 @@
 import { ProjectFileMap } from '../../types';
 import {
 	useSysInfo,
-	useCmdList
+	_call,
+	_callFrom
 } from '../../util';
-import { NodeUserPreferences } from '../types';
+import { NodePkgMgrPreset, NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './mapper';
 import { PackageJSONDefaults } from './default-files';
 import {
@@ -15,23 +16,49 @@ import {
 	NodeModule
 } from './presets';
 import { Inquirer } from 'inquirer';
+import { writeFileSync } from 'fs';
+import { resolve } from 'path';
+
+function _actionFromPMgr(
+	pkgmgr: NodePkgMgrPreset
+): string {
+	switch(pkgmgr) {
+		case 'yarn':
+		case 'pnpm':
+			return 'add';
+		default:
+			return 'install';
+	}
+}
+
 function usePreseToFilemap(args: {
 	root: string,
 	options: NodeUserPreferences,
 	packages: NodeModule[]
 }) {
 	const { options, packages, root } = args;
-	const pkgJSON = {
-		...PackageJSONDefaults
-	};
 	console.log({
 		build_root: root,
 		build_host: useSysInfo(),
 		build_options: options,
 		build_packages: packages
 	});
-	console.log(pkgJSON);
-	useCmdList(...packages);
+	_call(`cd ${root} && ${options.pkg_mgr} init -y`);
+	writeFileSync(resolve(root, 'index.js'), '', {encoding: 'utf-8'});
+	const acName = _actionFromPMgr(options.pkg_mgr);
+	for(const pkg of packages) {
+		switch(pkg[1]) {
+			case '-g':
+				_callFrom(root, `${options.pkg_mgr} ${acName} -g ${pkg[0]}`);
+				break;
+			case '-D':
+				_callFrom(root, `${options.pkg_mgr} ${acName} -D ${pkg[0]}`);
+				break;
+			default:
+				_callFrom(root, `${options.pkg_mgr} ${acName} ${pkg[0]}`);
+				break;
+		}
+	}
 }
 
 export function useNodePrompt(

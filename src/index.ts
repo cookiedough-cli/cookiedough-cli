@@ -20,7 +20,7 @@ const {
 	error
 } = console;
 
-function bob() {
+function useBob() {
 	let wPath: string;
 	const pathRoot = process.argv[2] ?? process.cwd();
 	const dizzyPath = resolve(pathRoot, 'dizzy.json');
@@ -31,13 +31,13 @@ function bob() {
 	}
 	wPath = useValidWritePath(join(pathRoot, dizzy.outPath ?? ''));
 	// main inquiry process
-	inquirer.prompt([templateInquiry]).then((options: { template: TemplateName }) => prompt(options.template, wPath, inquirer));
+	inquirer.prompt([templateInquiry]).then((options: { template: TemplateName }) => usePrompt(options.template, wPath, inquirer));
 }
-bob();
+useBob();
 
 
 
-function prompt(
+function usePrompt(
 	tag: TemplateName,
 	path: string,
 	inquirer: inquirer.Inquirer

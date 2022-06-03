@@ -13,10 +13,10 @@ export const NodePresetPackageMapper = (
 	np: NodeUserPreferences
 ): NodeModule[] => {
 	const needsPackage: NodeModule[] = [];
-	if(np.pkg_mgr === 'yarn' || np.pkg_mgr === 'pnpm') {
-		// pkg manager name should match the package to install so just run it if its not npm
-		needsPackage.push([np.pkg_mgr, '-g']);
-	}
+	// if(np.pkg_mgr === 'yarn' || np.pkg_mgr === 'pnpm') {
+	// 	// pkg manager name should match the package to install so just run it if its not npm
+	// 	needsPackage.push([np.pkg_mgr, '-g']);
+	// }
 
 	if(np.eslint) {
 		if(np.preset == 'ts') {
