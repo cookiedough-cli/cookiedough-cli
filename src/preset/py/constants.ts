@@ -1,4 +1,4 @@
-import { PythonVersion } from './types';
+import { PythonVersion } from '../types';
 
 export const PythonVersions: PythonVersion[] = [
 	'latest',
