@@ -44,6 +44,16 @@ export const NodeBundlerPresets: NodeBundlerPreset[] = [
 	'esbuild',
 ];
 
+export const BabelBaseModules: NodeModule[] = [
+	['@babel/core', '-D'],
+	['@babel/preset-env', '-D']
+];
+
+export const BabelTSModules: NodeModule[] = [
+	['@babel/plugin-transform-typescript', '-D'],
+	['@babel/plugin-preset-typescript', '-D']
+];
+
 export const GulpModules: NodeModule[] = [
 	['gulp-cli', '-g'],
 	['gulp', '-D']

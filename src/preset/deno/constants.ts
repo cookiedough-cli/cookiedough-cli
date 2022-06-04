@@ -1,4 +1,4 @@
-import { DenoPackagePreset } from './types';
+import { DenoPackagePreset } from '../types';
 
 export const DenoPackagePresets: DenoPackagePreset[] = [
 	'simple-cli',

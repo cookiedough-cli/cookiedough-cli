@@ -1,4 +1,4 @@
-import { NodeUserPreferences, NodePackagePreset, NodePkgMgrPreset} from '../types';
+import { NodeUserPreferences } from '../types';
 import {
 	NodeModule,
 	SWCBaseModules,
@@ -6,27 +6,26 @@ import {
 	WebpackModules,
 	GruntBaseModules,
 	ESLintBaseModules,
-	ESLintTSModules
+	ESLintTSModules,
+	BabelBaseModules,
+	BabelTSModules
 } from './presets';
 
 export const NodePresetPackageMapper = (
 	np: NodeUserPreferences
 ): NodeModule[] => {
 	const needsPackage: NodeModule[] = [];
-	// if(np.pkg_mgr === 'yarn' || np.pkg_mgr === 'pnpm') {
-	// 	// pkg manager name should match the package to install so just run it if its not npm
-	// 	needsPackage.push([np.pkg_mgr, '-g']);
-	// }
-
 	if(np.eslint) {
+		// add eslint plugins for typescript
 		if(np.preset == 'ts') {
 			ESLintTSModules.forEach(m => needsPackage.push(m));
 		}
+		// just add regular eslint modules
 		else {
 			ESLintBaseModules.forEach(m => needsPackage.push(m));
 		}
 	}
-
+	// add selected build tools
 	switch(np.build_tools) {
 		case 'grunt':
 			GruntBaseModules.forEach( m => needsPackage.push(m));
@@ -34,11 +33,11 @@ export const NodePresetPackageMapper = (
 		case 'gulp':
 			GulpModules.forEach(m => needsPackage.push(m));
 	}
-
+	// add ts if needed
 	if(np.preset === 'ts') {
 		needsPackage.push(['typescript', '-D']);
 	}
-
+	// add chosen compiler
 	switch(np.compiler) {
 		case 'esbuild':
 			needsPackage.push(['esbuild', '']);
@@ -47,14 +46,12 @@ export const NodePresetPackageMapper = (
 			SWCBaseModules.forEach(m => needsPackage.push(m));
 			break;
 		case 'babel':
-			needsPackage.push(['@babel/core', '-D']);
-			needsPackage.push(['@babel/preset-env', '-D']);
+			BabelBaseModules.forEach(m => needsPackage.push(m));
 			if(np.preset === 'ts') {
-				needsPackage.push(['@babel/plugin-transform-typescript', '-D']);
-				needsPackage.push(['@babel/plugin-preset-typescript', '-D']);
+				BabelTSModules.forEach(m => needsPackage.push(m));
 			}
 	}
-
+	// add bundler
 	switch(np.bundler) {
 		case 'esbuild':
 			needsPackage.push(['esbuild', '']);
@@ -71,5 +68,6 @@ export const NodePresetPackageMapper = (
 		case 'swcpack':
 			needsPackage.push(['swcpack', '-D']);
 	}
+	// return package list
 	return needsPackage;
 };
