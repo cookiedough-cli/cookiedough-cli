@@ -1,0 +1,5 @@
+{
+	".map": {
+		"node": "flavors/node/.recipe/base.json"
+	}
+}

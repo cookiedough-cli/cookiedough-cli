@@ -14,16 +14,16 @@ export type CrumbPathConfigOptions = {
 }
 
 export type CrumbProcessConfigOptions = {
-	detatched	?: boolean; // run in caller process or spawn its own
-	dry			?: boolean; // run without doing anything, just print the would-be output
+	default_template    	?: CookieFlavor; // name of template to run against prompter
+	detatched				?: boolean; // run in caller process or spawn its own
+	dry						?: boolean; // run without doing anything, just print the would-be output
+	add_files_from			?: string[]; // directories to copy files into the new project from
+	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
 }
 
 export type CrumbConfigOptions = {
 	path					?: CrumbPathConfigOptions; // path related config options
 	process					?: CrumbProcessConfigOptions; // runtime related config options
-	default_template    	?: CookieFlavor; // name of template to run against prompter
-	add_files_from			?: string[]; // directories to copy files into the new project from
-	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
 }
 
 export type CrumbFilePrefix =

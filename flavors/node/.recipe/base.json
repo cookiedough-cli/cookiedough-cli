@@ -1,0 +1,12 @@
+{
+	"eslint": "eslint/.eslintignore",
+	"commonjs": {
+
+	},
+	"esm": {
+
+	},
+	"ts": {
+
+	}
+}

@@ -5,10 +5,10 @@
 		"parent_config": null
 	},
 	"process": {
+		"default_template": null,
+		"add_files_from": null,
+		"always_use_prompt": true,
 		"detatched": false,
 		"dry": false
-	},
-	"default_template": null,
-	"add_files_from": null,
-	"always_use_prompt": true
+	}
 }
