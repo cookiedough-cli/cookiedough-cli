@@ -1,4 +1,4 @@
-import { DenoPackagePreset } from '../types';
+import { DenoPackagePreset } from '@cookiedough/types/preset';
 
 export const DenoPackagePresets: DenoPackagePreset[] = [
 	'simple-cli',

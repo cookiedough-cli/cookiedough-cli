@@ -1,3 +1,5 @@
-const install_pkg = require('./.internal/install-pkg');
+export const fileMapper = {
+
+};
 
 // todo - handle config and install required packages.

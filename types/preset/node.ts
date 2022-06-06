@@ -1,12 +1,12 @@
+import { Tuple } from '..';
 import {
 	NodePackagePreset,
 	NodePkgMgrPreset,
 	NodeBuildPreset,
 	NodeCompilerPreset,
 	NodeBundlerPreset
-} from '../types';
+} from '.';
 
-import { Tuple } from '../../../types';
 export type NodeModule = Tuple;
 
 export const NodePkgPresets: NodePackagePreset[] = [
@@ -22,10 +22,10 @@ export const NodePkgMgrPresets: NodePkgMgrPreset[] = [
 ];
 
 export const NodeBuildPresets: NodeBuildPreset[] = [
-	'default(npm)',
 	'gulp',
 	'grunt',
-	'esbuild'
+	'esbuild',
+	'none',
 ];
 
 export const NodeCompilerPresets: NodeCompilerPreset[] = [

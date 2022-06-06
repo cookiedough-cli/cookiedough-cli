@@ -1,3 +1,5 @@
+import { Tuple, SystemOverview } from '..';
+
 export type DenoPackagePreset =
 'simple-cli'	  |
 'simple-webserver'|
@@ -40,7 +42,7 @@ export type NodeBuildPreset =
 'esbuild'  		|
 'gulp'	   		|
 'grunt'    		|
-'default(npm)'	;
+'none'	;
 
 
 export type NodeUserPreferences = {
@@ -72,3 +74,10 @@ export type CCStandard =
 'C++14' |
 'C++17' |
 'C++20' ;
+
+export interface NodeBuildInfo {
+	build_root: string,
+	build_host: SystemOverview,
+	build_preferences: NodeUserPreferences,
+	build_packages: Tuple[]
+}

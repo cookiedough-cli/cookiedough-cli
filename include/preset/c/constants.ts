@@ -1,7 +1,7 @@
 import {
 	CStandard,
 	CCStandard
-} from '../types';
+} from '@cookiedough/types/preset';
 
 
 export const CStandards: CStandard[] = [

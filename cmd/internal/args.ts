@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from 'fs';
-import { CrumbFileNames } from '../types';
+import { CrumbFileNames } from '@cookiedough/types';
 import { resolve } from 'path';
 
 export function useArgParser() {

@@ -1,5 +1,6 @@
 #!/usr/bin/node
-import { useValidWritePath } from '../tools';
+require('module-alias/register');
+import { useValidWritePath } from '@cookiedough/tools';
 import inquirer from 'inquirer';
 import {
 	RootNodePreset,
@@ -15,7 +16,7 @@ import {
 	error,
 	prompt,
 	Inquirer
-} from './include';
+} from '@cookiedough/include';
 import { useArgParser, useLocalConfig } from './internal/args';
 
 function useCookieDough() {

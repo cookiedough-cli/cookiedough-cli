@@ -13,9 +13,17 @@ module.exports = {
 		'sourceType': 'module'
 	},
 	'plugins': [
-		'@typescript-eslint'
+		'@typescript-eslint',
+		'import'
 	],
 	'rules': {
+		'import/no-unresolved': 'error',
+		'import/resolver': {
+			'typescript': {
+				'alwaysTryTypes': true,
+				'project': '.'
+			}
+		},
 		'quotes': [
 			'warn',
 			'single'

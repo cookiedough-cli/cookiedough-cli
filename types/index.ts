@@ -20,13 +20,6 @@ export interface ToWriteFileData extends PreloadedFileData {
 	content 	?: string;
 }
 
-export interface ProjectFileMap {
-	sys      	: SystemOverview;
-	base_path	: string;
-	add_tests	: boolean;
-	files    	?: ToWriteFileData[];
-}
-
 export type Tuple = [string, string];
 
 export * from './config';

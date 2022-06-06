@@ -1,4 +1,4 @@
-import { SystemOverview } from 'cmd/types';
+import { SystemOverview } from '@cookiedough/types';
 import { arch, platform, type } from 'os';
 /**
  *

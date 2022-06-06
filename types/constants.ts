@@ -2,7 +2,7 @@ import {
 	CookieFlavor,
 	Tuple,
 	InquirerPrompt
-} from '../types';
+} from '@cookiedough/types';
 
 export const TemplateNames: CookieFlavor[] = [
 	'node',
@@ -21,5 +21,5 @@ export const templateInquiry: InquirerPrompt = {
 	choices: TemplateNames
 };
 
-export { CookieFlavor } from '../types';
+export { CookieFlavor } from '@cookiedough/types';
 

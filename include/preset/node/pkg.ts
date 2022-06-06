@@ -1,4 +1,4 @@
-import { NodeUserPreferences } from '../types';
+import { NodeUserPreferences } from '@cookiedough/types/preset';
 import {
 	NodeModule,
 	SWCBaseModules,
@@ -11,7 +11,7 @@ import {
 	BabelTSModules,
 	RollupTSModules,
 	GulpTSModules
-} from './presets';
+} from '@cookiedough/types/preset/node';
 
 export const NodePresetPackageMapper = (
 	np: NodeUserPreferences

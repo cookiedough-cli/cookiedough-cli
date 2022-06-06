@@ -7,9 +7,20 @@
         "target": "ES2022",
         "outDir": "bin",
 		"baseUrl": "./",
-		"declaration": true
+		"declaration": true,
+		"paths": {
+			"@cookiedough/*": ["*"],
+		},
+		"rootDirs": [
+			"include/*",
+			"types/*",
+			"tools/*",
+			"cmd/*"
+		]
     },
 	"include": [
-		"cmd/index.ts"
+		"cmd/**/*",
+		"include/**/*",
+		"types/**/*"
 	]
 }
