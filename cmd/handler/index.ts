@@ -19,11 +19,11 @@ export function useDefaultHandler(
 	config: CrumbOptions
 ) {
 	if(config.process.dry) {
-		console.log(config);
+		console.log('dry mode, exiting');
 		return;
 	}
-	console.log(config);
 	if(config.process.default_template) {
+		console.log('default template chosen:');
 		console.log(config.process.default_template);
 		return;
 	}

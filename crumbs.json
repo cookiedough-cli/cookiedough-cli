@@ -10,6 +10,8 @@
 		"always_use_prompt": true,
 		"default_template": null,
 		"detatched": false,
-		"dry": false
+		"dry": false,
+		"log_level": "verbose",
+		"log_file": null
 	}
 }

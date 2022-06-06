@@ -20,6 +20,8 @@ export type ProcessConfigOptions = {
 	default_template    	?: CookieFlavor; // name of template to run against prompter
 	detatched				?: boolean; // run in caller process or spawn its own
 	dry						?: boolean; // run without doing anything, just print the would-be output
+	log_level				?: 'verbose' | 'silent' | 'minimal';
+	log_file				?: string;
 }
 
 export type CrumbOptions = {

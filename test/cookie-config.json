@@ -1,7 +1,6 @@
 {
 	"path": {
-		"out": "my-project-inner",
-		"process_root": "test",
+		"out": "test/my-project-inner",
 		"parent_config": null
 	},
 	"process": {

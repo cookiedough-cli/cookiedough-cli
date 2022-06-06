@@ -10,6 +10,8 @@ import inquirer, { Inquirer } from 'inquirer';
 import NodeUserOptions from './menu';
 import { useFileWriter } from './files';
 import { CrumbOptions, CrumbPrompt } from '@cookiedough/include/types';
+import { join } from 'path';
+
 function usePresetToFilemap(args: {
 	config: CrumbOptions,
 	options: NodeUserPreferences,
@@ -17,7 +19,7 @@ function usePresetToFilemap(args: {
 }) {
 	// const { options, packages, root } = args;
 	const buildInfo: NodeBuildInfo = {
-		build_root: args.config.path.out,
+		build_root: join(process.cwd(), args.config.path.out),
 		build_host: useSysInfo(),
 		build_preferences: args.options,
 		build_packages: args.packages

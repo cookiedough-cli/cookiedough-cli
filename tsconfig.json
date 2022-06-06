@@ -5,7 +5,7 @@
 		"pretty": true,
         "checkJs": false,
         "module": "CommonJS",
-        "target": "ES2022",
+        "target": "ES6",
         "outDir": "bin",
 		"baseUrl": "./",
 		"declaration": true,

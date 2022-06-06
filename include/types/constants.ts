@@ -2,6 +2,7 @@ import {
 	CookieFlavor,
 	InquirerPrompt
 } from '@cookiedough/include/types';
+import cliSpinners from 'cli-spinners';
 
 export const Flavors: CookieFlavor[] = [
 	'node',
@@ -21,4 +22,3 @@ export const templateInquiry: InquirerPrompt = {
 };
 
 export { CookieFlavor } from '@cookiedough/include/types';
-
