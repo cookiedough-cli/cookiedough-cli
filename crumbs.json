@@ -12,6 +12,7 @@
 		"detatched": false,
 		"dry": false,
 		"log_level": "verbose",
-		"log_file": null
+		"log_file": null,
+		"overwrite_existing_out": true
 	}
 }

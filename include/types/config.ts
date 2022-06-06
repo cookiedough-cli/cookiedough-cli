@@ -22,6 +22,7 @@ export type ProcessConfigOptions = {
 	dry						?: boolean; // run without doing anything, just print the would-be output
 	log_level				?: 'verbose' | 'silent' | 'minimal';
 	log_file				?: string;
+	overwrite_existing_out  ?: boolean;
 }
 
 export type CrumbOptions = {

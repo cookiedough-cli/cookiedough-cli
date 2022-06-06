@@ -8,6 +8,7 @@
 		"always_use_prompt": true,
 		"default_template": null,
 		"detatched": false,
-		"dry": false
+		"dry": false,
+		"overwrite_existing_out": true
 	}
 }

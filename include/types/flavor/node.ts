@@ -1,11 +1,23 @@
-import { Tuple } from '..';
 import {
-	NodePreset,
-	NodePkgMgrPreset,
-	NodeBuildPreset,
-	NodeCompilerPreset,
-	NodeBundlerPreset
-} from '.';
+	Tuple,
+	SystemOverview
+} from '..';
+
+export type NodeUserPreferences = {
+	preset: NodePreset;
+	pkg_mgr: NodePkgMgrPreset;
+	build_tools: NodeBuildPreset;
+	compiler: NodeCompilerPreset;
+	bundler: NodeBundlerPreset;
+	eslint: boolean;
+}
+
+export interface NodeBuildInfo {
+	build_root: string,
+	build_host: SystemOverview,
+	build_preferences: NodeUserPreferences,
+	build_packages: Tuple[]
+}
 
 export type NodeModule = Tuple;
 export interface ToInstallModule {
@@ -33,7 +45,7 @@ export type NodeModuleInstaller = {
 export function asNodeModuleInstaller(
 	name: NodePkgMgrPreset,
 	installPkgSignature: string
-) {
+) : NodeModuleInstaller {
 	return <NodeModuleInstaller>{
 		name,
 		installSelf: '', //todo
@@ -122,3 +134,32 @@ export const ESLintTSModules: NodeModule[] = [
 	['@typescript-eslint/eslint-plugin', '-D'],
 	['@typescript-eslint/parser', '-D']
 ];
+
+export type NodePreset =
+'commonjs' |
+'esm' 	   |
+'ts'       ;
+
+export type NodePkgMgrPreset =
+'npm'  |
+'yarn' |
+'pnpm' ;
+
+export type NodeCompilerPreset =
+'babel'   |
+'swc' 	  |
+'esbuild' |
+'none';
+
+export type NodeBundlerPreset =
+'webpack'  |
+'esbuild'  |
+'rollup'   |
+'swcpack'  |
+'none'	   ;
+
+export type NodeBuildPreset =
+'esbuild'  		|
+'gulp'	   		|
+'grunt'    		|
+'none'	;

@@ -17,7 +17,7 @@ import {
 
 export const NodePresetPackageMapper = (
 	np: NodeUserPreferences
-): NodeModule[] => {
+): { installer: NodeModuleInstaller, packages: NodeModule[] } => {
 	let installer: NodeModuleInstaller;
 
 	switch(np.pkg_mgr) {
@@ -29,7 +29,6 @@ export const NodePresetPackageMapper = (
 			installer = asNodeModuleInstaller('npm', 'i');
 			break;
 	}
-	console.log(installer);
 
 	const needsPackage: NodeModule[] = [];
 	if(np.eslint) {
@@ -92,6 +91,9 @@ export const NodePresetPackageMapper = (
 			needsPackage.push(['swcpack', '-D']);
 	}
 	// return package list
-	return needsPackage;
+	return {
+		installer,
+		packages: needsPackage
+	};
 };
 

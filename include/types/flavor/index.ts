@@ -1,7 +1,5 @@
 import { Tuple, SystemOverview } from '..';
 
-export * from './deno';
-
 export type GoPreset =
 'simple-cli'	  |
 'simple-webserver'|
@@ -11,45 +9,6 @@ export type PythonVersion =
 'latest' |
 '3.8' 	 |
 '2.7'	 ;
-
-export type NodePreset =
-'commonjs' |
-'esm' 	   |
-'ts'       ;
-
-export type NodePkgMgrPreset =
-'npm'  |
-'yarn' |
-'pnpm' ;
-
-export type NodeCompilerPreset =
-'babel'   |
-'swc' 	  |
-'esbuild' |
-'none';
-
-export type NodeBundlerPreset =
-'webpack'  |
-'esbuild'  |
-'rollup'   |
-'swcpack'  |
-'none'	   ;
-
-export type NodeBuildPreset =
-'esbuild'  		|
-'gulp'	   		|
-'grunt'    		|
-'none'	;
-
-
-export type NodeUserPreferences = {
-	preset: NodePreset;
-	pkg_mgr: NodePkgMgrPreset;
-	build_tools: NodeBuildPreset;
-	compiler: NodeCompilerPreset;
-	bundler: NodeBundlerPreset;
-	eslint: boolean;
-}
 
 export type CPackagePreset =
 'c'  |
@@ -71,13 +30,6 @@ export type CCStandard =
 'C++14' |
 'C++17' |
 'C++20' ;
-
-export interface NodeBuildInfo {
-	build_root: string,
-	build_host: SystemOverview,
-	build_preferences: NodeUserPreferences,
-	build_packages: Tuple[]
-}
 
 export const PythonVersions: PythonVersion[] = [
 	'latest',
@@ -111,3 +63,6 @@ export const CCompilers = [
 	'g++',
 	'clang'
 ];
+
+export * from './node';
+export * from './deno';
