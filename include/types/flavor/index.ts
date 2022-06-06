@@ -1,9 +1,6 @@
 import { Tuple, SystemOverview } from '..';
 
-export type DenoPreset =
-'simple-cli'	  |
-'simple-webserver'|
-'simple-library'  ;
+export * from './deno';
 
 export type GoPreset =
 'simple-cli'	  |
@@ -94,11 +91,6 @@ export const GoPresets: GoPreset[] = [
 	'simple-webserver'
 ];
 
-export const DenoPresets: DenoPreset[] = [
-	'simple-cli',
-	'simple-webserver',
-	'simple-library'
-];
 export const CStandards: CStandard[] = [
 	'C99',
 	'C11',

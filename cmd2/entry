@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+import string
+import sys, time, os
+from py_console import console
+from halo import Halo
+from spinners import Spinners
+def find_config():
+	path: string
+	time.sleep(1)
+	if(len(sys.argv) > 1):
+		path = sys.argv[2]
+	else:
+		path = os.getcwd()
+
+	print('\n')
+	console.info('base path:')
+	print(path)
+	return 0
+
+def main():
+	with Halo(text='Scanning for Preferences', spinner=Spinners.bouncingBall.value):
+		find_config()
+
+if __name__ == '__main__':
+	main()
