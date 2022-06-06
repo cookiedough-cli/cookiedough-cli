@@ -6,10 +6,10 @@
         "module": "CommonJS",
         "target": "ES2022",
         "outDir": "bin",
-        "baseUrl": ".",
+		"baseUrl": "./",
 		"declaration": true
     },
-    "include": [
-        "src/index.ts"
-    ]
+	"include": [
+		"cmd/index.ts"
+	]
 }

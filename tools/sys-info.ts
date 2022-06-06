@@ -1,4 +1,4 @@
-import { SystemOverview } from '../types';
+import { SystemOverview } from 'cmd/types';
 import { arch, platform, type } from 'os';
 /**
  *

@@ -2,7 +2,7 @@ import {
 	useSysInfo,
 	_call,
 	_callFrom
-} from '../../tools';
+} from '../../../../tools';
 import { NodePkgMgrPreset, NodeUserPreferences } from '../types';
 import { NodePresetPackageMapper } from './pkg';
 import { NodeModule } from './presets';

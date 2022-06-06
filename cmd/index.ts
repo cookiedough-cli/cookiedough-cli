@@ -1,5 +1,5 @@
 #!/usr/bin/node
-import { useValidWritePath } from './tools';
+import { useValidWritePath } from '../tools';
 import inquirer from 'inquirer';
 import {
 	RootNodePreset,
@@ -18,7 +18,7 @@ import {
 } from './include';
 import { useArgParser, useLocalConfig } from './internal/args';
 
-function useBob() {
+function useCookieDough() {
 	const args = useArgParser();
 	const config = useLocalConfig(args.url.parent_config);
 	console.log(config);
@@ -58,4 +58,4 @@ function usePrompt(
 	}
 }
 
-useBob();
+useCookieDough();

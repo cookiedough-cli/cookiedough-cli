@@ -6,7 +6,7 @@ import {
 	NodeBundlerPreset
 } from '../types';
 
-import { Tuple } from '../../types';
+import { Tuple } from '../../../types';
 export type NodeModule = Tuple;
 
 export const NodePkgPresets: NodePackagePreset[] = [

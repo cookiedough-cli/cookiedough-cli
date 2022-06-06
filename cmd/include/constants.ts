@@ -9,7 +9,7 @@ export const TemplateNames: CookieFlavor[] = [
 	'deno',
 	//'go',
 	//'c',
-	//'c++',
+	//'c++',s
 	//'rust',
 	//'python'
 ];

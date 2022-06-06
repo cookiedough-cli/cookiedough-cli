@@ -1,6 +1,6 @@
 {
 	"path": {
-		"out": "my-project",
+		"out": "test",
 		"process_root": ".",
 		"parent_config": null
 	},
