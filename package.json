@@ -28,7 +28,8 @@
   "dependencies": {
     "inquirer": "^8.2.4",
     "module-alias": "^2.2.2",
-    "ora": "^6.1.0"
+    "ora": "^6.1.0",
+    "ts-json-schema-generator": "^1.0.0"
   },
   "man": [
     "./.assets/manpage.txt"
