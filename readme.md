@@ -1,5 +1,5 @@
-# Bob the Builder
+# Milkshake
 
 project generation cli, many languages, many setups
 
-![](/.assets/icon.jpg)
+![](/.assets/icon.png)
