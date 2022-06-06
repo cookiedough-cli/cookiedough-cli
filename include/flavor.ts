@@ -1,5 +1,5 @@
-export * as RootNodePreset from '@cookiedough/flavors/node';
-export * as RootPythonPreset from '@cookiedough/flavors/python';
-export * as RootCPreset from '@cookiedough/flavors/c-cpp';
-export * as RootDenoPreset from '@cookiedough/flavors/deno';
-export * as RootGoPreset from '@cookiedough/flavors/golang';
+export * as NodeFlavor from '@cookiedough/flavors/node';
+export * as PythonFlavor from '@cookiedough/flavors/python';
+export * as CFlavor from '@cookiedough/flavors/c-cpp';
+export * as DenoFlavor from '@cookiedough/flavors/deno';
+export * as GoFlavor from '@cookiedough/flavors/golang';

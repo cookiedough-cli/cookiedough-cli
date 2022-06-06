@@ -25,7 +25,7 @@ function usePresetToFilemap(args: {
 	useFileWriter(buildInfo);
 }
 
-export function useNodePrompt(
+export function usePrompt(
 	p: string,
 	inquirer: Inquirer
 ) {

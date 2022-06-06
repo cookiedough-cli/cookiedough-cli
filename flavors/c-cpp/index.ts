@@ -4,7 +4,7 @@ import {
 } from './menu';
 import { Inquirer } from 'inquirer';
 
-export function useCPrompt(
+export function usePrompt(
 	p: string,
 	inquirer: Inquirer
 ) {

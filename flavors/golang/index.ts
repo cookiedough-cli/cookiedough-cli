@@ -1,7 +1,7 @@
 import { Inquirer } from 'inquirer';
 import GoMenuOptions from './menu';
 
-export function useGoPrompt(
+export function usePrompt(
 	p: string,
 	inquirer: Inquirer
 ) {

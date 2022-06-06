@@ -1,6 +1,6 @@
 import DenoMenuOptions from './menu';
 
-export function useDenoPrompt(
+export function usePrompt(
 	p: string,
 	inquirer
 ) {

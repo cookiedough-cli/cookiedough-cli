@@ -3,11 +3,11 @@ require('module-alias/register');
 import { useValidWritePath } from '@cookiedough/tools';
 import inquirer from 'inquirer';
 import {
-	RootNodePreset,
-	RootPythonPreset,
-	RootCPreset,
-	RootDenoPreset,
-	RootGoPreset,
+	NodeFlavor,
+	PythonFlavor,
+	CFlavor,
+	DenoFlavor,
+	GoFlavor,
 	CookieFlavor,
 	templateInquiry,
 	join,
@@ -44,15 +44,15 @@ function usePrompt(
 	switch(tag) {
 		case 'c':
 		case 'c++':
-			return RootCPreset.useCPrompt(path, inquirer);
+			return CFlavor.usePrompt(path, inquirer);
 		case 'go':
-			return RootGoPreset.useGoPrompt(path, inquirer);
+			return GoFlavor.usePrompt(path, inquirer);
 		case 'deno':
-			return RootDenoPreset.useDenoPrompt(path, inquirer);
+			return DenoFlavor.usePrompt(path, inquirer);
 		case 'python':
-			return RootPythonPreset.usePyPrompt(path, inquirer);
+			return PythonFlavor.usePrompt(path, inquirer);
 		case 'node':
-			return RootNodePreset.useNodePrompt(path, inquirer);
+			return NodeFlavor.usePrompt(path, inquirer);
 		default:
 			error('template name invalid');
 			process.exit(1);

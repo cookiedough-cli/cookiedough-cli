@@ -1,6 +1,7 @@
 import inquirer from 'inquirer';
 import PythonMenuOptions from './menu';
-export function usePyPrompt(
+
+export function usePrompt(
 	p: string,
 	inquirer: inquirer.Inquirer
 ) {
