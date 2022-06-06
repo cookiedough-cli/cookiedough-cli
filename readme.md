@@ -1,4 +1,4 @@
-# Milkshake
+# Creamery
 
 project generation cli, many languages, many setups
 
