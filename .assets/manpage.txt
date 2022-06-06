@@ -1,0 +1,35 @@
+Cookiedough CLI
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Flags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-nc | --no-config
+tell cookiedough to ignore the config finding process.
+
+-c | --config
+explicit path for finding configuration, typically you can just set it with an anonymous argument.
+
+-cf | --config-format
+tell process to only look for config files of a given format
+
+-a | --add-files(=...filepaths:...filebases)
+copy all files from folder to the write path.
+
+-h | --help
+print this page
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+cookiedough -nc -a ./scripts/*.sh
+
+ignores config files and adds files that match <cwd>/scripts/*.sh
+
+
+cookiedough -nc -a (/usr/share/include/**/*:include)
+copies files from /usr/share/include into the <generated_dir>/include directory.

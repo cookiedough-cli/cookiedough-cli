@@ -1,8 +1,8 @@
 {
-  "name": "creamery-cli",
+  "name": "cookiedough",
   "version": "0.1.0",
-  "bin": "bin/index.js",
-  "main": "index.js",
+  "bin": "bin/cmd/index.js",
+  "main": "bin/cmd/index.js",
   "repository": "git@github.com:abschill/creamery-cli.git",
   "homepage": "https://github.com/abschill/creamery-cli",
   "author": "abschill",
@@ -25,5 +25,8 @@
   },
   "dependencies": {
     "inquirer": "^8.2.4"
-  }
+  },
+  "man": [
+	  "./.assets/manpage.txt"
+  ]
 }

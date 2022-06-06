@@ -11,8 +11,12 @@ explicit format for setting config file path, by default if you set one anonymou
 `-cf` | `--config-format`
 tell the process to only look for config files of a given format
 
-`-h` | `--help`
-print manpage
+for example
+
+```
+cookiedough -cf json
+```
+
 
 `-a` | `--add-files`
 tell the process to copy any generated project files additionally from the specified path(s). if you specify more than one path, separate them with a comma and wrap them in `()`
@@ -24,3 +28,7 @@ cookiedough -a (/usr/share/path0/,/scripts/*.sh)
 ```
 
 you'll notice that it can accept glob patterns as well
+
+
+`-h` | `--help`
+print manpage
