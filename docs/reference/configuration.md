@@ -20,7 +20,7 @@ tell the process to copy any generated project files additionally from the speci
 for example:
 
 ```
-creamery -a (/usr/share/path0/,/scripts/*.sh)
+cookiedough -a (/usr/share/path0/,/scripts/*.sh)
 ```
 
 you'll notice that it can accept glob patterns as well

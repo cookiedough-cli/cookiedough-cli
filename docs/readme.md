@@ -1,13 +1,12 @@
-# Bob the Builder CLI
+# cookiedough CLI
 
 ## Invocation
 
 The easiest way to invoke is to run through the npm registry, using `npx`. A basic example
 
 ```cmd
-npx bob-the-builder --language ts --type node
+npx cookiedough
 ```
+runs the default setup prompt
 
-```cmd
-npx bob-the-builder 
-```
+[More Information](reference/configuration.md)

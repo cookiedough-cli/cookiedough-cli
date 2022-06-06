@@ -1,5 +1,5 @@
-# Creamery
+# Cookiedough
 
-project generation cli, many languages, many setups
+customizable project generation cli, many languages, many setups
 
-![](/.assets/icon.png)
+![](/.assets/cookiedough.png)

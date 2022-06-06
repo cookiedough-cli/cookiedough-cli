@@ -20,13 +20,13 @@ import {
 function useBob() {
 	let wPath: string;
 	const pathRoot = process.argv[2] ?? process.cwd();
-	const dizzyPath = resolve(pathRoot, 'dizzy.json');
-	const dizzy = require(dizzyPath);
-	if(!dizzy.outPath) {
-		warn('no outpath set in dizzy, using cwd / inline');
+	const confPath = resolve(pathRoot, 'crumbs.json');
+	const cConfig = require(confPath);
+	if(!cConfig.path.out) {
+		warn('no outpath set in config');
 		wPath = pathRoot;
 	}
-	wPath = useValidWritePath(join(pathRoot, dizzy.outPath ?? ''));
+	wPath = useValidWritePath(join(pathRoot, cConfig.outPath ?? ''));
 	prompt([templateInquiry]).then((
 		options: { template: TemplateName }
 	) => usePrompt(options.template, wPath, inquirer));
