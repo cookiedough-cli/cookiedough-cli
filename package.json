@@ -10,7 +10,7 @@
   "scripts": {
     "build:docs": "typedoc",
     "build:release": "tsc",
-    "run:test": "node bin -tag"
+    "run:test": "node bin"
   },
   "devDependencies": {
     "@types/inquirer": "^8.2.1",

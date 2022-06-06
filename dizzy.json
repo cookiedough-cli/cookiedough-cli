@@ -1,6 +1,14 @@
 {
-	"outPath": "my-project",
-	"customFiles": {
-		".gitignore": "foo,bar"
-	}
+	"path": {
+		"out": "my-project",
+		"process_root": ".",
+		"parent_path": null
+	},
+	"process": {
+		"detatched": false,
+		"dry": false
+	},
+	"default_template": null,
+	"add_files_from": null,
+	"always_use_prompt": true
 }
