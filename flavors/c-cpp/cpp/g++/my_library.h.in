@@ -1,0 +1,2 @@
+#define my_library_VERSION_MAJOR @my_library_VERSION_MAJOR@
+#define my_library_VERSION_MINOR @my_library_VERSION_MINOR@
