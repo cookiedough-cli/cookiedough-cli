@@ -13,11 +13,17 @@ import {
 	prompt,
 	Inquirer,
 } from '@cookiedough/include';
+import { CrumbOptions } from '@cookiedough/include/types';
 
 export function useDefaultHandler(
-	config: any // todo - type
+	config: CrumbOptions
 ) {
+	if(config.process.dry) {
+		console.log(config);
+		return;
+	}
 	console.log(config);
+	// todo- validate path, or create it
 	// todo- handle detatched option
 	// todo- handle dry option
 	//const cConfig = require(confPath);
@@ -33,8 +39,7 @@ export function useDefaultHandler(
 
 function usePrompt(
 	tag: CookieFlavor,
-	path: string,
-	inquirer: Inquirer
+	path: string
 ) {
 	switch(tag) {
 		case 'c':

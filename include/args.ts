@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from 'fs';
-import { CrumbFileNames } from '@cookiedough/include/types';
+import { CrumbFileNames, CrumbOptions } from '@cookiedough/include/types';
 import { resolve } from 'path';
 
 export function useArgParser() {
@@ -24,7 +24,7 @@ export function useArgParser() {
 
 export function useLocalConfig(
 	base: string
-) {
+): CrumbOptions {
 	let match;
 	const filesInBase = readdirSync(base);
 	CrumbFileNames.forEach(file => {
@@ -35,8 +35,8 @@ export function useLocalConfig(
 	});
 	if(match.includes('json')) {
 		// return as json
-		return require(resolve(base, match));
+		return <CrumbOptions>require(resolve(base, match));
 	}
 	// return as string
-	return readFileSync(resolve(base, match), 'utf-8');
+	return <CrumbOptions>readFileSync(resolve(base, match), 'utf-8'); //todo - actually set this up
 }
