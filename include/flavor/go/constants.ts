@@ -1,4 +1,4 @@
-import { GoPackagePreset } from '@cookiedough/types/preset';
+import { GoPackagePreset } from '@cookiedough/types/flavor';
 
 export const GoPackagePresets: GoPackagePreset[] = [
 	'simple-cli',

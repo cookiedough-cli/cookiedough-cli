@@ -1,5 +1,5 @@
-export * as RootNodePreset from './preset/node';
-export * as RootPythonPreset from './preset/py';
-export * as RootCPreset from './preset/c';
-export * as RootDenoPreset from './preset/deno';
-export * as RootGoPreset from './preset/go';
+export * as RootNodePreset from './flavor/node';
+export * as RootPythonPreset from './flavor/py';
+export * as RootCPreset from './flavor/c';
+export * as RootDenoPreset from './flavor/deno';
+export * as RootGoPreset from './flavor/go';

@@ -1,4 +1,4 @@
-import { PythonVersion } from '@cookiedough/types/preset';
+import { PythonVersion } from '@cookiedough/types/flavor';
 
 export const PythonVersions: PythonVersion[] = [
 	'latest',

@@ -1,10 +1,9 @@
 import {
 	CookieFlavor,
-	Tuple,
 	InquirerPrompt
 } from '@cookiedough/types';
 
-export const TemplateNames: CookieFlavor[] = [
+export const Flavors: CookieFlavor[] = [
 	'node',
 	'deno',
 	//'go',
@@ -16,9 +15,9 @@ export const TemplateNames: CookieFlavor[] = [
 
 export const templateInquiry: InquirerPrompt = {
 	type: 'list',
-	name: 'template',
-	message: 'choose project template',
-	choices: TemplateNames
+	name: 'flavor',
+	message: 'choose project flavor',
+	choices: Flavors
 };
 
 export { CookieFlavor } from '@cookiedough/types';
