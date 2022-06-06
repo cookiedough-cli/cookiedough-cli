@@ -1,7 +1,7 @@
-bob-the-builder - v0.1.0 / [Exports](modules.md)
+creamery-cli - v0.1.0 / [Exports](modules.md)
 
-# Bob the Builder
+# Cookiedough
 
-project generation cli, many languages, many setups
+customizable project generation cli, many languages, many setups
 
-![](icon.jpg)
+![](/.assets/cookiedough.png)

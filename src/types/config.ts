@@ -10,7 +10,7 @@ export type CookieFlavor =
 export type CrumbPathConfigOptions = {
 	out 				?: string; // base path to use to write new files during processing
 	process_root		?: string; // root of process scope
-	parent_path			?: string; // path of parent config to extend
+	parent_config		?: string; // path of parent config to extend
 }
 
 export type CrumbProcessConfigOptions = {
@@ -51,3 +51,20 @@ export type CrumbFileSuffix =
 '.conf'		|
 '.ini'		|
 ''
+
+export type CrumbFileName = `${CrumbFilePrefix}${CrumbFileSuffix}`;
+
+export const CrumbFileNames: CrumbFileName[] = [
+	'crumb.json',
+	'crumbs.json',
+	'cookie-config.build',
+	'cookie-config.json',
+	'cookie-config',
+	'cookieconf',
+	'crumbs.yml',
+	'crumbs.build',
+	'crumbs.make',
+	'cookieconf.yml',
+	'cookieconf.make',
+	'cookie-config.make'
+];

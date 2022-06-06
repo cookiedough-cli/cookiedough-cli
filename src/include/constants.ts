@@ -1,10 +1,10 @@
 import {
-	TemplateName,
+	CookieFlavor,
 	Tuple,
 	InquirerPrompt
 } from '../types';
 
-export const TemplateNames: TemplateName[] = [
+export const TemplateNames: CookieFlavor[] = [
 	'node',
 	'deno',
 	//'go',
@@ -14,13 +14,6 @@ export const TemplateNames: TemplateName[] = [
 	//'python'
 ];
 
-export const InlineOptions: Tuple[] = [
-	['--dry-run', '-dry'],
-	['--config-path', '-c'],
-	['--template-name', '-t'],
-	['--custom-template', '-ct']
-];
-
 export const templateInquiry: InquirerPrompt = {
 	type: 'list',
 	name: 'template',
@@ -28,5 +21,5 @@ export const templateInquiry: InquirerPrompt = {
 	choices: TemplateNames
 };
 
-export { TemplateName } from '../types';
+export { CookieFlavor } from '../types';
 

@@ -7,7 +7,7 @@ import {
 	RootCPreset,
 	RootDenoPreset,
 	RootGoPreset,
-	TemplateName,
+	CookieFlavor,
 	templateInquiry,
 	join,
 	resolve,
@@ -16,24 +16,27 @@ import {
 	prompt,
 	Inquirer
 } from './include';
+import { useArgParser, useLocalConfig } from './internal/args';
 
 function useBob() {
-	let wPath: string;
-	const pathRoot = process.argv[2] ?? process.cwd();
-	const confPath = resolve(pathRoot, 'crumbs.json');
-	const cConfig = require(confPath);
-	if(!cConfig.path.out) {
-		warn('no outpath set in config');
-		wPath = pathRoot;
-	}
-	wPath = useValidWritePath(join(pathRoot, cConfig.outPath ?? ''));
-	prompt([templateInquiry]).then((
-		options: { template: TemplateName }
-	) => usePrompt(options.template, wPath, inquirer));
+	const args = useArgParser();
+	const config = useLocalConfig(args.url.parent_config);
+	console.log(config);
+	// todo- handle detatched option
+	// todo- handle dry option
+	//const cConfig = require(confPath);
+	// if(!cConfig.path.out) {
+	// 	warn('no outpath set in config');
+	// }
+	// console.log(cConfig.path.out);
+
+	// prompt([templateInquiry]).then((
+	// 	options: { template: CookieFlavor }
+	// ) => usePrompt(options.template, wPath, inquirer));
 }
 
 function usePrompt(
-	tag: TemplateName,
+	tag: CookieFlavor,
 	path: string,
 	inquirer: Inquirer
 ) {
