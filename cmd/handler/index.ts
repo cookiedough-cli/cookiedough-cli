@@ -28,7 +28,7 @@ export function useDefaultHandler(
 		return;
 	}
 	else {
-		prompt([templateInquiry])//.then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+		prompt([templateInquiry]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
 	}
 	// todo- validate path, or create it
 	// todo- handle detatched option
