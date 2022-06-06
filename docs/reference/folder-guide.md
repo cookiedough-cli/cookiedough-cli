@@ -15,5 +15,5 @@ this is the directory for utilities used during the cli. they are mostly miscell
 - `types`
 type information for entire packages
 
-- `preset`
-this directory contains resolution handlers ("flavors") for different project root type resolutions from the cli. For instance, if it determines you are making a node project, it will begin comparing your crumbs against the node templates in `packages`.
+- `flavors`
+this directory contains resolution handlers ("flavors") for different project root type resolutions from the cli. For instance, if it determines you are making a node project, it will begin comparing your crumbs against the node templates in `flavors`.
