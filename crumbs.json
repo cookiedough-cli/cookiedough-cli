@@ -6,7 +6,7 @@
 		"parent_config": null
 	},
 	"process": {
-		"add_files_from": null,
+		"add_files_from": "test/copy-files/",
 		"always_use_prompt": true,
 		"default_template": null,
 		"detatched": false,

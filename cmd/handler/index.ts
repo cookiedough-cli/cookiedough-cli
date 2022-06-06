@@ -23,6 +23,13 @@ export function useDefaultHandler(
 		return;
 	}
 	console.log(config);
+	if(config.process.default_template) {
+		console.log(config.process.default_template);
+		return;
+	}
+	else {
+		prompt([templateInquiry])//.then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+	}
 	// todo- validate path, or create it
 	// todo- handle detatched option
 	// todo- handle dry option
@@ -32,27 +39,25 @@ export function useDefaultHandler(
 	// }
 	// console.log(cConfig.path.out);
 
-	// prompt([templateInquiry]).then((
-	// 	options: { template: CookieFlavor }
-	// ) => usePrompt(options.template, wPath, inquirer));
+
 }
 
-function usePrompt(
+function useFlavorPrompt(
 	tag: CookieFlavor,
-	path: string
+	config: CrumbOptions
 ) {
 	switch(tag) {
 		case 'c':
 		case 'c++':
-			return CFlavor.usePrompt(path);
+			return CFlavor.usePrompt(config);
 		case 'go':
-			return GoFlavor.usePrompt(path);
+			return GoFlavor.usePrompt(config);
 		case 'deno':
-			return DenoFlavor.usePrompt(path);
+			return DenoFlavor.usePrompt(config);
 		case 'python':
-			return PythonFlavor.usePrompt(path);
+			return PythonFlavor.usePrompt(config);
 		case 'node':
-			return NodeFlavor.usePrompt(path);
+			return NodeFlavor.usePrompt(config);
 		default:
 			error('template name invalid');
 			process.exit(1);

@@ -5,6 +5,8 @@ import sys, time, os
 from py_console import console
 from halo import Halo
 from spinners import Spinners
+
+@Halo(text='Looking for Config', spinner=Spinners.bouncingBall.value)
 def find_config():
 	path: string
 	time.sleep(1)
@@ -12,15 +14,13 @@ def find_config():
 		path = sys.argv[2]
 	else:
 		path = os.getcwd()
-
 	print('\n')
-	console.info('base path:')
-	print(path)
-	return 0
+	return path
 
 def main():
-	with Halo(text='Scanning for Preferences', spinner=Spinners.bouncingBall.value):
-		find_config()
+	path = find_config()
+	console.info('base path:')
+	print(path)
 
 if __name__ == '__main__':
 	main()
