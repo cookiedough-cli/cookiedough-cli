@@ -1,13 +1,14 @@
 {
 	"path": {
+		"custom_flavors": null,
 		"out": "test",
 		"process_root": ".",
 		"parent_config": null
 	},
 	"process": {
-		"default_template": null,
 		"add_files_from": null,
 		"always_use_prompt": true,
+		"default_template": null,
 		"detatched": false,
 		"dry": false
 	}

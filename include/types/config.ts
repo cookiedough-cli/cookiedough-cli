@@ -7,23 +7,24 @@ export type CookieFlavor =
 'rust'   |
 'python' ;
 
-export type CrumbPathConfigOptions = {
+export type PathConfigOptions = {
+	custom_flavors		?: string;
 	out 				?: string; // base path to use to write new files during processing
 	process_root		?: string; // root of process scope
 	parent_config		?: string; // path of parent config to extend
 }
 
-export type CrumbProcessConfigOptions = {
+export type ProcessConfigOptions = {
+	add_files_from			?: string[]; // directories to copy files into the new project from
+	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
 	default_template    	?: CookieFlavor; // name of template to run against prompter
 	detatched				?: boolean; // run in caller process or spawn its own
 	dry						?: boolean; // run without doing anything, just print the would-be output
-	add_files_from			?: string[]; // directories to copy files into the new project from
-	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
 }
 
-export type CrumbConfigOptions = {
-	path					?: CrumbPathConfigOptions; // path related config options
-	process					?: CrumbProcessConfigOptions; // runtime related config options
+export type CrumbOptions = {
+	path					?: PathConfigOptions; // path related config options
+	process					?: ProcessConfigOptions; // runtime related config options
 }
 
 export type CrumbFilePrefix =
