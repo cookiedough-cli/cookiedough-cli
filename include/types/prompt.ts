@@ -4,3 +4,5 @@ export type InquirerPrompt = {
 	message	: string;
 	choices	: string[];
 }
+
+export type CrumbPrompt = Promise<void>;

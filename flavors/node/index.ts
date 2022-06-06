@@ -9,7 +9,7 @@ import { NodeModule } from '@cookiedough/include/types/flavor/node';
 import inquirer, { Inquirer } from 'inquirer';
 import NodeUserOptions from './menu';
 import { useFileWriter } from './files';
-
+import { CrumbPrompt } from '@cookiedough/include/types';
 function usePresetToFilemap(args: {
 	root: string,
 	options: NodeUserPreferences,
@@ -27,10 +27,10 @@ function usePresetToFilemap(args: {
 
 export function usePrompt(
 	p: string,
-) {
-	inquirer.prompt(NodeUserOptions).then((answers: NodeUserPreferences) => usePresetToFilemap({
+): CrumbPrompt {
+	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeUserPreferences) => usePresetToFilemap({
 			options: answers,
 			packages: NodePresetPackageMapper(answers),
 			root: p
-	}));
+	})));
 }

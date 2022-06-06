@@ -3,8 +3,7 @@
 		"custom_flavors": null,
 		"out": "test",
 		"process_root": ".",
-		"parent_config": null,
-		"editorconfig": null
+		"parent_config": null
 	},
 	"process": {
 		"add_files_from": null,
