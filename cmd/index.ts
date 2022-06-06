@@ -17,7 +17,7 @@ import {
 	prompt,
 	Inquirer
 } from '@cookiedough/include';
-import { useArgParser, useLocalConfig } from './internal/args';
+import { useArgParser, useLocalConfig } from '../include/args';
 
 function useCookieDough() {
 	const args = useArgParser();

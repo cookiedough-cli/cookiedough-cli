@@ -8,6 +8,38 @@ import {
 } from '.';
 
 export type NodeModule = Tuple;
+export interface ToInstallModule {
+	asTuple				 : Tuple; //tuple representing the package name and devness
+	name				 : string; //name of package
+	dev				 	 : boolean; //result of the second tuple from asTuple
+	global				 : boolean; //result of the second tuple from asTuple
+	version				?: string; //optional - todo
+}
+
+export type NodeModuleInstaller = {
+	name				: NodePkgMgrPreset; //name of process to run
+	installSelf			: string; //command to install self if not installed / detected on system
+	installPkgSignature	: string; //prefix for adding packages between the process and the packagename
+}
+
+// utils
+/**
+ *
+ * @param name
+ * @param installPkgSignature
+ * @returns
+ */
+
+export function asNodeModuleInstaller(
+	name: NodePkgMgrPreset,
+	installPkgSignature: string
+) {
+	return <NodeModuleInstaller>{
+		name,
+		installSelf: '', //todo
+		installPkgSignature
+	}
+}
 
 export const NodePkgPresets: NodePreset[] = [
 	'commonjs',

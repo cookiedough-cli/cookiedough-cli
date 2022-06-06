@@ -10,12 +10,27 @@ import {
 	BabelBaseModules,
 	BabelTSModules,
 	RollupTSModules,
-	GulpTSModules
+	GulpTSModules,
+	NodeModuleInstaller,
+	asNodeModuleInstaller
 } from '@cookiedough/include/types/flavor/node';
 
 export const NodePresetPackageMapper = (
 	np: NodeUserPreferences
 ): NodeModule[] => {
+	let installer: NodeModuleInstaller;
+
+	switch(np.pkg_mgr) {
+		case 'pnpm':
+			installer = asNodeModuleInstaller('pnpm', 'add');
+		case 'yarn':
+			installer = asNodeModuleInstaller('yarn', 'add');
+		default:
+			installer = asNodeModuleInstaller('npm', 'i');
+			break;
+	}
+	console.log(installer);
+
 	const needsPackage: NodeModule[] = [];
 	if(np.eslint) {
 		// add eslint plugins for typescript
