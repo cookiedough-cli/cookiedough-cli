@@ -1,29 +1,21 @@
 #!/usr/bin/node
 import { useValidWritePath } from './tools';
-import inquirer, {
-	prompt,
-	Inquirer
-} from 'inquirer';
-import {
-	join,
-	resolve
-} from 'path';
-import {
-	TemplateName,
-	templateInquiry
-} from './include/constants';
+import inquirer from 'inquirer';
 import {
 	RootNodePreset,
 	RootPythonPreset,
 	RootCPreset,
 	RootDenoPreset,
-	RootGoPreset
-} from './include/presets';
-
-const {
+	RootGoPreset,
+	TemplateName,
+	templateInquiry,
+	join,
+	resolve,
 	warn,
-	error
-} = console;
+	error,
+	prompt,
+	Inquirer
+} from './include';
 
 function useBob() {
 	let wPath: string;
@@ -35,7 +27,9 @@ function useBob() {
 		wPath = pathRoot;
 	}
 	wPath = useValidWritePath(join(pathRoot, dizzy.outPath ?? ''));
-	prompt([templateInquiry]).then((options: { template: TemplateName }) => usePrompt(options.template, wPath, inquirer));
+	prompt([templateInquiry]).then((
+		options: { template: TemplateName }
+	) => usePrompt(options.template, wPath, inquirer));
 }
 
 function usePrompt(
