@@ -9,7 +9,8 @@ import {
 	ESLintTSModules,
 	BabelBaseModules,
 	BabelTSModules,
-	RollupTSModules
+	RollupTSModules,
+	GulpTSModules
 } from './presets';
 
 export const NodePresetPackageMapper = (
@@ -39,6 +40,9 @@ export const NodePresetPackageMapper = (
 		needsPackage.push(['typescript', '-D']);
 		if(np.bundler === 'rollup') {
 			RollupTSModules.forEach(m => needsPackage.push(m));
+		}
+		if(np.build_tools === 'gulp') {
+			GulpTSModules.forEach(m => needsPackage.push(m));
 		}
 	}
 	// add chosen compiler

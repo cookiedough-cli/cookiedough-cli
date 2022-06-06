@@ -58,6 +58,10 @@ export const GulpModules: NodeModule[] = [
 	['gulp', '-D']
 ];
 
+export const GulpTSModules: NodeModule[] = [
+	['gulp-typescript', '-D']
+];
+
 export const RollupTSModules: NodeModule[] = [
 	['@rollup/plugin-typescript', '-D']
 ];

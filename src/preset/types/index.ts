@@ -37,10 +37,10 @@ export type NodeBundlerPreset =
 'none'	   ;
 
 export type NodeBuildPreset =
-'esbuild'  |
-'gulp'	   |
-'grunt'    |
-'default(npm)';
+'esbuild'  		|
+'gulp'	   		|
+'grunt'    		|
+'default(npm)'	;
 
 
 export type NodeUserPreferences = {
