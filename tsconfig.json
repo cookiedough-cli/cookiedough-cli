@@ -15,12 +15,14 @@
 			"include/*",
 			"types/*",
 			"tools/*",
-			"cmd/*"
+			"cmd/*",
+			"flavors/*"
 		]
     },
 	"include": [
 		"cmd/**/*",
 		"include/**/*",
-		"types/**/*"
-	]
+		"types/**/*",
+		"flavors/**/*"
+]
 }
