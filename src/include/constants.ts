@@ -2,15 +2,15 @@ import {
 	TemplateName,
 	Tuple,
 	InquirerPrompt
-} from './types';
+} from '../types';
 
 export const TemplateNames: TemplateName[] = [
 	'node',
 	'deno',
-	'go',
-	'c',
-	'c++',
-	'rust',
+	//'go',
+	//'c',
+	//'c++',
+	//'rust',
 	//'python'
 ];
 
@@ -28,5 +28,5 @@ export const templateInquiry: InquirerPrompt = {
 	choices: TemplateNames
 };
 
-export { TemplateName } from './types';
+export { TemplateName } from '../types';
 

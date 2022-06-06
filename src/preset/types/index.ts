@@ -40,7 +40,6 @@ export type NodeBuildPreset =
 'esbuild'  |
 'gulp'	   |
 'grunt'    |
-'make' 	   |
 'default(npm)';
 
 

@@ -25,8 +25,7 @@ export const NodeBuildPresets: NodeBuildPreset[] = [
 	'default(npm)',
 	'gulp',
 	'grunt',
-	'esbuild',
-	'make'
+	'esbuild'
 ];
 
 export const NodeCompilerPresets: NodeCompilerPreset[] = [
@@ -57,6 +56,10 @@ export const BabelTSModules: NodeModule[] = [
 export const GulpModules: NodeModule[] = [
 	['gulp-cli', '-g'],
 	['gulp', '-D']
+];
+
+export const RollupTSModules: NodeModule[] = [
+	['@rollup/plugin-typescript', '-D']
 ];
 
 export const WebpackModules: NodeModule[] = [

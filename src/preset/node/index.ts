@@ -2,9 +2,9 @@ import {
 	useSysInfo,
 	_call,
 	_callFrom
-} from '../../util';
+} from '../../tools';
 import { NodePkgMgrPreset, NodeUserPreferences } from '../types';
-import { NodePresetPackageMapper } from './mapper';
+import { NodePresetPackageMapper } from './pkg';
 import { NodeModule } from './presets';
 import { Inquirer } from 'inquirer';
 import { writeFileSync } from 'fs';
@@ -29,13 +29,14 @@ function usePresetToFilemap(args: {
 	packages: NodeModule[]
 }) {
 	const { options, packages, root } = args;
-	console.log({
+	const buildInfo = {
 		build_root: root,
 		build_host: useSysInfo(),
 		build_options: options,
 		build_packages: packages
-	});
-	_call(`cd ${root} && ${options.pkg_mgr} init -y`);
+	};
+
+	_call(`cd ${buildInfo.build_root} && ${options.pkg_mgr} init -y`);
 	writeFileSync(resolve(root, 'index.js'), '', {encoding: 'utf-8'});
 	const acName = _actionFromPMgr(options.pkg_mgr);
 	for(const pkg of packages) {

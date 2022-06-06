@@ -8,7 +8,8 @@ import {
 	ESLintBaseModules,
 	ESLintTSModules,
 	BabelBaseModules,
-	BabelTSModules
+	BabelTSModules,
+	RollupTSModules
 } from './presets';
 
 export const NodePresetPackageMapper = (
@@ -28,7 +29,7 @@ export const NodePresetPackageMapper = (
 	// add selected build tools
 	switch(np.build_tools) {
 		case 'grunt':
-			GruntBaseModules.forEach( m => needsPackage.push(m));
+			GruntBaseModules.forEach(m => needsPackage.push(m));
 			break;
 		case 'gulp':
 			GulpModules.forEach(m => needsPackage.push(m));
@@ -36,6 +37,9 @@ export const NodePresetPackageMapper = (
 	// add ts if needed
 	if(np.preset === 'ts') {
 		needsPackage.push(['typescript', '-D']);
+		if(np.bundler === 'rollup') {
+			RollupTSModules.forEach(m => needsPackage.push(m));
+		}
 	}
 	// add chosen compiler
 	switch(np.compiler) {
