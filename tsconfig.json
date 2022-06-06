@@ -13,7 +13,6 @@
 		},
 		"rootDirs": [
 			"include/*",
-			"types/*",
 			"tools/*",
 			"cmd/*",
 			"flavors/*"
@@ -22,7 +21,6 @@
 	"include": [
 		"cmd/**/*",
 		"include/**/*",
-		"types/**/*",
 		"flavors/**/*"
 ]
 }

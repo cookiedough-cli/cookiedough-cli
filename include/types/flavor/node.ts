@@ -1,6 +1,6 @@
 import { Tuple } from '..';
 import {
-	NodePackagePreset,
+	NodePreset,
 	NodePkgMgrPreset,
 	NodeBuildPreset,
 	NodeCompilerPreset,
@@ -9,7 +9,7 @@ import {
 
 export type NodeModule = Tuple;
 
-export const NodePkgPresets: NodePackagePreset[] = [
+export const NodePkgPresets: NodePreset[] = [
 	'commonjs',
 	'esm',
 	'ts'

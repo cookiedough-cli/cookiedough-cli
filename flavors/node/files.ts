@@ -4,7 +4,7 @@ import {
 	NodePkgMgrPreset,
 	NodeUserPreferences,
 	NodeBuildInfo
-} from '@cookiedough/types/flavor';
+} from '@cookiedough/include/types/flavor';
 import {
 	_call,
 	_callFrom

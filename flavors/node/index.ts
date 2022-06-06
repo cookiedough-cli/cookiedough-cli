@@ -3,9 +3,9 @@ import {
 	_call,
 	_callFrom
 } from '@cookiedough/tools';
-import { NodeBuildInfo, NodeUserPreferences } from '@cookiedough/types/flavor';
+import { NodeBuildInfo, NodeUserPreferences } from '@cookiedough/include/types/flavor';
 import { NodePresetPackageMapper } from './pkg';
-import { NodeModule } from '@cookiedough/types/flavor/node';
+import { NodeModule } from '@cookiedough/include/types/flavor/node';
 import { Inquirer } from 'inquirer';
 import NodeUserOptions from './menu';
 import { useFileWriter } from './files';

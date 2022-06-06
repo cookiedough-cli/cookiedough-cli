@@ -1,11 +1,11 @@
 import { Tuple, SystemOverview } from '..';
 
-export type DenoPackagePreset =
+export type DenoPreset =
 'simple-cli'	  |
 'simple-webserver'|
 'simple-library'  ;
 
-export type GoPackagePreset =
+export type GoPreset =
 'simple-cli'	  |
 'simple-webserver'|
 'simple-library'  ;
@@ -15,7 +15,7 @@ export type PythonVersion =
 '3.8' 	 |
 '2.7'	 ;
 
-export type NodePackagePreset =
+export type NodePreset =
 'commonjs' |
 'esm' 	   |
 'ts'       ;
@@ -46,7 +46,7 @@ export type NodeBuildPreset =
 
 
 export type NodeUserPreferences = {
-	preset: NodePackagePreset;
+	preset: NodePreset;
 	pkg_mgr: NodePkgMgrPreset;
 	build_tools: NodeBuildPreset;
 	compiler: NodeCompilerPreset;
@@ -81,3 +81,41 @@ export interface NodeBuildInfo {
 	build_preferences: NodeUserPreferences,
 	build_packages: Tuple[]
 }
+
+export const PythonVersions: PythonVersion[] = [
+	'latest',
+	'3.8',
+	'2.7'
+];
+
+export const GoPresets: GoPreset[] = [
+	'simple-cli',
+	'simple-library',
+	'simple-webserver'
+];
+
+export const DenoPresets: DenoPreset[] = [
+	'simple-cli',
+	'simple-webserver',
+	'simple-library'
+];
+export const CStandards: CStandard[] = [
+	'C99',
+	'C11',
+	'C17'
+];
+
+export const CCStandards: CCStandard[] = [
+	'C++98',
+	'C++03',
+	'C++11',
+	'C++14',
+	'C++17',
+	'C++20'
+];
+
+export const CCompilers = [
+	'gcc',
+	'g++',
+	'clang'
+];

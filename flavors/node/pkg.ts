@@ -1,4 +1,4 @@
-import { NodeUserPreferences } from '@cookiedough/types/flavor';
+import { NodeUserPreferences } from '@cookiedough/include/types/flavor';
 import {
 	NodeModule,
 	SWCBaseModules,
@@ -11,7 +11,7 @@ import {
 	BabelTSModules,
 	RollupTSModules,
 	GulpTSModules
-} from '@cookiedough/types/flavor/node';
+} from '@cookiedough/include/types/flavor/node';
 
 export const NodePresetPackageMapper = (
 	np: NodeUserPreferences

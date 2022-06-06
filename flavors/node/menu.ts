@@ -4,7 +4,7 @@ import {
 	NodeBuildPresets,
 	NodeCompilerPresets,
 	NodeBundlerPresets,
- } from '@cookiedough/types/flavor/node';
+ } from '@cookiedough/include/types/flavor/node';
 
 export default [
 	{
