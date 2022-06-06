@@ -2,11 +2,10 @@ import {
 	CMenuOptions,
 	CCMenuOptions
 } from './menu';
-import { Inquirer } from 'inquirer';
+import inquirer from 'inquirer';
 
 export function usePrompt(
-	p: string,
-	inquirer: Inquirer
+	p: string
 ) {
 	inquirer.prompt(CMenuOptions).then(answers => {
 		console.log(`c project at ${p}`);

@@ -6,7 +6,7 @@ import {
 import { NodeBuildInfo, NodeUserPreferences } from '@cookiedough/include/types/flavor';
 import { NodePresetPackageMapper } from './pkg';
 import { NodeModule } from '@cookiedough/include/types/flavor/node';
-import { Inquirer } from 'inquirer';
+import inquirer, { Inquirer } from 'inquirer';
 import NodeUserOptions from './menu';
 import { useFileWriter } from './files';
 
@@ -27,7 +27,6 @@ function usePresetToFilemap(args: {
 
 export function usePrompt(
 	p: string,
-	inquirer: Inquirer
 ) {
 	inquirer.prompt(NodeUserOptions).then((answers: NodeUserPreferences) => usePresetToFilemap({
 			options: answers,

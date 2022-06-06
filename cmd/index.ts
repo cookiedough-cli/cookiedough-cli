@@ -1,7 +1,6 @@
 #!/usr/bin/node
 require('module-alias/register');
 import { useValidWritePath } from '@cookiedough/tools';
-import inquirer from 'inquirer';
 import {
 	NodeFlavor,
 	PythonFlavor,
@@ -15,9 +14,10 @@ import {
 	warn,
 	error,
 	prompt,
-	Inquirer
+	Inquirer,
+	useArgParser,
+	useLocalConfig
 } from '@cookiedough/include';
-import { useArgParser, useLocalConfig } from '../include/args';
 
 function useCookieDough() {
 	const args = useArgParser();
@@ -44,15 +44,15 @@ function usePrompt(
 	switch(tag) {
 		case 'c':
 		case 'c++':
-			return CFlavor.usePrompt(path, inquirer);
+			return CFlavor.usePrompt(path);
 		case 'go':
-			return GoFlavor.usePrompt(path, inquirer);
+			return GoFlavor.usePrompt(path);
 		case 'deno':
-			return DenoFlavor.usePrompt(path, inquirer);
+			return DenoFlavor.usePrompt(path);
 		case 'python':
-			return PythonFlavor.usePrompt(path, inquirer);
+			return PythonFlavor.usePrompt(path);
 		case 'node':
-			return NodeFlavor.usePrompt(path, inquirer);
+			return NodeFlavor.usePrompt(path);
 		default:
 			error('template name invalid');
 			process.exit(1);

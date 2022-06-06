@@ -1,9 +1,8 @@
-import { Inquirer } from 'inquirer';
+import inquirer, { Inquirer } from 'inquirer';
 import GoMenuOptions from './menu';
 
 export function usePrompt(
-	p: string,
-	inquirer: Inquirer
+	p: string
 ) {
 	inquirer.prompt(GoMenuOptions).then(answers => {
 		console.log(`go project at ${p}`);
