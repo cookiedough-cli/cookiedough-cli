@@ -31,6 +31,7 @@
   "dependencies": {
 	"@cookiedough/internal": "file:/./packages/internal",
 	"@cookiedough/types": "file:/./packages/types",
+	"@cookiedough/flavors": "file:./packages/flavors",
     "cli-spinner": "^0.2.10",
     "fs-extra": "^10.1.0",
     "inquirer": "^8.2.4",

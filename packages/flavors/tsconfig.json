@@ -1,0 +1,12 @@
+{
+	"extends": "../../.config/tsbase.json",
+	"compilerOptions": {
+		"resolveJsonModule": true,
+		"baseUrl": ".",
+		"rootDir": "src",
+		"outDir": "lib"
+	},
+	"include": [
+		"src/**/*"
+	]
+}

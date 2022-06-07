@@ -14,7 +14,7 @@ import {
 	CFlavor,
 	DenoFlavor,
 	GoFlavor,
-} from '../../flavors';
+} from '@cookiedough/flavors';
 
 export function useDefaultHandler(
 	config: CrumbOptions
