@@ -2,7 +2,6 @@
 	"path": {
 		"custom_flavors": null,
 		"out": "test",
-		"process_root": ".",
 		"parent_config": null
 	},
 	"process": {

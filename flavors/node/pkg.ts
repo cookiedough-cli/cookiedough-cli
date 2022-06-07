@@ -1,5 +1,5 @@
-import { NodeUserPreferences } from '@cookiedough/include/types/flavor';
 import {
+	NodeFlavor,
 	NodeModule,
 	SWCBaseModules,
 	GulpModules,
@@ -13,10 +13,10 @@ import {
 	GulpTSModules,
 	NodeModuleInstaller,
 	asNodeModuleInstaller
-} from '@cookiedough/include/types/flavor/node';
+} from '@cookiedough/include/types/flavor';
 
 export const NodePresetPackageMapper = (
-	np: NodeUserPreferences
+	np: NodeFlavor
 ): { installer: NodeModuleInstaller, packages: NodeModule[] } => {
 	let installer: NodeModuleInstaller;
 

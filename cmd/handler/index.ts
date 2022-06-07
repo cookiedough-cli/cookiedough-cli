@@ -12,19 +12,20 @@ import {
 	error,
 	prompt,
 	Inquirer,
+	CrumbOptions
 } from '@cookiedough/include';
-import { CrumbOptions } from '@cookiedough/include/types';
+import { useColor, useDataLog, useLog } from '@cookiedough/tools';
 
 export function useDefaultHandler(
 	config: CrumbOptions
 ) {
 	if(config.process.dry) {
-		console.log('dry mode, exiting');
+		useLog('dry mode, exiting', 'info');
 		return;
 	}
 	if(config.process.default_template) {
-		console.log('default template chosen:');
-		console.log(config.process.default_template);
+		useLog('default template chosen:', 'success');
+		useDataLog(config.process.default_template);
 		return;
 	}
 	else {
@@ -59,7 +60,7 @@ function useFlavorPrompt(
 		case 'node':
 			return NodeFlavor.usePrompt(config);
 		default:
-			error('template name invalid');
+			useLog('template name invalid', 'error');
 			process.exit(1);
 	}
 }

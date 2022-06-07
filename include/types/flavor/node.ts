@@ -1,21 +1,22 @@
 import {
 	Tuple,
-	SystemOverview
+	SystemOverview,
+	CrumbOptions
 } from '..';
 
-export type NodeUserPreferences = {
-	preset: NodePreset;
-	pkg_mgr: NodePkgMgrPreset;
-	build_tools: NodeBuildPreset;
-	compiler: NodeCompilerPreset;
-	bundler: NodeBundlerPreset;
-	eslint: boolean;
+export type NodeFlavor = {
+	preset			: NodePreset;
+	pkg_mgr			: NodePkgMgrPreset;
+	build_tools		: NodeBuildPreset;
+	compiler		: NodeCompilerPreset;
+	bundler			: NodeBundlerPreset;
+	eslint			: boolean;
 }
 
 export interface NodeBuildInfo {
 	build_root: string,
 	build_host: SystemOverview,
-	build_preferences: NodeUserPreferences,
+	build_preferences: NodeFlavor,
 	build_packages: Tuple[]
 }
 
@@ -163,3 +164,11 @@ export type NodeBuildPreset =
 'gulp'	   		|
 'grunt'    		|
 'none'	;
+
+
+export type NodeFlavorPresetToFileMapArgs = {
+	config: CrumbOptions,
+	options: NodeFlavor,
+	installer: NodeModuleInstaller,
+	packages: NodeModule[]
+}

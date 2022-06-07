@@ -2,15 +2,23 @@ import { writeFile } from 'fs/promises';
 import { resolve } from 'path';
 import {
 	NodePkgMgrPreset,
-	NodeUserPreferences,
+	NodeFlavor,
 	NodeBuildInfo
 } from '@cookiedough/include/types/flavor';
 import {
+	useColor,
+	useDataLog,
 	_call,
-	_callFrom
+	_callFrom,
+	_warn
 } from '@cookiedough/tools';
 // import { useSpinner } from '@cookiedough/cmd/handler/spinner';
-import { writeFileSync, existsSync, mkdirSync, rmdirSync } from 'fs';
+import {
+	writeFileSync,
+	ensureDirSync,
+	rmdirSync,
+	existsSync
+} from 'fs-extra';
 import { join } from 'path';
 import { CrumbOptions } from '@cookiedough/include/types';
 
@@ -34,45 +42,47 @@ export function useFileWriter(
 	const spinner = new Spinner('%s writing files');
 	spinner.setSpinnerString('⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈');
 	spinner.start();
-	const {
-		build_root,
-		build_packages,
-		build_host,
-		build_preferences
-	} = options;
-	try {
+
+	//_call(`cd ${build_root} && ${build_preferences.pkg_mgr} init -y`);
+	setTimeout(() => {
+		useDataLog(options);
 		if(existsSync(options.build_root)) {
 			if(config.process.overwrite_existing_out) {
-				rmdirSync(options.build_root);
+				ensureDirSync(options.build_root)
 			}
 			else {
-				throw 'out dir already exists';
+				spinner.stop(true);
+				_warn(`
+${useColor('yellow','warning:')}
+${options.build_root}\n is already populated.
+if youd like to automatically override in the future, set:
+
+{
+	"process": {
+		"overwrite_existing_out": true
+	}
+}
+
+in your config file`);
+				return;
 			}
 		}
-		mkdirSync(build_root);
-		//_call(`cd ${build_root} && ${build_preferences.pkg_mgr} init -y`);
-		setTimeout(() => {
-			// writeFileSync(resolve(build_root, 'index.js'), '', {encoding: 'utf-8'});
-			// const acName = _actionFromPMgr(build_preferences.pkg_mgr);
-			// for(const pkg of build_packages) {
-			// 	switch(pkg[1]) {
-			// 		case '-g':
-			// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} -g ${pkg[0]}`);
-			// 			break;
-			// 		case '-D':
-			// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} -D ${pkg[0]}`);
-			// 			break;
-			// 		default:
-			// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} ${pkg[0]}`);
-			// 			break;
-			// 	}
-			// }
-			spinner.stop(true);
-			console.log(options);
-			console.log('🍪 all done.');
-		}, 2000);
-	}
-	catch(e) {
-		throw 'out dir already exists';
-	}
+		// writeFileSync(resolve(build_root, 'index.js'), '', {encoding: 'utf-8'});
+		// const acName = _actionFromPMgr(build_preferences.pkg_mgr);
+		// for(const pkg of build_packages) {
+		// 	switch(pkg[1]) {
+		// 		case '-g':
+		// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} -g ${pkg[0]}`);
+		// 			break;
+		// 		case '-D':
+		// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} -D ${pkg[0]}`);
+		// 			break;
+		// 		default:
+		// 			_callFrom(join(process.cwd(), build_root), `${build_preferences.pkg_mgr} ${acName} ${pkg[0]}`);
+		// 			break;
+		// 	}
+		// }
+		spinner.stop(true);
+		console.log('🍪 ', useColor('green', 'all done.'));
+	}, 2000);
 }

@@ -1,3 +1,4 @@
+// default flavors included in the bundle
 export type CookieFlavor =
 'node'   |
 'deno'   |
@@ -7,13 +8,15 @@ export type CookieFlavor =
 'rust'   |
 'python' ;
 
+// path-specific configuration parameters - all optional
 export type PathConfigOptions = {
-	custom_flavors		?: string;
+	custom_flavors		?: string; //path to load custom flavor recipes from
 	out 				?: string; // base path to use to write new files during processing
 	process_root		?: string; // root of process scope
 	parent_config		?: string; // path of parent config to extend
 }
 
+// process-specific configuration parameters - all optional
 export type ProcessConfigOptions = {
 	add_files_from			?: string[]; // directories to copy files into the new project from
 	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
@@ -25,11 +28,13 @@ export type ProcessConfigOptions = {
 	overwrite_existing_out  ?: boolean;
 }
 
+// configuration as an object
 export type CrumbOptions = {
 	path					?: PathConfigOptions; // path related config options
 	process					?: ProcessConfigOptions; // runtime related config options
 }
 
+// valie prefix matchers for the crumb config file
 export type CrumbFilePrefix =
 'crumb' 	  	|
 'crumbs'   	  	|
@@ -40,21 +45,22 @@ export type CrumbFilePrefix =
 'crumb-config'	|
 'crumbconfig'	;
 
+// valid suffix matchers for the crumb config file
 export type CrumbFileSuffix =
-'.json' 	|
-'.yml'  	|
-'.yaml' 	|
-'.js'   	|
-'.ts'   	|
-'.cjs'  	|
-'.esm'  	|
-'.crumb'	|
-'.build'	|
-'.cookie'  	|
-'.make'		|
-'.conf'		|
-'.ini'		|
-''
+'.json' 	| //js
+'.yml'  	| //yaml
+'.yaml' 	| //yaml
+'.js'   	| //js
+'.ts'   	| //ts
+'.cjs'  	| //js
+'.mjs'  	| //js
+'.crumb'	| //ini
+'.build'	| //ini
+'.cookie'  	| //ini
+'.make'		| //ini
+'.conf'		| //ini parse
+'.ini'		| //ini parse
+''			; // will work as an ini file if you just use a prefix
 
 export type CrumbFileName = `${CrumbFilePrefix}${CrumbFileSuffix}`;
 

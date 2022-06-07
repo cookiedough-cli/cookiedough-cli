@@ -7,7 +7,7 @@ import { CrumbOptions, CrumbPrompt } from '@cookiedough/include/types';
 import { join } from 'path';
 import {
 	NodeBuildInfo,
-	NodeUserPreferences,
+	NodeFlavor,
 	NodeModule,
 	NodeModuleInstaller
 } from '@cookiedough/include/types/flavor';
@@ -18,7 +18,7 @@ import {
 } from '@cookiedough/tools';
 function usePresetToFilemap(args: {
 	config: CrumbOptions,
-	options: NodeUserPreferences,
+	options: NodeFlavor,
 	installer: NodeModuleInstaller,
 	packages: NodeModule[]
 }) {
@@ -35,7 +35,7 @@ function usePresetToFilemap(args: {
 export function usePrompt(
 	p: CrumbOptions,
 ): CrumbPrompt {
-	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeUserPreferences) => {
+	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeFlavor) => {
 		const ppm = NodePresetPackageMapper(answers);
 		return usePresetToFilemap({
 			options: answers,

@@ -9,6 +9,6 @@
 		"default_template": null,
 		"detatched": false,
 		"dry": false,
-		"overwrite_existing_out": true
+		"overwrite_existing_out": false
 	}
 }

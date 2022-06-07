@@ -5,6 +5,7 @@ import {
 	useArgParser,
 	useLocalConfig
 } from '@cookiedough/include';
+import { useDataLog, useLog } from '@cookiedough/tools'
 // import { useSpinner } from './handler/spinner';
 
 /**
@@ -14,7 +15,7 @@ import {
 export function useCookieDough() {
 	const args = useArgParser();
 	const config = useLocalConfig(args.url.parent_config);
-	console.log('found config:');
-	console.log(config);
+	useLog('found config:');
+	useDataLog(config);
 	return useDefaultHandler(config);
 }
