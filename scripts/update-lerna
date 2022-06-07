@@ -1,2 +1,0 @@
-#!/bin/bash
-lerna run build && lerna link --force-local && npm i

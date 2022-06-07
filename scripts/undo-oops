@@ -1,2 +1,0 @@
-#!/bin/bash
-rm -rf $1/*.js $1/*.d.ts $1/**/*.js $1/**/*.d.ts
