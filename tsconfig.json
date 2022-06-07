@@ -1,17 +1,11 @@
 {
+	"extends": "./.config/tsbase.json",
     "compilerOptions": {
-        "allowJs": true,
-		"esModuleInterop": true,
-		"pretty": true,
-		"resolveJsonModule": true,
-        "checkJs": false,
-        "module": "CommonJS",
-        "target": "ES6",
         "outDir": "bin",
 		"baseUrl": "./",
-		"declaration": true,
 		"paths": {
 			"@cookiedough/*": ["*"],
+			"@cookiedough/flavors/*": ["packages/flavors"]
 		},
 		"rootDirs": [
 			"include/*",

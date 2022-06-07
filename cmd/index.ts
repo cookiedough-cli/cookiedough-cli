@@ -3,11 +3,10 @@ require('module-alias/register');
 import { useDefaultHandler } from './handler';
 import {
 	useArgParser,
-	useLocalConfig
+	useLocalConfig,
+	useDataLog,
+	useLog
 } from '@cookiedough/include';
-import { useDataLog, useLog } from '@cookiedough/tools'
-// import { useSpinner } from './handler/spinner';
-
 /**
  *
  * @returns entry point to cli

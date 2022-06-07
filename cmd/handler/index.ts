@@ -1,15 +1,15 @@
 import {
 	useDataLog,
 	useLog
-} from '@cookiedough/tools';
+} from '@cookiedough/include';
 import {
 	NodeFlavor,
-	PythonFlavor,
+	PyFlavor,
 	CFlavor,
 	DenoFlavor,
 	GoFlavor,
 	CookieFlavor,
-	templateInquiry,
+	FlavorPrompt,
 	prompt,
 	CrumbOptions
 } from '@cookiedough/include';
@@ -27,7 +27,7 @@ export function useDefaultHandler(
 		return;
 	}
 	else {
-		prompt([templateInquiry]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+		prompt([FlavorPrompt]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
 	}
 	// todo- validate path, or create it
 	// todo- handle detatched option
@@ -54,7 +54,7 @@ function useFlavorPrompt(
 		case 'deno':
 			return DenoFlavor.usePrompt(config);
 		case 'python':
-			return PythonFlavor.usePrompt(config);
+			return PyFlavor.usePrompt(config);
 		case 'node':
 			return NodeFlavor.usePrompt(config);
 		default:

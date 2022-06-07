@@ -1,6 +1,4 @@
-import {
-	copySync
-} from 'fs-extra';
+import { copySync } from 'fs-extra';
 
 export function copyDirectory(
 	to: string,
