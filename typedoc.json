@@ -1,6 +1,6 @@
 {
     "entryPoints": [
-        "./src/index.ts"
+        "./cmd/index.ts"
     ],
     "darkHighlightTheme": "dark-plus",
     "out": "docs/api",

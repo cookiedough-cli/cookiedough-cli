@@ -1,20 +1,20 @@
 import {
 	CookieFlavor,
-	FlavorPrompt,
 	CrumbOptions,
 } from '@cookiedough/types';
 import {
 	prompt,
 	useDataLog,
-	useLog
+	useLog,
 } from '@cookiedough/internal';
 import {
 	NodeFlavor,
 	PyFlavor,
 	CFlavor,
 	DenoFlavor,
-	GoFlavor,
+	GoFlavor
 } from '@cookiedough/flavors';
+import { FlavorInquiry } from './constants';
 
 export function useDefaultHandler(
 	config: CrumbOptions
@@ -29,7 +29,7 @@ export function useDefaultHandler(
 		return;
 	}
 	else {
-		prompt([FlavorPrompt]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+		prompt([FlavorInquiry]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
 	}
 	// todo- validate path, or create it
 	// todo- handle detatched option

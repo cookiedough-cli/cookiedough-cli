@@ -1,6 +1,7 @@
 {
 	"extends": "../../.config/tsbase.json",
 	"compilerOptions": {
+		"declaration": true,
 		"resolveJsonModule": true,
 		"baseUrl": ".",
 		"rootDir": "src",

@@ -1,3 +1,3 @@
-const { useCookieDough } = require('./bin/cmd');
+const { useCookieDough } = require('./bin');
 
 useCookieDough();

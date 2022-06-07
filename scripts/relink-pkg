@@ -1,0 +1,2 @@
+#!/bin/bash
+npm link ./packages/types && npm link ./packages/internal && npm link ./packages/flavors

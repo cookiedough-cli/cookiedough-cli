@@ -4,12 +4,10 @@
         "outDir": "bin",
 		"baseUrl": "./",
 		"rootDirs": [
-			"cmd/*",
-			"flavors/*"
+			"cmd/*"
 		]
     },
 	"include": [
-		"cmd/**/*",
-		"flavors/**/*"
+		"cmd/**/*"
 	]
 }

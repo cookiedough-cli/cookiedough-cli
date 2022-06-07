@@ -1,2 +1,2 @@
 #!/bin/bash
-lerna bootstrap && lerna run build && lerna link --force-local && npm i
+npm i && npm run build

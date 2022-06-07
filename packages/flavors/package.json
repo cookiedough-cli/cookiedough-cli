@@ -2,7 +2,7 @@
 	"name": "@cookiedough/flavors",
 	"description": "flavor modules for cookiedough cli",
 	"author": "abschill",
-	"main": "index.js",
+	"main": "lib/index.js",
 	"version": "0.1.0",
 	"scripts": {
 		"build": "tsc"

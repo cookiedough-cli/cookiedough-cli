@@ -1,3 +1,5 @@
 const lib = require('./lib');
 
-module.exports = lib;
+module.exports = {
+	...lib
+};

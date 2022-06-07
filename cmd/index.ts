@@ -6,6 +6,7 @@ import {
 	useLocalConfig,
 	useGlobalConfig
 } from '@cookiedough/internal';
+import { } from '@cookiedough/flavors'
 /**
  *
  * @returns entry point to cli
@@ -13,8 +14,9 @@ import {
 export function useCookieDough() {
 	 console.log(useGlobalConfig());
 	 const args = useArgParser();
-	 const config = useLocalConfig(args.url.parent_config);
-	 useLog('found config:');
+	 console.log(args);
+	//  const config = useLocalConfig(args.url.parent_config);
+	//  useLog('found config:');
 	// useDataLog(config);
 	// return useDefaultHandler(config);
 }
