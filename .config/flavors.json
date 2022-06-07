@@ -1,5 +1,58 @@
 {
-	".map": {
-		"node": "flavors/node/.recipe/base.json"
-	}
+	".maps": {
+		"node": "flavors/node/.recipe/crumbs.json"
+	},
+	".file_types": [
+		{
+			"name": "javascript",
+			"tags": [
+				"js",
+				"javascript",
+				"node",
+				"nodejs",
+				"deno"
+			],
+			"maps": [
+				"node",
+				"deno"
+			]
+		},
+		{
+			"name": "typescript",
+			"tags": [
+				"ts",
+				"typescript",
+				"d.ts"
+			],
+			"maps": [
+				"node",
+				"deno"
+			]
+		},
+		{
+			"name": "python",
+			"tags": [
+				"py",
+				"python",
+				"python3"
+			],
+			"maps": [
+				"py"
+			]
+		},
+		{
+			"name": "c",
+			"tags": [
+				"c",
+				"c++",
+				"clang",
+				"gcc",
+				"g++"
+			],
+			"maps": [
+				"c",
+				"c++"
+			]
+		}
+	]
 }

@@ -3,6 +3,7 @@
         "allowJs": true,
 		"esModuleInterop": true,
 		"pretty": true,
+		"resolveJsonModule": true,
         "checkJs": false,
         "module": "CommonJS",
         "target": "ES6",

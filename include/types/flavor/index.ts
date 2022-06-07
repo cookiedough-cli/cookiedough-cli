@@ -1,68 +1,33 @@
-import { Tuple, SystemOverview } from '..';
+import $FLAVOR_FILE from '@cookiedough/.config/flavors.json';
 
-export type GoPreset =
-'simple-cli'	  |
-'simple-webserver'|
-'simple-library'  ;
+// export type FlavorLanguagePresetArray = {
+// 	name			 : string;
+// 	tags			?: string[];
+// 	maps			?: string[];
+// }[]
 
-export type PythonVersion =
-'latest' |
-'3.8' 	 |
-'2.7'	 ;
+export type FlavorLanguageInternalConfig<
+NameOpts,
+TagType,
+MapType
+> = {
+	name: NameOpts;
+	tags: TagType[];
+	maps: MapType[];
+}
 
-export type CPackagePreset =
-'c'  |
-'cpp';
 
-export type CBuildPreset =
-'make' |
-'cmake';
+export const FlavorLanguagePresets = <FlavorLanguageInternalConfig<string, string, string>[]>
+									$FLAVOR_FILE['.file_types'];
 
-export type CStandard =
-'C99' |
-'C11' |
-'C17' ;
 
-export type CCStandard =
-'C++98' |
-'C++03' |
-'C++11' |
-'C++14' |
-'C++17' |
-'C++20' ;
-
-export const PythonVersions: PythonVersion[] = [
-	'latest',
-	'3.8',
-	'2.7'
-];
-
-export const GoPresets: GoPreset[] = [
-	'simple-cli',
-	'simple-library',
-	'simple-webserver'
-];
-
-export const CStandards: CStandard[] = [
-	'C99',
-	'C11',
-	'C17'
-];
-
-export const CCStandards: CCStandard[] = [
-	'C++98',
-	'C++03',
-	'C++11',
-	'C++14',
-	'C++17',
-	'C++20'
-];
-
-export const CCompilers = [
-	'gcc',
-	'g++',
-	'clang'
-];
+export type FlavorAttribute = string;
+export type FlavorAttributes = FlavorAttribute[];
 
 export * from './node';
 export * from './deno';
+export * from './python';
+export * from './c';
+export * from './go';
+
+exports.$FLAVOR_FILE = $FLAVOR_FILE;

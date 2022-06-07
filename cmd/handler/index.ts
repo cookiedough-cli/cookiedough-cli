@@ -1,4 +1,8 @@
 import {
+	useDataLog,
+	useLog
+} from '@cookiedough/tools';
+import {
 	NodeFlavor,
 	PythonFlavor,
 	CFlavor,
@@ -6,15 +10,9 @@ import {
 	GoFlavor,
 	CookieFlavor,
 	templateInquiry,
-	join,
-	resolve,
-	warn,
-	error,
 	prompt,
-	Inquirer,
 	CrumbOptions
 } from '@cookiedough/include';
-import { useColor, useDataLog, useLog } from '@cookiedough/tools';
 
 export function useDefaultHandler(
 	config: CrumbOptions

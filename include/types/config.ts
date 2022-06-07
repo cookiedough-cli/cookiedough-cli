@@ -28,10 +28,18 @@ export type ProcessConfigOptions = {
 	overwrite_existing_out  ?: boolean;
 }
 
+export type RepositoryConfigOptions = {
+	init			?: boolean; //init a repo and enable parsing of other attributes in the type
+	type			?: string; //type eg git, gitlab, bitbucket
+	template_url	?: string; // url of template repo to use for creation
+	submodule_map	?: any; //todo - set up map of submodules to automatically set up in the initialized repo
+}
+
 // configuration as an object
 export type CrumbOptions = {
 	path					?: PathConfigOptions; // path related config options
 	process					?: ProcessConfigOptions; // runtime related config options
+	repository				?: RepositoryConfigOptions; // options to configure auto repo setup/integrations
 }
 
 // valie prefix matchers for the crumb config file
