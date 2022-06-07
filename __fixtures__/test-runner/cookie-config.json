@@ -1,6 +1,6 @@
 {
 	"path": {
-		"out": "test/my-project-inner",
+		"out": "__fixtures__/.test0",
 		"parent_config": null
 	},
 	"process": {
