@@ -1,7 +1,7 @@
 import {
 	CookieFlavor,
-	InquirerPrompt
-} from '@cookiedough/include/types';
+	CLIPrompt
+} from '../types';
 
 export const Flavors: CookieFlavor[] = [
 	'node',
@@ -13,7 +13,8 @@ export const Flavors: CookieFlavor[] = [
 	//'python'
 ];
 
-export const FlavorPrompt: InquirerPrompt = {
+export const FlavorPrompt:
+CLIPrompt = {
 	type: 'list',
 	name: 'flavor',
 	message: 'choose project flavor',
@@ -66,5 +67,3 @@ export const COMMAND_NAMES: __COOKIE_CMD__[] = [
 		]
 	}
 ]
-
-export { CookieFlavor } from '@cookiedough/include/types';

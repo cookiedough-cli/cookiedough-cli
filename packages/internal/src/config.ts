@@ -1,11 +1,12 @@
 import { readdirSync } from 'fs';
 import { resolve } from 'path';
-import { useLog } from '@cookiedough/include';
-import DEFAULTS from '../.config/.defaults.json';
+import { useLog } from '.';
+import DEFAULTS from './.config/.defaults.json';
 import {
 	CrumbFileNames,
 	CrumbOptions
-} from '@cookiedough/include/types';
+} from './types';
+
 export function useArgParser() {
 	const inline = process.argv.slice(2);
 	// determine what the context of the command is

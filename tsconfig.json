@@ -3,20 +3,13 @@
     "compilerOptions": {
         "outDir": "bin",
 		"baseUrl": "./",
-		"paths": {
-			"@cookiedough/*": ["*"],
-			"@cookiedough/flavors/*": ["packages/flavors"]
-		},
 		"rootDirs": [
-			"include/*",
-			"tools/*",
 			"cmd/*",
 			"flavors/*"
 		]
     },
 	"include": [
 		"cmd/**/*",
-		"include/**/*",
 		"flavors/**/*"
 	]
 }

@@ -1,5 +1,3 @@
-import $FLAVOR_FILE from '@cookiedough/.config/flavors.json';
-import { FlavorLanguagePresets } from '.';
 export const CStandards: CStandard[] = [
 	'C99',
 	'C11',
@@ -38,5 +36,7 @@ export type CFlavorPresetTag =
 'c'  |
 'c++';
 
-export const CFlavorPresetTags: CFlavorPresetTag[] = <CFlavorPresetTag[]>
-FlavorLanguagePresets.filter(opt => opt.name === 'c').shift().maps;
+export const CFlavorPresetTags: CFlavorPresetTag[] = [
+	'c',
+	'c++'
+]

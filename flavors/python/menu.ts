@@ -1,4 +1,4 @@
-import { PythonVersions } from "@cookiedough/include/types/flavor"
+import { PythonVersions } from '@cookiedough/internal/lib/types/flavor/python';
 export default [
 	{
 		type: 'list',

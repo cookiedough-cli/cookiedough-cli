@@ -1,5 +1,11 @@
-import { SystemOverview } from '@cookiedough/include/types';
-import { arch, platform, type } from 'os';
+import { SystemOverview } from './types';
+import { useLocalConfig } from './config';
+import {
+	arch,
+	platform,
+	type,
+	homedir
+} from 'os';
 /**
  *
  * @returns System Architecture Specs for setup process compatibility
@@ -12,4 +18,8 @@ export function useSysInfo():
 		type: type(),
 		cwd: process.cwd()
 	};
+}
+
+export function useGlobalConfig() {
+	return useLocalConfig(homedir());
 }

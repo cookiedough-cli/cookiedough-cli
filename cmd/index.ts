@@ -2,19 +2,21 @@
 require('module-alias/register');
 import { useDefaultHandler } from './handler';
 import {
+	useDataLog,
+	useLog,
 	useArgParser,
 	useLocalConfig,
-	useDataLog,
-	useLog
-} from '@cookiedough/include';
+	useGlobalConfig
+} from '@cookiedough/internal';
 /**
  *
  * @returns entry point to cli
  */
 export function useCookieDough() {
-	const args = useArgParser();
-	const config = useLocalConfig(args.url.parent_config);
-	useLog('found config:');
-	useDataLog(config);
-	return useDefaultHandler(config);
+	 console.log(useGlobalConfig());
+	 const args = useArgParser();
+	 const config = useLocalConfig(args.url.parent_config);
+	 useLog('found config:');
+	// useDataLog(config);
+	// return useDefaultHandler(config);
 }

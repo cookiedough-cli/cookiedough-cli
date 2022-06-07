@@ -1,18 +1,19 @@
 import {
+	CookieFlavor,
+
+	prompt,
+	CrumbOptions,
 	useDataLog,
 	useLog
-} from '@cookiedough/include';
+} from '@cookiedough/internal/lib';
+import { FlavorPrompt } from '@cookiedough/internal/lib/types';
 import {
 	NodeFlavor,
 	PyFlavor,
 	CFlavor,
 	DenoFlavor,
 	GoFlavor,
-	CookieFlavor,
-	FlavorPrompt,
-	prompt,
-	CrumbOptions
-} from '@cookiedough/include';
+} from '../../flavors';
 
 export function useDefaultHandler(
 	config: CrumbOptions

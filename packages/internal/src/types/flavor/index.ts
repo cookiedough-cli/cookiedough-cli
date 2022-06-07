@@ -1,4 +1,4 @@
-import $FLAVOR_FILE from '@cookiedough/.config/flavors.json';
+
 
 // export type FlavorLanguagePresetArray = {
 // 	name			 : string;
@@ -17,8 +17,8 @@ MapType
 }
 
 
-export const FlavorLanguagePresets = <FlavorLanguageInternalConfig<string, string, string>[]>
-									$FLAVOR_FILE['.file_types'];
+// export const FlavorLanguagePresets = <FlavorLanguageInternalConfig<string, string, string>[]>
+// 									$FLAVOR_FILE['.file_types'];
 
 
 export type FlavorAttribute = string;
@@ -30,4 +30,4 @@ export * from './python';
 export * from './c';
 export * from './go';
 
-exports.$FLAVOR_FILE = $FLAVOR_FILE;
+//exports.$FLAVOR_FILE = $FLAVOR_FILE;

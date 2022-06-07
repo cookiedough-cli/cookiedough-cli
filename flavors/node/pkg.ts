@@ -13,7 +13,7 @@ import {
 	GulpTSModules,
 	NodeModuleInstaller,
 	asNodeModuleInstaller
-} from '@cookiedough/include/types/flavor';
+} from '@cookiedough/internal/lib/types/flavor/node';
 
 export const NodePresetPackageMapper = (
 	np: NodeFlavor

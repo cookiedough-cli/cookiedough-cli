@@ -4,7 +4,7 @@ import {
 	LogFilePath,
 	LogType,
 	ValidLogData
-} from '@cookiedough/include';
+} from '.';
 export const Reset = '\x1b[0m';
 export const Bright = '\x1b[1m';
 export const Dim = '\x1b[2m';
@@ -94,7 +94,6 @@ export function useLog(
 		default:
 			return _log(useColor(type ?? 'info', data));
 	}
-
 }
 
 export function useDataLog(

@@ -4,14 +4,15 @@ import {
 	NodePkgMgrPreset,
 	NodeFlavor,
 	NodeBuildInfo
-} from '@cookiedough/include/types/flavor';
+} from '@cookiedough/internal/lib/types/flavor';
 import {
 	useColor,
 	useDataLog,
 	_call,
 	_callFrom,
-	_warn
-} from '@cookiedough/include';
+	_warn,
+	CrumbOptions
+} from '@cookiedough/internal';
 // import { useSpinner } from '@cookiedough/cmd/handler/spinner';
 import {
 	writeFileSync,
@@ -20,7 +21,6 @@ import {
 	existsSync
 } from 'fs-extra';
 import { join } from 'path';
-import { CrumbOptions } from '@cookiedough/include/types';
 
 const Spinner = require('cli-spinner').Spinner;
 function _actionFromPMgr(

@@ -29,6 +29,7 @@
     "yargs": "^17.4.1"
   },
   "dependencies": {
+	"@cookiedough/internal": "file:/./packages/internal",
     "cli-spinner": "^0.2.10",
     "fs-extra": "^10.1.0",
     "inquirer": "^8.2.4",
@@ -37,8 +38,5 @@
   },
   "man": [
     "./.assets/manpage0.txt"
-  ],
-  "_moduleAliases": {
-    "@cookiedough": "./bin"
-  }
+  ]
 }

@@ -3,19 +3,20 @@ import { NodePresetPackageMapper } from './pkg';
 import inquirer from 'inquirer';
 import NodeUserOptions from './menu';
 import { useFileWriter } from './files';
-import { CrumbOptions, CrumbPrompt } from '@cookiedough/include/types';
+import { CrumbOptions, CrumbPrompt } from '@cookiedough/internal/lib/types';
 import { join } from 'path';
 import {
 	NodeBuildInfo,
 	NodeFlavor,
 	NodeModule,
 	NodeModuleInstaller
-} from '@cookiedough/include/types/flavor';
+} from '@cookiedough/internal/lib/types/flavor/node';
 import {
 	useSysInfo,
 	_call,
 	_callFrom
-} from '@cookiedough/include';
+} from '@cookiedough/internal/lib';
+
 function usePresetToFilemap(args: {
 	config: CrumbOptions,
 	options: NodeFlavor,

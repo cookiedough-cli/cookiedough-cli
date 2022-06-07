@@ -1,4 +1,4 @@
-export type InquirerPrompt = {
+export type CLIPrompt = {
 	type   	: string;
 	name   	: string;
 	message	: string;
