@@ -1,5 +1,3 @@
-#!/usr/bin/node
-require('module-alias/register');
 import { useDefaultHandler } from './handler';
 import {
 	useDataLog,
