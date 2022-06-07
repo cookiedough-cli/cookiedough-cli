@@ -20,6 +20,7 @@
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.15.0",
     "eslint-import-resolver-typescript": "^2.7.1",
+    "lerna": "^5.0.0",
     "listr": "^0.14.3",
     "nexe": "^4.0.0-rc.1",
     "typedoc": "^0.22.15",
@@ -35,7 +36,7 @@
     "ts-json-schema-generator": "^1.0.0"
   },
   "man": [
-    "./.assets/manpage.txt"
+    "./.assets/manpage0.txt"
   ],
   "_moduleAliases": {
     "@cookiedough": "./bin"
