@@ -1,4 +1,4 @@
-import { DenoPresets } from '@cookiedough/internal/lib/types/flavor';
+import { DenoPresets } from '@cookiedough/types';
 
 export default [
 	{

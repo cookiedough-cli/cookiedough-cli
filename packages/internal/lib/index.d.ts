@@ -1,4 +1,3 @@
-export * from './types';
 export * from './copy-dir';
 export * from './sys-info';
 export * from './logger';

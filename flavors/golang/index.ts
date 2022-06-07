@@ -1,4 +1,4 @@
-import { CrumbOptions } from '@cookiedough/internal/lib/types';
+import { CrumbOptions } from '@cookiedough/types';
 import inquirer, { Inquirer } from 'inquirer';
 import GoMenuOptions from './menu';
 

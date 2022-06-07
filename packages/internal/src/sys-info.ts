@@ -1,4 +1,4 @@
-import { SystemOverview } from './types';
+import { SystemOverview } from '@cookiedough/types';
 import { useLocalConfig } from './config';
 import {
 	arch,

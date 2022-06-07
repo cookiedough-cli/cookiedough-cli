@@ -4,7 +4,7 @@ import {
 	LogFilePath,
 	LogType,
 	ValidLogData
-} from '.';
+} from '@cookiedough/types';
 export const Reset = '\x1b[0m';
 export const Bright = '\x1b[1m';
 export const Dim = '\x1b[2m';

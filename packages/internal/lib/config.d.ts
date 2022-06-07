@@ -1,4 +1,4 @@
-import { CrumbOptions } from './types';
+import { CrumbOptions } from '@cookiedough/types';
 export declare function useArgParser(): {
     url: {
         parent_config: string;

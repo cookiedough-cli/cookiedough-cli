@@ -1,6 +1,6 @@
 import DenoMenuOptions from './menu';
 import inquirer from 'inquirer';
-import { CrumbOptions } from '@cookiedough/internal';
+import { CrumbOptions } from '@cookiedough/types';
 export function usePrompt(
 	p: CrumbOptions
 ) {

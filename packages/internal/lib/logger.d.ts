@@ -1,4 +1,4 @@
-import { LogFilePath, LogType, ValidLogData } from '.';
+import { LogFilePath, LogType, ValidLogData } from '@cookiedough/types';
 export declare const Reset = "\u001B[0m";
 export declare const Bright = "\u001B[1m";
 export declare const Dim = "\u001B[2m";

@@ -3,15 +3,15 @@ import { resolve } from 'path';
 import {
 	NodePkgMgrPreset,
 	NodeFlavor,
-	NodeBuildInfo
-} from '@cookiedough/internal/lib/types/flavor';
+	NodeBuildInfo,
+	CrumbOptions
+} from '@cookiedough/types';
 import {
 	useColor,
 	useDataLog,
 	_call,
 	_callFrom,
-	_warn,
-	CrumbOptions
+	_warn
 } from '@cookiedough/internal';
 // import { useSpinner } from '@cookiedough/cmd/handler/spinner';
 import {

@@ -3,7 +3,7 @@ import {
 	CCMenuOptions
 } from './menu';
 import inquirer from 'inquirer';
-import { CrumbOptions } from '@cookiedough/internal/lib/types';
+import { CrumbOptions } from '@cookiedough/types';
 
 export function usePrompt(
 	p: CrumbOptions

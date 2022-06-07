@@ -8,7 +8,7 @@ const fs_1 = require("fs");
 const path_1 = require("path");
 const _1 = require(".");
 const _defaults_json_1 = __importDefault(require("./.config/.defaults.json"));
-const types_1 = require("./types");
+const types_1 = require("@cookiedough/types");
 function useArgParser() {
     const inline = process.argv.slice(2);
     // determine what the context of the command is

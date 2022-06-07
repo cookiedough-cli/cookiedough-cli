@@ -2,7 +2,7 @@ import {
 	CCompilers,
 	CStandards,
 	CCStandards
-} from '@cookiedough/internal/lib/types/flavor/c';
+} from '@cookiedough/types';
 
 export const CMenuOptions = [
 	{

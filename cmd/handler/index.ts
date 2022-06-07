@@ -1,12 +1,13 @@
 import {
 	CookieFlavor,
-
-	prompt,
+	FlavorPrompt,
 	CrumbOptions,
+} from '@cookiedough/types';
+import {
+	prompt,
 	useDataLog,
 	useLog
-} from '@cookiedough/internal/lib';
-import { FlavorPrompt } from '@cookiedough/internal/lib/types';
+} from '@cookiedough/internal';
 import {
 	NodeFlavor,
 	PyFlavor,

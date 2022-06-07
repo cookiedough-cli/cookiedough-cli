@@ -5,7 +5,7 @@ import DEFAULTS from './.config/.defaults.json';
 import {
 	CrumbFileNames,
 	CrumbOptions
-} from './types';
+} from '@cookiedough/types';
 
 export function useArgParser() {
 	const inline = process.argv.slice(2);

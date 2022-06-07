@@ -1,9 +1,4 @@
 "use strict";
-// export type FlavorLanguagePresetArray = {
-// 	name			 : string;
-// 	tags			?: string[];
-// 	maps			?: string[];
-// }[]
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -19,9 +14,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("./node"), exports);
-__exportStar(require("./deno"), exports);
-__exportStar(require("./python"), exports);
 __exportStar(require("./c"), exports);
+__exportStar(require("./deno"), exports);
 __exportStar(require("./go"), exports);
-//exports.$FLAVOR_FILE = $FLAVOR_FILE;
+__exportStar(require("./node"), exports);
+__exportStar(require("./python"), exports);
