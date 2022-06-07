@@ -1,1 +1,1 @@
-export declare function useValidWritePath(p: string): string;
+export declare function useValidWritePath(p: string): void;

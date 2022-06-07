@@ -1,4 +1,4 @@
-import { GoPresets } from '@cookiedough/internal/lib/types/flavor/go';
+import { GoPresets } from '@cookiedough/internal/lib/types/flavor';
 
 export default [
 	{

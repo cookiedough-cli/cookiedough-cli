@@ -1,10 +1,7 @@
-import { existsSync, mkdirSync } from 'fs';
+import { ensureDirSync } from 'fs-extra';
 
 export function useValidWritePath(
 	p: string
-): string {
-	if(!existsSync(p) && (p !== process.cwd())) {
-		mkdirSync(p);
-	}
-	return p;
+): void {
+	return ensureDirSync(p);
 }

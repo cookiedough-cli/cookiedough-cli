@@ -1,11 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useValidWritePath = void 0;
-const fs_1 = require("fs");
+const fs_extra_1 = require("fs-extra");
 function useValidWritePath(p) {
-    if (!(0, fs_1.existsSync)(p) && (p !== process.cwd())) {
-        (0, fs_1.mkdirSync)(p);
-    }
-    return p;
+    return (0, fs_extra_1.ensureDirSync)(p);
 }
 exports.useValidWritePath = useValidWritePath;
