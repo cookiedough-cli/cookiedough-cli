@@ -1,7 +1,8 @@
-export * from './copy-dir';
-export * from './sys-info';
+export * from './util/copy-dir';
+export * from './util/sys-info';
 export * from './logger';
-export * from './subprocess';
-export * from './valid-write-path';
+export * from './util/subprocess';
+export * from './util/valid-write-path';
 export * from './config';
 export { Inquirer, prompt } from 'inquirer';
+export * from './util';
