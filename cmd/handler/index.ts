@@ -4,6 +4,7 @@
  */
 import {
 	CookieFlavor,
+	CookieProcessRecipe,
 	CrumbOptions,
 } from '@cookiedough/types';
 import {
@@ -21,19 +22,19 @@ import {
 import { FlavorInquiry } from './constants';
 
 export function useDefaultHandler(
-	config: CrumbOptions
+	recipe: CookieProcessRecipe
 ) {
-	if(config.process.dry) {
+	if(recipe.crumbs.process.dry) {
 		useLog('dry mode, exiting', 'info');
 		return;
 	}
-	if(config.process.default_template) {
+	if(recipe.crumbs.process.default_template) {
 		useLog('default template chosen:', 'success');
-		useDataLog(config.process.default_template);
+		useDataLog(recipe.crumbs.process.default_template);
 		return;
 	}
 	else {
-		prompt([FlavorInquiry]).then(({flavor}) => useFlavorPrompt(flavor, config))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+		prompt([FlavorInquiry]).then(({flavor}) => useFlavorPrompt(flavor, recipe.crumbs))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
 	}
 	// todo- validate path, or create it
 	// todo- handle detatched option
@@ -67,4 +68,25 @@ function useFlavorPrompt(
 			useLog('template name invalid', 'error');
 			process.exit(1);
 	}
+}
+
+export function useDoctor(
+	recipe: CookieProcessRecipe
+) {
+	console.log('todo: doctor');
+	console.log(recipe);
+}
+
+export function useEnvSetup(
+	recipe: CookieProcessRecipe
+) {
+	console.log('todo: env setup');
+	console.log(recipe);
+}
+
+export function useLocator(
+	recipe: CookieProcessRecipe
+) {
+	console.log('todo: locator');
+	console.log(recipe);
 }
