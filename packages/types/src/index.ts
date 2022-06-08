@@ -22,7 +22,9 @@ export interface ToWriteFileData extends PreloadedFileData {
 
 export type Tuple = [string, string];
 
-export * from './config';
 export * from './prompt';
 export * from './cmd';
 export * from './flavors';
+export * from './colors';
+export * from './error';
+export * from './config';

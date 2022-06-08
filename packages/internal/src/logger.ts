@@ -1,17 +1,19 @@
-
+import { ANSIEffect } from '@cookiedough/types';
 import { format } from 'util';
 import {
 	LogFilePath,
 	LogType,
 	ValidLogData
 } from '@cookiedough/types';
-export const Reset = '\x1b[0m';
-export const Bright = '\x1b[1m';
-export const Dim = '\x1b[2m';
-export const Underscore = '\x1b[4m';
-export const Blink = '\x1b[5m';
-export const Reverse = '\x1b[7m';
-export const Hidden = '\x1b[8m';
+
+export const Reset: ANSIEffect = '\x1b[0m';
+
+export const Bright: ANSIEffect = '\x1b[1m';
+export const Dim: ANSIEffect = '\x1b[2m';
+export const Underscore: ANSIEffect = '\x1b[4m';
+export const Blink: ANSIEffect = '\x1b[5m';
+export const Reverse: ANSIEffect = '\x1b[7m';
+export const Hidden: ANSIEffect = '\x1b[8m';
 
 export const FgBlack = '\x1b[30m';
 export const FgRed = '\u001b[31m';

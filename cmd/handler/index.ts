@@ -17,7 +17,7 @@ import {
 	CFlavor,
 	DenoFlavor,
 	GoFlavor
-} from '@cookiedough/flavors';
+} from 'packages/flavors/lib';
 import { FlavorInquiry } from './constants';
 
 export function useDefaultHandler(
