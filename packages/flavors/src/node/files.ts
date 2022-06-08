@@ -1,8 +1,7 @@
 import { writeFile } from 'fs/promises';
 import { resolve } from 'path';
+import { join } from 'path';
 import {
-	NodePkgMgrPreset,
-	NodeFlavor,
 	NodeBuildInfo,
 	CrumbOptions
 } from '@cookiedough/types';
@@ -13,27 +12,14 @@ import {
 	_callFrom,
 	_warn
 } from '@cookiedough/internal';
-// import { useSpinner } from '@cookiedough/cmd/handler/spinner';
 import {
 	writeFileSync,
 	ensureDirSync,
 	rmdirSync,
 	existsSync
 } from 'fs-extra';
-import { join } from 'path';
 
 const Spinner = require('cli-spinner').Spinner;
-function _actionFromPMgr(
-	pkgmgr: NodePkgMgrPreset
-): string {
-	switch(pkgmgr) {
-		case 'yarn':
-		case 'pnpm':
-			return 'add';
-		default:
-			return 'install';
-	}
-}
 
 export function useFileWriter(
 	options: NodeBuildInfo,

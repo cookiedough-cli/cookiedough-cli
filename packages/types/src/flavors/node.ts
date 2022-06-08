@@ -4,20 +4,27 @@ import {
 	CrumbOptions
 } from '..';
 
-export type NodeFlavor = {
-	preset			: NodePreset;
-	pkg_mgr			: NodePkgMgrPreset;
-	build_tools		: NodeBuildPreset;
-	compiler		: NodeCompilerPreset;
-	bundler			: NodeBundlerPreset;
+export type NodeFlavorRecipe = {
+	preset			: NodeFlavorPreset;
+	pkg_mgr			: NodeFlavorPkg;
+	build_tools		: NodeFlavorBuildTool;
+	compiler		: NodeFlavorCompiler;
+	bundler			: NodeFlavorBundler;
 	eslint			: boolean;
 }
 
+// export type PresetToFileMapArgs = {
+// 	config: CrumbOptions,
+// 	recipe: NodeFlavor,
+// 	installer: NodeFlavorBuildTool,
+// 	packages: NodeModule[]
+// }
+
 export interface NodeBuildInfo {
-	build_root: string,
-	build_host: SystemOverview,
-	build_preferences: NodeFlavor,
-	build_packages: Tuple[]
+	build_root			: string,
+	build_host			: SystemOverview,
+	build_preferences	: NodeFlavorRecipe,
+	build_packages		: Tuple[]
 }
 
 export type NodeModule = Tuple;
@@ -29,8 +36,8 @@ export interface ToInstallModule {
 	version				?: string; //optional - todo
 }
 
-export type NodeModuleInstaller = {
-	name				: NodePkgMgrPreset; //name of process to run
+export type NodeModulePackager = {
+	name				: NodeFlavorPkg; //name of process to run
 	installSelf			: string; //command to install self if not installed / detected on system
 	installPkgSignature	: string; //prefix for adding packages between the process and the packagename
 }
@@ -43,50 +50,30 @@ export type NodeModuleInstaller = {
  * @returns
  */
 
-export function asNodeModuleInstaller(
-	name: NodePkgMgrPreset,
+export function asNodeModulePackager(
+	name: NodeFlavorPkg,
 	installPkgSignature: string
-) : NodeModuleInstaller {
-	return <NodeModuleInstaller>{
+) : NodeModulePackager {
+	return <NodeModulePackager>{
 		name,
 		installSelf: '', //todo
 		installPkgSignature
 	}
 }
+export const NodeFlavor_PkgPresets = ['commonjs', 'esm', 'ts'] as const;
+export type NodeFlavorPreset = typeof NodeFlavor_PkgPresets[number];
 
-export const NodePkgPresets: NodePreset[] = [
-	'commonjs',
-	'esm',
-	'ts'
-];
+export const NodeFlavor_PkgMgr = ['npm', 'yarn', 'pnpm'] as const;
+export type NodeFlavorPkg = typeof NodeFlavor_PkgMgr[number];
 
-export const NodePkgMgrPresets: NodePkgMgrPreset[] = [
-	'npm',
-	'yarn',
-	'pnpm'
-];
+export const NodeFlavor_BuildTools = ['gulp', 'grunt', 'esbuild', 'none'] as const;
+export type NodeFlavorBuildTool = typeof NodeFlavor_BuildTools[number];
 
-export const NodeBuildPresets: NodeBuildPreset[] = [
-	'gulp',
-	'grunt',
-	'esbuild',
-	'none',
-];
+export const NodeFlavor_Compilers = ['none', 'babel', 'swc', 'esbuild'] as const;
+export type NodeFlavorCompiler = typeof NodeFlavor_Compilers[number];
 
-export const NodeCompilerPresets: NodeCompilerPreset[] = [
-	'none',
-	'babel',
-	'swc',
-	'esbuild',
-];
-
-export const NodeBundlerPresets: NodeBundlerPreset[] = [
-	'none',
-	'rollup',
-	'webpack',
-	'swcpack',
-	'esbuild',
-];
+export const NodeFlavor_Bundlers = ['none', 'rollup', 'webpack', 'swcpack', 'esbuild'] as const;
+export type NodeFlavorBundler = typeof NodeFlavor_Bundlers[number];
 
 export const BabelBaseModules: NodeModule[] = [
 	['@babel/core', '-D'],
@@ -136,39 +123,9 @@ export const ESLintTSModules: NodeModule[] = [
 	['@typescript-eslint/parser', '-D']
 ];
 
-export type NodePreset =
-'commonjs' |
-'esm' 	   |
-'ts'       ;
-
-export type NodePkgMgrPreset =
-'npm'  |
-'yarn' |
-'pnpm' ;
-
-export type NodeCompilerPreset =
-'babel'   |
-'swc' 	  |
-'esbuild' |
-'none';
-
-export type NodeBundlerPreset =
-'webpack'  |
-'esbuild'  |
-'rollup'   |
-'swcpack'  |
-'none'	   ;
-
-export type NodeBuildPreset =
-'esbuild'  		|
-'gulp'	   		|
-'grunt'    		|
-'none'	;
-
-
-export type NodeFlavorPresetToFileMapArgs = {
+export type NodeRecipeToFileMap = {
 	config: CrumbOptions,
-	options: NodeFlavor,
-	installer: NodeModuleInstaller,
+	recipe: NodeFlavorRecipe,
+	installer: NodeModulePackager,
 	packages: NodeModule[]
 }

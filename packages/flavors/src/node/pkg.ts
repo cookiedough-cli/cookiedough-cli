@@ -1,5 +1,5 @@
 import {
-	NodeFlavor,
+	NodeFlavorRecipe,
 	NodeModule,
 	SWCBaseModules,
 	GulpModules,
@@ -11,22 +11,22 @@ import {
 	BabelTSModules,
 	RollupTSModules,
 	GulpTSModules,
-	NodeModuleInstaller,
-	asNodeModuleInstaller
+	NodeModulePackager,
+	asNodeModulePackager
 } from '@cookiedough/types';
 
 export const NodePresetPackageMapper = (
-	np: NodeFlavor
-): { installer: NodeModuleInstaller, packages: NodeModule[] } => {
-	let installer: NodeModuleInstaller;
+	np: NodeFlavorRecipe
+): { installer: NodeModulePackager, packages: NodeModule[] } => {
+	let installer: NodeModulePackager;
 
 	switch(np.pkg_mgr) {
 		case 'pnpm':
-			installer = asNodeModuleInstaller('pnpm', 'add');
+			installer = asNodeModulePackager('pnpm', 'add');
 		case 'yarn':
-			installer = asNodeModuleInstaller('yarn', 'add');
+			installer = asNodeModulePackager('yarn', 'add');
 		default:
-			installer = asNodeModuleInstaller('npm', 'i');
+			installer = asNodeModulePackager('npm', 'i');
 			break;
 	}
 

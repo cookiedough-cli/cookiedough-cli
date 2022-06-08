@@ -1,9 +1,9 @@
 import {
-	NodePkgPresets,
-	NodePkgMgrPresets,
-	NodeBuildPresets,
-	NodeCompilerPresets,
-	NodeBundlerPresets,
+	NodeFlavor_PkgMgr,
+	NodeFlavor_PkgPresets,
+	NodeFlavor_BuildTools,
+	NodeFlavor_Compilers,
+	NodeFlavor_Bundlers,
  } from '@cookiedough/types';
 
 export default [
@@ -11,31 +11,31 @@ export default [
 		type: 'list',
 		name: 'preset',
 		message: 'choose package preset',
-		choices: NodePkgPresets
+		choices: NodeFlavor_PkgPresets
 	},
 	{
 		type: 'list',
 		name: 'pkg_mgr',
 		message: 'choose preferred package manager',
-		choices: NodePkgMgrPresets
+		choices: NodeFlavor_PkgMgr
 	},
 	{
 		type: 'list',
 		name: 'build_tools',
 		message: 'choose build environment',
-		choices: NodeBuildPresets
+		choices: NodeFlavor_BuildTools
 	},
 	{
 		type: 'list',
 		name: 'compiler',
 		message: 'choose transpiler option',
-		choices: NodeCompilerPresets
+		choices: NodeFlavor_Compilers
 	},
 	{
 		type: 'list',
 		name: 'bundler',
 		message: 'choose bundler option',
-		choices: NodeBundlerPresets
+		choices: NodeFlavor_Bundlers
 	},
 	{
 		type: 'confirm',
