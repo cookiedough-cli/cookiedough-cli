@@ -1,3 +1,7 @@
+/**
+ * @module CMD/handler
+ * @description map handler callbacks to inline cmd signatures
+ */
 import {
 	CookieFlavor,
 	CrumbOptions,

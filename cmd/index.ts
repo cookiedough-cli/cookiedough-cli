@@ -3,12 +3,11 @@ import {
 	useDataLog,
 	useLog,
 	useArgParser,
-	useLocalConfig,
 	useGlobalConfig
 } from '@cookiedough/internal';
-import { } from '@cookiedough/flavors'
 /**
- *
+ * @function useCookieDough
+ * @description entry point for command-line interface
  * @returns entry point to cli
  */
 export function useCookieDough() {

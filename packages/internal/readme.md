@@ -1,5 +1,3 @@
-# Cookiedough
+# @cookiedough/internal
 
-customizable project generation cli, many languages, many setups
-
-![](/.assets/cookiedough.png)
+internal modules for cookie dough cli

@@ -14,6 +14,10 @@
 
 ▸ **useCookieDough**(): `void`
 
+**`function`** useCookieDough
+
+**`description`** entry point for command-line interface
+
 #### Returns
 
 `void`
@@ -22,4 +26,4 @@ entry point to cli
 
 #### Defined in
 
-[index.ts:14](https://github.com/abschill/cookiedough-cli/blob/55bf690/cmd/index.ts#L14)
+[index.ts:13](https://github.com/abschill/cookiedough-cli/blob/fd64750/cmd/index.ts#L13)

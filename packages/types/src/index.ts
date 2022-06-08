@@ -34,6 +34,7 @@ export type COOKIE_CMD_SIG =
 'add' 					|
 'locate' 				|
 'set' 					|
+'setup-env'				|
 'create-local-flavor'	;
 
 export type ProcessRecipe = {
