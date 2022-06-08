@@ -10,3 +10,6 @@ run:
 	node index
 link:
 	./scripts/relink-pkg
+
+refresh:
+	./scripts/refresh

@@ -2,7 +2,7 @@ import { useDefaultHandler } from './handler';
 import {
 	useDataLog,
 	useLog,
-	useArgParser,
+	useCMD,
 	useGlobalConfig
 } from '@cookiedough/internal';
 /**
@@ -11,11 +11,8 @@ import {
  * @returns entry point to cli
  */
 export function useCookieDough() {
-	const fsConfig = useGlobalConfig();
-	const args = useArgParser();
-
-	const pRecipe = {...args, ...fsConfig};
-	console.log(pRecipe);
+	const recipe = useCMD(useGlobalConfig());
+	console.log(recipe);
 	//  const config = useLocalConfig(args.url.parent_config);
 	//  useLog('found config:');
 	// useDataLog(config);

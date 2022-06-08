@@ -6,7 +6,8 @@ import {
 	CrumbFileNames,
 	CrumbOptions,
 	CookieCMD,
-	COOKIE_CMD_SIG
+	COOKIE_CMD_SIG,
+	CookieProcessRecipe
 } from '@cookiedough/types';
 import { homedir } from 'os';
 
@@ -36,7 +37,9 @@ export const COOKIE_CMD_LIST: CookieCMD[] = [
 ];
 
 
-export function useArgParser() {
+export function useCMD(
+	options: CrumbOptions
+): CookieProcessRecipe {
 	let valid: COOKIE_CMD_SIG = 'create';
 	const inline = process.argv.slice(2);
 	// determine what the context of the command is
@@ -51,15 +54,18 @@ export function useArgParser() {
 			throw 'error: multiple commands detected';
 		}
 		return {
-			cmd: valid
-		}
+			cmd: valid,
+			crumbs: options
+		};
 	}
 	return {
-		cmd: valid
+		cmd: valid,
+		crumbs: options
 	};
 }
 
-export function useGlobalConfig(): CrumbOptions {
+export function useGlobalConfig():
+CrumbOptions {
 	const wd = process.cwd();
 	let match;
 	const filesInBase = readdirSync(wd);
