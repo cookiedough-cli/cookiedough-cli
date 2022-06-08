@@ -2,7 +2,8 @@
 	"name": "@cookiedough/internal",
 	"description": "internal module linker for cookiedough cli",
 	"author": "abschill",
-	"main": "index.js",
+	"types": "./lib/index.d.ts",
+	"main": "index.cjs",
 	"version": "0.1.0",
 	"scripts": {
 		"build": "tsc"
