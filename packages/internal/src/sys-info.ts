@@ -1,10 +1,8 @@
 import { SystemOverview } from '@cookiedough/types';
-import { useLocalConfig } from './config';
 import {
 	arch,
 	platform,
-	type,
-	homedir
+	type
 } from 'os';
 /**
  *
@@ -20,6 +18,4 @@ export function useSysInfo():
 	};
 }
 
-export function useGlobalConfig() {
-	return useLocalConfig(homedir());
-}
+

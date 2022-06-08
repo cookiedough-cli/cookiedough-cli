@@ -1,34 +1,45 @@
-# Configuration
+# Default Configuration
 
-## Process arguments
-
-`-nc` | `--no-config`
-Milkshake will by default search for a configuration file in the process's calling directory. This behavior can be disabled by passing the `--no-config` boolean option to the cli.
-
-`-c` | `--config`
-explicit format for setting config file path, by default if you set one anonymous argument it will be read in as the config path.
-
-`-cf` | `--config-format`
-tell the process to only look for config files of a given format
-
-for example
+```json
+{
+	"path": {
+		"custom_flavors": null,
+		"out": ".",
+		"root_config": null
+	},
+	"process": {
+		"add_files_from": null,
+		"always_use_prompt": true,
+		"default_template": null,
+		"detatched": false,
+		"dry": false,
+		"log_level": "minimal",
+		"log_file": null,
+		"overwrite_existing_out": false,
+		"allow_cwd_write": true
+	},
+	"repository": {
+		"init": false,
+		"type": null,
+		"template_url": null,
+		"submodule_map": null,
+		"can_inherit_config": false,
+	}
+}
 
 ```
-cookiedough -cf json
-```
+The following is the shape of the default configuration that is run when there are no other options. Most of the values are null masked because most of the options are based on preference rather than necessity.
+
+|Key|Value|
+|---|-----|
+|path:custom_flavors	|directory containing resolvable flavors of your own creation|
+|path:out|the default path to use to write files|
+|path:root_config|the path to overwrite the default root config option|
+|process:allow_cwd_write|whether or not to allow the process working directory to be written to|
 
 
-`-a` | `--add-files`
-tell the process to copy any generated project files additionally from the specified path(s). if you specify more than one path, separate them with a comma and wrap them in `()`
+## System Configuration
 
-for example:
+By default, you can store a config file in the HOMEDIR of your machine, and cookiedough will automatically be able to find that during runtime and read it into the context. This config file can be ignored with
 
-```
-cookiedough -a (/usr/share/path0/,/scripts/*.sh)
-```
-
-you'll notice that it can accept glob patterns as well
-
-
-`-h` | `--help`
-print manpage
+[Local Configuration](commands.md)

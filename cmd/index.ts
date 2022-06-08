@@ -12,9 +12,11 @@ import { } from '@cookiedough/flavors'
  * @returns entry point to cli
  */
 export function useCookieDough() {
-	 console.log(useGlobalConfig());
-	 const args = useArgParser();
-	 console.log(args);
+	const fsConfig = useGlobalConfig();
+	const args = useArgParser();
+
+	const pRecipe = {...args, ...fsConfig};
+	console.log(pRecipe);
 	//  const config = useLocalConfig(args.url.parent_config);
 	//  useLog('found config:');
 	// useDataLog(config);

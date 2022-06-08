@@ -1,17 +1,17 @@
 {
 	"path": {
-		"custom_flavors": null,
-		"out": "test",
-		"parent_config": null
+		"out": "__fixtures__/test0",
+		"root_config": null
 	},
 	"process": {
-		"add_files_from": "test/copy-files/",
-		"always_use_prompt": true,
+		"add_files_from": "__fixtures__/copy-files/",
+		"always_use_prompt": false,
 		"default_template": null,
 		"detatched": false,
-		"dry": false,
+		"dry": true,
 		"log_level": "verbose",
 		"log_file": null,
-		"overwrite_existing_out": true
+		"overwrite_existing_out": true,
+		"allow_cwd_write": false
 	}
 }

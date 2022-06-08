@@ -22,6 +22,25 @@ export interface ToWriteFileData extends PreloadedFileData {
 
 export type Tuple = [string, string];
 
+export type CookieCMD = {
+	signature	 : COOKIE_CMD_SIG;
+	alias 		?: string[];
+}
+
+export type COOKIE_CMD_SIG =
+'create' 				|
+'doctor' 				|
+'edit' 					|
+'add' 					|
+'locate' 				|
+'set' 					|
+'create-local-flavor'	;
+
+export type ProcessRecipe = {
+	cmd: COOKIE_CMD_SIG;
+}
+
+
 export * from './config';
 export * from './prompt';
 export * from './process';

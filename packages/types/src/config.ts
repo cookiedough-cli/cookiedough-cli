@@ -12,8 +12,7 @@ export type CookieFlavor =
 export type PathConfigOptions = {
 	custom_flavors		?: string; //path to load custom flavor recipes from
 	out 				?: string; // base path to use to write new files during processing
-	process_root		?: string; // root of process scope
-	parent_config		?: string; // path of parent config to extend
+	root_config			?: string; // path of parent config to extend
 }
 
 // process-specific configuration parameters - all optional
@@ -26,12 +25,14 @@ export type ProcessConfigOptions = {
 	log_level				?: 'verbose' | 'silent' | 'minimal';
 	log_file				?: string;
 	overwrite_existing_out  ?: boolean;
+	allow_cwd_write			?: boolean;
 }
 
 export type RepositoryConfigOptions = {
 	init			?: boolean; //init a repo and enable parsing of other attributes in the type
 	type			?: string; //type eg git, gitlab, bitbucket
 	template_url	?: string; // url of template repo to use for creation
+	ctx_base_path ?: string // child path of the context its written to, to be written to
 	submodule_map	?: any; //todo - set up map of submodules to automatically set up in the initialized repo
 }
 
