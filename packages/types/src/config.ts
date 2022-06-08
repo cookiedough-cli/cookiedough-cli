@@ -8,12 +8,7 @@ export type CookieFlavor =
 'rust'   |
 'python' ;
 
-// path-specific configuration parameters - all optional
-export type PathConfigOptions = {
-	custom_flavors		?: string; //path to load custom flavor recipes from
-	out 				?: string; // base path to use to write new files during processing
-	root_config			?: string; // path of parent config to extend
-}
+
 
 // valie prefix matchers for the crumb config file
 export type CrumbFilePrefix =

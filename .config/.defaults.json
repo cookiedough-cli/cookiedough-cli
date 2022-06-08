@@ -13,7 +13,8 @@
 		"dry": false,
 		"log_level": "minimal",
 		"log_file": null,
-		"overwrite_existing_out": false
+		"overwrite_existing_out": false,
+		"shell_prefix": null
 	},
 	"repository": {
 		"init": false,

@@ -4,9 +4,9 @@
 
 export type SystemOverview = {
 	arch     : string;
+	cwd      : string;
 	platform : string;
 	type     : string;
-	cwd      : string;
 }
 
 export type PreloadedFileData = {
@@ -24,5 +24,5 @@ export type Tuple = [string, string];
 
 export * from './config';
 export * from './prompt';
-export * from './process';
+export * from './cmd';
 export * from './flavors';

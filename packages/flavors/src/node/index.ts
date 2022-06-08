@@ -6,7 +6,7 @@ import NodeUserOptions from './menu';
 import { useFileWriter } from './files';
 import {
 	CrumbOptions,
-	CrumbPrompt,
+	CrumbPromptNoOp,
 	NodeBuildInfo,
 	NodeFlavor,
 	NodeModule,
@@ -36,7 +36,7 @@ function usePresetToFilemap(args: {
 
 export function usePrompt(
 	p: CrumbOptions,
-): CrumbPrompt {
+): CrumbPromptNoOp {
 	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeFlavor) => {
 		const ppm = NodePresetPackageMapper(answers);
 		return usePresetToFilemap({

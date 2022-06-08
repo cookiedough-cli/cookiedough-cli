@@ -1,8 +1,8 @@
 export type CLIPrompt = {
+	choices	: string[];
 	type   	: string;
 	name   	: string;
 	message	: string;
-	choices	: string[];
 }
 
-export type CrumbPrompt = Promise<void>;
+export type CrumbPromptNoOp = Promise<void>;
