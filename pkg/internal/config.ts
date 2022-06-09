@@ -5,37 +5,10 @@ import { useFileList, useHomeDir } from './util';
 import {
 	CrumbFileNames,
 	CrumbOptions,
-	CookieCMD,
 	COOKIE_CMD_SIG,
 	CookieProcessRecipe
 } from '../types';
-
-export const COOKIE_CMD_LIST: CookieCMD[] = [
-	{
-		signature: 'create',
-		alias: [
-			'',
-			null
-		]
-	},
-	{
-		signature: 'edit'
-	},
-	{
-		signature: 'doctor'
-	},
-	{
-		signature: 'set'
-	},
-	{
-		signature: 'create-local-flavor'
-	},
-	{
-		signature: 'locate'
-	}
-];
-
-
+import { COOKIE_CMD_LIST } from './cmd';
 
 export function useCMD(
 	options: CrumbOptions
@@ -62,6 +35,13 @@ export function useCMD(
 		cmd: valid,
 		crumbs: options
 	};
+}
+
+export function useConfigList(
+	dir: string
+): string[] {
+	//@ts-ignore
+	return useFileList(dir).filter(file => CrumbFileNames.includes(file));
 }
 
 export function useDirectoryConfig(

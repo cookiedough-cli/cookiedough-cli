@@ -1,6 +1,62 @@
-import { CookieFlavor } from '.';
+// default flavors included in the bundle
+export type CookieFlavor =
+'node'   |
+'deno'   |
+'go'     |
+'c'      |
+'c++'	 |
+'rust'   |
+'python' ;
+
+export type CrumbFileName = `${string}.json` | '.cookie';
+
+export const CrumbFileNames: CrumbFileName[] = [
+	'.cookie',
+	'cookie.json',
+	'cookies.json',
+	'cookie-config.json',
+	'crumb.json',
+	'crumbs.json'
+];
+
+export type CLIPrompt = {
+	choices	: string[];
+	type   	: string;
+	name   	: string;
+	message	: string;
+}
+
+export type CrumbPromptNoOp = Promise<void>;
+
+// configuration as an object
+export type CrumbOptions = {
+	path					?: PathConfigOptions; // path related config options
+	process					?: ProcessCrumbs; // runtime related config options
+	repository				?: RepositoryCrumbs; // options to configure auto repo setup/integrations
+}
+export type CookieCMD = {
+	alias 		?: string[];
+	signature	 : COOKIE_CMD_SIG;
+}
+
+export type COOKIE_CMD_SIG =
+'create' 				|
+'doctor' 				|
+'edit' 					|
+'add' 					|
+'locate' 				|
+'set' 					|
+'setup-env'				|
+'create-local-flavor'	;
+
+export type CookieProcessRecipe = {
+	cmd			: COOKIE_CMD_SIG;
+	crumbs		: CrumbOptions;
+}
 
 export type LogLevel = 'verbose' | 'silent' | 'minimal';
+export type LogType = 'success' | 'info' | 'warning' | 'error';
+export type LogFilePath = string;
 
 // process-specific configuration parameters - all optional
 export type ProcessCrumbs = {
@@ -29,34 +85,8 @@ export type RepositoryCrumbs = {
 	template_url	?: string; // url of template repo to use for creation
 }
 
-// configuration as an object
-export type CrumbOptions = {
-	path					?: PathConfigOptions; // path related config options
-	process					?: ProcessCrumbs; // runtime related config options
-	repository				?: RepositoryCrumbs; // options to configure auto repo setup/integrations
-}
-export type CookieCMD = {
-	alias 		?: string[];
-	signature	 : COOKIE_CMD_SIG;
-}
-
-export type COOKIE_CMD_SIG =
-'create' 				|
-'doctor' 				|
-'edit' 					|
-'add' 					|
-'locate' 				|
-'set' 					|
-'setup-env'				|
-'create-local-flavor'	;
-
 export type ValidLogData = any;
 
-export type LogType = 'success' | 'info' | 'warning' | 'error';
 
-export type LogFilePath = string;
 
-export type CookieProcessRecipe = {
-	cmd			: COOKIE_CMD_SIG;
-	crumbs		: CrumbOptions;
-}
+

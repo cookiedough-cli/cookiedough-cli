@@ -36,16 +36,6 @@ export function useDefaultHandler(
 	else {
 		prompt([FlavorInquiry]).then(({flavor}) => useFlavorPrompt(flavor, recipe.crumbs))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
 	}
-	// todo- validate path, or create it
-	// todo- handle detatched option
-	// todo- handle dry option
-	//const cConfig = require(confPath);
-	// if(!cConfig.path.out) {
-	// 	warn('no outpath set in config');
-	// }
-	// console.log(cConfig.path.out);
-
-
 }
 
 function useFlavorPrompt(
@@ -70,18 +60,6 @@ function useFlavorPrompt(
 	}
 }
 
-export function useDoctor(
-	recipe: CookieProcessRecipe
-) {
-	console.log('todo: doctor');
-	console.log(recipe);
-}
-
-export function useEnvSetup(
-	recipe: CookieProcessRecipe
-) {
-	console.log('todo: env setup');
-	console.log(recipe);
-}
-
+export * from './setup-env';
+export * from './doctor';
 export * from './locate';
