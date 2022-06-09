@@ -2,7 +2,8 @@ import {
 	copySync,
 	ensureDirSync,
 	readdirSync,
-	emptyDirSync
+	emptyDirSync,
+	existsSync
 } from 'fs-extra';
 import {
 	homedir,
@@ -50,6 +51,11 @@ export function useHomeDir() {
 	return homedir();
 }
 
+export function useDirExists(
+	dir: string
+) {
+	return existsSync(dir);
+}
 
 export function useFileList(
 	dir: string
