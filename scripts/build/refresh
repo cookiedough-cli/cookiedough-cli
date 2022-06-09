@@ -1,2 +1,2 @@
 #!/bin/bash
-./scripts/clean/remove-old && ./scripts/build/tsc
+./scripts/clean/remove-old && yarn && ./scripts/build/tsc

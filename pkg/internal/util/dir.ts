@@ -1,4 +1,7 @@
-import { copySync } from 'fs-extra';
+import {
+	copySync,
+	ensureDirSync
+} from 'fs-extra';
 
 export function copyDirectory(
 	to: string,
@@ -14,4 +17,10 @@ export function copyDirectory(
 	catch(e) {
 		return false;
 	}
+}
+
+export function useValidWritePath(
+	p: string
+): void {
+	return ensureDirSync(p);
 }

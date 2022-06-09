@@ -8,13 +8,13 @@
   "author": "abschill",
   "license": "AGPL-3.0",
   "scripts": {
-	"build:dry": "./scripts/build/dry-list",
+    "build:dry": "./scripts/build/dry-list",
     "build:docs": "./scripts/build/docs",
     "build:release": "./scripts/clean/remove-old && ./scripts/build/tsc",
     "build": "./scripts/build/tsc",
     "setup": "chmod +x ./scripts/**/* && ./scripts/setup",
-	"run:base": "./scripts/run/base",
-	"run:locate": "/scripts/run/locate"
+    "run:base": "./scripts/run/base",
+    "run:locate": "/scripts/run/locate"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
