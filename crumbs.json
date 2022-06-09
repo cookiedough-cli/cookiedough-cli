@@ -4,7 +4,6 @@
 	},
 	"process": {
 		"add_files_from": "__fixtures__/copy-files/",
-		"dry": true,
 		"log_level": "verbose",
 		"overwrite_existing_out": true,
 		"allow_cwd_write": false

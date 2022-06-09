@@ -10,47 +10,13 @@ export type CookieFlavor =
 
 
 
-// valie prefix matchers for the crumb config file
-export type CrumbFilePrefix =
-'crumb' 	  	|
-'crumbs'   	  	|
-'cookieconfig' 	|
-'cookieconf'   	|
-'cookie-config' |
-'crumbconf'		|
-'crumb-config'	|
-'crumbconfig'	;
-
-// valid suffix matchers for the crumb config file
-export type CrumbFileSuffix =
-'.json' 	| //js
-'.yml'  	| //yaml
-'.yaml' 	| //yaml
-'.js'   	| //js
-'.ts'   	| //ts
-'.cjs'  	| //js
-'.mjs'  	| //js
-'.crumb'	| //ini
-'.build'	| //ini
-'.cookie'  	| //ini
-'.make'		| //ini
-'.conf'		| //ini parse
-'.ini'		| //ini parse
-''			; // will work as an ini file if you just use a prefix
-
-export type CrumbFileName = `${CrumbFilePrefix}${CrumbFileSuffix}`;
+export type CrumbFileName = `${string}.json` | '.cookie';
 
 export const CrumbFileNames: CrumbFileName[] = [
-	'crumb.json',
-	'crumbs.json',
-	'cookie-config.build',
+	'.cookie',
+	'cookie.json',
+	'cookies.json',
 	'cookie-config.json',
-	'cookie-config',
-	'cookieconf',
-	'crumbs.yml',
-	'crumbs.build',
-	'crumbs.make',
-	'cookieconf.yml',
-	'cookieconf.make',
-	'cookie-config.make'
+	'crumb.json',
+	'crumbs.json'
 ];

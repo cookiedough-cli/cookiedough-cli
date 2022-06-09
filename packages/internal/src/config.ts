@@ -2,14 +2,32 @@ import { readdirSync } from 'fs';
 import { resolve } from 'path';
 import { useLog } from '.';
 import DEFAULTS from './.config/.defaults.json';
+
 import {
 	CrumbFileNames,
 	CrumbOptions,
 	CookieCMD,
 	COOKIE_CMD_SIG,
-	CookieProcessRecipe
+	CookieProcessRecipe,
+	SystemOverview
 } from '@cookiedough/types';
-import { homedir } from 'os';
+
+import {
+	homedir,
+	arch,
+	platform,
+	type
+} from 'os';
+
+export function useSysInfo():
+ SystemOverview {
+	return {
+		arch: arch(),
+		platform: platform(),
+		type: type(),
+		cwd: process.cwd()
+	};
+}
 
 export const COOKIE_CMD_LIST: CookieCMD[] = [
 	{
@@ -36,6 +54,13 @@ export const COOKIE_CMD_LIST: CookieCMD[] = [
 	}
 ];
 
+export function useProcessDir() {
+	return process.cwd();
+}
+
+export function useHomeDir() {
+	return homedir();
+}
 
 export function useCMD(
 	options: CrumbOptions
@@ -62,6 +87,23 @@ export function useCMD(
 		cmd: valid,
 		crumbs: options
 	};
+}
+
+export function useDirectoryConfig(
+	dir: string
+): CrumbOptions | null {
+	let match;
+	const filesInBase = readdirSync(dir);
+	CrumbFileNames.forEach(file => {
+		if(filesInBase.includes(file)) {
+			match = file;
+			return;
+		}
+	});
+	if(!match) {
+		return null;
+	}
+	return require(resolve(dir, match));
 }
 
 export function useGlobalConfig():

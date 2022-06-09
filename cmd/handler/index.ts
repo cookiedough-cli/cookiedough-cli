@@ -18,7 +18,7 @@ import {
 	CFlavor,
 	DenoFlavor,
 	GoFlavor
-} from 'packages/flavors/lib';
+} from '@cookiedough/flavors';
 import { FlavorInquiry } from './constants';
 
 export function useDefaultHandler(
@@ -84,9 +84,4 @@ export function useEnvSetup(
 	console.log(recipe);
 }
 
-export function useLocator(
-	recipe: CookieProcessRecipe
-) {
-	console.log('todo: locator');
-	console.log(recipe);
-}
+export * from './locate';

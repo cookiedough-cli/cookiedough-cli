@@ -17,20 +17,28 @@ import {
  */
 export function useCookieDough() {
 	const recipe = useCMD(useGlobalConfig());
+	if(recipe.crumbs.process.log_level === 'verbose') {
+		useLog('Recipe Found:', 'success');
+		console.log(recipe);
+	}
 	switch(recipe.cmd) {
 		case 'locate':
-			return useLocator(recipe);
+			useLocator();
+			break;
 		case 'create-local-flavor':
 			console.log('todo: generate local flavor');
 			break;
 		case 'create':
-			return useDefaultHandler(recipe);
+			useDefaultHandler(recipe);
+			break;
 		case 'setup-env':
-			return useEnvSetup(recipe);
+			useEnvSetup(recipe);
+			break;
 		case 'edit':
 			console.log('todo: locate > open with default sys editor');
 			break;
 		case 'doctor':
-			return useDoctor(recipe);
+			useDoctor(recipe);
+			break;
 	}
 }
