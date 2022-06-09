@@ -3,7 +3,7 @@
 		"out": "__fixtures__/test0"
 	},
 	"process": {
-		"add_files_from": "__fixtures__/copy-files/",
+		"add_files_from": ["__fixtures__/copy-files/"],
 		"log_level": "verbose",
 		"overwrite_existing_out": true,
 		"allow_cwd_write": false

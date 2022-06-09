@@ -1,0 +1,11 @@
+{
+  "name": "test0",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.17.0",
+    "gulp": "^4.0.2",
+    "rollup": "^2.75.6"
+  }
+}

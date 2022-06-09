@@ -1,33 +1,14 @@
-import { readdirSync } from 'fs';
 import { resolve } from 'path';
 import { useLog } from '.';
 import DEFAULTS from './.config/.defaults.json';
-
+import { useFileList, useHomeDir } from './util';
 import {
 	CrumbFileNames,
 	CrumbOptions,
 	CookieCMD,
 	COOKIE_CMD_SIG,
-	CookieProcessRecipe,
-	SystemOverview
+	CookieProcessRecipe
 } from '../types';
-
-import {
-	homedir,
-	arch,
-	platform,
-	type
-} from 'os';
-
-export function useSysInfo():
- SystemOverview {
-	return {
-		arch: arch(),
-		platform: platform(),
-		type: type(),
-		cwd: process.cwd()
-	};
-}
 
 export const COOKIE_CMD_LIST: CookieCMD[] = [
 	{
@@ -54,13 +35,7 @@ export const COOKIE_CMD_LIST: CookieCMD[] = [
 	}
 ];
 
-export function useProcessDir() {
-	return process.cwd();
-}
 
-export function useHomeDir() {
-	return homedir();
-}
 
 export function useCMD(
 	options: CrumbOptions
@@ -93,7 +68,7 @@ export function useDirectoryConfig(
 	dir: string
 ): CrumbOptions | null {
 	let match;
-	const filesInBase = readdirSync(dir);
+	const filesInBase = useFileList(dir);
 	CrumbFileNames.forEach(file => {
 		if(filesInBase.includes(file)) {
 			match = file;
@@ -110,7 +85,7 @@ export function useGlobalConfig():
 CrumbOptions {
 	const wd = process.cwd();
 	let match;
-	const filesInBase = readdirSync(wd);
+	const filesInBase = useFileList(wd);
 	CrumbFileNames.forEach(file => {
 		if(filesInBase.includes(file)) {
 			match = file;
@@ -118,8 +93,8 @@ CrumbOptions {
 		}
 	});
 	if(!match) {
-		const home = homedir();
-		const filesInHome = readdirSync(home);
+		const home = useHomeDir();
+		const filesInHome = useFileList(home);
 		CrumbFileNames.forEach(file => {
 			if(filesInHome.includes(file)) {
 				match = file;
