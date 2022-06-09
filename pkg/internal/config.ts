@@ -1,41 +1,14 @@
 import { resolve } from 'path';
 import { useLog } from '.';
 import DEFAULTS from './.config/.defaults.json';
-import { useFileList, useHomeDir } from './util';
+import {
+	useFileList,
+	useHomeDir
+} from './util';
 import {
 	CrumbFileNames,
-	CrumbOptions,
-	COOKIE_CMD_SIG,
-	CookieProcessRecipe
+	CrumbOptions
 } from '../types';
-import { COOKIE_CMD_LIST } from './cmd';
-
-export function useCMD(
-	options: CrumbOptions
-): CookieProcessRecipe {
-	let valid: COOKIE_CMD_SIG = 'create';
-	const inline = process.argv.slice(2);
-	// determine what the context of the command is
-	if(inline.length > 0) {
-		// command to run, validate it
-		const cmd_list = COOKIE_CMD_LIST.filter(cmd => cmd.signature === inline[0]);
-
-		if(cmd_list.length === 1) {
-			valid = cmd_list[0].signature;
-		}
-		if(cmd_list.length > 1) {
-			throw 'error: multiple commands detected';
-		}
-		return {
-			cmd: valid,
-			crumbs: options
-		};
-	}
-	return {
-		cmd: valid,
-		crumbs: options
-	};
-}
 
 export function useConfigList(
 	dir: string

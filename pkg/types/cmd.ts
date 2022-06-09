@@ -50,6 +50,7 @@ export type COOKIE_CMD_SIG =
 'create-local-flavor'	;
 
 export type CookieProcessRecipe = {
+	_raw_args	: string[];
 	cmd			: COOKIE_CMD_SIG;
 	crumbs		: CrumbOptions;
 }

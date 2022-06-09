@@ -1,6 +1,6 @@
 import {
 	useDoctor,
-	useEnvSetup,
+	useInteractiveEnvSetup,
 	useDefaultHandler,
 	useLocator
 } from './handler';
@@ -32,7 +32,7 @@ export function useCookieDough() {
 			useDefaultHandler(recipe);
 			break;
 		case 'setup-env':
-			useEnvSetup(recipe);
+			useInteractiveEnvSetup(recipe);
 			break;
 		case 'edit':
 			console.log('todo: locate > open with default sys editor');

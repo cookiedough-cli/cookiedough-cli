@@ -6,10 +6,12 @@ import {
 	useDataLog,
 	prompt,
 	useFileList,
-	useConfigList
+	useConfigList,
+	useCopyMachine
 } from '../../internal';
+import { resolve } from 'path';
 
-export function useEnvSetup(
+export function useInteractiveEnvSetup(
 	recipe: CookieProcessRecipe
 ) {
 	const home_dir = useHomeDir();
@@ -27,6 +29,11 @@ export function useEnvSetup(
 		if(current_matches.length > 0) {
 			useLog('current config files:', 'info');
 			console.log(current_matches);
+		}
+		else {
+			const out_path = answers.config_path.includes('.json') ? answers.config_path : resolve(answers.config_path, 'crumbs.json');
+			useCopyMachine(resolve(__dirname, '../../../.config/.defaults.json'), out_path);
+			useLog(`wrote config files to: ${out_path}`, 'success');
 		}
 	});
 }
