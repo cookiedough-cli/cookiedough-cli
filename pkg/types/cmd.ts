@@ -28,6 +28,12 @@ export type CLIPrompt = {
 
 export type CrumbPromptNoOp = Promise<void>;
 
+export type CrumbInlineType = {
+	type	 : string | number;
+	key		 : string;
+	required : boolean;
+}
+
 // configuration as an object
 export type CrumbOptions = {
 	path					?: PathConfigOptions; // path related config options
@@ -35,8 +41,9 @@ export type CrumbOptions = {
 	repository				?: RepositoryCrumbs; // options to configure auto repo setup/integrations
 }
 export type CookieCMD = {
-	alias 		?: string[];
+	alias 		 ?: string[];
 	signature	 : COOKIE_CMD_SIG;
+	follow_up_with ?: CrumbInlineType[];
 }
 
 export type COOKIE_CMD_SIG =
@@ -50,9 +57,10 @@ export type COOKIE_CMD_SIG =
 'create-local-flavor'	;
 
 export type CookieProcessRecipe = {
-	_raw_args	: string[];
-	cmd			: COOKIE_CMD_SIG;
+	cmd			: CookieCMD;
 	crumbs		: CrumbOptions;
+	_raw_args	: string[];
+	_raw_cmd	: CookieCMD[];
 }
 
 export type LogLevel = 'verbose' | 'silent' | 'minimal';

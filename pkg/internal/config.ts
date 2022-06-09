@@ -7,7 +7,8 @@ import {
 } from './util';
 import {
 	CrumbFileNames,
-	CrumbOptions
+	CrumbOptions,
+	CrumbFileName
 } from '../types';
 
 export function useConfigList(
@@ -20,7 +21,7 @@ export function useConfigList(
 export function useDirectoryConfig(
 	dir: string
 ): CrumbOptions | null {
-	let match;
+	let match: CrumbFileName;
 	const filesInBase = useFileList(dir);
 	CrumbFileNames.forEach(file => {
 		if(filesInBase.includes(file)) {
@@ -34,7 +35,7 @@ export function useDirectoryConfig(
 	return require(resolve(dir, match));
 }
 
-export function useGlobalConfig():
+export function useGlobalConfigWithCWD():
 CrumbOptions {
 	const wd = process.cwd();
 	let match;
@@ -73,4 +74,14 @@ CrumbOptions {
 	}
 	// return as string
 	//return <CrumbOptions>readFileSync(resolve(base, match), 'utf-8'); //todo - actually set this up
+}
+
+
+export function useConfig(
+	dir ?: string
+): CrumbOptions {
+	if(!dir) {
+		return useGlobalConfigWithCWD();
+	}
+	return useDirectoryConfig(dir);
 }

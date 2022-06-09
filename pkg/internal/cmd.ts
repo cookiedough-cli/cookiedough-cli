@@ -33,10 +33,10 @@ export const COOKIE_CMD_LIST: CookieCMD[] = [
 	}
 ];
 
-export function useCMD(
+export function useCMDRecipe(
 	options: CrumbOptions
 ): CookieProcessRecipe {
-	let valid: COOKIE_CMD_SIG = 'create';
+	let valid: CookieCMD = { signature: 'create' };
 	const inline = process.argv.slice(2);
 	// determine what the context of the command is
 	if(inline.length > 0) {
@@ -44,19 +44,19 @@ export function useCMD(
 		const cmd_list = COOKIE_CMD_LIST.filter(cmd => cmd.signature === inline[0]);
 
 		if(cmd_list.length === 1) {
-			valid = cmd_list[0].signature;
+			valid = cmd_list[0];
 		}
-		if(cmd_list.length > 1) {
-			throw 'error: multiple commands detected';
-		}
+
 		return {
 			_raw_args: inline,
+			_raw_cmd: cmd_list,
 			cmd: valid,
 			crumbs: options
 		};
 	}
 	return {
 		_raw_args: inline,
+		_raw_cmd: [valid],
 		cmd: valid,
 		crumbs: options
 	};

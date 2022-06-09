@@ -5,23 +5,23 @@ import {
 	useLocator
 } from './handler';
 import {
-	useDataLog,
 	useLog,
-	useCMD,
-	useGlobalConfig
+	useCMDRecipe,
+	useGlobalConfigWithCWD
 } from '../internal';
 /**
- * @function useCookieDough
- * @description entry point for command-line interface
- * @returns entry point to cli
+ * @public
+ * entry point for command-line interface
+ * handles the command entered at the top level, then passes to the appropriate handler
  */
 export function useCookieDough() {
-	const recipe = useCMD(useGlobalConfig());
+	// get the config file from either the working directory or the global path
+	const recipe = useCMDRecipe(useGlobalConfigWithCWD());
 	if(recipe.crumbs.process.log_level === 'verbose') {
 		useLog('Recipe Found:', 'success');
 		console.log(recipe);
 	}
-	switch(recipe.cmd) {
+	switch(recipe.cmd.signature) {
 		case 'locate':
 			useLocator();
 			break;
