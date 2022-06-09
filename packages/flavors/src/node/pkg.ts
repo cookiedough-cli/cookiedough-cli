@@ -12,12 +12,13 @@ import {
 	RollupTSModules,
 	GulpTSModules,
 	NodeModulePackager,
-	asNodeModulePackager
+	asNodeModulePackager,
+	MappedNodeFlavorRecipe
 } from '@cookiedough/types';
 
 export const NodePresetPackageMapper = (
 	np: NodeFlavorRecipe
-): { installer: NodeModulePackager, packages: NodeModule[] } => {
+): MappedNodeFlavorRecipe => {
 	let installer: NodeModulePackager;
 
 	switch(np.pkg_mgr) {

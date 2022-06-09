@@ -13,19 +13,14 @@ export type NodeFlavorRecipe = {
 	eslint			: boolean;
 }
 
-// export type PresetToFileMapArgs = {
-// 	config: CrumbOptions,
-// 	recipe: NodeFlavor,
-// 	installer: NodeFlavorBuildTool,
-// 	packages: NodeModule[]
-// }
-
 export interface NodeBuildInfo {
 	build_root			: string,
 	build_host			: SystemOverview,
 	build_preferences	: NodeFlavorRecipe,
-	build_packages		: Tuple[]
+	build_frecipe		: MappedNodeFlavorRecipe
 }
+
+export type MappedNodeFlavorRecipe = { installer: NodeModulePackager, packages: NodeModule[] };
 
 export type NodeModule = Tuple;
 export interface ToInstallModule {
