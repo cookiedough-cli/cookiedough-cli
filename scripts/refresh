@@ -1,2 +1,0 @@
-#!/bin/bash
-./scripts/search-and-destroy && ./scripts/remove-old && ./scripts/setup && node index

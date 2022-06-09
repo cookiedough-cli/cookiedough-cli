@@ -1,17 +1,20 @@
 {
   "name": "cookiedough",
   "version": "0.1.0",
-  "bin": "bin/index.js",
-  "main": "bin/index.js",
-  "repository": "git@github.com:abschill/creamery-cli.git",
-  "homepage": "https://github.com/abschill/creamery-cli",
+  "bin": "cjs/cmd/index.js",
+  "main": "cjs/cmd/index.js",
+  "repository": "git@github.com:abschill/cookiedough-cli.git",
+  "homepage": "https://github.com/abschill/cookiedough-cli",
   "author": "abschill",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "scripts": {
-    "build:docs": "typedoc",
-    "build:release": "tsc",
-    "build": "tsc",
-    "run:test": "node bin"
+	"build:dry": "./scripts/build/dry-list",
+    "build:docs": "./scripts/build/docs",
+    "build:release": "./scripts/clean/remove-old && ./scripts/build/tsc",
+    "build": "./scripts/build/tsc",
+    "setup": "chmod +x ./scripts/**/* && ./scripts/setup",
+	"run:base": "./scripts/run/base",
+	"run:locate": "/scripts/run/locate"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
@@ -19,7 +22,7 @@
     "@types/node": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
-    "eslint": "^8.15.0",
+    "eslint": "^8.17.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "lerna": "^5.0.0",
     "listr": "^0.14.3",
@@ -30,14 +33,10 @@
     "yargs": "^17.4.1"
   },
   "dependencies": {
-    "@cookiedough/flavors": "file:./packages/flavors",
-    "@cookiedough/internal": "file:/./packages/internal",
-    "@cookiedough/types": "file:/./packages/types",
     "cli-spinner": "^0.2.10",
     "fs-extra": "^10.1.0",
     "inquirer": "^8.2.4",
-    "module-alias": "^2.2.2",
-    "ts-json-schema-generator": "^1.0.0"
+    "module-alias": "^2.2.2"
   },
   "man": [
     "./.assets/manpage.txt"

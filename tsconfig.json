@@ -1,13 +1,12 @@
 {
 	"extends": "./.config/tsbase.json",
     "compilerOptions": {
-        "outDir": "bin",
-		"baseUrl": "./",
-		"rootDirs": [
-			"cmd/*"
-		]
+        "outDir": "cjs",
+		"rootDirs": ["./pkg/cmd", "./pkg/types", "./pkg/flavors", "./pkg/internal"],
+		"baseUrl": "./pkg"
     },
 	"include": [
-		"cmd/**/*"
+		"pkg/cmd/**/*",
+		"pkg/**/*"
 	]
 }

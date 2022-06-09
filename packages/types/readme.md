@@ -1,3 +1,0 @@
-# @cookiedough/types
-
-type defs
