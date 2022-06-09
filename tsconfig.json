@@ -1,6 +1,7 @@
 {
 	"extends": "./.config/tsbase.json",
     "compilerOptions": {
+		"resolveJsonModule": true,
         "outDir": "cjs",
 		"rootDirs": ["./pkg/cmd", "./pkg/types", "./pkg/flavors", "./pkg/internal"],
 		"baseUrl": "./pkg"

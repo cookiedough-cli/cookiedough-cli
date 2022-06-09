@@ -66,8 +66,8 @@ export function useColor(
 
 export function _log(
 	data		: ValidLogData
-): void {
-	return console.log(data);
+): boolean {
+	return process.stdout.write(`${data}\n`);
 }
 
 export function _warn(

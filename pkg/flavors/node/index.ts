@@ -20,8 +20,23 @@ import {
 	useCopyMachine,
 	useDirExists
 } from '../../internal';
+import { join } from 'path';
 
 const Spinner = require('cli-spinner').Spinner;
+
+export function useFinalPresetCopy(
+	p: CrumbOptions,
+	node_build_info: NodeBuildInfo
+) {
+	const preset_path = '../../../pkg/flavors/node/.recipe';
+	useCopyMachine(join(__dirname, `${preset_path}/../../*/default`), node_build_info.build_root);
+	if(node_build_info.build_preferences.eslint) {
+		useCopyMachine(join(__dirname, `${preset_path}/eslint`), node_build_info.build_root);
+	}
+	if(node_build_info.build_preferences.preset === 'ts') {
+		useCopyMachine(join(__dirname, `${preset_path}/ts`), node_build_info.build_root);
+	}
+}
 
 export function useNodeInstaller(
 	p: CrumbOptions,
@@ -74,12 +89,16 @@ ${useColor('yellow', 'exiting.')}`);
 		}
 
 		useValidWritePath(node_build_info.build_root);
-		const spinner = new Spinner('%s writing files');
+		const spinner = new Spinner('%s writing recipe files');
 		spinner.setSpinnerString('⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈');
 		spinner.start();
 		setTimeout(() => {
 			useNodeInstaller(p, node_build_info);
 			spinner.stop(true);
+
+			setTimeout(() => {
+				useFinalPresetCopy(p, node_build_info);
+			}, 100);
 		}, 300);
 
 	})).catch(console.error);
