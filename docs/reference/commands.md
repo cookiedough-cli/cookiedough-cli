@@ -25,5 +25,5 @@ sets a value to a key at the globalmost config file it can find
 put together config recipe from context and detect any issues. If none are found, look for the local installation and try to debug that.
 - **`locate`**
 locate the closest recipe and print
-- **`create-local-flavor`**
-interactive cli for bootstrapping a valid flavor template setup
+- **`create-flavor`**
+interactive cli for bootstrapping a valid flavor template setup in the local environment
