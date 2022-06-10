@@ -24,6 +24,10 @@ import { FlavorInquiry } from './constants';
 export function useCreate(
 	recipe	: CookieProcessRecipe
 ) {
+	if(recipe.crumbs.process && recipe.crumbs.process.log_level && recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
+		useLog('Recipe Found:', 'success');
+		console.log(recipe);
+	}
 	if(recipe.crumbs.process.dry) {
 		useLog('dry mode, exiting', 'info');
 		return;
@@ -65,3 +69,4 @@ export * from './setup-env';
 export * from './doctor';
 export * from './locate';
 export * from './help';
+export * from './edit';

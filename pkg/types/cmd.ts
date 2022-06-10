@@ -41,9 +41,9 @@ export type CrumbOptions = {
 	repository				?: RepositoryCrumbs; // options to configure auto repo setup/integrations
 }
 export type CookieCMD = {
-	alias 		 ?: string[];
-	signature	 : CookieCMDSignature;
-	follow_up_with ?: CrumbInlineType[];
+	alias 		 	?: string[];
+	signature	 	: CookieCMDSignature;
+	follow_up_with 	?: CrumbInlineType[];
 }
 
 export type CookieCMDSignature =
@@ -53,9 +53,9 @@ export type CookieCMDSignature =
 'add' 					|
 'locate' 				|
 'set' 					|
-'setup-env'				|
+'setup'					|
 'help'					|
-'create-local-flavor'	;
+'create-flavor'			;
 
 export type CookieProcessRecipe = {
 	cmd			: CookieCMD;

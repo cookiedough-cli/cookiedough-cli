@@ -1,14 +1,9 @@
 {
 	"path": {
-		"out": "__fixtures__/.test0",
-		"root_config": null
+		"out": "__fixtures__/test0"
 	},
 	"process": {
-		"add_files_from": null,
-		"always_use_prompt": true,
 		"default_template": null,
-		"detatched": false,
-		"dry": false,
 		"overwrite_existing_out": false,
 		"allow_cwd_write": false
 	}

@@ -3,33 +3,37 @@ import {
 	CookieProcessRecipe,
 	CrumbOptions
 } from '../types';
-import { useGlobalConfigWithCWD } from './config';
-import { useDefaultConfig } from './config';
-export const COOKIE_CMD_LIST: CookieCMD[] = [
+import {
+	useDefaultConfig,
+	useDirectoryConfig,
+	useGlobalConfigWithCWD
+} from './config';
+export const CMDList: CookieCMD[] = [
 	{
 		signature: 'create',
-		alias: [
-			'',
-			null
-		]
+		alias: ['', null]
 	},
 	{
-		signature: 'edit'
+		signature: 'edit',
+		alias: ['edit-env', 'edit-config']
 	},
 	{
-		signature: 'doctor'
+		signature: 'doctor',
+		alias: ['fix', 'ihelp']
 	},
 	{
-		signature: 'set'
+		signature: 'set',
+		alias : ['set-env', 'set-config']
 	},
 	{
-		signature: 'create-local-flavor'
+		signature: 'create-flavor'
 	},
 	{
 		signature: 'locate'
 	},
 	{
-		signature: 'setup-env'
+		signature: 'setup',
+		alias: ['setup-env']
 	},
 	{
 		signature: 'help',
@@ -43,21 +47,30 @@ export function useCMDRecipe(): CookieProcessRecipe {
 	// determine what the context of the command is
 	if(inline.length > 0) {
 		// command to run, validate it
-		const cmd_list = COOKIE_CMD_LIST.filter(cmd => cmd.signature === inline[0]);
-
+		const cmd_list = CMDList.filter(cmd => cmd.signature === inline[0]);
+		if(cmd_list.length === 1) {
+			valid = cmd_list[0];
+		}
 		let crumbs;
 
 		if(inline.length > 1) {
 			if(inline.includes('--no-config')) {
 				crumbs = useDefaultConfig('../..');
 			}
+			else if(inline.includes('-c') || inline.includes('--config')) {
+				if(valid.signature === 'create' && !inline.includes('create')) {
+					const dirConf = useDirectoryConfig(inline[1] || '.');
+					crumbs = dirConf
+				}
+				else {
+					const dirConf = useDirectoryConfig(inline[2] || '.');
+					crumbs = dirConf
+				}
+				console.log(crumbs);
+			}
 			else {
 				crumbs = useGlobalConfigWithCWD();
 			}
-		}
-
-		if(cmd_list.length === 1) {
-			valid = cmd_list[0];
 		}
 
 		return {

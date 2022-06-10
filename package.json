@@ -16,6 +16,8 @@
     "run:base": "./scripts/run/base",
     "run:locate": "./scripts/run/locate",
 	"run:help": "./scripts/run/help",
+	"run:edit": "./scripts/run/edit",
+	"run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha"
   },
   "devDependencies": {

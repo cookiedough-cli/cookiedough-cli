@@ -3,10 +3,10 @@ import {
 	useInteractiveEnvSetup,
 	useCreate,
 	useLocator,
-	useHelp
+	useHelp,
+	useInteractiveEdit
 } from './handler';
 import {
-	useLog,
 	useCMDRecipe,
 	_log
 } from '../internal';
@@ -16,27 +16,22 @@ import {
  * handles the command entered at the top level, then passes to the appropriate handler
  */
 export function useCookieDough() {
-	// get the config file from either the working directory or the global path
 	const recipe = useCMDRecipe();
-	if(recipe.crumbs.process && recipe.crumbs.process.log_level && recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
-		useLog('Recipe Found:', 'success');
-		console.log(recipe);
-	}
 	switch(recipe.cmd.signature) {
 		case 'locate':
 			useLocator();
 			break;
-		case 'create-local-flavor':
+		case 'create-flavor':
 			_log('todo: generate local flavor');
 			break;
 		case 'create':
 			useCreate(recipe);
 			break;
-		case 'setup-env':
+		case 'setup':
 			useInteractiveEnvSetup(recipe);
 			break;
 		case 'edit':
-			_log('todo: locate > open with default sys editor');
+			useInteractiveEdit(recipe);
 			break;
 		case 'doctor':
 			useDoctor(recipe);
