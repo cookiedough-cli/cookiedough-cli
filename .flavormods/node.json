@@ -1,6 +1,6 @@
 {
 	"tag_name": "node",
-	"irecipe_path": "../pkg/flavors/node/",
+	"recipe_path": "$PKG_ROOT/pkg/flavors/node/",
 	"doughmap": {
 		"eslint": {
 			"type": "boolean",
