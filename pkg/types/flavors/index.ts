@@ -1,13 +1,10 @@
-import {
-	ListChoiceMap
-} from 'inquirer';
 export type FlavorAttribute = string;
 export type FlavorAttributes = FlavorAttribute[];
 
 export type FlavorDoughType = "list" | "boolean" | "string";
 
 export type FlavorDough<T> = {
-	key: string;
+	name: string;
 	type: FlavorDoughType;
 	default : T;
 	choices ?: T[];

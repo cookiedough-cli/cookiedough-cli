@@ -42,7 +42,7 @@ export function useNodeInstaller(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo
 ) {
-	const install_cmd = `${node_build_info.build_frecipe.installer.name} init -y && ${node_build_info.build_frecipe.installer.name} ${node_build_info.build_frecipe.installer.installPkgSignature}`;
+	const install_cmd = `${p.process.shell_prefix ?? ''}${node_build_info.build_frecipe.installer.name} init -y && ${node_build_info.build_frecipe.installer.name} ${node_build_info.build_frecipe.installer.installPkgSignature}`;
 	const install_dev_list = node_build_info.build_frecipe.packages.filter(pkg => pkg[1] === '-D').map(pkg => pkg[0]).join(' ');
 	_callFrom(node_build_info.build_root, `${install_cmd} -D ${install_dev_list}`);
 	if(p.process.add_files_from) {

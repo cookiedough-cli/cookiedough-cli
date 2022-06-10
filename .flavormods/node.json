@@ -3,22 +3,8 @@
 	"recipe_path": "$PKG_ROOT/pkg/flavors/node/",
 	"doughmap": [
 		{
-			"key": "eslint",
-			"type": "boolean",
-			"default": false
-		},
-		{
-			"key": "preset",
-			"type": "list",
-			"default": "cjs",
-			"choices": [
-				"cjs",
-				"esm",
-				"ts"
-			]
-		},
-		{
-			"key": "pkg_mgr",
+			"name": "pkg_mgr",
+			"message": "select package manager",
 			"type": "list",
 			"default": "npm",
 			"choices": [
@@ -28,7 +14,18 @@
 			]
 		},
 		{
-			"key": "build_tools",
+			"name": "preset",
+			"message": "select flavor preset",
+			"type": "list",
+			"default": "cjs",
+			"choices": [
+				"cjs",
+				"esm",
+				"ts"
+			]
+		},
+		{
+			"name": "build_tools",
 			"type": "list",
 			"default": "none",
 			"choices": [
@@ -39,7 +36,7 @@
 			]
 		},
 		{
-			"key": "compiler",
+			"name": "compiler",
 			"type": "list",
 			"default": "none",
 			"choices": [
@@ -50,7 +47,7 @@
 			]
 		},
 		{
-			"key": "bundler",
+			"name": "bundler",
 			"type": "list",
 			"default": "none",
 			"choices": [
@@ -60,6 +57,12 @@
 				"swcpack",
 				"esbuild"
 			]
+		},
+		{
+			"name": "eslint",
+			"message": "configure linter?",
+			"type": "confirm",
+			"default": false
 		}
 	]
 }
