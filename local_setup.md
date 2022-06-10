@@ -2,7 +2,8 @@
 
 ## requirements
 - nodejs
-having node means you have python installed, so I wont bother listing
+- git
+- yarn(optional) - you can sub it out with npm just dont PR a package-lock file
 
 
 ## first steps
