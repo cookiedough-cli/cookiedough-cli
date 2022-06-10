@@ -11,6 +11,13 @@ import {
 	CrumbFileName
 } from '../types';
 
+// only use this from cmd or alter path
+export function useDefaultConfig(
+	context_depth: string
+) {
+	return require(resolve(__dirname, `${context_depth}/.config/.defaults.json`));
+}
+
 export function useConfigList(
 	dir: string
 ): string[] {

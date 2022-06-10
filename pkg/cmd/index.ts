@@ -8,7 +8,6 @@ import {
 import {
 	useLog,
 	useCMDRecipe,
-	useGlobalConfigWithCWD,
 	_log
 } from '../internal';
 /**
@@ -18,8 +17,8 @@ import {
  */
 export function useCookieDough() {
 	// get the config file from either the working directory or the global path
-	const recipe = useCMDRecipe(useGlobalConfigWithCWD());
-	if(recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
+	const recipe = useCMDRecipe();
+	if(recipe.crumbs.process && recipe.crumbs.process.log_level && recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
 		useLog('Recipe Found:', 'success');
 		console.log(recipe);
 	}
