@@ -14,7 +14,8 @@
     "build": "./scripts/build/tsc",
     "setup": "chmod +x ./scripts/**/* && ./scripts/setup",
     "run:base": "./scripts/run/base",
-    "run:locate": "/scripts/run/locate",
+    "run:locate": "./scripts/run/locate",
+	"run:help": "./scripts/run/help",
     "test": "nyc mocha"
   },
   "devDependencies": {
@@ -34,6 +35,7 @@
   },
   "dependencies": {
     "cli-spinner": "^0.2.10",
+    "cli-spinners": "^2.6.1",
     "fs-extra": "^10.1.0",
     "inquirer": "^8.2.4"
   },

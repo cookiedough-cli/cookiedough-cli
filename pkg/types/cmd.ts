@@ -42,11 +42,11 @@ export type CrumbOptions = {
 }
 export type CookieCMD = {
 	alias 		 ?: string[];
-	signature	 : COOKIE_CMD_SIG;
+	signature	 : CookieCMDSignature;
 	follow_up_with ?: CrumbInlineType[];
 }
 
-export type COOKIE_CMD_SIG =
+export type CookieCMDSignature =
 'create' 				|
 'doctor' 				|
 'edit' 					|
@@ -54,6 +54,7 @@ export type COOKIE_CMD_SIG =
 'locate' 				|
 'set' 					|
 'setup-env'				|
+'help'					|
 'create-local-flavor'	;
 
 export type CookieProcessRecipe = {

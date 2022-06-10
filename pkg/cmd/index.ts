@@ -2,7 +2,8 @@ import {
 	useDoctor,
 	useInteractiveEnvSetup,
 	useDefaultHandler,
-	useLocator
+	useLocator,
+	useHelp
 } from './handler';
 import {
 	useLog,
@@ -17,7 +18,7 @@ import {
 export function useCookieDough() {
 	// get the config file from either the working directory or the global path
 	const recipe = useCMDRecipe(useGlobalConfigWithCWD());
-	if(recipe.crumbs.process.log_level === 'verbose') {
+	if(recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
 		useLog('Recipe Found:', 'success');
 		console.log(recipe);
 	}
@@ -39,6 +40,9 @@ export function useCookieDough() {
 			break;
 		case 'doctor':
 			useDoctor(recipe);
+			break;
+		case 'help':
+			useHelp();
 			break;
 	}
 }

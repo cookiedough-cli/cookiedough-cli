@@ -3,7 +3,8 @@ import {
 	ensureDirSync,
 	readdirSync,
 	emptyDirSync,
-	existsSync
+	existsSync,
+	readFileSync
 } from 'fs-extra';
 import {
 	homedir,
@@ -11,6 +12,7 @@ import {
 	platform,
 	type
 } from 'os';
+import { resolve } from 'path';
 import  { SystemOverview } from '../../types';
 
 export function useSysInfo():
@@ -74,4 +76,8 @@ export function useCopyMachine(
 	dest: string
 ) {
 	return copySync(src, dest);
+}
+
+export function useManPage() {
+	return readFileSync(resolve(__dirname, '../../../.assets/manpage.txt'), 'utf8');
 }

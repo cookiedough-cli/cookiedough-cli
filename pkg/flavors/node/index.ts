@@ -18,7 +18,9 @@ import {
 	useFileList,
 	usePowerWasher,
 	useCopyMachine,
-	useDirExists
+	useDirExists,
+	spinners,
+	useSpinner
 } from '../../internal';
 import { join } from 'path';
 
@@ -89,17 +91,17 @@ ${useColor('yellow', 'exiting.')}`);
 		}
 
 		useValidWritePath(node_build_info.build_root);
-		const spinner = new Spinner('%s writing recipe files');
-		spinner.setSpinnerString('⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈');
-		spinner.start();
-		setTimeout(() => {
+		// const spinner = new Spinner('%s writing recipe files');
+		// spinner.setSpinnerString('⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈');
+		// spinner.start();
+		useSpinner(spinners.bluePulse, () => {
 			useNodeInstaller(p, node_build_info);
-			spinner.stop(true);
-
-			setTimeout(() => {
+			console.clear();
+			useSpinner(spinners.aesthetic, () => setTimeout(() => {
 				useFinalPresetCopy(p, node_build_info);
-			}, 100);
-		}, 300);
+			}, 180), 2);
+		}, 3);
+
 
 	})).catch(console.error);
 }

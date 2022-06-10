@@ -1,6 +1,5 @@
 import {
 	CookieCMD,
-	COOKIE_CMD_SIG,
 	CookieProcessRecipe,
 	CrumbOptions
 } from '../types';
@@ -30,6 +29,10 @@ export const COOKIE_CMD_LIST: CookieCMD[] = [
 	},
 	{
 		signature: 'setup-env'
+	},
+	{
+		signature: 'help',
+		alias: ['manpage', 'man']
 	}
 ];
 

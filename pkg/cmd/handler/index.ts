@@ -63,3 +63,4 @@ function useFlavorPrompt(
 export * from './setup-env';
 export * from './doctor';
 export * from './locate';
+export * from './help';
