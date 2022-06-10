@@ -1,0 +1,59 @@
+{
+	"tag_name": "node",
+	"irecipe_path": "../pkg/flavors/node/",
+	"doughmap": {
+		"eslint": {
+			"type": "boolean",
+			"default": false
+		},
+		"preset": {
+			"type": "union",
+			"default": "cjs",
+			"options": [
+				"cjs",
+				"esm",
+				"ts"
+			]
+		},
+		"pkg_mgr": {
+			"type": "union",
+			"default": "npm",
+			"options": [
+				"npm",
+				"yarn",
+				"pnpm"
+			]
+		},
+		"build_tools": {
+			"type": "union",
+			"default": "none",
+			"options": [
+				"none",
+				"gulp",
+				"esbuild",
+				"grunt"
+			]
+		},
+		"compiler": {
+			"type": "union",
+			"default": "none",
+			"options": [
+				"none",
+				"babel",
+				"swc",
+				"esbuild"
+			]
+		},
+		"bundler": {
+			"type": "union",
+			"default": "none",
+			"options": [
+				"none",
+				"rollup",
+				"webpack",
+				"swcpack",
+				"esbuild"
+			]
+		}
+	}
+}
