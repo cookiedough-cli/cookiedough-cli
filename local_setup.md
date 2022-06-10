@@ -3,8 +3,8 @@
 ## requirements
 - nodejs
 - git
-- yarn(optional) - you can sub it out with npm just dont PR a package-lock file
-
+- yarn
+- make(optional) - just a little proxy for yarn for initial setup
 
 ## first steps
 
@@ -14,8 +14,13 @@ cd cookiedough-cli
 ```
 
 ```
+make
+```
+or
+```
 yarn setup
 ```
+
 this will enable x permissions on the scripts dir and get you up and running with the installation/build
 
 ```
