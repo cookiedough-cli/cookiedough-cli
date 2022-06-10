@@ -10,7 +10,7 @@ import {
 import {
 	prompt,
 	useDataLog,
-	useLog,
+	useLog
 } from '../../internal';
 import {
 	NodeFlavor,
@@ -21,8 +21,8 @@ import {
 } from '../../flavors';
 import { FlavorInquiry } from './constants';
 
-export function useDefaultHandler(
-	recipe: CookieProcessRecipe
+export function useCreate(
+	recipe	: CookieProcessRecipe
 ) {
 	if(recipe.crumbs.process.dry) {
 		useLog('dry mode, exiting', 'info');
@@ -34,13 +34,14 @@ export function useDefaultHandler(
 		return;
 	}
 	else {
-		prompt([FlavorInquiry]).then(({flavor}) => useFlavorPrompt(flavor, recipe.crumbs))//.then((options: { template: CookieFlavor }) => usePrompt(options.template, config.path.out));
+		prompt([FlavorInquiry]).then(({flavor}) =>
+		useFlavorPrompt(flavor, recipe.crumbs));
 	}
 }
 
 function useFlavorPrompt(
-	tag: CookieFlavor,
-	config: CrumbOptions
+	tag		: CookieFlavor,
+	config	: CrumbOptions
 ) {
 	switch(tag) {
 		case 'c':

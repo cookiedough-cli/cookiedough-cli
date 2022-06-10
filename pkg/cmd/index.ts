@@ -1,14 +1,15 @@
 import {
 	useDoctor,
 	useInteractiveEnvSetup,
-	useDefaultHandler,
+	useCreate,
 	useLocator,
 	useHelp
 } from './handler';
 import {
 	useLog,
 	useCMDRecipe,
-	useGlobalConfigWithCWD
+	useGlobalConfigWithCWD,
+	_log
 } from '../internal';
 /**
  * @public
@@ -27,16 +28,16 @@ export function useCookieDough() {
 			useLocator();
 			break;
 		case 'create-local-flavor':
-			console.log('todo: generate local flavor');
+			_log('todo: generate local flavor');
 			break;
 		case 'create':
-			useDefaultHandler(recipe);
+			useCreate(recipe);
 			break;
 		case 'setup-env':
 			useInteractiveEnvSetup(recipe);
 			break;
 		case 'edit':
-			console.log('todo: locate > open with default sys editor');
+			_log('todo: locate > open with default sys editor');
 			break;
 		case 'doctor':
 			useDoctor(recipe);

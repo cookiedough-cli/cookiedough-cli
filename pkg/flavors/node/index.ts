@@ -91,9 +91,6 @@ ${useColor('yellow', 'exiting.')}`);
 		}
 
 		useValidWritePath(node_build_info.build_root);
-		// const spinner = new Spinner('%s writing recipe files');
-		// spinner.setSpinnerString('⠁⠁⠉⠙⠚⠒⠂⠂⠒⠲⠴⠤⠄⠄⠤⠠⠠⠤⠦⠖⠒⠐⠐⠒⠓⠋⠉⠈⠈');
-		// spinner.start();
 		useSpinner(spinners.bluePulse, () => {
 			useNodeInstaller(p, node_build_info);
 			console.clear();

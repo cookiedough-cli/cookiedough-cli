@@ -1,5 +1,8 @@
-import { useManPage } from '../../internal';
+import {
+	useManPage,
+	log
+} from '../../internal';
 
 export function useHelp() {
-	console.log(useManPage());
+	log(useManPage());
 }
