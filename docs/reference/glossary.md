@@ -5,6 +5,6 @@
 - **flavor**
 	- a root type for a given project (usually language/framework)
 - **dough**
-	- a configuration file / set of inline options / set of configuration files / mix of all, basically a set of user preferences during runtime
+	- a flavor-specific set of configuration options
 - **crumb**
-	- a config/dough attribute or subobject
+	- a recipe/dough attribute or subobject

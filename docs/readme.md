@@ -9,4 +9,4 @@ npx cookiedough
 ```
 runs the default setup prompt
 
-[More Information](reference/configuration.md)
+[More Information](/docs/reference/readme.md)
