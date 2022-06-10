@@ -80,6 +80,10 @@ export const BabelTSModules: NodeModule[] = [
 	['@babel/plugin-preset-typescript', '-D']
 ];
 
+export const SWCPackModules: NodeModule[] = [
+	['swcpack', '-D']
+]
+
 export const GulpModules: NodeModule[] = [
 	['gulp-cli', '-g'],
 	['gulp', '-D']
@@ -88,6 +92,11 @@ export const GulpModules: NodeModule[] = [
 export const GulpTSModules: NodeModule[] = [
 	['gulp-typescript', '-D']
 ];
+
+export const RollupModules: NodeModule[] = [
+	['rollup', '-g'],
+	['@rollup/plugin-json', '-D']
+]
 
 export const RollupTSModules: NodeModule[] = [
 	['@rollup/plugin-typescript', '-D']

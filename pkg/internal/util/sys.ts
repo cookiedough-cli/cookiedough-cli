@@ -82,12 +82,8 @@ export function useManPage() {
 	return readFileSync(resolve(__dirname, '../../../.assets/manpage.txt'), 'utf8');
 }
 
-export function useFlavorMods() {
-	return useFileList(join(__dirname, '../../../.flavormods'));
-}
-
 export function useFlavorMod(
 	mod: DoughFlavor
 ) {
-	return require(join(__dirname, '../../../.flavormods/', `${mod}.json`));
+	return require(join(__dirname, `../../../.flavormods/${mod}`, 'flavor.json'));
 }

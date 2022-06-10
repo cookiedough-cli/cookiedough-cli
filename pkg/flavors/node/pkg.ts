@@ -9,11 +9,13 @@ import {
 	ESLintTSModules,
 	BabelBaseModules,
 	BabelTSModules,
+	RollupModules,
 	RollupTSModules,
 	GulpTSModules,
 	NodeModulePackager,
 	asNodeModulePackager,
-	MappedNodeFlavorRecipe
+	MappedNodeFlavorRecipe,
+	SWCPackModules
 } from '../../types';
 
 export const NodePresetPackageMapper = (
@@ -88,10 +90,10 @@ export const NodePresetPackageMapper = (
 			if(np.compiler === 'babel') needsPackage.push(['babel-loader', '-D']);
 			break;
 		case 'rollup':
-			needsPackage.push(['rollup', '-D']);
+			RollupModules.forEach(m => needsPackage.push(m));
 			break;
 		case 'swcpack':
-			needsPackage.push(['swcpack', '-D']);
+			SWCPackModules.forEach(m => needsPackage.push(m));
 	}
 	// return package list
 	return {
