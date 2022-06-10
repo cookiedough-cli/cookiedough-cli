@@ -1,7 +1,6 @@
 // default flavors included in the bundle
 export type DoughFlavor =
 'node'   |
-'deno'   |
 'go'     |
 'c'      |
 'c++'	 |

@@ -23,18 +23,21 @@ import {
 	useSpinner
 } from '../../internal';
 import { join } from 'path';
+const preset_path = '../../../pkg/flavors/node/.recipe';
 
 export function useFinalPresetCopy(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo
 ) {
-	const preset_path = '../../../pkg/flavors/node/.recipe';
-	useCopyMachine(join(__dirname, `${preset_path}/../../*/default`), node_build_info.build_root);
+	const preset_root = join(__dirname, preset_path);
+
+	useCopyMachine(join(preset_root, '/../../*/default'), node_build_info.build_root);
+	useCopyMachine(join(preset_root, '*'), node_build_info.build_root);
 	if(node_build_info.build_preferences.eslint) {
-		useCopyMachine(join(__dirname, `${preset_path}/eslint`), node_build_info.build_root);
+		useCopyMachine(join(preset_root, 'eslint'), node_build_info.build_root);
 	}
 	if(node_build_info.build_preferences.preset === 'ts') {
-		useCopyMachine(join(__dirname, `${preset_path}/ts`), node_build_info.build_root);
+		useCopyMachine(join(preset_root, 'ts'), node_build_info.build_root);
 	}
 }
 
@@ -82,21 +85,19 @@ in your config file.
 ${useColor('yellow', 'exiting.')}`);
 		process.exit(0);
 		}
+		useValidWritePath(node_build_info.build_root);
 
 		if(p.process.overwrite_existing_out && (useFileList(node_build_info.build_root).length > 0)) {
 			useLog('power washing directory');
 			usePowerWasher(node_build_info.build_root);
 		}
 
-		useValidWritePath(node_build_info.build_root);
 		useSpinner(spinners.bluePulse, () => {
 			useNodeInstaller(p, node_build_info);
 			console.clear();
-			useSpinner(spinners.aesthetic, () => setTimeout(() => {
+			useSpinner(spinners.bouncingBall, () => setTimeout(() => {
 				useFinalPresetCopy(p, node_build_info);
 			}, 180), 2);
-		}, 3);
-
-
+		});
 	})).catch(console.error);
 }

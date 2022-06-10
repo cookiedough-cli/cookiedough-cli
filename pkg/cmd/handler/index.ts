@@ -16,10 +16,9 @@ import {
 	NodeFlavor,
 	PyFlavor,
 	CFlavor,
-	DenoFlavor,
 	GoFlavor
 } from '../../flavors';
-import { FlavorInquiry } from './constants';
+import { FlavorInquiry } from '../../internal/constants';
 
 export function useCreate(
 	recipe	: CookieProcessRecipe
@@ -53,8 +52,6 @@ function useFlavorPrompt(
 			return CFlavor.usePrompt(config);
 		case 'go':
 			return GoFlavor.usePrompt(config);
-		case 'deno':
-			return DenoFlavor.usePrompt(config);
 		case 'python':
 			return PyFlavor.usePrompt(config);
 		case 'node':

@@ -17,7 +17,6 @@ export type FlavorDeclarationJSON = {
 }
 
 export * from './c';
-export * from './deno';
 export * from './go';
 export * from './node';
 export * from './python';
