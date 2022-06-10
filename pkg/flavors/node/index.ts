@@ -24,8 +24,6 @@ import {
 } from '../../internal';
 import { join } from 'path';
 
-const Spinner = require('cli-spinner').Spinner;
-
 export function useFinalPresetCopy(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo

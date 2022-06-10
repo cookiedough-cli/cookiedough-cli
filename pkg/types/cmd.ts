@@ -1,5 +1,5 @@
 // default flavors included in the bundle
-export type CookieFlavor =
+export type DoughFlavor =
 'node'   |
 'deno'   |
 'go'     |
@@ -73,7 +73,7 @@ export type ProcessCrumbs = {
 	add_files_from			?: string[]; // directories to copy files into the new project from
 	allow_cwd_write			?: boolean;
 	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
-	default_template    	?: CookieFlavor; // name of template to run against prompter
+	default_template    	?: DoughFlavor; // name of template to run against prompter
 	detatched				?: boolean; // run in caller process or spawn its own
 	dry						?: boolean; // run without doing anything, just print the would-be output
 	log_level				?: LogLevel;

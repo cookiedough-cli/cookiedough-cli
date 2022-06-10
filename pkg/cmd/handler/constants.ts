@@ -1,7 +1,7 @@
 // import cliSpinners from 'cli-spinners';
-import { CookieFlavor } from '../../types';
+import { DoughFlavor } from '../../types';
 import { ListQuestion } from 'inquirer';
-export const Flavors: CookieFlavor[] = [
+export const Flavors: DoughFlavor[] = [
 	'node',
 	'deno',
 	//'go',

@@ -3,7 +3,7 @@
  * @description map handler callbacks to inline cmd signatures
  */
 import {
-	CookieFlavor,
+	DoughFlavor,
 	CookieProcessRecipe,
 	CrumbOptions,
 } from '../../types';
@@ -40,7 +40,7 @@ export function useCreate(
 }
 
 function useFlavorPrompt(
-	tag		: CookieFlavor,
+	tag		: DoughFlavor,
 	config	: CrumbOptions
 ) {
 	switch(tag) {

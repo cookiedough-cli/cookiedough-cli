@@ -12,8 +12,8 @@ import {
 	platform,
 	type
 } from 'os';
-import { resolve } from 'path';
-import  { SystemOverview } from '../../types';
+import { join, resolve } from 'path';
+import  { DoughFlavor, SystemOverview } from '../../types';
 
 export function useSysInfo():
  SystemOverview {
@@ -80,4 +80,14 @@ export function useCopyMachine(
 
 export function useManPage() {
 	return readFileSync(resolve(__dirname, '../../../.assets/manpage.txt'), 'utf8');
+}
+
+export function useFlavorMods() {
+	return useFileList(join(__dirname, '../../../.flavormods'));
+}
+
+export function useFlavorMod(
+	mod: DoughFlavor
+) {
+	return require(join(__dirname, '../../../.flavormods/', `${mod}.json`));
 }

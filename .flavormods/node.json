@@ -1,53 +1,59 @@
 {
 	"tag_name": "node",
 	"recipe_path": "$PKG_ROOT/pkg/flavors/node/",
-	"doughmap": {
-		"eslint": {
+	"doughmap": [
+		{
+			"key": "eslint",
 			"type": "boolean",
 			"default": false
 		},
-		"preset": {
-			"type": "union",
+		{
+			"key": "preset",
+			"type": "list",
 			"default": "cjs",
-			"options": [
+			"choices": [
 				"cjs",
 				"esm",
 				"ts"
 			]
 		},
-		"pkg_mgr": {
-			"type": "union",
+		{
+			"key": "pkg_mgr",
+			"type": "list",
 			"default": "npm",
-			"options": [
+			"choices": [
 				"npm",
 				"yarn",
 				"pnpm"
 			]
 		},
-		"build_tools": {
-			"type": "union",
+		{
+			"key": "build_tools",
+			"type": "list",
 			"default": "none",
-			"options": [
+			"choices": [
 				"none",
 				"gulp",
 				"esbuild",
 				"grunt"
 			]
 		},
-		"compiler": {
-			"type": "union",
+		{
+			"key": "compiler",
+			"type": "list",
 			"default": "none",
-			"options": [
+			"choices": [
 				"none",
 				"babel",
 				"swc",
 				"esbuild"
 			]
 		},
-		"bundler": {
-			"type": "union",
+		{
+			"key": "bundler",
+			"type": "list",
 			"default": "none",
-			"options": [
+			"choices": [
 				"none",
 				"rollup",
 				"webpack",
@@ -55,5 +61,5 @@
 				"esbuild"
 			]
 		}
-	}
+	]
 }
