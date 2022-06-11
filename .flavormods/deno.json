@@ -1,5 +1,0 @@
-{
-	"tag_name": "deno",
-	"recipe_path": "$PKG_ROOT/pkg/flavors/deno/",
-	"doughmap": []
-}

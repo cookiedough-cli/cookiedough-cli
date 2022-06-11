@@ -13,77 +13,57 @@ import {
 	type
 } from 'os';
 import { join, resolve } from 'path';
-import  { DoughFlavor, SystemOverview } from '../../types';
+import  { DoughFlavor, FlavorDeclarationJSON, SystemOverview } from '../../types';
 
-export function useSysInfo():
- SystemOverview {
-	return {
-		arch: arch(),
-		platform: platform(),
-		type: type(),
-		cwd: process.cwd()
-	};
-}
-export function copyDirectory(
-	to: string,
-	from: string,
-	recur: boolean
-): boolean {
-	try {
-		copySync(to, from, {
-			recursive: recur
-		});
-		return true;
-	}
-	catch(e) {
-		return false;
-	}
-}
+const context_depth = '../../../'
 
-export function useValidWritePath(
-	p: string
-): void {
-	return ensureDirSync(p);
-}
-export function useProcessDir() {
-	return process.cwd();
-}
+export const useSysInfo:
+() => SystemOverview =
+() => <SystemOverview>({
+	arch: arch(),
+	platform: platform(),
+	type: type(),
+	cwd: process.cwd()
+});
 
-export function useHomeDir() {
-	return homedir();
-}
-
-export function useDirExists(
-	dir: string
-) {
-	return existsSync(dir);
-}
-
-export function useFileList(
-	dir: string
-) {
-	return readdirSync(dir);
-}
-
-export function usePowerWasher(
-	dir: string
-) {
-	return emptyDirSync(dir);
-}
+export const useValidWritePath = (p: string) => ensureDirSync(p);
+export const useProcessDir = () => process.cwd();
+export const useHomeDir = () => homedir();
+export const useDirExists = (dir: string) => existsSync(dir);
+export const useFileList = (dir: string) => readdirSync(dir);
+export const usePowerWasher = (dir: string) => emptyDirSync(dir);
 
 export function useCopyMachine(
 	src: string,
 	dest: string
-) {
+): void {
 	return copySync(src, dest);
 }
 
-export function useManPage() {
-	return readFileSync(resolve(__dirname, '../../../.assets/manpage.txt'), 'utf8');
+export function useManPage():
+string {
+	return readFileSync(resolve(__dirname, context_depth, '.assets/manpage.txt'), 'utf8');
 }
 
 export function useFlavorMod(
 	mod: DoughFlavor
-) {
-	return require(join(__dirname, `../../../.flavormods/${mod}`, 'flavor.json'));
+): FlavorDeclarationJSON {
+	return require(join(__dirname, `${context_depth}.flavors/${mod}`, 'flavor.json'));
+}
+
+export function validFlavorMod(
+	json: FlavorDeclarationJSON
+): boolean {
+	const keys = Object.keys(json);
+	if(!keys.includes('tag_name')) {
+		return false;
+	}
+	if(!keys.includes('recipe_path')) {
+		return false;
+	}
+	if(!json.doughmap || json.doughmap.length > 1) {
+		return false;
+	}
+
+	return true;
 }

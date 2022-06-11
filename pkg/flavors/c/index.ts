@@ -1,7 +1,4 @@
-import {
-	CMenuOptions,
-	CCMenuOptions
-} from './menu';
+import CMenuOptions from './menu';
 import inquirer from 'inquirer';
 import { CrumbOptions } from '../../types';
 
@@ -13,9 +10,3 @@ export function usePrompt(
 		console.log(answers);
 	});
 }
-// export function usePromptCpp(p: string, inquirer) {
-// 	inquirer.prompt(CCMenuOptions).then(answers => {
-// 		console.log(`c++ project at ${p}`);
-// 		console.log(answers);
-// 	});
-// }

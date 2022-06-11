@@ -1,13 +1,13 @@
 import {
 	CookieCMD,
-	CookieProcessRecipe,
-	CrumbOptions
+	CookieProcessRecipe
 } from '../types';
 import {
 	useDefaultConfig,
 	useDirectoryConfig,
 	useGlobalConfigWithCWD
 } from './config';
+
 export const CMDList: CookieCMD[] = [
 	{
 		signature: 'create',

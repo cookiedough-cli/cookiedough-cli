@@ -1,5 +1,0 @@
-{
-	"tag_name": "go",
-	"recipe_path": "$PKG_ROOT/pkg/flavors/go/",
-	"doughmap": []
-}

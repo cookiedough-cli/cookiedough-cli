@@ -1,0 +1,15 @@
+{
+	"tag_name": "c",
+	"recipe_path": "$PKG_ROOT/pkg/flavors/c/",
+	"doughmap": [
+		{
+			"name": "preset",
+			"type": "list",
+			"default": "c",
+			"choices": [
+				"c",
+				"c++"
+			]
+		}
+	]
+}
