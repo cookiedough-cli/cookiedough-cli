@@ -3,11 +3,13 @@
     "compilerOptions": {
 		"resolveJsonModule": true,
         "outDir": "cjs",
-		"rootDirs": ["./pkg/cmd", "./pkg/types", "./pkg/flavors", "./pkg/internal"],
-		"baseUrl": "./pkg"
+		"rootDir": "cmd",
+		"baseUrl": "./cmd"
     },
 	"include": [
-		"pkg/cmd/**/*",
-		"pkg/**/*"
+		"cmd/**/*"
+	],
+	"exclude": [
+		"tests/**/*"
 	]
 }

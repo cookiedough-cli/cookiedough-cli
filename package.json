@@ -1,8 +1,8 @@
 {
   "name": "cookiedough",
   "version": "0.1.0",
-  "bin": "cjs/cmd/index.js",
-  "main": "cjs/cmd/index.js",
+  "bin": "cjs/index.js",
+  "main": "cjs/index.js",
   "repository": "git@github.com:abschill/cookiedough-cli.git",
   "homepage": "https://github.com/abschill/cookiedough-cli",
   "author": "abschill",
@@ -15,9 +15,9 @@
     "setup": "chmod +x ./scripts/**/* && ./scripts/setup",
     "run:base": "./scripts/run/base",
     "run:locate": "./scripts/run/locate",
-	"run:help": "./scripts/run/help",
-	"run:edit": "./scripts/run/edit",
-	"run:oconfig": "./scripts/run/otherconfig",
+    "run:help": "./scripts/run/help",
+    "run:edit": "./scripts/run/edit",
+    "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha"
   },
   "devDependencies": {
