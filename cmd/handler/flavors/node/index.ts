@@ -17,8 +17,8 @@ import {
 	useSpinner,
 	CrumbOptions,
 	CrumbPromptNoOp
-} from '../../..';
-import { useFlavorMod } from '../../../../internal';
+} from '../..';
+import { useFlavorMod } from '../../../internal';
 export type NodeFlavorRecipe = {
 	preset			: NodeFlavorPreset;
 	pkg_mgr			: NodeFlavorPkg;
@@ -151,7 +151,7 @@ export type NodeRecipeToFileMap = {
 
 import { join } from 'path';
 const NodeFlavor = useFlavorMod('node');
-const preset_path = '../../../pkg/flavors/node/.recipe';
+const preset_path = '../../../../../.flavors/_copy_';
 const NodeUserOptions = NodeFlavor.doughmap;
 export function useFinalPresetCopy(
 	p: CrumbOptions,
@@ -159,13 +159,13 @@ export function useFinalPresetCopy(
 ) {
 	const preset_root = join(__dirname, preset_path);
 
-	useCopyMachine(join(preset_root, '/../../*/default'), node_build_info.build_root);
-	useCopyMachine(join(preset_root, '*'), node_build_info.build_root);
+	useCopyMachine(join(preset_root, '*/default'), node_build_info.build_root);
+	useCopyMachine(join(preset_root, 'node/*'), node_build_info.build_root);
 	if(node_build_info.build_preferences.eslint) {
-		useCopyMachine(join(preset_root, 'eslint'), node_build_info.build_root);
+		useCopyMachine(join(preset_root, 'node/eslint'), node_build_info.build_root);
 	}
 	if(node_build_info.build_preferences.preset === 'ts') {
-		useCopyMachine(join(preset_root, 'ts'), node_build_info.build_root);
+		useCopyMachine(join(preset_root, 'node/ts'), node_build_info.build_root);
 	}
 }
 

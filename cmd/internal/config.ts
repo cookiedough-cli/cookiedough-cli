@@ -1,5 +1,4 @@
 import { resolve } from 'path';
-import DEFAULTS from './.config/.defaults.json';
 import {
 	useFileList,
 	useHomeDir
@@ -65,7 +64,7 @@ CrumbOptions {
 		if(!match) {
 			useLog('no config found, using default settings');
 			// todo - maybe prompt for options
-			return <CrumbOptions>DEFAULTS;
+			return <CrumbOptions>useDefaultConfig('../../');
 		}
 		else {
 			if(match.includes('json')) {

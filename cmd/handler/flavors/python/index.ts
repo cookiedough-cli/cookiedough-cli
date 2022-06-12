@@ -1,4 +1,4 @@
-import { CrumbOptions } from '../../../../internal';
+import { CrumbOptions } from '../../../internal';
 import inquirer from 'inquirer';
 export const PythonVersions: PythonVersion[] = [
 	'latest',

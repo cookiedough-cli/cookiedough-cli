@@ -3,13 +3,20 @@
     "compilerOptions": {
 		"resolveJsonModule": true,
         "outDir": "cjs",
-		"rootDir": "cmd",
-		"baseUrl": "./cmd"
+		"rootDir": ".",
+		"baseUrl": "."
     },
 	"include": [
-		"cmd/**/*"
+		"cmd/**/*",
+		".config/**/*",
+		".flavors/**/*"
 	],
 	"exclude": [
-		"tests/**/*"
+		".flavors/_copy_/**/*",
+		"test/**/*",
+		"node_modules/**/*",
+		"scripts/**/*",
+		"cjs/**/*",
+		"__fixtures__/**/*"
 	]
 }

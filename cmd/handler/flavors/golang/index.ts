@@ -1,6 +1,6 @@
-import { CrumbOptions } from '../../../../internal';
+import { CrumbOptions } from '../../../internal';
 import inquirer, { Inquirer } from 'inquirer';
-import { FlavorAttributes } from '../../../create';
+import { FlavorAttributes } from '../../create';
 export type GoPresetTag =
 'simple-cli'	  |
 'simple-webserver'|

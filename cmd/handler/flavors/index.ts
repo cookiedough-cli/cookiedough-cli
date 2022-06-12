@@ -1,2 +1,2 @@
-export * from './_handle/node';
+export * from './node';
 // export * from './python';

@@ -7,7 +7,7 @@ import {
 	DoughFlavor,
 	CrumbOptions
 } from '../internal';
-import * as NodeFlavor from './flavors/_handle/node';
+import * as NodeFlavor from './flavors/node';
 
 export type FlavorAttribute = string;
 export type FlavorAttributes = FlavorAttribute[];

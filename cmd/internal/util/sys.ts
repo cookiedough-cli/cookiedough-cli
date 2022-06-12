@@ -16,7 +16,7 @@ import { join, resolve } from 'path';
 import { DoughFlavor } from '..';
 import { SystemOverview}  from '../../types';
 import { FlavorDeclarationJSON } from '../../handler';
-const context_depth = '../../../'
+const context_depth = '../../../../'
 
 export const useSysInfo:
 () => SystemOverview =
