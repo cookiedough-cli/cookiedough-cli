@@ -157,6 +157,23 @@ export function useFinalPresetCopy(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo
 ) {
+	if(!p.process.allow_cwd_write && (node_build_info.build_root == process.cwd())) {
+		useLog(`
+${useColor('yellow','warning:')}
+
+the path at ${node_build_info.build_root}\n is being compared as equal to the current working directory,
+which you have disabled writing to in your configuration
+if youd like to automatically override in the future, set:
+{
+	"process": {
+		"allow_cwd_write": true
+	}
+}
+
+in your config file.
+${useColor('yellow', 'exiting.')}`);
+		process.exit(0);
+	}
 	const preset_root = join(__dirname, preset_path);
 
 	useCopyMachine(join(preset_root, '*/default'), node_build_info.build_root);
