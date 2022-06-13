@@ -2,7 +2,6 @@
  * @module CMD/handler
  * @description map handler callbacks to inline cmd signatures
  */
-import 'module-alias/register';
 export * from './setup-env';
 export * from './doctor';
 export * from './locate';
