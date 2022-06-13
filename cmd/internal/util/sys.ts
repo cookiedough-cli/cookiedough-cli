@@ -13,8 +13,7 @@ import {
 	type
 } from 'os';
 import { join, resolve } from 'path';
-import { DoughFlavor } from '..';
-import { SystemOverview}  from '../../types';
+import { SystemOverview }  from '../../types';
 import { FlavorDeclarationJSON } from '../../handler';
 const context_depth = '../../../../'
 
@@ -47,7 +46,7 @@ string {
 }
 
 export function useFlavorMod(
-	mod: DoughFlavor
+	mod: string
 ): FlavorDeclarationJSON {
 	return require(join(__dirname, `${context_depth}.flavors/${mod}`, 'flavor.json'));
 }

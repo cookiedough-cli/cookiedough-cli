@@ -16,7 +16,7 @@ import {
 	asNodeModulePackager,
 	MappedNodeFlavorRecipe,
 	SWCPackModules
-} from '..';
+} from '.';
 
 export const useNodeFlavorMap = (
 	np: NodeFlavorRecipe

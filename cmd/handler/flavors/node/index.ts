@@ -1,4 +1,6 @@
 import { useNodeFlavorMap } from './pkg';
+import { useFlavorMod } from '../../../internal';
+import { join } from 'path';
 import inquirer from 'inquirer';
 import {
 	Tuple,
@@ -18,7 +20,16 @@ import {
 	CrumbOptions,
 	CrumbPromptNoOp
 } from '../..';
-import { useFlavorMod } from '../../../internal';
+export * from './modules';
+
+// get flavor from node json at root
+const NodeFlavor = useFlavorMod('node');
+// preset path to copy the files from depending on preferences
+const preset_path = '../../../../../.flavors/_copy_';
+// user options for inquirer
+const NodeUserOptions = NodeFlavor.doughmap;
+
+// the recipe to build as recieved from the user menu answers
 export type NodeFlavorRecipe = {
 	preset			: NodeFlavorPreset;
 	pkg_mgr			: NodeFlavorPkg;
@@ -28,6 +39,7 @@ export type NodeFlavorRecipe = {
 	eslint			: boolean;
 }
 
+// the next type created from the recipe for the specific context with paths / sys
 export interface NodeBuildInfo {
 	build_root			: string,
 	build_host			: SystemOverview,
@@ -35,17 +47,15 @@ export interface NodeBuildInfo {
 	build_frecipe		: MappedNodeFlavorRecipe
 }
 
-export type MappedNodeFlavorRecipe = { installer: NodeModulePackager, packages: NodeModule[] };
-
+// setup the type for the installer + packages to install within for the shell prefix like yarn add vs npm install etc
+export type MappedNodeFlavorRecipe = {
+	installer: NodeModulePackager,
+	packages: NodeModule[]
+};
+// get the optional arg as a tuple of strings
 export type NodeModule = Tuple;
-export interface ToInstallModule {
-	asTuple				 : Tuple; //tuple representing the package name and devness
-	name				 : string; //name of package
-	dev				 	 : boolean; //result of the second tuple from asTuple
-	global				 : boolean; //result of the second tuple from asTuple
-	version				?: string; //optional - todo
-}
 
+// package manager type
 export type NodeModulePackager = {
 	name				: NodeFlavorPkg; //name of process to run
 	installSelf			: string; //command to install self if not installed / detected on system
@@ -85,63 +95,6 @@ export type NodeFlavorCompiler = typeof NodeFlavor_Compilers[number];
 export const NodeFlavor_Bundlers = ['none', 'rollup', 'webpack', 'swcpack', 'esbuild'] as const;
 export type NodeFlavorBundler = typeof NodeFlavor_Bundlers[number];
 
-export const BabelBaseModules: NodeModule[] = [
-	['@babel/core', '-D'],
-	['@babel/preset-env', '-D']
-];
-
-export const BabelTSModules: NodeModule[] = [
-	['@babel/plugin-transform-typescript', '-D'],
-	['@babel/plugin-preset-typescript', '-D']
-];
-
-export const SWCPackModules: NodeModule[] = [
-	['swcpack', '-D']
-]
-
-export const GulpModules: NodeModule[] = [
-	['gulp-cli', '-g'],
-	['gulp', '-D']
-];
-
-export const GulpTSModules: NodeModule[] = [
-	['gulp-typescript', '-D']
-];
-
-export const RollupModules: NodeModule[] = [
-	['rollup', '-g'],
-	['@rollup/plugin-json', '-D']
-]
-
-export const RollupTSModules: NodeModule[] = [
-	['@rollup/plugin-typescript', '-D']
-];
-
-export const WebpackModules: NodeModule[] = [
-	['webpack', '-D'],
-	['webpack-cli', '-D']
-];
-
-export const SWCBaseModules: NodeModule[] = [
-	['@swc/cli', '-D'],
-	['@swc/core', '-D']
-];
-
-export const GruntBaseModules: NodeModule[] = [
-	['grunt-cli', '-g'],
-	['grunt', '-D']
-];
-
-export const ESLintBaseModules: NodeModule[] = [
-	['eslint', '-D']
-];
-
-export const ESLintTSModules: NodeModule[] = [
-	...ESLintBaseModules,
-	['@typescript-eslint/eslint-plugin', '-D'],
-	['@typescript-eslint/parser', '-D']
-];
-
 export type NodeRecipeToFileMap = {
 	config: CrumbOptions,
 	recipe: NodeFlavorRecipe,
@@ -149,10 +102,7 @@ export type NodeRecipeToFileMap = {
 	packages: NodeModule[]
 }
 
-import { join } from 'path';
-const NodeFlavor = useFlavorMod('node');
-const preset_path = '../../../../../.flavors/_copy_';
-const NodeUserOptions = NodeFlavor.doughmap;
+
 export function useFinalPresetCopy(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo
@@ -237,12 +187,12 @@ ${useColor('yellow', 'exiting.')}`);
 			usePowerWasher(node_build_info.build_root);
 		}
 
-		useSpinner(spinners.bluePulse, () => {
+		useSpinner(spinners.bouncingBar, () => {
 			if(node_build_info.build_frecipe.packages.length > 0) {
 				useNodeInstaller(p, node_build_info);
 				console.clear();
 			}
-			useSpinner(spinners.bouncingBall, () => setTimeout(() => {
+			useSpinner(spinners.orangeBluePulse, () => setTimeout(() => {
 				useFinalPresetCopy(p, node_build_info);
 			}, 180), 2);
 		});

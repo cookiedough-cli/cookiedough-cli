@@ -1,0 +1,20 @@
+{
+	"tag_name": "go",
+	"doughmap": [
+		{
+			"name": "module_name",
+			"message": "name your module",
+			"type": "string"
+		},
+		{
+			"name": "preset",
+			"message": "select flavor preset",
+			"type": "list",
+			"default": "simple-preset",
+			"choices": [
+				"simple-preset",
+				"web-workspace"
+			]
+		}
+	]
+}

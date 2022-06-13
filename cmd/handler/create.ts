@@ -4,14 +4,15 @@ import {
 	FlavorInquiry,
 	CookieProcessRecipe,
 	useLog,
-	DoughFlavor,
 	CrumbOptions
 } from '../internal';
 import * as NodeFlavor from './flavors/node';
+import * as GoFlavor from './flavors/go';
 
 export type FlavorAttribute = string;
 export type FlavorAttributes = FlavorAttribute[];
 export type FlavorDoughType = "list" | "boolean" | "string";
+
 // example inquirer option for definition in the json
 export type FlavorDough<T> = {
 	name: string;
@@ -25,17 +26,20 @@ export type FlavorDeclarationJSON = {
 	recipe_path: string;
 	doughmap: FlavorDough<string|number|boolean>[]
 }
+
 // prompt for a given flavor based on the map in the json
 export function useFlavorPrompt(
-	tag		: DoughFlavor,
+	tag		: string,
 	config	: CrumbOptions
 ) {
 	switch(tag) {
 		case 'node':
 			return NodeFlavor.usePrompt(config);
+		case 'go':
+			return GoFlavor.usePrompt(config);
 		default:
 			useLog('template name invalid', 'error');
-			process.exit(1);
+			process.exit(0);
 	}
 }
 export function useCreate(

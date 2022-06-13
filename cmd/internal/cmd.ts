@@ -3,14 +3,6 @@ import {
 	useDirectoryConfig,
 	useGlobalConfigWithCWD
 } from './config';
-// default flavors included in the bundle
-export type DoughFlavor =
-'node'   |
-'go'     |
-'c'      |
-'c++'	 |
-'rust'   |
-'python' ;
 
 export type CrumbFileName = `${string}.json` | '.cookie';
 
@@ -77,7 +69,7 @@ export type ProcessCrumbs = {
 	add_files_from			?: string[]; // directories to copy files into the new project from
 	allow_cwd_write			?: boolean;
 	always_use_prompt		?: boolean; // boolean whether to override settings default template in config
-	default_flavor    		?: DoughFlavor; // name of template to run against prompter
+	default_flavor    		?: string; // name of template to run against prompter
 	detatched				?: boolean; // run in caller process or spawn its own
 	dry						?: boolean; // run without doing anything, just print the would-be output
 	log_level				?: LogLevel;
