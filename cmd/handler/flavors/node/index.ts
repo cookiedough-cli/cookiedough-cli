@@ -126,7 +126,7 @@ ${useColor('yellow', 'exiting.')}`);
 	}
 	const preset_root = join(__dirname, preset_path);
 
-	useCopyMachine(join(preset_root, '*/default'), node_build_info.build_root);
+	useCopyMachine(join(preset_root, 'default'), node_build_info.build_root);
 	useCopyMachine(join(preset_root, 'node/*'), node_build_info.build_root);
 	if(node_build_info.build_preferences.eslint) {
 		useCopyMachine(join(preset_root, 'node/eslint'), node_build_info.build_root);
