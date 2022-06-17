@@ -4,6 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "typescript": "^4.7.3"
+    "@swc/cli": "^0.1.57",
+    "@swc/core": "^1.2.203",
+    "typescript": "^4.7.4"
   }
 }

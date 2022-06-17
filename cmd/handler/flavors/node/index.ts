@@ -134,6 +134,19 @@ ${useColor('yellow', 'exiting.')}`);
 	if(node_build_info.build_preferences.preset === 'ts') {
 		useCopyMachine(join(preset_root, 'node/ts'), node_build_info.build_root);
 	}
+	if(node_build_info.build_preferences.bundler === 'webpack') {
+		useCopyMachine(join(preset_root, 'node/bundler/webpack'), node_build_info.build_root);
+	}
+	if(node_build_info.build_preferences.bundler === 'rollup') {
+		useCopyMachine(join(preset_root, `node/bundler/rollup/${node_build_info.build_preferences.preset}`), node_build_info.build_root);
+	}
+	if(node_build_info.build_preferences.bundler === 'swcpack') {
+		useCopyMachine(join(preset_root, `node/bundler/swcpack/${node_build_info.build_preferences.preset}`), node_build_info.build_root);
+	}
+
+	if(node_build_info.build_preferences.compiler === 'swc') {
+		useCopyMachine(join(preset_root, `node/compiler/swc/${node_build_info.build_preferences.preset}`), node_build_info.build_root);
+	}
 }
 
 export function useNodeInstaller(
