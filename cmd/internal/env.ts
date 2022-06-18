@@ -151,7 +151,6 @@ export function useCMDRecipe(): CookieProcessRecipe {
 					const dirConf = useDirectoryConfig(inline[2] || '.');
 					crumbs = dirConf
 				}
-				console.log(crumbs);
 			}
 			else {
 				crumbs = useGlobalConfigWithCWD();
