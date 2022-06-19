@@ -2,3 +2,4 @@ node_modules
 yarn.lock
 /cjs
 pkg-cache
+build
