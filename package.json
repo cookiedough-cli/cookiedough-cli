@@ -1,12 +1,12 @@
 {
   "name": "cookiedough",
   "version": "0.1.0",
-  "bin": "cjs/cmd/index.js",
-  "main": "cjs/index.js",
+  "bin": "build/cmd/index.js",
+  "main": "build/index.js",
   "repository": "git@github.com:abschill/cookiedough-cli.git",
   "homepage": "https://github.com/abschill/cookiedough-cli",
   "author": "abschill",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "scripts": {
     "build:dry": "./scripts/build/dry-list",
     "build:docs": "./scripts/build/docs",
@@ -17,6 +17,7 @@
     "run:locate": "./scripts/run/locate",
     "run:help": "./scripts/run/help",
     "run:edit": "./scripts/run/edit",
+	"run:doctor": "node index.js doctor",
     "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha"
   },

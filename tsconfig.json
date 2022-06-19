@@ -1,8 +1,8 @@
 {
-	"extends": "./.config/tsbase.json",
+	"extends": "./__fixtures__/tsbase.json",
     "compilerOptions": {
 		"resolveJsonModule": true,
-        "outDir": "cjs",
+        "outDir": "build",
 		"rootDir": ".",
 		"baseUrl": "."
     },
@@ -16,7 +16,6 @@
 		"test/**/*",
 		"node_modules/**/*",
 		"scripts/**/*",
-		"cjs/**/*",
 		"__fixtures__/**/*"
 	]
 }

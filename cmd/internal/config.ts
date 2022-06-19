@@ -4,17 +4,17 @@ import {
 	useHomeDir
 } from './util';
 import {
-	CrumbFileNames,
 	CrumbOptions,
-	CrumbFileName,
-	useLog
+	useLog,
+	__COOKIE_ENV__,
+	CRUMB_DEFAULT_FILE
 } from '.';
 
 // only use this from cmd or alter path
 export function useDefaultConfig(
 	context_depth: string
 ) {
-	return require(resolve(__dirname, `${context_depth}/.config/.defaults.json`));
+	return require(resolve(__dirname, `${context_depth}/${__COOKIE_ENV__}/${CRUMB_DEFAULT_FILE}`));
 }
 
 export function useConfigList(
@@ -27,10 +27,10 @@ export function useConfigList(
 export function useDirectoryConfig(
 	dir: string
 ): CrumbOptions | null {
-	let match: CrumbFileName;
+	let match;
 	const filesInBase = useFileList(dir);
-	CrumbFileNames.forEach(file => {
-		if(filesInBase.includes(file)) {
+	filesInBase.forEach(file => {
+		if(file === 'cookiedough.json') {
 			match = file;
 			return;
 		}
@@ -46,8 +46,8 @@ CrumbOptions {
 	const wd = process.cwd();
 	let match;
 	const filesInBase = useFileList(wd);
-	CrumbFileNames.forEach(file => {
-		if(filesInBase.includes(file)) {
+	filesInBase.forEach(file => {
+		if(file === 'cookiedough.json') {
 			match = file;
 			return;
 		}
@@ -55,8 +55,8 @@ CrumbOptions {
 	if(!match) {
 		const home = useHomeDir();
 		const filesInHome = useFileList(home);
-		CrumbFileNames.forEach(file => {
-			if(filesInHome.includes(file)) {
+		filesInHome.forEach(file => {
+			if(file === 'cookiedough.json') {
 				match = file;
 				return;
 			}
@@ -74,12 +74,7 @@ CrumbOptions {
 		}
 
 	}
-	if(match.includes('json')) {
-		// return as json
-		return <CrumbOptions>require(resolve(wd, match));
-	}
-	// return as string
-	//return <CrumbOptions>readFileSync(resolve(base, match), 'utf-8'); //todo - actually set this up
+	return <CrumbOptions>require(resolve(wd, match));
 }
 
 

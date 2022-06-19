@@ -1,9 +1,18 @@
-import { CookieProcessRecipe, log } from '../internal';
+import {
+	CookieProcessRecipe,
+	log,
+	info,
+	useHomeDir,
+	useDirectoryConfig
+} from '../internal';
 
 export function useDoctor(
 	recipe: CookieProcessRecipe
 ) {
-	log('todo: doctor');
+	info('reslolved recipe:');
 	log(recipe);
-	log(__dirname);
+	info('directory config:')
+	log(useDirectoryConfig(process.cwd()));
+	info('root config:');
+	log(useDirectoryConfig(useHomeDir()));
 }

@@ -32,7 +32,7 @@ export function useInteractiveEnvSetup(
 		}
 		else {
 			const out_path = answers.config_path.includes('.json') ? answers.config_path : resolve(answers.config_path, 'crumbs.json');
-			useCopyMachine(resolve(__dirname, '../../../.config/.defaults.json'), out_path);
+			useCopyMachine(resolve(__dirname, '../../../.env/.defaults.json'), out_path);
 			useLog(`wrote config files to: ${out_path}`, 'success');
 		}
 	});

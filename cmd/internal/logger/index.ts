@@ -53,6 +53,12 @@ export function log(msg: any) {
 	console.log(msg);
 }
 
+export function info(
+	data	: ValidLogData
+) {
+	return _log(`${useColor('blue', 'info')}: ${data}`)
+}
+
 export function _warn(
 	data		: ValidLogData
 ) {

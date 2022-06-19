@@ -1,3 +1,3 @@
-const { useCookieDough } = require('./cjs/cmd/index.js');
+const { useCookieDough } = require('./build/cmd/index.js');
 
 useCookieDough();

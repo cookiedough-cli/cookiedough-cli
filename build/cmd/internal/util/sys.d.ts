@@ -1,0 +1,13 @@
+import { SystemOverview } from '../../types';
+import { FlavorDeclarationJSON } from '../../handler';
+export declare const useSysInfo: () => SystemOverview;
+export declare const useValidWritePath: (p: string) => void;
+export declare const useProcessDir: () => string;
+export declare const useHomeDir: () => string;
+export declare const useDirExists: (dir: string) => boolean;
+export declare const useFileList: (dir: string) => string[];
+export declare const usePowerWasher: (dir: string) => void;
+export declare function useCopyMachine(src: string, dest: string): void;
+export declare function useManPage(): string;
+export declare function useFlavorMod(mod: string): FlavorDeclarationJSON;
+export declare function validFlavorMod(json: FlavorDeclarationJSON): boolean;

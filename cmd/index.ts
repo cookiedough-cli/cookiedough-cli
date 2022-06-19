@@ -39,5 +39,8 @@ export function useCookieDough() {
 		case 'help':
 			useHelp();
 			break;
+		default:
+			useHelp();
+			break;
 	}
 }
