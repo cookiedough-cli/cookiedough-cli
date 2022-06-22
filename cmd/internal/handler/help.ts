@@ -1,7 +1,7 @@
 import {
 	useManPage,
 	log
-} from '../internal';
+} from '..';
 
 export function useHelp() {
 	log(useManPage());

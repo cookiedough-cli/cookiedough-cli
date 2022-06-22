@@ -17,7 +17,7 @@
     "run:locate": "./scripts/run/locate",
     "run:help": "./scripts/run/help",
     "run:edit": "./scripts/run/edit",
-	"run:doctor": "node index.js doctor",
+	  "run:doctor": "node index.js doctor",
     "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha"
   },

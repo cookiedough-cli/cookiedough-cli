@@ -3,7 +3,7 @@ import {
 	log,
 	useDirectoryConfig,
 	useHomeDir
-} from '../internal';
+} from '..';
 
 export function useInteractiveEdit(
 	recipe: CookieProcessRecipe

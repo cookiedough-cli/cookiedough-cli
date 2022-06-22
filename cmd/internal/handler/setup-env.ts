@@ -8,7 +8,7 @@ import {
 	useFileList,
 	useConfigList,
 	useCopyMachine
-} from '../internal';
+} from '..';
 import { resolve } from 'path';
 
 export function useInteractiveEnvSetup(

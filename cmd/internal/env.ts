@@ -1,3 +1,4 @@
+import { useCreate, useDoctor, useInteractiveEdit, useInteractiveEnvSetup, useLocator, useManPage } from '../internal/handler';
 import { ListQuestion } from 'inquirer';
 export const __COOKIE_ENV__ = '.env';
 export const CRUMB_DEFAULT_FILE = '.defaults.json'
@@ -26,6 +27,7 @@ export type CrumbOptions = {
 export type CookieCMD = {
 	alias 		 	?: string[];
 	signature	 	: CookieCMDSignature;
+	callback		: Function;
 	follow_up_with 	?: CrumbInlineType[];
 }
 
@@ -80,55 +82,50 @@ export type RepositoryCrumbs = {
 
 export type ValidLogData = any;
 
-export const Flavors: string[] = [
-	'node',
-	'go',
-	//'c',
-	//'c++',
-	//'rust',
-	//'python'
-];
-
 export const FlavorInquiry: ListQuestion = {
 	type: 'list',
 	name: 'flavor',
 	message: 'choose project flavor',
-	choices: Flavors
+	choices: [
+		'node'
+	]
 };
 
 /**
  * Full List of Commands to interpret at runtime
  */
-
 export const CMDList: CookieCMD[] = [
 	{
 		signature: 'create',
-		alias: ['', null]
+		alias: ['', null],
+		callback: useCreate
 	},
 	{
 		signature: 'edit',
-		alias: ['edit-env', 'edit-config']
+		alias: ['edit-env', 'edit-config'],
+		callback: useInteractiveEdit
 	},
 	{
 		signature: 'doctor',
-		alias: ['fix', 'ihelp']
+		alias: ['fix', 'ihelp'],
+		callback: useDoctor
 	},
 	{
 		signature: 'set',
-		alias : ['set-env', 'set-config']
+		alias : ['set-env', 'set-config', 'setup-env'],
+		callback: useInteractiveEnvSetup
 	},
+	// {
+	// 	signature: 'create-flavor',
+	// 	callback: useFl
+	// },
 	{
-		signature: 'create-flavor'
-	},
-	{
-		signature: 'locate'
-	},
-	{
-		signature: 'setup',
-		alias: ['setup-env']
+		signature: 'locate',
+		callback: useLocator
 	},
 	{
 		signature: 'help',
-		alias: ['manpage', 'man']
+		alias: ['manpage', 'man'],
+		callback: useManPage
 	}
 ];

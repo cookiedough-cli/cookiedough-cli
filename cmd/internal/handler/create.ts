@@ -5,9 +5,8 @@ import {
 	CookieProcessRecipe,
 	useLog,
 	CrumbOptions
-} from '../internal';
+} from '..';
 import * as NodeFlavor from './flavors/node';
-import * as GoFlavor from './flavors/go';
 
 export type FlavorAttribute = string;
 export type FlavorAttributes = FlavorAttribute[];
@@ -35,8 +34,6 @@ export function useFlavorPrompt(
 	switch(tag) {
 		case 'node':
 			return NodeFlavor.usePrompt(config);
-		case 'go':
-			return GoFlavor.usePrompt(config);
 		default:
 			useLog('template name invalid', 'error');
 			process.exit(0);

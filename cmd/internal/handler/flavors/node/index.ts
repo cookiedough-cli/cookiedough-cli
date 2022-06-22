@@ -1,5 +1,5 @@
 import { useNodeFlavorMap } from './pkg';
-import { useFlavorMod } from '../../../internal';
+import { useFlavorMod } from '../../..';
 import { join } from 'path';
 import inquirer from 'inquirer';
 import {
@@ -15,8 +15,6 @@ import {
 	usePowerWasher,
 	useCopyMachine,
 	useDirExists,
-	spinners,
-	useSpinner,
 	CrumbOptions,
 	CrumbPromptNoOp
 } from '../..';
@@ -25,7 +23,7 @@ export * from './modules';
 // get flavor from node json at root
 const NodeFlavor = useFlavorMod('node');
 // preset path to copy the files from depending on preferences
-const preset_path = '../../../../../.flavors/_copy_';
+const preset_path = '../../../../../../.flavors/_copy_';
 // user options for inquirer
 const NodeUserOptions = NodeFlavor.doughmap;
 
@@ -163,6 +161,12 @@ export function useNodeInstaller(
 	}
 }
 
+/**
+ * Flavor runtime file MUST have a root usePrompt to work properly with the CLI and it must return a noop, throw anything bad that happens else its considered successful
+ * @param p OPTIONS Entry Point
+ * @returns no op cli process
+ */
+
 export function usePrompt(
 	p: CrumbOptions,
 ): CrumbPromptNoOp {
@@ -196,15 +200,10 @@ ${useColor('yellow', 'exiting.')}`);
 			useLog('power washing directory');
 			usePowerWasher(node_build_info.build_root);
 		}
-
-		useSpinner(spinners.bouncingBar, () => {
-			if(node_build_info.build_frecipe.packages.length > 0) {
-				useNodeInstaller(p, node_build_info);
-				console.clear();
-			}
-			useSpinner(spinners.orangeBluePulse, () => setTimeout(() => {
-				useFinalPresetCopy(p, node_build_info);
-			}, 180), 2);
-		});
+		if(node_build_info.build_frecipe.packages.length > 0) {
+			useNodeInstaller(p, node_build_info);
+			console.clear();
+		}
+		useFinalPresetCopy(p, node_build_info);
 	})).catch(console.error);
 }

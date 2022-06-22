@@ -4,7 +4,7 @@ import {
 	info,
 	useHomeDir,
 	useDirectoryConfig
-} from '../internal';
+} from '..';
 
 export function useDoctor(
 	recipe: CookieProcessRecipe

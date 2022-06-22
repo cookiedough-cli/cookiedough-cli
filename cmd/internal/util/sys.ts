@@ -14,7 +14,7 @@ import {
 } from 'os';
 import { join, resolve } from 'path';
 import { SystemOverview }  from '../../types';
-import { FlavorDeclarationJSON } from '../../handler';
+import { FlavorDeclarationJSON } from '../handler';
 const context_depth = '../../../../'
 
 export const useSysInfo:

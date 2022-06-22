@@ -6,8 +6,9 @@ import {
 	useDefaultConfig,
 	useGlobalConfigWithCWD
  } from '.';
+import { useCreate } from './handler';
 export function useCMDRecipe(): CookieProcessRecipe {
-	let valid: CookieCMD = { signature: 'create' };
+	let valid: CookieCMD = { signature: 'create', callback: useCreate };
 	const inline = process.argv.slice(2);
 	// determine what the context of the command is
 	if(inline.length > 0) {

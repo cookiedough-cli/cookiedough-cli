@@ -1,1 +1,0 @@
-# BTB Golang Project Template

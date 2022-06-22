@@ -4,7 +4,7 @@ import {
 	useDirectoryConfig,
 	useHomeDir,
 	useLog
-} from '../internal';
+} from '..';
 
 export function useLocator():
 void {
