@@ -1,3 +1,4 @@
+import { useCreate } from './handler';
 import {
 	CookieProcessRecipe,
 	CMDList,
@@ -6,12 +7,25 @@ import {
 	useDefaultConfig,
 	useGlobalConfigWithCWD
  } from '.';
-import { useCreate } from './handler';
-export function useCMDRecipe(): CookieProcessRecipe {
-	let valid: CookieCMD = { signature: 'create', callback: useCreate };
+/**
+ *
+ * @returns recipe for the called process context
+ */
+export function useCMDRecipe():
+CookieProcessRecipe {
+
+	/**
+	 * default to create cmd
+	 */
+	let valid: CookieCMD = {
+		signature: 'create',
+		callback: useCreate
+	};
 	const inline = process.argv.slice(2);
+
 	// determine what the context of the command is
 	if(inline.length > 0) {
+
 		// command to run, validate it
 		const cmd_list = CMDList.filter(cmd => cmd.signature === inline[0]);
 		if(cmd_list.length === 1) {
@@ -25,12 +39,10 @@ export function useCMDRecipe(): CookieProcessRecipe {
 			}
 			else if(inline.includes('-c') || inline.includes('--config')) {
 				if(valid.signature === 'create' && !inline.includes('create')) {
-					const dirConf = useDirectoryConfig(inline[1] || '.');
-					crumbs = dirConf
+					crumbs = useDirectoryConfig(inline[1] || '.');
 				}
 				else {
-					const dirConf = useDirectoryConfig(inline[2] || '.');
-					crumbs = dirConf
+					crumbs = useDirectoryConfig(inline[2] || '.');
 				}
 			}
 			else {

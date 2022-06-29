@@ -60,7 +60,6 @@ export type NodeModulePackager = {
 	installPkgSignature	: string; //prefix for adding packages between the process and the packagename
 }
 
-// utils
 /**
  *
  * @param name

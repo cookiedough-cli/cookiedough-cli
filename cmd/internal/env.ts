@@ -31,16 +31,18 @@ export type CookieCMD = {
 	follow_up_with 	?: CrumbInlineType[];
 }
 
-export type CookieCMDSignature =
-'create' 				|
-'doctor' 				|
-'edit' 					|
-'add' 					|
-'locate' 				|
-'set' 					|
-'setup'					|
-'help'					|
-'create-flavor'			;
+export const CookieCMDSignatures = [
+	'create',
+	'doctor',
+	'edit',
+	'add',
+	'locate',
+	'set',
+	'setup',
+	'help',
+	'create-flavor'
+] as const;
+export type CookieCMDSignature = typeof CookieCMDSignatures[number];
 
 export type CookieProcessRecipe = {
 	cmd			: CookieCMD;
@@ -48,9 +50,19 @@ export type CookieProcessRecipe = {
 	_raw_args	: string[];
 	_raw_cmd	: CookieCMD[];
 }
-
-export type LogLevel = 'verbose' | 'silent' | 'minimal';
-export type LogType = 'success' | 'info' | 'warning' | 'error';
+export const LogLevels = [
+	'verbose',
+	'silent',
+	'minimal'
+] as const;
+export type LogLevel = typeof LogLevels[number];
+export const LogTypes = [
+	'success',
+	'info',
+	'warning',
+	'error'
+] as const;
+export type LogType = typeof LogTypes[number];
 export type LogFilePath = string;
 
 // process-specific configuration parameters - all optional
