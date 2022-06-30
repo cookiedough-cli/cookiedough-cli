@@ -29,11 +29,11 @@ const NodeUserOptions = NodeFlavor.doughmap;
 
 // the recipe to build as recieved from the user menu answers
 export type NodeFlavorRecipe = {
-	preset			: NodeFlavorPreset;
-	pkg_mgr			: NodeFlavorPkg;
-	build_tools		: NodeFlavorBuildTool;
-	compiler		: NodeFlavorCompiler;
-	bundler			: NodeFlavorBundler;
+	preset			: string;
+	pkg_mgr			: string;
+	build_tools		: string;
+	compiler		: string;
+	bundler			: string;
 	eslint			: boolean;
 }
 
@@ -77,20 +77,9 @@ export function asNodeModulePackager(
 		installPkgSignature
 	}
 }
-export const NodeFlavor_PkgPresets = ['commonjs', 'esm', 'ts'] as const;
-export type NodeFlavorPreset = typeof NodeFlavor_PkgPresets[number];
 
 export const NodeFlavor_PkgMgr = ['npm', 'yarn', 'pnpm'] as const;
 export type NodeFlavorPkg = typeof NodeFlavor_PkgMgr[number];
-
-export const NodeFlavor_BuildTools = ['gulp', 'grunt', 'esbuild', 'none'] as const;
-export type NodeFlavorBuildTool = typeof NodeFlavor_BuildTools[number];
-
-export const NodeFlavor_Compilers = ['none', 'babel', 'swc', 'esbuild'] as const;
-export type NodeFlavorCompiler = typeof NodeFlavor_Compilers[number];
-
-export const NodeFlavor_Bundlers = ['none', 'rollup', 'webpack', 'swcpack', 'esbuild'] as const;
-export type NodeFlavorBundler = typeof NodeFlavor_Bundlers[number];
 
 export type NodeRecipeToFileMap = {
 	config: CrumbOptions,
@@ -98,7 +87,6 @@ export type NodeRecipeToFileMap = {
 	installer: NodeModulePackager,
 	packages: NodeModule[]
 }
-
 
 export function useFinalPresetCopy(
 	p: CrumbOptions,
@@ -166,7 +154,7 @@ export function useNodeInstaller(
  * @returns no op cli process
  */
 
-export function usePrompt(
+export async function usePrompt(
 	p: CrumbOptions,
 ): CrumbPromptNoOp {
 	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeFlavorRecipe) => {

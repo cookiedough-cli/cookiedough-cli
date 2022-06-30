@@ -1,2 +1,2 @@
-const { hello } = require('./build');
+const { hello } = require('./src');
 hello();
