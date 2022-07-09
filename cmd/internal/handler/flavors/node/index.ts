@@ -18,12 +18,13 @@ import {
 	CrumbOptions,
 	CrumbPromptNoOp
 } from '../..';
+import fetch from 'node-fetch';
 export * from './modules';
 
 // get flavor from node json at root
 const NodeFlavor = Promise.resolve(useFlavorMod('node').then(flavor => flavor));
 // preset path to copy the files from depending on preferences
-const preset_path = '../../../../../../.flavors/_copy_';
+const preset_path = 'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/.flavors/_copy_';
 // user options for inquirer
 
 // the recipe to build as recieved from the user menu answers
@@ -108,7 +109,7 @@ in your config file.
 ${useColor('yellow', 'exiting.')}`);
 		process.exit(0);
 	}
-	const preset_root = join(__dirname, preset_path);
+	const preset_root = preset_path + '/';
 
 	useCopyMachine(join(preset_root, 'default'), node_build_info.build_root);
 	useCopyMachine(join(preset_root, `node/*/${node_build_info.build_preferences.preset}`), node_build_info.build_root);

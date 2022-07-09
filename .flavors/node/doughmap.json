@@ -1,0 +1,63 @@
+{
+	"pkg_mgr": {
+		"npm": [],
+		"yarn": [],
+		"pnpm": []
+	},
+	"preset": {
+		"cjs": [
+			{
+				"_prefix": ".flavors/_copy_/node/*/cjs/",
+				"_writable": "index.js"
+			},
+			{
+				"_prefix": ".flavors/_copy_/node/*/cjs/",
+				"_writable": "src/index.js"
+			}
+		],
+		"esm": [
+			{
+				"_prefix": ".flavors/_copy_/node/*/esm/",
+				"_writable": "index.js"
+			},
+			{
+				"_prefix": ".flavors/_copy_/node/*/esm/",
+				"_writable": "src/index.js"
+			}
+		],
+		"ts": [
+			{
+				"_prefix": ".flavors/_copy_/node/*/ts/",
+				"_writable": "index.js"
+			},
+			{
+				"_prefix": ".flavors/_copy_/node/*/ts/",
+				"_writable": "src/index.ts"
+			},
+			{
+				"_prefix": ".flavors/_copy_/node/*/ts/",
+				"_writable": "tsconfig.json"
+			}
+		]
+	},
+	"build_tools": {
+		"gulp": [],
+		"grunt": [],
+		"make": []
+	},
+	"compiler": {
+		"babel": [],
+		"swc": [],
+		"esbuild": []
+	},
+	"bundler": {
+		"rollup": [],
+		"webpack": [],
+		"swcpack": [],
+		"esbuild": []
+	},
+	"eslint": {
+		"true": [],
+		"false": []
+	}
+}
