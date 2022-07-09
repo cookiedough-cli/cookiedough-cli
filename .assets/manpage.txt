@@ -1,5 +1,21 @@
 Cookiedough CLI
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Commands
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+create - create new project
+
+edit - edit global config options
+
+set - set global config crumb
+
+locate - locate global / workspace configs
+
+doctor - look for issues with global/workspace configs / conflicts between them
+
+help - show this page
+
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Inline Args
@@ -11,29 +27,18 @@ tell cookiedough to ignore the config finding process.
 -c | --config
 explicit path for finding configuration, typically you can just set it with an anonymous argument.
 
--h | --help
-print this page
-
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-cookiedough -nc
+cookiedough create
 
-ignores config files and just brings up the prompter
+brings up the prompter with no presets if no config file
 
-if you have no resolvable config in the directory you're running it in or your home directory,
-then it will be the same as:
-
+this is a longhand for:
 
 cookiedough
 
 
-which is an alias for the cmd
-
-
-cookiedough create
-
-to lean more visit https://github.com/abschill/cookiedough-cli/ and check the docs
+to lean more visit https://github.com/cookiedough-cli/ and check the docs

@@ -5,7 +5,8 @@ import {
 	CookieCMD,
 	useDirectoryConfig,
 	useDefaultConfig,
-	useGlobalConfigWithCWD
+	useGlobalConfigWithCWD,
+	useManPage
  } from '.';
 /**
  *
@@ -25,7 +26,6 @@ CookieProcessRecipe {
 
 	// determine what the context of the command is
 	if(inline.length > 0) {
-
 		// command to run, validate it
 		const cmd_list = CMDList.filter(cmd => cmd.signature === inline[0]);
 		if(cmd_list.length === 1) {
@@ -50,12 +50,14 @@ CookieProcessRecipe {
 			}
 		}
 
-		return {
+		const outData = {
 			_raw_args: inline,
 			_raw_cmd: cmd_list,
 			cmd: valid,
 			crumbs
 		};
+
+		return outData;
 	}
 	return {
 		_raw_args: inline,

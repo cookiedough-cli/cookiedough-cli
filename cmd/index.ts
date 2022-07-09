@@ -9,5 +9,12 @@ import {
  */
 export function useCookieDough() {
 	const recipe = useCMDRecipe();
+	/**
+	 * print help menu dont return anything
+	 */
+	if(recipe.cmd.signature === 'help') {
+		return console.log(recipe.cmd.callback());
+	}
+
 	return recipe.cmd.callback(recipe);
 }
