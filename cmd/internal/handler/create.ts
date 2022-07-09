@@ -39,12 +39,16 @@ export function useFlavorPrompt(
 			process.exit(0);
 	}
 }
+
+/**
+ *
+ * @param recipe Recipe of the process resolved from the primer stage of the process
+ */
 export async function useCreate(
 	recipe	: CookieProcessRecipe
 ) {
 	console.log(recipe);
-	if(!recipe.crumbs) {
-		const { flavor } = await prompt([FlavorInquiry]);
-		console.log(flavor);
-	}
+	const { flavor } = await prompt([FlavorInquiry]);
+	console.log(flavor);
+	return useFlavorPrompt(flavor, {});
 }

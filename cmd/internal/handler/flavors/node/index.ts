@@ -134,17 +134,19 @@ export function useNodeInstaller(
 	p: CrumbOptions,
 	node_build_info: NodeBuildInfo
 ) {
-	const install_cmd = `${p.process.shell_prefix ?? ''}${node_build_info.build_frecipe.installer.name} init -y && ${node_build_info.build_frecipe.installer.name} ${node_build_info.build_frecipe.installer.installPkgSignature}`;
-	const install_dev_list = node_build_info.build_frecipe.packages.filter(pkg => pkg[1] === '-D').map(pkg => pkg[0]).join(' ');
-	_callFrom(node_build_info.build_root, `${install_cmd} -D ${install_dev_list}`);
-	if(p.process.add_files_from) {
-		const filesToCopy = p.process.add_files_from.map(filePath => useFileList(filePath));
-		if(filesToCopy.flat().length > 0) {
-			for(const dir of p.process.add_files_from) {
-				useCopyMachine(dir, node_build_info.build_root);
-			}
-		}
-	}
+	console.log(p);
+	console.log(node_build_info);
+	// const install_cmd = `${p.process.shell_prefix ?? ''}${node_build_info.build_frecipe.installer.name} init -y && ${node_build_info.build_frecipe.installer.name} ${node_build_info.build_frecipe.installer.installPkgSignature}`;
+	// const install_dev_list = node_build_info.build_frecipe.packages.filter(pkg => pkg[1] === '-D').map(pkg => pkg[0]).join(' ');
+	// _callFrom(node_build_info.build_root, `${install_cmd} -D ${install_dev_list}`);
+	// if(p.process.add_files_from) {
+	// 	const filesToCopy = p.process.add_files_from.map(filePath => useFileList(filePath));
+	// 	if(filesToCopy.flat().length > 0) {
+	// 		for(const dir of p.process.add_files_from) {
+	// 			useCopyMachine(dir, node_build_info.build_root);
+	// 		}
+	// 	}
+	// }
 }
 
 /**
@@ -157,40 +159,40 @@ export async function usePrompt(
 	p: CrumbOptions,
 ): CrumbPromptNoOp {
 	const NodeUserOptions = (await NodeFlavor).doughmap;
-	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeFlavorRecipe) => {
-		const ppm = useNodeFlavorMap(answers);
-		const node_build_info: NodeBuildInfo = {
-			build_root: p.path.out,
-			build_host: useSysInfo(),
-			build_preferences: answers,
-			build_frecipe: ppm
-		}
-		if(!p.process.overwrite_existing_out && useDirExists(node_build_info.build_root)) {
-			useLog(`
-${useColor('yellow','warning:')}
+	const answers: NodeFlavorRecipe = await inquirer.prompt(NodeUserOptions);
+	console.log(answers);
+// 		const ppm = useNodeFlavorMap(answers);
+// 		const node_build_info: NodeBuildInfo = {
+// 			build_root: p.path.out,
+// 			build_host: useSysInfo(),
+// 			build_preferences: answers,
+// 			build_frecipe: ppm
+// 		}
+// 		if(!p.process.overwrite_existing_out && useDirExists(node_build_info.build_root)) {
+// 			useLog(`
+// ${useColor('yellow','warning:')}
 
-the path at ${node_build_info.build_root}\n is already populated.
-if youd like to automatically override in the future, set:
-{
-	"process": {
-		"overwrite_existing_out": true
-	}
-}
+// the path at ${node_build_info.build_root}\n is already populated.
+// if youd like to automatically override in the future, set:
+// {
+// 	"process": {
+// 		"overwrite_existing_out": true
+// 	}
+// }
 
-in your config file.
-${useColor('yellow', 'exiting.')}`);
-		process.exit(0);
-		}
-		useValidWritePath(node_build_info.build_root);
+// in your config file.
+// ${useColor('yellow', 'exiting.')}`);
+// 		process.exit(0);
+// 		}
+// 		useValidWritePath(node_build_info.build_root);
 
-		if(p.process.overwrite_existing_out && (useFileList(node_build_info.build_root).length > 0)) {
-			useLog('power washing directory');
-			usePowerWasher(node_build_info.build_root);
-		}
-		if(node_build_info.build_frecipe.packages.length > 0) {
-			useNodeInstaller(p, node_build_info);
-			console.clear();
-		}
-		useFinalPresetCopy(p, node_build_info);
-	})).catch(console.error);
+		// if(p.process.overwrite_existing_out && (useFileList(node_build_info.build_root).length > 0)) {
+		// 	useLog('power washing directory');
+		// 	usePowerWasher(node_build_info.build_root);
+		// }
+		// if(node_build_info.build_frecipe.packages.length > 0) {
+		// 	useNodeInstaller(p, node_build_info);
+		// 	console.clear();
+		// }
+		// useFinalPresetCopy(p, node_build_info);
 }
