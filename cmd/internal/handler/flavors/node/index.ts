@@ -155,12 +155,13 @@ export function useNodeInstaller(
  * @returns no op cli process
  */
 
-export async function usePrompt(
+export async function usePrompt<NodeFlavorRecipe>(
 	p: CrumbOptions,
-): CrumbPromptNoOp {
+): Promise<NodeFlavorRecipe> {
 	const NodeUserOptions = (await NodeFlavor).doughmap;
 	const answers: NodeFlavorRecipe = await inquirer.prompt(NodeUserOptions);
-	console.log(answers);
+	// console.log(answers);
+	return answers;
 // 		const ppm = useNodeFlavorMap(answers);
 // 		const node_build_info: NodeBuildInfo = {
 // 			build_root: p.path.out,

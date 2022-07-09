@@ -26,14 +26,21 @@ export type FlavorDeclarationJSON = {
 	doughmap: FlavorDough<string|number|boolean>[]
 }
 
-// prompt for a given flavor based on the map in the json
-export function useFlavorPrompt(
+/**
+ *
+ * @param tag the flavor tag to match up with in the enumerated runtime options
+ * @param config  config for the local crumb configuration options
+ */
+export async function useFlavorPrompt(
 	tag		: string,
 	config	: CrumbOptions
 ) {
 	switch(tag) {
 		case 'node':
-			return NodeFlavor.usePrompt(config);
+			const res = await NodeFlavor.usePrompt(config);
+			// todo - set up new parser with github raw urls instead of local nested
+			console.log(res);
+			break;
 		default:
 			useLog('template name invalid', 'error');
 			process.exit(0);
@@ -47,8 +54,6 @@ export function useFlavorPrompt(
 export async function useCreate(
 	recipe	: CookieProcessRecipe
 ) {
-	console.log(recipe);
 	const { flavor } = await prompt([FlavorInquiry]);
-	console.log(flavor);
-	return useFlavorPrompt(flavor, {});
+	return await useFlavorPrompt(flavor, {});
 }
