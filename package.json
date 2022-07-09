@@ -1,11 +1,14 @@
 {
-  "name": "cookiedough",
+  "name": "cookiedough-cli",
   "version": "0.0.0",
-  "bin": "index.js",
+  "bin": {
+	"cookiedough": "index.js"
+  },
+  "private": false,
   "main": "build/index.js",
   "repository": "git@github.com:abschill/cookiedough-cli.git",
   "homepage": "https://github.com/abschill/cookiedough-cli",
-  "author": "abschill",
+  "author": "abschill (https://blog.abschill.com/)",
   "license": "MIT",
   "scripts": {
     "build:dry": "./scripts/build/dry-list",

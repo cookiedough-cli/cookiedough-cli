@@ -1,6 +1,6 @@
 # Cookiedough
 
-customizable project generation cli, many languages, many setups
+customizable project generation cli, many languages, many setups (0.0.0 is to reserve namespace - this is still a work in progress)
 
 ![](/.assets/cookiedough.png)
 
@@ -8,11 +8,11 @@ customizable project generation cli, many languages, many setups
 ## installation
 
 ```cmd
-npm i -g cookiedough
+npm i -g cookiedough-cli
 ```
 
 ```cmd
-yarn global add cookiedough
+yarn global add cookiedough-cli
 ```
 
 
