@@ -18,7 +18,6 @@ import {
 	CrumbOptions,
 	CrumbPromptNoOp
 } from '../..';
-import fetch from 'node-fetch';
 export * from './modules';
 
 // get flavor from node json at root

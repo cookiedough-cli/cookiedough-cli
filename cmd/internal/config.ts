@@ -9,13 +9,12 @@ import {
 	__COOKIE_ENV__,
 	CRUMB_DEFAULT_FILE
 } from '.';
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 // only use this from cmd or alter path
 export async function useDefaultConfig() {
-	const res = await fetch('https://raw.githubusercontent.com/cookiedough-cli/main/.env/.defaults.json');
-	const data = await res.json();
-	return data;
+	const res = await axios.get('https://raw.githubusercontent.com/cookiedough-cli/main/.env/.defaults.json');
+	return res.data;
 }
 
 export function useConfigList(
