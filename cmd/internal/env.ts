@@ -46,7 +46,7 @@ export type CookieCMDSignature = typeof CookieCMDSignatures[number];
 
 export type CookieProcessRecipe = {
 	cmd			: CookieCMD;
-	crumbs		: CrumbOptions;
+	crumbs		: Promise<CrumbOptions>;
 	_raw_args	: string[];
 	_raw_cmd	: CookieCMD[];
 }

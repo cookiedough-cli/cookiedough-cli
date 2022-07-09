@@ -42,21 +42,24 @@ export function useFlavorPrompt(
 export function useCreate(
 	recipe	: CookieProcessRecipe
 ) {
-	if(recipe.crumbs.process && recipe.crumbs.process.log_level && recipe.crumbs.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
-		useLog('Recipe Found:', 'success');
-		console.log(recipe);
-	}
-	if(recipe.crumbs.process.dry) {
-		useLog('dry mode, exiting', 'info');
-		return;
-	}
-	if(recipe.crumbs.process.default_flavor) {
-		useLog('default flavor chosen:', 'success');
-		useDataLog(recipe.crumbs.process.default_flavor);
-		return;
-	}
-	else {
-		prompt([FlavorInquiry]).then(({flavor}) =>
-		useFlavorPrompt(flavor, recipe.crumbs));
-	}
+	recipe.crumbs.then(val => {
+		if(val.process && val.process.log_level && val.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
+			useLog('Recipe Found:', 'success');
+			console.log(recipe);
+		}
+		if(val.process.dry) {
+			useLog('dry mode, exiting', 'info');
+			return;
+		}
+		if(val.process.default_flavor) {
+			useLog('default flavor chosen:', 'success');
+			useDataLog(val.process.default_flavor);
+			return;
+		}
+		else {
+			prompt([FlavorInquiry]).then(({flavor}) =>
+			useFlavorPrompt(flavor, val));
+		}
+	});
+
 }

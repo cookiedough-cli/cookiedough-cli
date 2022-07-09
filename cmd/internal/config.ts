@@ -9,12 +9,13 @@ import {
 	__COOKIE_ENV__,
 	CRUMB_DEFAULT_FILE
 } from '.';
+import fetch from 'node-fetch';
 
 // only use this from cmd or alter path
-export function useDefaultConfig(
-	context_depth: string
-) {
-	return require(resolve(__dirname, `${context_depth}/${__COOKIE_ENV__}/${CRUMB_DEFAULT_FILE}`));
+export async function useDefaultConfig() {
+	const res = await fetch('https://raw.githubusercontent.com/cookiedough-cli/main/.env/.defaults.json');
+	const data = await res.json();
+	return data;
 }
 
 export function useConfigList(
@@ -24,65 +25,65 @@ export function useConfigList(
 	return useFileList(dir).filter(file => CrumbFileNames.includes(file));
 }
 
-export function useDirectoryConfig(
+export async function useDirectoryConfig(
 	dir: string
-): CrumbOptions | null {
+): Promise<CrumbOptions | null> {
 	let match;
 	const filesInBase = useFileList(dir);
-	filesInBase.forEach(file => {
+	for await(const file of filesInBase) {
 		if(file === 'cookiedough.json') {
 			match = file;
 			return;
 		}
-	});
+	}
 	if(!match) {
 		return null;
 	}
-	return require(resolve(dir, match));
+	return import(resolve(dir, match));
 }
 
-export function useGlobalConfigWithCWD():
-CrumbOptions {
+export async function useGlobalConfigWithCWD():
+Promise<CrumbOptions> {
 	const wd = process.cwd();
 	let match;
 	const filesInBase = useFileList(wd);
-	filesInBase.forEach(file => {
+	for await(const file of filesInBase) {
 		if(file === 'cookiedough.json') {
 			match = file;
 			return;
 		}
-	});
+	}
 	if(!match) {
 		const home = useHomeDir();
 		const filesInHome = useFileList(home);
-		filesInHome.forEach(file => {
+		for await(const file of filesInHome) {
 			if(file === 'cookiedough.json') {
 				match = file;
 				return;
 			}
-		});
+		}
 		if(!match) {
 			useLog('no config found, using default settings');
 			// todo - maybe prompt for options
-			return <CrumbOptions>useDefaultConfig('../../');
+			return <CrumbOptions>await useDefaultConfig();
 		}
 		else {
 			if(match.includes('json')) {
 				// return as json
-				return <CrumbOptions>require(resolve(home, match));
+				return <CrumbOptions>await import (resolve(home, match));
 			}
 		}
 
 	}
-	return <CrumbOptions>require(resolve(wd, match));
+	return <CrumbOptions>await import(resolve(wd, match));
 }
 
 
-export function useConfig(
+export async function useConfig(
 	dir ?: string
-): CrumbOptions {
+): Promise<CrumbOptions> {
 	if(!dir) {
-		return useGlobalConfigWithCWD();
+		return await useGlobalConfigWithCWD();
 	}
-	return useDirectoryConfig(dir);
+	return await useDirectoryConfig(dir);
 }

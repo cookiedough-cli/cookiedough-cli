@@ -21,11 +21,10 @@ import {
 export * from './modules';
 
 // get flavor from node json at root
-const NodeFlavor = useFlavorMod('node');
+const NodeFlavor = Promise.resolve(useFlavorMod('node').then(flavor => flavor));
 // preset path to copy the files from depending on preferences
 const preset_path = '../../../../../../.flavors/_copy_';
 // user options for inquirer
-const NodeUserOptions = NodeFlavor.doughmap;
 
 // the recipe to build as recieved from the user menu answers
 export type NodeFlavorRecipe = {
@@ -157,6 +156,7 @@ export function useNodeInstaller(
 export async function usePrompt(
 	p: CrumbOptions,
 ): CrumbPromptNoOp {
+	const NodeUserOptions = (await NodeFlavor).doughmap;
 	return Promise.resolve(inquirer.prompt(NodeUserOptions).then((answers: NodeFlavorRecipe) => {
 		const ppm = useNodeFlavorMap(answers);
 		const node_build_info: NodeBuildInfo = {

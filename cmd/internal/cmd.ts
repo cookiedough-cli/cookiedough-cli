@@ -35,7 +35,9 @@ CookieProcessRecipe {
 
 		if(inline.length > 1) {
 			if(inline.includes('--no-config')) {
-				crumbs = useDefaultConfig('../..');
+				useDefaultConfig().then(val => {
+					crumbs = val;
+				});
 			}
 			else if(inline.includes('-c') || inline.includes('--config')) {
 				if(valid.signature === 'create' && !inline.includes('create')) {
@@ -63,6 +65,6 @@ CookieProcessRecipe {
 		_raw_args: inline,
 		_raw_cmd: [valid],
 		cmd: valid,
-		crumbs: useGlobalConfigWithCWD()
+		crumbs: Promise.resolve(useGlobalConfigWithCWD())
 	};
 }

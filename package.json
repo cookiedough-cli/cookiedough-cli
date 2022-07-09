@@ -1,8 +1,8 @@
 {
   "name": "cookiedough-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "bin": {
-	"cookiedough": "index.js"
+    "cookiedough": "index.cjs"
   },
   "private": false,
   "main": "build/index.js",
@@ -20,7 +20,7 @@
     "run:locate": "./scripts/run/locate",
     "run:help": "./scripts/run/help",
     "run:edit": "./scripts/run/edit",
-	"run:doctor": "node index.js doctor",
+    "run:doctor": "node index.js doctor",
     "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha"
   },
@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "fs-extra": "^10.1.0",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "node-fetch": "^3.2.6"
   },
   "man": [
     "./.assets/manpage.txt"

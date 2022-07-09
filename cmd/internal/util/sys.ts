@@ -45,10 +45,10 @@ string {
 	return readFileSync(resolve(__dirname, context_depth, '.assets/manpage.txt'), 'utf8');
 }
 
-export function useFlavorMod(
+export async function useFlavorMod(
 	mod: string
-): FlavorDeclarationJSON {
-	return require(join(__dirname, `${context_depth}.flavors/${mod}`, 'flavor.json'));
+): Promise<FlavorDeclarationJSON> {
+	return await import(join(__dirname, `${context_depth}.flavors/${mod}`, 'flavor.json'));
 }
 
 export function validFlavorMod(
