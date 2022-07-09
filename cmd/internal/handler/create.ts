@@ -39,27 +39,12 @@ export function useFlavorPrompt(
 			process.exit(0);
 	}
 }
-export function useCreate(
+export async function useCreate(
 	recipe	: CookieProcessRecipe
 ) {
-	recipe.crumbs.then(val => {
-		if(val.process && val.process.log_level && val.process.log_level === 'verbose' && recipe.cmd.signature !== 'help') {
-			useLog('Recipe Found:', 'success');
-			console.log(recipe);
-		}
-		if(val.process.dry) {
-			useLog('dry mode, exiting', 'info');
-			return;
-		}
-		if(val.process.default_flavor) {
-			useLog('default flavor chosen:', 'success');
-			useDataLog(val.process.default_flavor);
-			return;
-		}
-		else {
-			prompt([FlavorInquiry]).then(({flavor}) =>
-			useFlavorPrompt(flavor, val));
-		}
-	});
-
+	console.log(recipe);
+	if(!recipe.crumbs) {
+		const { flavor } = await prompt([FlavorInquiry]);
+		console.log(flavor);
+	}
 }

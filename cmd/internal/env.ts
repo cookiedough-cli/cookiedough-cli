@@ -24,10 +24,10 @@ export type CrumbOptions = {
 	process					?: ProcessCrumbs; // runtime related config options
 	repository				?: RepositoryCrumbs; // options to configure auto repo setup/integrations
 }
-export type CookieCMD = {
+export type CookieCMD<T> = {
 	alias 		 	?: string[];
 	signature	 	: CookieCMDSignature;
-	callback		: Function;
+	callback		: (args?: T) => Promise<any>;
 	follow_up_with 	?: CrumbInlineType[];
 }
 
@@ -45,11 +45,12 @@ export const CookieCMDSignatures = [
 export type CookieCMDSignature = typeof CookieCMDSignatures[number];
 
 export type CookieProcessRecipe = {
-	cmd			: CookieCMD;
-	crumbs		: Promise<CrumbOptions>;
+	cmd			: CookieCMD<any>;
+	crumbs		: CrumbOptions;
 	_raw_args	: string[];
-	_raw_cmd	: CookieCMD[];
+	_raw_cmd	: CookieCMD<any>[];
 }
+
 export const LogLevels = [
 	'verbose',
 	'silent',
@@ -106,38 +107,38 @@ export const FlavorInquiry: ListQuestion = {
 /**
  * Full List of Commands to interpret at runtime
  */
-export const CMDList: CookieCMD[] = [
+export const CMDList: CookieCMD<any>[] = [
 	{
 		signature: 'create',
 		alias: ['', null],
 		callback: useCreate
 	},
-	{
-		signature: 'edit',
-		alias: ['edit-env', 'edit-config'],
-		callback: useInteractiveEdit
-	},
-	{
-		signature: 'doctor',
-		alias: ['fix', 'ihelp'],
-		callback: useDoctor
-	},
-	{
-		signature: 'set',
-		alias : ['set-env', 'set-config', 'setup-env'],
-		callback: useInteractiveEnvSetup
-	},
+	// {
+	// 	signature: 'edit',
+	// 	alias: ['edit-env', 'edit-config'],
+	// 	callback: useInteractiveEdit
+	// },
+	// {
+	// 	signature: 'doctor',
+	// 	alias: ['fix', 'ihelp'],
+	// 	callback: useDoctor
+	// },
+	// {
+	// 	signature: 'set',
+	// 	alias : ['set-env', 'set-config', 'setup-env'],
+	// 	callback: useInteractiveEnvSetup
+	// },
 	// {
 	// 	signature: 'create-flavor',
 	// 	callback: useFl
 	// },
-	{
-		signature: 'locate',
-		callback: useLocator
-	},
+	// {
+	// 	signature: 'locate',
+	// 	callback: useLocator
+	// },
 	{
 		signature: 'help',
 		alias: ['manpage', 'man'],
-		callback: useManPage
+		callback: async () => useManPage()
 	}
 ];

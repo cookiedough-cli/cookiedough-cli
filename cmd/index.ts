@@ -7,8 +7,8 @@ import {
  * entry point for command-line interface
  * handles the command entered at the top level, then passes to the appropriate handler
  */
-export function useCookieDough() {
-	const recipe = useCMDRecipe();
+export async function useCookieDough() {
+	const recipe = await useCMDRecipe();
 	/**
 	 * print help menu dont return anything
 	 */

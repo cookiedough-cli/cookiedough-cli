@@ -3,6 +3,6 @@ import {
 	log
 } from '..';
 
-export function useHelp() {
+export async function useHelp() {
 	log(useManPage());
 }

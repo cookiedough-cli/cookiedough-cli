@@ -12,13 +12,13 @@ import {
  *
  * @returns recipe for the called process context
  */
-export function useCMDRecipe():
-CookieProcessRecipe {
+export async function useCMDRecipe():
+Promise<CookieProcessRecipe> {
 
 	/**
 	 * default to create cmd
 	 */
-	let valid: CookieCMD = {
+	let valid: CookieCMD<any> = {
 		signature: 'create',
 		callback: useCreate
 	};
@@ -61,10 +61,11 @@ CookieProcessRecipe {
 
 		return outData;
 	}
+	const crumbs = await useGlobalConfigWithCWD();
 	return {
 		_raw_args: inline,
 		_raw_cmd: [valid],
 		cmd: valid,
-		crumbs: Promise.resolve(useGlobalConfigWithCWD())
+		crumbs
 	};
 }
