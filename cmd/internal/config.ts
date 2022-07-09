@@ -6,14 +6,13 @@ import {
 import {
 	CrumbOptions,
 	useLog,
-	__COOKIE_ENV__,
-	CRUMB_DEFAULT_FILE
+	__COOKIE_ENV__
 } from '.';
 import axios from 'axios';
 
 // only use this from cmd or alter path
 export async function useDefaultConfig() {
-	const res = await axios.get('https://raw.githubusercontent.com/cookiedough-cli/main/.env/.defaults.json');
+	const res = await axios.get('https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/.env/.defaults.json');
 	return res.data;
 }
 

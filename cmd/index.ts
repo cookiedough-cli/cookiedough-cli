@@ -1,5 +1,6 @@
 import {
 	useCMDRecipe,
+	useDefaultConfig,
 	_log
 } from './internal';
 /**
@@ -9,6 +10,10 @@ import {
  */
 export async function useCookieDough() {
 	const recipe = await useCMDRecipe();
+	const default_config = await useDefaultConfig();
+	if(!recipe.crumbs) {
+		recipe.crumbs = default_config;
+	}
 	/**
 	 * print help menu dont return anything
 	 */
