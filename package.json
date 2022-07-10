@@ -23,7 +23,11 @@
     "run:doctor": "node index.js doctor",
     "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha",
-	"lint": "prettier --write ./cmd"
+    "lint": "prettier --write ./cmd",
+	"prepare": "husky install",
+	"postinstall": "husky install",
+	"prepack": "pinst --disable",
+    "postpack": "pinst --enable"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
@@ -33,9 +37,11 @@
     "@typescript-eslint/parser": "^5.23.0",
     "eslint": "^8.17.0",
     "eslint-import-resolver-typescript": "^2.7.1",
+    "husky": "^8.0.1",
     "mocha": "^10.0.0",
     "nexe": "^4.0.0-rc.1",
     "nyc": "^15.1.0",
+    "pinst": "^3.0.0",
     "prettier": "^2.7.1",
     "prettier-eslint": "^15.0.1",
     "typedoc": "^0.22.15",
