@@ -2,7 +2,6 @@ scripts
 .eslintrc.js
 .eslintignore
 .git*
-.assets
 examples
 docs
 test
