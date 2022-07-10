@@ -1,15 +1,11 @@
-import {
-	CrumbOptions,
-	retrieveExtern,
-	FlavorCrumbSchema
-} from '.';
+import { CrumbOptions, retrieveExtern, FlavorCrumbSchema } from '.';
 import {
 	prompt,
 	FlavorInquiry,
 	CookieProcessRecipe,
 	useLog,
 	ENV_RAW_SOURCE,
-	useSysInfo
+	useSysInfo,
 } from '..';
 
 export type FlavorAttribute = string;
@@ -46,7 +42,7 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
 			console.log('build config:');
 			console.log(config);
 			console.log('build context:');
-			console.log(useSysInfo);
+			console.log(useSysInfo());
 			break;
 		default:
 			useLog('template name invalid', 'error');

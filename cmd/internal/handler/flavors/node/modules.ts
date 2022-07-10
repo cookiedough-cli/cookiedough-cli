@@ -1,4 +1,4 @@
-import { NodeModule } from '.';
+export type NodeModule = [string, string];
 
 export const BabelBaseModules: NodeModule[] = [
 	['@babel/core', '-D'],

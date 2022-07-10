@@ -1,6 +1,5 @@
-import { CrumbOptions, SystemOverview } from '../..';
+import { CrumbOptions } from '../..';
 import {
-	NodeFlavorRecipe,
 	NodeModule,
 	SWCBaseModules,
 	GulpModules,
@@ -14,8 +13,16 @@ import {
 	RollupTSModules,
 	GulpTSModules,
 	SWCPackModules,
-} from '.';
+} from './modules';
 
+export type NodeFlavorRecipe = {
+	preset: string;
+	pkg_mgr: string;
+	build_tools: string;
+	compiler: string;
+	bundler: string;
+	eslint: boolean;
+};
 // package manager type
 export type NodeModulePackager = {
 	name: NodeFlavorPkg; //name of process to run
