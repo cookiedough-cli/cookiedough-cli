@@ -10,9 +10,8 @@ import {
  */
 export async function useCookieDough() {
 	const recipe = await useCMDRecipe();
-	const default_config = await useDefaultConfig();
 	if(!recipe.crumbs) {
-		recipe.crumbs = default_config;
+		recipe.crumbs = await useDefaultConfig();
 	}
 	/**
 	 * print help menu dont return anything
