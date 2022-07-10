@@ -23,11 +23,13 @@ export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 	const inline = process.argv.slice(2);
 	// todo - set up new arg processor with promises setup
 
-	if(inline.length > 0) {
+	if (inline.length > 0) {
 		// has cmd as leading argument
 		const try_signature = inline.shift();
-		const cmd = CMDList.filter(cmd => cmd.signature === try_signature).shift();
-		if(cmd) {
+		const cmd = CMDList.filter(
+			(cmd) => cmd.signature === try_signature
+		).shift();
+		if (cmd) {
 			valid = cmd;
 		}
 	}

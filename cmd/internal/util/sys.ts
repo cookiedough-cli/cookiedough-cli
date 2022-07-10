@@ -18,7 +18,7 @@ export const useSysInfo: () => SystemOverview = () =>
 		platform: platform(),
 		type: type(),
 		cwd: process.cwd(),
-		home: homedir()
+		home: homedir(),
 	};
 
 export const useValidWritePath = (p: string) => ensureDirSync(p);

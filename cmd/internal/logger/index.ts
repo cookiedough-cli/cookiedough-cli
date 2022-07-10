@@ -31,11 +31,13 @@ export function useColor(color: string, val: string): string {
 	}
 }
 
-export const _log = (data: ValidLogData): boolean => process.stdout.write(`${data}\n`);
+export const _log = (data: ValidLogData): boolean =>
+	process.stdout.write(`${data}\n`);
 export const log = (msg: any) => console.log(msg);
-export const info = (data: ValidLogData) => _log(`${useColor('blue', 'info')}: ${data}`);
+export const info = (data: ValidLogData) =>
+	_log(`${useColor('blue', 'info')}: ${data}`);
 export const _warn = (data: ValidLogData) => console.warn(data);
-export const _error =(data: ValidLogData) => console.error(data);
+export const _error = (data: ValidLogData) => console.error(data);
 export const useDataLog = (o: object | string) => _log(o);
 
 export function useLog(
