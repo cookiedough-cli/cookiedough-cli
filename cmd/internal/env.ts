@@ -4,7 +4,8 @@ import { CrumbInlineType, CrumbOptions } from '../types';
 /**
  * Environment Variables Constants
  */
-export const ENV_RAW_SOURCE = 'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/';
+export const ENV_RAW_SOURCE =
+	'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/';
 export const ENV_COOKIE_BASE = '.env';
 export const ENV_CRUMB_DEFAULT_FILE = '.defaults.json';
 export const ENV_COOKIE_COPY_DIR = '.flavors/_copy_';

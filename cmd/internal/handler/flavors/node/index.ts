@@ -10,15 +10,12 @@ import {
 	CrumbOptions,
 	useSysInfo,
 	SystemOverview,
-	FlavorCrumbSchema
+	FlavorCrumbSchema,
 } from '../..';
 import { useNodeFlavorMap, MappedNodeFlavor } from './pkg';
 import { useFlavorMod, retrieveExtern } from '../../../util';
 export * from './modules';
-import {
-	ENV_RAW_SOURCE,
-	ENV_COOKIE_COPY_DIR
-} from '../../../env';
+import { ENV_RAW_SOURCE, ENV_COOKIE_COPY_DIR } from '../../../env';
 // preset path to copy the files from depending on preferences
 const preset_path = `${ENV_RAW_SOURCE}${ENV_COOKIE_COPY_DIR}`;
 // user options for inquirer
@@ -46,12 +43,14 @@ export async function usePrompt(p: CrumbOptions) {
 	/**
 	 * retrieve github raw asset from min repo for node flavor
 	 */
-	const NodeUserOptions = await retrieveExtern<FlavorCrumbSchema>(`${ENV_RAW_SOURCE}.flavors/node/flavor.json`);
+	const NodeUserOptions = await retrieveExtern<FlavorCrumbSchema>(
+		`${ENV_RAW_SOURCE}.flavors/node/flavor.json`
+	);
 	const answers = await inquirer.prompt(NodeUserOptions.doughmap);
 	return {
 		_sys: useSysInfo(),
 		crumbs: p,
-		flavor: answers
+		flavor: answers,
 	};
 	// 		const ppm = useNodeFlavorMap(answers);
 	// 		const node_build_info: NodeBuildInfo = {

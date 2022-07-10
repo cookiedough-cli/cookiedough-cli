@@ -40,9 +40,8 @@ export type RepositoryCrumbs = {
 	template_url?: string; // url of template repo to use for creation
 };
 
-
 export type FlavorCrumbSchema = {
 	tag_name: string;
 	recipe_path: string;
 	doughmap: ChoiceCollection;
-}
+};
