@@ -24,6 +24,7 @@
     "run:oconfig": "./scripts/run/otherconfig",
     "test": "nyc mocha",
     "lint": "prettier --write ./cmd",
+	"lint:check": "prettier --check ./cmd",
 	"prepare": "husky install",
 	"postinstall": "husky install",
 	"prepack": "pinst --disable",
