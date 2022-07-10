@@ -1,15 +1,16 @@
 {
 	"path": {
+		"allow_cwd_out": true,
 		"custom_flavors": null,
 		"out": ".",
-		"parent_config": null,
-		"allow_cwd_out": true
+		"parent_config": null
 	},
 	"process": {
 		"add_files_from": null,
 		"always_use_prompt": true,
 		"default_template": null,
 		"detatched": false,
+		"disable_color": false,
 		"dry": false,
 		"log_level": "minimal",
 		"log_file": null,

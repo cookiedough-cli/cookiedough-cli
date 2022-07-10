@@ -1,10 +1,9 @@
+import { CrumbOptions } from '.';
 import {
 	prompt,
-	useDataLog,
 	FlavorInquiry,
 	CookieProcessRecipe,
-	useLog,
-	CrumbOptions
+	useLog
 } from '..';
 import * as NodeFlavor from './flavors/node';
 

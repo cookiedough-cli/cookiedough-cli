@@ -1,9 +1,9 @@
 import { format } from 'util';
+import { ValidLogData } from '..';
 import {
 	LogFilePath,
 	LogType,
-	ValidLogData
-} from '..';
+} from '../../types/log';
 import {
 	FgYellow,
 	FgBlue,

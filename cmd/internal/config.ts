@@ -1,15 +1,17 @@
 import { resolve } from 'path';
+import { CrumbOptions } from './handler';
 import {
 	useFileList,
 	useHomeDir
 } from './util';
 import {
-	CrumbOptions,
 	useLog,
 	ENV_RAW_SOURCE,
 	ENV_COOKIE_BASE,
-	ENV_CRUMB_DEFAULT_FILE
+	ENV_CRUMB_DEFAULT_FILE,
+	ENV_V_CONFIG_FILENAME
 } from '.';
+
 import axios from 'axios';
 
 /**
@@ -35,7 +37,7 @@ export async function useDirectoryConfig(
 	let match: string;
 	const filesInBase = useFileList(dir);
 	for await(const file of filesInBase) {
-		if(file === 'cookiedough.json') {
+		if(file === ENV_V_CONFIG_FILENAME) {
 			match = file;
 			return;
 		}
@@ -52,7 +54,7 @@ Promise<CrumbOptions> {
 	let match: string;
 	const filesInBase = useFileList(wd);
 	for await(const file of filesInBase) {
-		if(file === 'cookiedough.json') {
+		if(file === ENV_V_CONFIG_FILENAME) {
 			match = file;
 			return;
 		}
@@ -61,7 +63,7 @@ Promise<CrumbOptions> {
 		const home = useHomeDir();
 		const filesInHome = useFileList(home);
 		for await(const file of filesInHome) {
-			if(file === 'cookiedough.json') {
+			if(file === ENV_V_CONFIG_FILENAME) {
 				match = file;
 				return;
 			}
@@ -77,7 +79,6 @@ Promise<CrumbOptions> {
 				return <CrumbOptions>await import (resolve(home, match));
 			}
 		}
-
 	}
 	return <CrumbOptions>await import(resolve(wd, match));
 }
