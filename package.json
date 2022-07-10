@@ -1,13 +1,13 @@
 {
   "name": "cookiedough-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "bin": {
     "cookiedough": "index.cjs"
   },
   "private": false,
   "main": "build/index.js",
-  "repository": "git@github.com:abschill/cookiedough-cli.git",
-  "homepage": "https://github.com/abschill/cookiedough-cli",
+  "repository": "git@github.com:cookiedough-cli/cookiedough-cli.git",
+  "homepage": "https://github.com/cookiedough-cli/cookiedough-cli",
   "author": "abschill (https://blog.abschill.com/)",
   "license": "MIT",
   "scripts": {
