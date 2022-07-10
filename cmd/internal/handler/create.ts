@@ -1,6 +1,16 @@
-import { CrumbOptions } from '.';
-import { prompt, FlavorInquiry, CookieProcessRecipe, useLog } from '..';
-import * as NodeFlavor from './flavors/node';
+import {
+	CrumbOptions,
+	retrieveExtern,
+	FlavorCrumbSchema
+} from '.';
+import {
+	prompt,
+	FlavorInquiry,
+	CookieProcessRecipe,
+	useLog,
+	ENV_RAW_SOURCE,
+	useSysInfo
+} from '..';
 
 export type FlavorAttribute = string;
 export type FlavorAttributes = FlavorAttribute[];
@@ -28,9 +38,15 @@ export type FlavorDeclarationJSON = {
 export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
 	switch (tag) {
 		case 'node':
-			const res = await NodeFlavor.usePrompt(config);
-			// todo - set up new parser with github raw urls instead of local nested
+			const res = await retrieveExtern<FlavorCrumbSchema>(
+				`${ENV_RAW_SOURCE}.flavors/node/flavor.json`
+			);
+			console.log('flavor config:');
 			console.log(res);
+			console.log('build config:');
+			console.log(config);
+			console.log('build context:');
+			console.log(useSysInfo);
 			break;
 		default:
 			useLog('template name invalid', 'error');
