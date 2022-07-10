@@ -25,12 +25,10 @@ export type NodeFlavorRecipe = {
 };
 // package manager type
 export type NodeModulePackager = {
-	name: NodeFlavorPkg; //name of process to run
+	name: string; //name of process to run
 	installSelf: string; //command to install self if not installed / detected on system
 	installPkgSignature: string; //prefix for adding packages between the process and the packagename
 };
-export const NodeFlavor_PkgMgr = ['npm', 'yarn', 'pnpm'] as const;
-export type NodeFlavorPkg = typeof NodeFlavor_PkgMgr[number];
 
 // setup the type for the installer + packages to install within for the shell prefix like yarn add vs npm install etc
 export type MappedNodeFlavor = {
@@ -52,7 +50,7 @@ export type NodeRecipeToFileMap = {
  */
 
 export function asNodeModulePackager(
-	name: NodeFlavorPkg,
+	name: string,
 	installPkgSignature: string
 ): NodeModulePackager {
 	return <NodeModulePackager>{

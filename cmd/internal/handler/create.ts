@@ -37,12 +37,12 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
 			const res = await retrieveExtern<FlavorCrumbSchema>(
 				`${ENV_RAW_SOURCE}.flavors/node/flavor.json`
 			);
-			console.log('flavor config:');
-			console.log(res);
-			console.log('build config:');
-			console.log(config);
-			console.log('build context:');
-			console.log(useSysInfo());
+			useLog('flavor config:', 'info');
+			useLog(res);
+			useLog('build config:');
+			useLog(config);
+			useLog('build context:');
+			useLog(useSysInfo());
 			break;
 		default:
 			useLog('template name invalid', 'error');
