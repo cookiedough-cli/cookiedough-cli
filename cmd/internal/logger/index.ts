@@ -31,25 +31,12 @@ export function useColor(color: string, val: string): string {
 	}
 }
 
-export function _log(data: ValidLogData): boolean {
-	return process.stdout.write(`${data}\n`);
-}
-
-export function log(msg: any) {
-	console.log(msg);
-}
-
-export function info(data: ValidLogData) {
-	return _log(`${useColor('blue', 'info')}: ${data}`);
-}
-
-export function _warn(data: ValidLogData) {
-	return console.warn(data);
-}
-
-export function _error(data: ValidLogData) {
-	return console.error(data);
-}
+export const _log = (data: ValidLogData): boolean => process.stdout.write(`${data}\n`);
+export const log = (msg: any) => console.log(msg);
+export const info = (data: ValidLogData) => _log(`${useColor('blue', 'info')}: ${data}`);
+export const _warn = (data: ValidLogData) => console.warn(data);
+export const _error =(data: ValidLogData) => console.error(data);
+export const useDataLog = (o: object | string) => _log(o);
 
 export function useLog(
 	data: ValidLogData,
@@ -65,8 +52,4 @@ export function useLog(
 		default:
 			return _log(useColor(type ?? 'info', data));
 	}
-}
-
-export function useDataLog(o: object | string) {
-	return _log(o);
 }
