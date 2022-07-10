@@ -2,7 +2,6 @@ import { CookieProcessRecipe } from '.';
 import {
 	useHomeDir,
 	useLog,
-	useColor,
 	useDataLog,
 	prompt,
 	useFileList,
