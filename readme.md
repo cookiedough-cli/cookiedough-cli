@@ -2,7 +2,7 @@
 
 work in progress - customizable project generation
 
-![](/.assets/cookiedough.png)
+![](/.env/.assets/cookiedough.png)
 
 ## basic use
 
