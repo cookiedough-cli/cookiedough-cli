@@ -1,22 +1,10 @@
 import { format } from 'util';
 import { ValidLogData } from '..';
-import {
-	LogFilePath,
-	LogType,
-} from '../../types/log';
-import {
-	FgYellow,
-	FgBlue,
-	FgGreen,
-	FgRed,
-	Reset
-} from './colors'
+import { LogFilePath, LogType } from '../../types/log';
+import { FgYellow, FgBlue, FgGreen, FgRed, Reset } from './colors';
 
-export function useColor(
-	color		: string,
-	val			: string
-): string {
-	switch(color) {
+export function useColor(color: string, val: string): string {
+	switch (color) {
 		case 'yellow':
 		case 'warn':
 		case 'warning':
@@ -43,9 +31,7 @@ export function useColor(
 	}
 }
 
-export function _log(
-	data		: ValidLogData
-): boolean {
+export function _log(data: ValidLogData): boolean {
 	return process.stdout.write(`${data}\n`);
 }
 
@@ -53,31 +39,25 @@ export function log(msg: any) {
 	console.log(msg);
 }
 
-export function info(
-	data	: ValidLogData
-) {
-	return _log(`${useColor('blue', 'info')}: ${data}`)
+export function info(data: ValidLogData) {
+	return _log(`${useColor('blue', 'info')}: ${data}`);
 }
 
-export function _warn(
-	data		: ValidLogData
-) {
+export function _warn(data: ValidLogData) {
 	return console.warn(data);
 }
 
-export function _error(
-	data		: ValidLogData
-) {
+export function _error(data: ValidLogData) {
 	return console.error(data);
 }
 
 export function useLog(
-	data		: ValidLogData,
-	type		?: LogType,
-	filePath 	?: LogFilePath
+	data: ValidLogData,
+	type?: LogType,
+	filePath?: LogFilePath
 ) {
 	// todo - handle fs writer if needed
-	switch(type) {
+	switch (type) {
 		case 'error':
 			return _error(useColor(type, data));
 		case 'warning':
@@ -87,8 +67,6 @@ export function useLog(
 	}
 }
 
-export function useDataLog(
-	o: object | string
-) {
+export function useDataLog(o: object | string) {
 	return _log(o);
 }

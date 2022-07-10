@@ -25,30 +25,30 @@ export type ANSIBgCyan = '\x1b[46m';
 export type ANSIBgWhite = '\x1b[47m';
 
 export type ANSIEffect =
-ANSIReset 			|
-ANSIBright			|
-ANSIDim	  			|
-ANSIUnderscore		|
-ANSIBlink	  		|
-ANSIReverse	  		|
-ANSIHidden	  		;
+	| ANSIReset
+	| ANSIBright
+	| ANSIDim
+	| ANSIUnderscore
+	| ANSIBlink
+	| ANSIReverse
+	| ANSIHidden;
 
 export type ANSIForegroundColor =
-ANSIFgBlack			|
-ANSIFgRed			|
-ANSIFgGreen			|
-ANSIFgYellow		|
-ANSIFgBlue			|
-ANSIFgMagenta		|
-ANSIFgCyan			|
-ANSIFgWhite			;
+	| ANSIFgBlack
+	| ANSIFgRed
+	| ANSIFgGreen
+	| ANSIFgYellow
+	| ANSIFgBlue
+	| ANSIFgMagenta
+	| ANSIFgCyan
+	| ANSIFgWhite;
 
 export type ANSIBackgroundColor =
-ANSIBgBlack			|
-ANSIBgRed			|
-ANSIBgGreen			|
-ANSIBgYellow		|
-ANSIBgBlue			|
-ANSIBgMagenta		|
-ANSIBgCyan			|
-ANSIBgWhite			;
+	| ANSIBgBlack
+	| ANSIBgRed
+	| ANSIBgGreen
+	| ANSIBgYellow
+	| ANSIBgBlue
+	| ANSIBgMagenta
+	| ANSIBgCyan
+	| ANSIBgWhite;

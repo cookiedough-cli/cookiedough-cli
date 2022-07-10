@@ -1,7 +1,4 @@
-import {
-	useManPage,
-	log
-} from '..';
+import { useManPage, log } from '..';
 
 export async function useHelp() {
 	log(useManPage());

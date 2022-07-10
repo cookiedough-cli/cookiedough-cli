@@ -1,0 +1,9 @@
+.bdd
+.development
+.env
+.flavors
+build
+node_modules
+pkg-cache
+scripts
+test

@@ -1,7 +1,4 @@
-import {
-	CrumbOptions,
-	SystemOverview
- } from '../..';
+import { CrumbOptions, SystemOverview } from '../..';
 import {
 	NodeFlavorRecipe,
 	NodeModule,
@@ -16,15 +13,15 @@ import {
 	RollupModules,
 	RollupTSModules,
 	GulpTSModules,
-	SWCPackModules
+	SWCPackModules,
 } from '.';
 
 // package manager type
 export type NodeModulePackager = {
-	name				: NodeFlavorPkg; //name of process to run
-	installSelf			: string; //command to install self if not installed / detected on system
-	installPkgSignature	: string; //prefix for adding packages between the process and the packagename
-}
+	name: NodeFlavorPkg; //name of process to run
+	installSelf: string; //command to install self if not installed / detected on system
+	installPkgSignature: string; //prefix for adding packages between the process and the packagename
+};
 export const NodeFlavor_PkgMgr = ['npm', 'yarn', 'pnpm'] as const;
 export type NodeFlavorPkg = typeof NodeFlavor_PkgMgr[number];
 
@@ -38,7 +35,7 @@ export type NodeRecipeToFileMap = {
 	recipe: NodeFlavorRecipe;
 	installer: NodeModulePackager;
 	packages: NodeModule[];
-}
+};
 
 /**
  *
@@ -47,23 +44,21 @@ export type NodeRecipeToFileMap = {
  * @returns
  */
 
- export function asNodeModulePackager(
+export function asNodeModulePackager(
 	name: NodeFlavorPkg,
 	installPkgSignature: string
-) : NodeModulePackager {
+): NodeModulePackager {
 	return <NodeModulePackager>{
 		name,
 		installSelf: '', //todo
-		installPkgSignature
-	}
+		installPkgSignature,
+	};
 }
 
-export const useNodeFlavorMap = (
-	np: NodeFlavorRecipe
-): MappedNodeFlavor => {
+export const useNodeFlavorMap = (np: NodeFlavorRecipe): MappedNodeFlavor => {
 	let installer: NodeModulePackager;
 
-	switch(np.pkg_mgr) {
+	switch (np.pkg_mgr) {
 		case 'pnpm':
 			installer = asNodeModulePackager('pnpm', 'add');
 			break;
@@ -76,69 +71,70 @@ export const useNodeFlavorMap = (
 	}
 
 	const needsPackage: NodeModule[] = [];
-	if(np.eslint) {
+	if (np.eslint) {
 		// add eslint plugins for typescript
-		if(np.preset == 'ts') {
-			ESLintTSModules.forEach(m => needsPackage.push(m));
+		if (np.preset == 'ts') {
+			ESLintTSModules.forEach((m) => needsPackage.push(m));
 		}
 		// just add regular eslint modules
 		else {
-			ESLintBaseModules.forEach(m => needsPackage.push(m));
+			ESLintBaseModules.forEach((m) => needsPackage.push(m));
 		}
 	}
 	// add selected build tools
-	switch(np.build_tools) {
+	switch (np.build_tools) {
 		case 'grunt':
-			GruntBaseModules.forEach(m => needsPackage.push(m));
+			GruntBaseModules.forEach((m) => needsPackage.push(m));
 			break;
 		case 'gulp':
-			GulpModules.forEach(m => needsPackage.push(m));
+			GulpModules.forEach((m) => needsPackage.push(m));
 	}
 	// add ts if needed
-	if(np.preset === 'ts') {
+	if (np.preset === 'ts') {
 		needsPackage.push(['typescript', '-D']);
-		if(np.bundler === 'rollup') {
-			RollupTSModules.forEach(m => needsPackage.push(m));
+		if (np.bundler === 'rollup') {
+			RollupTSModules.forEach((m) => needsPackage.push(m));
 		}
-		if(np.build_tools === 'gulp') {
-			GulpTSModules.forEach(m => needsPackage.push(m));
+		if (np.build_tools === 'gulp') {
+			GulpTSModules.forEach((m) => needsPackage.push(m));
 		}
 	}
 	// add chosen compiler
-	switch(np.compiler) {
+	switch (np.compiler) {
 		case 'esbuild':
 			needsPackage.push(['esbuild', '']);
 			break;
 		case 'swc':
-			SWCBaseModules.forEach(m => needsPackage.push(m));
+			SWCBaseModules.forEach((m) => needsPackage.push(m));
 			break;
 		case 'babel':
-			BabelBaseModules.forEach(m => needsPackage.push(m));
-			if(np.preset === 'ts') {
-				BabelTSModules.forEach(m => needsPackage.push(m));
+			BabelBaseModules.forEach((m) => needsPackage.push(m));
+			if (np.preset === 'ts') {
+				BabelTSModules.forEach((m) => needsPackage.push(m));
 			}
 	}
 	// add bundler
-	switch(np.bundler) {
+	switch (np.bundler) {
 		case 'esbuild':
 			needsPackage.push(['esbuild', '']);
 			break;
 		case 'webpack':
-			WebpackModules.forEach(m => needsPackage.push(m));
-			if(np.preset == 'ts') needsPackage.push(['ts-loader', '-D']);
-			if(np.compiler === 'swc') needsPackage.push(['swc-loader', '-D']);
-			if(np.compiler === 'babel') needsPackage.push(['babel-loader', '-D']);
+			WebpackModules.forEach((m) => needsPackage.push(m));
+			if (np.preset == 'ts') needsPackage.push(['ts-loader', '-D']);
+			if (np.compiler === 'swc') needsPackage.push(['swc-loader', '-D']);
+			if (np.compiler === 'babel')
+				needsPackage.push(['babel-loader', '-D']);
 			break;
 		case 'rollup':
-			RollupModules.forEach(m => needsPackage.push(m));
+			RollupModules.forEach((m) => needsPackage.push(m));
 			break;
 		case 'swcpack':
-			SWCPackModules.forEach(m => needsPackage.push(m));
+			SWCPackModules.forEach((m) => needsPackage.push(m));
 	}
 	// return package list
 	return {
 		installer,
-		node_modules: needsPackage
+		node_modules: needsPackage,
 	};
 };
 

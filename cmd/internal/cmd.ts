@@ -6,21 +6,19 @@ import {
 	useDirectoryConfig,
 	useDefaultConfig,
 	useGlobalConfigWithCWD,
-	useManPage
- } from '.';
+	useManPage,
+} from '.';
 /**
  *
  * @returns recipe for the called process context
  */
-export async function useCMDRecipe():
-Promise<CookieProcessRecipe> {
-
+export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 	/**
 	 * default to create cmd
 	 */
 	let valid: CookieCMD<any> = {
 		signature: 'create',
-		callback: useCreate
+		callback: useCreate,
 	};
 	const inline = process.argv.slice(2);
 	// todo - set up new arg processor with promises setup
@@ -65,6 +63,6 @@ Promise<CookieProcessRecipe> {
 		_raw_args: inline,
 		_raw_cmd: [valid],
 		cmd: valid,
-		crumbs
+		crumbs,
 	};
 }
