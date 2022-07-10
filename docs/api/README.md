@@ -4,4 +4,4 @@ cookiedough - v0.1.0 / [Exports](modules.md)
 
 customizable project generation cli, many languages, many setups
 
-![](/.assets/cookiedough.png)
+![](//.env/.assets/cookiedough.png)

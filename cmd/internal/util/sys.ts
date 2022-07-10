@@ -18,6 +18,7 @@ export const useSysInfo: () => SystemOverview = () =>
 		platform: platform(),
 		type: type(),
 		cwd: process.cwd(),
+		home: homedir()
 	};
 
 export const useValidWritePath = (p: string) => ensureDirSync(p);
@@ -33,7 +34,7 @@ export function useCopyMachine(src: string, dest: string): void {
 
 export function useManPage(): string {
 	return readFileSync(
-		resolve(__dirname, context_depth, '.assets/manpage.txt'),
+		resolve(__dirname, context_depth, '.env/.assets/manpage.txt'),
 		'utf8'
 	);
 }

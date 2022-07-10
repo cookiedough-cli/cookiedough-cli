@@ -1,6 +1,6 @@
 {
   "name": "cookiedough-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "bin": {
     "cookiedough": "index.cjs"
   },
@@ -48,6 +48,6 @@
     "inquirer": "^8.2.4"
   },
   "man": [
-    "./.assets/manpage.txt"
+    "./.env/.assets/manpage.txt"
   ]
 }

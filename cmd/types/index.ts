@@ -11,6 +11,7 @@ export type SystemOverview = {
 	cwd: string;
 	platform: string;
 	type: string;
+	home: string;
 };
 
 export type Tuple = [string, string];
