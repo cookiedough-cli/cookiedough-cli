@@ -6,13 +6,18 @@ import {
 import {
 	CrumbOptions,
 	useLog,
-	__COOKIE_ENV__
+	ENV_RAW_SOURCE,
+	ENV_COOKIE_BASE,
+	ENV_CRUMB_DEFAULT_FILE
 } from '.';
 import axios from 'axios';
 
-// only use this from cmd or alter path
+/**
+ * @private
+ * @returns Fetched Github Raw Sourced JSON
+ */
 export async function useDefaultConfig() {
-	const res = await axios.get('https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/.env/.defaults.json');
+	const res = await axios.get(`${ENV_RAW_SOURCE}${ENV_COOKIE_BASE}/${ENV_CRUMB_DEFAULT_FILE}`);
 	return res.data;
 }
 
@@ -26,7 +31,8 @@ export function useConfigList(
 export async function useDirectoryConfig(
 	dir: string
 ): Promise<CrumbOptions | null> {
-	let match;
+
+	let match: string;
 	const filesInBase = useFileList(dir);
 	for await(const file of filesInBase) {
 		if(file === 'cookiedough.json') {
@@ -43,7 +49,7 @@ export async function useDirectoryConfig(
 export async function useGlobalConfigWithCWD():
 Promise<CrumbOptions> {
 	const wd = process.cwd();
-	let match;
+	let match: string;
 	const filesInBase = useFileList(wd);
 	for await(const file of filesInBase) {
 		if(file === 'cookiedough.json') {

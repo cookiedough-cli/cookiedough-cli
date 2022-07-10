@@ -1,7 +1,16 @@
-import { useCreate, useDoctor, useInteractiveEdit, useInteractiveEnvSetup, useLocator, useManPage } from '../internal/handler';
 import { ListQuestion } from 'inquirer';
-export const __COOKIE_ENV__ = '.env';
-export const CRUMB_DEFAULT_FILE = '.defaults.json'
+import {
+	useCreate,
+	useManPage
+} from '../internal/handler';
+
+/**
+ * Environment Variables Constants
+ */
+export const ENV_RAW_SOURCE = 'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/'
+export const ENV_COOKIE_BASE = '.env';
+export const ENV_CRUMB_DEFAULT_FILE = '.defaults.json'
+export const ENV_COOKIE_COPY_DIR = '.flavors/_copy_';
 
 export type CLIPrompt = {
 	choices	: string[];
@@ -9,8 +18,6 @@ export type CLIPrompt = {
 	name   	: string;
 	message	: string;
 }
-
-export type CrumbPromptNoOp = Promise<void>;
 
 export type CrumbInlineType = {
 	type	 : string | number;
@@ -95,6 +102,10 @@ export type RepositoryCrumbs = {
 
 export type ValidLogData = any;
 
+/**
+ * Core Preset Flavor Options
+ * todo: add more than node
+ */
 export const FlavorInquiry: ListQuestion = {
 	type: 'list',
 	name: 'flavor',
@@ -106,6 +117,7 @@ export const FlavorInquiry: ListQuestion = {
 
 /**
  * Full List of Commands to interpret at runtime
+ * todo: commented sections
  */
 export const CMDList: CookieCMD<any>[] = [
 	{

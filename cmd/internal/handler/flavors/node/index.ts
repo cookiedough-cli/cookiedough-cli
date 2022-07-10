@@ -6,7 +6,6 @@ import {
 	Tuple,
 	SystemOverview,
 	useLog,
-	useSysInfo,
 	useValidWritePath,
 	_call,
 	_callFrom,
@@ -14,9 +13,7 @@ import {
 	useFileList,
 	usePowerWasher,
 	useCopyMachine,
-	useDirExists,
-	CrumbOptions,
-	CrumbPromptNoOp
+	CrumbOptions
 } from '../..';
 export * from './modules';
 
