@@ -1,5 +1,6 @@
-import { PathConfigOptions } from '../internal';
+import { Inquirer, PathConfigOptions } from '../internal';
 import { LogLevel } from './log';
+import { ChoiceCollection } from 'inquirer';
 /**
  * Process Types
  */
@@ -38,3 +39,10 @@ export type RepositoryCrumbs = {
 	type?: string; //type eg git, gitlab, bitbucket
 	template_url?: string; // url of template repo to use for creation
 };
+
+
+export type FlavorCrumbSchema = {
+	tag_name: string;
+	recipe_path: string;
+	doughmap: ChoiceCollection;
+}

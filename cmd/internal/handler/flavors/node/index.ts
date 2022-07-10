@@ -1,4 +1,3 @@
-import { useFlavorMod } from '../../..';
 import inquirer from 'inquirer';
 import {
 	Tuple,
@@ -9,18 +8,17 @@ import {
 	usePowerWasher,
 	useCopyMachine,
 	CrumbOptions,
-	ENV_RAW_SOURCE,
-	ENV_COOKIE_COPY_DIR,
 	useSysInfo,
 	SystemOverview,
+	FlavorCrumbSchema
 } from '../..';
 import { useNodeFlavorMap, MappedNodeFlavor } from './pkg';
+import { useFlavorMod, retrieveExtern } from '../../../util';
 export * from './modules';
-
-// get flavor from node json at root
-const NodeFlavor = Promise.resolve(
-	useFlavorMod('node').then((flavor) => flavor)
-);
+import {
+	ENV_RAW_SOURCE,
+	ENV_COOKIE_COPY_DIR
+} from '../../../env';
 // preset path to copy the files from depending on preferences
 const preset_path = `${ENV_RAW_SOURCE}${ENV_COOKIE_COPY_DIR}`;
 // user options for inquirer
@@ -44,18 +42,16 @@ export type NodeModule = Tuple;
  * @returns no op cli process
  */
 
-export async function usePrompt(p: CrumbOptions): Promise<{
-	_sys: SystemOverview;
-	crumbs: CrumbOptions;
-	flavor: MappedNodeFlavor;
-}> {
-	const NodeUserOptions = (await NodeFlavor).doughmap;
-	const answers = await inquirer.prompt(NodeUserOptions);
-	const flavor = useNodeFlavorMap(answers);
+export async function usePrompt(p: CrumbOptions) {
+	/**
+	 * retrieve github raw asset from min repo for node flavor
+	 */
+	const NodeUserOptions = await retrieveExtern<FlavorCrumbSchema>(`${ENV_RAW_SOURCE}.flavors/node/flavor.json`);
+	const answers = await inquirer.prompt(NodeUserOptions.doughmap);
 	return {
 		_sys: useSysInfo(),
 		crumbs: p,
-		flavor,
+		flavor: answers
 	};
 	// 		const ppm = useNodeFlavorMap(answers);
 	// 		const node_build_info: NodeBuildInfo = {

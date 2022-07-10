@@ -1,6 +1,6 @@
 {
 	"tag_name": "node",
-	"recipe_path": "$PKG_ROOT/pkg/flavors/node/",
+	"recipe_path": "/.flavors/node/",
 	"doughmap": [
 		{
 			"name": "pkg_mgr",
