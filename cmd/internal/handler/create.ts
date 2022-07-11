@@ -32,22 +32,15 @@ export type FlavorDeclarationJSON = {
  * @param config  config for the local crumb configuration options
  */
 export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
-	switch (tag) {
-		case 'node':
-			const res = await retrieveExtern<FlavorCrumbSchema>(
-				`${ENV_RAW_SOURCE}.flavors/node/flavor.json`
-			);
-			useLog('flavor config:', 'info');
-			useLog(res);
-			useLog('build config:');
-			useLog(config);
-			useLog('build context:');
-			useLog(useSysInfo());
-			break;
-		default:
-			useLog('template name invalid', 'error');
-			process.exit(0);
-	}
+	const res = await retrieveExtern<FlavorCrumbSchema>(
+		`${ENV_RAW_SOURCE}.flavors/${tag}/flavor.json`
+	);
+	useLog('flavor config:', 'info');
+	useLog(res);
+	useLog('build config:');
+	useLog(config);
+	useLog('build context:');
+	useLog(useSysInfo());
 }
 
 /**
