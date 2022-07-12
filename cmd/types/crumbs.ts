@@ -1,4 +1,4 @@
-import { Inquirer, PathConfigOptions } from '../internal';
+import { PathConfigOptions } from '../internal';
 import { LogLevel } from './log';
 import { ChoiceCollection } from 'inquirer';
 /**
@@ -14,16 +14,20 @@ export type ProcessCrumbs = {
 	detatched?: boolean; // run in caller process or spawn its own
 	disable_color?: boolean; //disables colored output in terminal
 	dry?: boolean; // run without doing anything, just print the would-be output
-	log_level?: LogLevel;
-	log_file?: string;
 	overwrite_existing_out?: boolean;
 	shell_prefix?: string; //prefix the process using this config with a shell wrapper command to run, followed by &&, followed by the process (ie cd ~/)
 };
 
+export type LogCrumbs = {
+	level?: LogLevel;
+	path?: string;
+};
+
 export type CrumbInlineType = {
-	type: string | number;
-	key: string;
-	required: boolean;
+	short: string;
+	long: string;
+	tag: string;
+	config_tag: string;
 };
 
 // configuration as an object
@@ -32,6 +36,7 @@ export type CrumbOptions = {
 	process?: ProcessCrumbs; // runtime related config options
 	repository?: RepositoryCrumbs; // options to configure auto repo setup/integrations
 };
+
 export type RepositoryCrumbs = {
 	ctx_base_path?: string; // child path of the context its written to, to be written to
 	init?: boolean; //init a repo and enable parsing of other attributes in the type

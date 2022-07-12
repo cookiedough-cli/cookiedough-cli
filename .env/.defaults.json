@@ -8,14 +8,16 @@
 	"process": {
 		"add_files_from": null,
 		"always_use_prompt": true,
-		"default_template": null,
+		"default_flavor": null,
 		"detatched": false,
 		"disable_color": false,
 		"dry": false,
-		"log_level": "minimal",
-		"log_file": null,
 		"overwrite_existing_out": false,
 		"shell_prefix": null
+	},
+	"log": {
+		"level": "base",
+		"path": "log"
 	},
 	"repository": {
 		"init": false,

@@ -49,5 +49,7 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
  */
 export async function useCreate(recipe: CookieProcessRecipe) {
 	const { flavor } = await prompt([FlavorInquiry]);
+	useLog('recipe:', 'info');
+	useLog(recipe);
 	return await useFlavorPrompt(flavor, {});
 }

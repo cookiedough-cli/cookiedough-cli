@@ -14,6 +14,102 @@ export const ENV_V_CONFIG_FILENAME = 'cookiedough.json';
 export const ENV_FLAVOR_FILE = 'flavor.json';
 export const ENV_DOUGH_FILE = 'doughmap.json';
 
+/**
+ * Inline Arg Map
+ */
+export const ENV_INLINE_ARGS: CrumbInlineType[] = [
+	{
+		long: '--config',
+		short: '-c',
+		tag: 'load_config',
+		config_tag: null,
+	},
+	{
+		long: '--no-globals',
+		short: '-ng',
+		tag: 'no_globals',
+		config_tag: null,
+	},
+	{
+		long: '--allow-cwd-out',
+		short: '-cwd',
+		config_tag: 'path.allow_cwd_out',
+	},
+	{
+		long: '--out',
+		short: '-o',
+		config_tag: 'path.out',
+	},
+	{
+		long: '--parent-config',
+		short: '-pc',
+		config_tag: 'path.parent_config',
+	},
+	{
+		long: '--custom-flavors',
+		short: '-cf',
+		config_tag: 'path.custom_flavors',
+	},
+	{
+		long: '--add-files-from',
+		short: '-af',
+		tag: 'add_files',
+		config_tag: 'process.add_files_from',
+	},
+	{
+		long: '--always-use-prompt',
+		short: '-up',
+		config_tag: 'process.always_use_prompt',
+	},
+	{
+		long: '--default-flavor',
+		short: '-f',
+		config_tag: 'process.default_flavor',
+	},
+	{
+		long: '--detatched',
+		short: '-d',
+		tag: 'process_detatched',
+		config_tag: 'process.detatched',
+	},
+	{
+		long: '--no-color',
+		short: '-nc',
+		tag: 'process_no_color',
+		config_tag: 'process.disable_color',
+	},
+	{
+		long: '--dry-run',
+		short: '-dry',
+		tag: 'process_dry',
+		config_tag: 'process.dry',
+	},
+	{
+		long: '--overwrite-existing-out',
+		short: '-oeo',
+		tag: 'process_overwrite',
+		config_tag: 'process.overwrite_existing_out',
+	},
+	{
+		long: '--shell-prefix',
+		short: '-sp',
+		tag: 'process_shell_prefix',
+		config_tag: 'process.shell_prefix',
+	},
+	{
+		long: '--log-path',
+		short: '-logs',
+		tag: 'log_path_root',
+		config_tag: 'log.path',
+	},
+	{
+		long: '--log-level',
+		short: '-log',
+		tag: 'log_level',
+		config_tag: 'log.level',
+	},
+] as CrumbInlineType[];
+
 export type CLIPrompt = {
 	choices: string[];
 	type: string;
@@ -31,7 +127,7 @@ export type CookieCMD<T> = {
 export type CookieProcessRecipe = {
 	cmd: CookieCMD<any>;
 	crumbs: CrumbOptions;
-	_raw_args: string[];
+	_raw_args: CrumbInlineType[];
 	_raw_cmd: CookieCMD<any>[];
 };
 
