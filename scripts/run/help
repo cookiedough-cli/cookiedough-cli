@@ -1,2 +1,2 @@
 #!/bin/bash
-yarn node index help
+yarn node index.cjs help

@@ -1,2 +1,0 @@
-#!/bin/bash
-yarn node index -c __fixtures__/test-runner

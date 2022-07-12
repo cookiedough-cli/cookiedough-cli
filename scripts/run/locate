@@ -1,2 +1,2 @@
 #!/bin/bash
-yarn node index locate
+yarn node index.cjs locate

@@ -1,2 +1,2 @@
 #!/bin/bash
-yarn node index edit
+yarn node index.cjs edit

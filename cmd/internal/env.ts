@@ -1,8 +1,9 @@
 import { ListQuestion } from 'inquirer';
 import { useCreate, useManPage } from '../internal/handler';
 import { CrumbInlineType, CrumbOptions } from '../types';
+
 /**
- * Environment Variables Constants
+ * Runtime Constants
  */
 export const ENV_RAW_SOURCE =
 	'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/';
@@ -10,6 +11,8 @@ export const ENV_COOKIE_BASE = '.env';
 export const ENV_CRUMB_DEFAULT_FILE = '.defaults.json';
 export const ENV_COOKIE_COPY_DIR = '.flavors/_copy_';
 export const ENV_V_CONFIG_FILENAME = 'cookiedough.json';
+export const ENV_FLAVOR_FILE = 'flavor.json';
+export const ENV_DOUGH_FILE = 'doughmap.json';
 
 export type CLIPrompt = {
 	choices: string[];
@@ -20,23 +23,10 @@ export type CLIPrompt = {
 
 export type CookieCMD<T> = {
 	alias?: string[];
-	signature: CookieCMDSignature;
+	signature: string;
 	callback: (args?: T) => Promise<any>;
 	follow_up_with?: CrumbInlineType[];
 };
-
-export const CookieCMDSignatures = [
-	'create',
-	'doctor',
-	'edit',
-	'add',
-	'locate',
-	'set',
-	'setup',
-	'help',
-	'create-flavor',
-] as const;
-export type CookieCMDSignature = typeof CookieCMDSignatures[number];
 
 export type CookieProcessRecipe = {
 	cmd: CookieCMD<any>;
@@ -75,29 +65,6 @@ export const CMDList: CookieCMD<any>[] = [
 		alias: ['', null],
 		callback: useCreate,
 	},
-	// {
-	// 	signature: 'edit',
-	// 	alias: ['edit-env', 'edit-config'],
-	// 	callback: useInteractiveEdit
-	// },
-	// {
-	// 	signature: 'doctor',
-	// 	alias: ['fix', 'ihelp'],
-	// 	callback: useDoctor
-	// },
-	// {
-	// 	signature: 'set',
-	// 	alias : ['set-env', 'set-config', 'setup-env'],
-	// 	callback: useInteractiveEnvSetup
-	// },
-	// {
-	// 	signature: 'create-flavor',
-	// 	callback: useFl
-	// },
-	// {
-	// 	signature: 'locate',
-	// 	callback: useLocator
-	// },
 	{
 		signature: 'help',
 		alias: ['manpage', 'man'],
