@@ -1,0 +1,12 @@
+{
+	"preset": {
+		"c": {
+			"_prefix": ".flavors/_copy_/c",
+			"_writeable": ["main.c", "main.h"]
+		},
+		"c++": {
+			"_prefix": ".flavors/_copy_/c++",
+			"_writeable": ["main.cpp", "main.hpp"]
+		}
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"preset": {
+		"basic": {
+			"_prefix": ".flavors/_copy_/go",
+			"_writeable": ["main.go"]
+		}
+	}
+}
