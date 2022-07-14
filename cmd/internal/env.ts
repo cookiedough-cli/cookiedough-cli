@@ -113,14 +113,14 @@ export const ENV_INLINE_ARGS: CrumbInlineType[] = [
 		long: '--repo-init',
 		short: '-repo',
 		tag: 'repository_init',
-		config_tag: 'repository.init'
+		config_tag: 'repository.init',
 	},
 	{
 		long: '--repo-template',
 		short: '-rt',
 		tag: 'repository_template',
-		config_tag: 'repository.template_url'
-	}
+		config_tag: 'repository.template_url',
+	},
 ] as CrumbInlineType[];
 
 export type CLIPrompt = {
