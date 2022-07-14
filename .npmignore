@@ -19,3 +19,4 @@ typedoc.json
 makefile
 nyc_output
 build
+.DS_STORE

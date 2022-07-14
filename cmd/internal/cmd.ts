@@ -33,7 +33,6 @@ export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 	if (inline.length === 0) {
 		return {
 			_raw_args: null,
-			_raw_cmd: null,
 			cmd: {
 				signature: 'create',
 				callback: useCreate,
@@ -52,7 +51,6 @@ export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 
 		return {
 			_raw_args: args,
-			_raw_cmd: create_cmd,
 			cmd: create_cmd[0],
 			crumbs,
 		};
@@ -64,7 +62,6 @@ export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 
 	return {
 		_raw_args: args,
-		_raw_cmd: [cmd],
 		cmd,
 		crumbs,
 	};

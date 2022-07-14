@@ -5,6 +5,7 @@ import { CrumbInlineType, CrumbOptions } from '../types';
 /**
  * Runtime Constants
  */
+// todo - possibly change to permalink
 export const ENV_RAW_SOURCE =
 	'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/';
 export const ENV_COOKIE_BASE = '.env';
@@ -70,7 +71,7 @@ export const ENV_INLINE_ARGS: CrumbInlineType[] = [
 		long: '--detatched',
 		short: '-d',
 		tag: 'process_detatched',
-		config_tag: 'process.detatched',
+		config_tag: 'process.detached',
 	},
 	{
 		long: '--no-color',
@@ -108,6 +109,18 @@ export const ENV_INLINE_ARGS: CrumbInlineType[] = [
 		tag: 'log_level',
 		config_tag: 'log.level',
 	},
+	{
+		long: '--repo-init',
+		short: '-repo',
+		tag: 'repository_init',
+		config_tag: 'repository.init'
+	},
+	{
+		long: '--repo-template',
+		short: '-rt',
+		tag: 'repository_template',
+		config_tag: 'repository.template_url'
+	}
 ] as CrumbInlineType[];
 
 export type CLIPrompt = {
@@ -128,7 +141,6 @@ export type CookieProcessRecipe = {
 	cmd: CookieCMD<any>;
 	crumbs: CrumbOptions;
 	_raw_args: CrumbInlineType[];
-	_raw_cmd: CookieCMD<any>[];
 };
 
 // path-specific configuration parameters - all optional
