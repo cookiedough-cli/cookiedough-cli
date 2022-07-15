@@ -10,6 +10,12 @@
 				"c",
 				"c++"
 			]
+		},
+		{
+			"name": "cmake",
+			"message": "configure cmake?",
+			"type": "confirm",
+			"default": true
 		}
 	]
 }
