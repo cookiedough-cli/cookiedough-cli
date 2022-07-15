@@ -2,7 +2,7 @@
 	"preset": {
 		"cjs": {
 				"_prefix": ".flavors/_copy_/node/preset/cjs/",
-				"_writable": [
+				"_writeable": [
 					{
 						"filename": "index.js",
 						"_writename": "index.js"
@@ -16,7 +16,7 @@
 		},
 		"esm": {
 				"_prefix": ".flavors/_copy_/node/preset/esm/",
-				"_writable": [
+				"_writeable": [
 					{
 						"filename": "index.js",
 						"_writename": "index.js"
@@ -30,7 +30,7 @@
 		},
 		"ts": {
 				"_prefix": ".flavors/_copy_/node/preset/ts/",
-				"_writable": [
+				"_writeable": [
 					{
 						"filename": "index.js",
 						"_writename": "index.js"

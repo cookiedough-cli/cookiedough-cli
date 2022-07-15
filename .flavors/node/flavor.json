@@ -1,7 +1,7 @@
 {
 	"tag_name": "node",
 	"recipe_path": "/.flavors/node/",
-	"_doughpath": "/.flavors/_copy_/node/",
+	"_copypath": "/.flavors/node/doughmap.json",
 	"doughmap": [
 		{
 			"name": "pkg_mgr",

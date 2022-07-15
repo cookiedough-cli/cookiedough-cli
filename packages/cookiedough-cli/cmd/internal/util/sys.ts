@@ -1,6 +1,7 @@
 import { join, resolve } from 'path';
+import { FlavorCrumbSchema } from '../../types';
 import { SystemOverview } from '../../types';
-import { ENV_RAW_SOURCE, FlavorDeclarationJSON } from '../handler';
+import { ENV_RAW_SOURCE } from '../handler';
 import {
 	copySync,
 	ensureDirSync,
@@ -36,13 +37,13 @@ export const useManPage = () =>
 
 export async function useFlavorMod(
 	mod: string
-): Promise<FlavorDeclarationJSON> {
+): Promise<FlavorCrumbSchema> {
 	return await import(
 		join(__dirname, `${context_depth}.flavors/${mod}`, 'flavor.json')
 	);
 }
 
-export function validFlavorMod(json: FlavorDeclarationJSON): boolean {
+export function validFlavorMod(json: FlavorCrumbSchema): boolean {
 	const keys = Object.keys(json);
 	if (!keys.includes('tag_name')) return false;
 	if (!keys.includes('recipe_path')) return false;
