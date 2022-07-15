@@ -8,7 +8,6 @@ import {
 	ENV_CRUMB_DEFAULT_FILE,
 	ENV_V_CONFIG_FILENAME,
 } from '.';
-
 import axios from 'axios';
 
 /**
@@ -68,6 +67,8 @@ export async function useGlobalConfigWithCWD(): Promise<CrumbOptions> {
 			// todo - maybe prompt for options
 			return <CrumbOptions>await useDefaultConfig();
 		} else {
+			console.log('config from homedir:');
+			console.log(match);
 			if (match.includes('json')) {
 				// return as json
 				return <CrumbOptions>await import(resolve(home, match));

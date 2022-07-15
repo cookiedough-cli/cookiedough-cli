@@ -17,7 +17,8 @@
 	},
 	"log": {
 		"level": "base",
-		"path": "log"
+		"path": ".cookielog",
+		"write_logs": false
 	},
 	"repository": {
 		"init": false,

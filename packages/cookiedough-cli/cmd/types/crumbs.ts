@@ -21,6 +21,7 @@ export type ProcessCrumbs = {
 export type LogCrumbs = {
 	level?: LogLevel;
 	path?: string;
+	write_logs?: boolean;
 };
 
 export type CrumbInlineType = {
