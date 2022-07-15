@@ -1,10 +1,9 @@
-import { useCreate, useLog } from './handler';
+import { useCreate, log } from './handler';
 import {
 	CookieProcessRecipe,
 	CMDList,
 	useDefaultConfig,
 	useGlobalConfigWithCWD,
-	useManPage,
 	ENV_INLINE_ARGS,
 } from '.';
 /**
@@ -12,27 +11,24 @@ import {
  * @returns recipe for the called process context
  */
 export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
-	/**
-	 * default to create cmd
-	 */
 
 	const inline = process.argv.slice(2);
 	const args = ENV_INLINE_ARGS.filter(
 		(arg) => inline.includes(arg.long) || inline.includes(arg.short)
 	);
-	if (inline.length <= args.length) {
-		useLog(
+	if (args.filter(arg => arg.type === 'string').length > 0 && (inline.length <= args.length)) {
+		log(
 			'error: args do not match up inline values passed to cookiedough',
 			'error'
 		);
-		useLog(`${inline[inline.length - 1]} does not have a value`);
+		log(`${inline[inline.length - 1]} does not have a value`);
 		process.exit(1);
 	}
-	// todo - set up new arg processor with promises setup
+
 	const default_config = await useDefaultConfig();
-	if (inline.length === 0) {
+	if (inline.length === 0 || args.length > inline.length) {
 		return {
-			_raw_args: null,
+			__args: null,
 			cmd: {
 				signature: 'create',
 				callback: useCreate,
@@ -48,20 +44,15 @@ export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
 
 	if (!cmd) {
 		const create_cmd = CMDList.filter((cmd) => cmd.signature === 'create');
-
 		return {
-			_raw_args: args,
+			__args: args,
 			cmd: create_cmd[0],
 			crumbs,
 		};
 	}
 
-	if (cmd.signature === 'help') {
-		useManPage();
-	}
-
 	return {
-		_raw_args: args,
+		__args: args,
 		cmd,
 		crumbs,
 	};

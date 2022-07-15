@@ -1,6 +1,6 @@
 {
   "name": "cookiedough-cli",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "bin": {
     "cookiedough": "index.cjs"
   },
@@ -52,7 +52,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "fs-extra": "^10.1.0",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "terminal-color": "^0.2.0"
   },
   "man": [
     "./.env/.assets/manpage.txt"

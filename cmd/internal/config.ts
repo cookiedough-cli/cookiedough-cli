@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { CrumbOptions } from './handler';
 import { useFileList, useHomeDir } from './util';
 import {
-	useLog,
+	log,
 	ENV_RAW_SOURCE,
 	ENV_COOKIE_BASE,
 	ENV_CRUMB_DEFAULT_FILE,
@@ -64,7 +64,7 @@ export async function useGlobalConfigWithCWD(): Promise<CrumbOptions> {
 			}
 		}
 		if (!match) {
-			useLog('no config found, using default settings');
+			log('no config found, using default settings');
 			// todo - maybe prompt for options
 			return <CrumbOptions>await useDefaultConfig();
 		} else {

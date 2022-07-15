@@ -3,7 +3,7 @@ import {
 	prompt,
 	FlavorInquiry,
 	CookieProcessRecipe,
-	useLog,
+	log,
 	ENV_RAW_SOURCE,
 	useSysInfo,
 } from '..';
@@ -35,12 +35,12 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
 	const res = await retrieveExtern<FlavorCrumbSchema>(
 		`${ENV_RAW_SOURCE}.flavors/${tag}/flavor.json`
 	);
-	useLog('flavor config:', 'info');
-	useLog(res);
-	useLog('build config:');
-	useLog(config);
-	useLog('build context:');
-	useLog(useSysInfo());
+	log('flavor config:', 'info');
+	log(res);
+	log('build config:');
+	log(config);
+	log('build context:');
+	log(useSysInfo());
 }
 
 /**
@@ -49,7 +49,7 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
  */
 export async function useCreate(recipe: CookieProcessRecipe) {
 	const { flavor } = await prompt([FlavorInquiry]);
-	useLog('recipe:', 'info');
-	useLog(recipe);
+	log('recipe:', 'info');
+	log(recipe);
 	return await useFlavorPrompt(flavor, {});
 }

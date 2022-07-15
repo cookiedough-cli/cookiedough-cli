@@ -1,8 +1,7 @@
 import { CookieProcessRecipe } from '.';
 import {
 	useHomeDir,
-	useLog,
-	useDataLog,
+	log,
 	prompt,
 	useFileList,
 	useConfigList,
@@ -12,7 +11,7 @@ import { resolve } from 'path';
 
 export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 	const home_dir = useHomeDir();
-	useDataLog(recipe);
+	log(recipe);
 	prompt([
 		{
 			message: 'enter desired config path',
@@ -24,7 +23,7 @@ export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 		// const current_files = useFileList(answers.config_path);
 		const current_matches = useConfigList(answers.config_path);
 		if (current_matches.length > 0) {
-			useLog('current config files:', 'info');
+			log('current config files:', 'info');
 			console.log(current_matches);
 		} else {
 			const out_path = answers.config_path.includes('.json')
@@ -34,7 +33,7 @@ export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 				resolve(__dirname, '../../../.env/.defaults.json'),
 				out_path
 			);
-			useLog(`wrote config files to: ${out_path}`, 'success');
+			log(`wrote config files to: ${out_path}`, 'success');
 		}
 	});
 }

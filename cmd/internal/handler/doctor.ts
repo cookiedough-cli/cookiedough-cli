@@ -1,16 +1,15 @@
 import {
 	CookieProcessRecipe,
 	log,
-	info,
 	useHomeDir,
 	useDirectoryConfig,
 } from '..';
 
 export function useDoctor(recipe: CookieProcessRecipe) {
-	info('reslolved recipe:');
+	log('reslolved recipe:', 'info');
 	log(recipe);
-	info('directory config:');
+	log('directory config:', 'info');
 	log(useDirectoryConfig(process.cwd()));
-	info('root config:');
+	log('root config:', 'info');
 	log(useDirectoryConfig(useHomeDir()));
 }

@@ -1,4 +1,4 @@
-import { useCMDRecipe, useDefaultConfig, _log } from './internal';
+import { useCMDRecipe, useDefaultConfig, __log } from './internal';
 /**
  * @public
  * entry point for command-line interface
@@ -9,13 +9,8 @@ export async function useCookieDough() {
 	if (!recipe.crumbs) {
 		recipe.crumbs = await useDefaultConfig();
 	}
-	// console.log('recipe:');
-	// console.log(recipe);
-	/**
-	 * print help menu dont return anything
-	 */
 	if (recipe.cmd.signature === 'help') {
-		return _log(await recipe.cmd.callback());
+		return __log('', await recipe.cmd.callback());
 	}
 
 	return recipe.cmd.callback(recipe);

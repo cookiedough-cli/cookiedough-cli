@@ -1,4 +1,5 @@
-import { useStatusColor, useDirectoryConfig, useHomeDir, useLog } from '..';
+import { useDirectoryConfig, useHomeDir, log } from '..';
+import { color } from 'terminal-color';
 
 export function useLocator(): void {
 	const caller_dir = process.cwd();
@@ -6,11 +7,11 @@ export function useLocator(): void {
 	const caller_dir_crumbs = useDirectoryConfig(caller_dir);
 	const home_dir_crumbs = useDirectoryConfig(home_dir);
 	if (caller_dir_crumbs) {
-		useLog(useStatusColor('green', 'Crumbs in CWD:'));
+		log(color.fg.green('Crumbs in CWD:'));
 		console.log(caller_dir_crumbs);
 	}
 	if (home_dir_crumbs) {
-		useLog(useStatusColor('green', 'Crumbs in CWD:'));
+		log(color.fg.green('Crumbs in CWD:'));
 		console.log(home_dir_crumbs);
 	}
 }

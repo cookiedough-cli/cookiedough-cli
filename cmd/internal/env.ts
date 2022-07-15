@@ -24,102 +24,120 @@ export const ENV_INLINE_ARGS: CrumbInlineType[] = [
 		short: '-c',
 		tag: 'load_config',
 		config_tag: null,
+		type: 'string'
 	},
 	{
 		long: '--no-globals',
 		short: '-ng',
 		tag: 'no_globals',
 		config_tag: null,
+		type: 'boolean'
 	},
 	{
 		long: '--allow-cwd-out',
 		short: '-cwd',
 		config_tag: 'path.allow_cwd_out',
+		type: 'boolean'
 	},
 	{
 		long: '--out',
 		short: '-o',
 		config_tag: 'path.out',
+		type: 'string'
 	},
 	{
 		long: '--parent-config',
 		short: '-pc',
 		config_tag: 'path.parent_config',
+		type: 'string'
 	},
 	{
 		long: '--custom-flavors',
 		short: '-cf',
 		config_tag: 'path.custom_flavors',
+		type: 'string'
 	},
 	{
 		long: '--add-files-from',
 		short: '-af',
 		tag: 'add_files',
 		config_tag: 'process.add_files_from',
+		type: 'string'
 	},
 	{
 		long: '--always-use-prompt',
 		short: '-up',
 		config_tag: 'process.always_use_prompt',
+		type: 'boolean'
 	},
 	{
 		long: '--default-flavor',
 		short: '-f',
 		config_tag: 'process.default_flavor',
+		type: 'string'
 	},
 	{
 		long: '--detatched',
 		short: '-d',
 		tag: 'process_detatched',
 		config_tag: 'process.detached',
+		type: 'boolean'
 	},
 	{
 		long: '--no-color',
 		short: '-nc',
 		tag: 'process_no_color',
 		config_tag: 'process.disable_color',
+		type: 'boolean'
 	},
 	{
 		long: '--dry-run',
 		short: '-dry',
 		tag: 'process_dry',
 		config_tag: 'process.dry',
+		type: 'boolean'
 	},
 	{
 		long: '--overwrite-existing-out',
 		short: '-oeo',
 		tag: 'process_overwrite',
 		config_tag: 'process.overwrite_existing_out',
+		type: 'boolean'
 	},
 	{
 		long: '--shell-prefix',
 		short: '-sp',
 		tag: 'process_shell_prefix',
 		config_tag: 'process.shell_prefix',
+		type: 'string'
 	},
 	{
 		long: '--log-path',
 		short: '-logs',
 		tag: 'log_path_root',
 		config_tag: 'log.path',
+		type: 'string'
 	},
 	{
 		long: '--log-level',
 		short: '-log',
 		tag: 'log_level',
 		config_tag: 'log.level',
+		type: 'string'
 	},
 	{
 		long: '--repo-init',
 		short: '-repo',
 		tag: 'repository_init',
 		config_tag: 'repository.init',
+		type: 'boolean'
 	},
 	{
 		long: '--repo-template',
 		short: '-rt',
 		tag: 'repository_template',
 		config_tag: 'repository.template_url',
+		type: 'string'
 	},
 ] as CrumbInlineType[];
 
@@ -140,7 +158,7 @@ export type CookieCMD<T> = {
 export type CookieProcessRecipe = {
 	cmd: CookieCMD<any>;
 	crumbs: CrumbOptions;
-	_raw_args: CrumbInlineType[];
+	__args: CrumbInlineType[];
 };
 
 // path-specific configuration parameters - all optional

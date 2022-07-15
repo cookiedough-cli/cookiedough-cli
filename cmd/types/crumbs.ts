@@ -28,6 +28,7 @@ export type CrumbInlineType = {
 	long: string;
 	tag: string;
 	config_tag: string;
+	type: 'string' | 'boolean';
 };
 
 // configuration as an object
