@@ -11,12 +11,14 @@ import {
  * @returns recipe for the called process context
  */
 export async function useCMDRecipe(): Promise<CookieProcessRecipe> {
-
 	const inline = process.argv.slice(2);
 	const args = ENV_INLINE_ARGS.filter(
 		(arg) => inline.includes(arg.long) || inline.includes(arg.short)
 	);
-	if (args.filter(arg => arg.type === 'string').length > 0 && (inline.length <= args.length)) {
+	if (
+		args.filter((arg) => arg.type === 'string').length > 0 &&
+		inline.length <= args.length
+	) {
 		log(
 			'error: args do not match up inline values passed to cookiedough',
 			'error'

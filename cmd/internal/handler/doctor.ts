@@ -1,9 +1,4 @@
-import {
-	CookieProcessRecipe,
-	log,
-	useHomeDir,
-	useDirectoryConfig,
-} from '..';
+import { CookieProcessRecipe, log, useHomeDir, useDirectoryConfig } from '..';
 
 export function useDoctor(recipe: CookieProcessRecipe) {
 	log('reslolved recipe:', 'info');
