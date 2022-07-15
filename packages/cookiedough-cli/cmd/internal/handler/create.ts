@@ -44,7 +44,7 @@ export async function useFlavorPrompt(tag: string, config: CrumbOptions) {
 		`${ENV_RAW_SOURCE}.flavors/${tag}/flavor.json`
 	);
 	const flavor_dough = await retrieveExtern<FlavorDoughMap>(
-		`${ENV_RAW_SOURCE}${flavor_schema._copypath}`
+		`${ENV_RAW_SOURCE}.flavors/${tag}/doughmap.json`
 	);
 
 	log('flavor config:', 'info');
