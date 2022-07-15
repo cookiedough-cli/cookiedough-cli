@@ -10,7 +10,7 @@ export async function useCookieDough() {
 		recipe.crumbs = await useDefaultConfig();
 	}
 	if (recipe.cmd.signature === 'help') {
-		return __log('', await recipe.cmd.callback());
+		return __log(await recipe.cmd.callback());
 	}
 
 	return recipe.cmd.callback(recipe);
