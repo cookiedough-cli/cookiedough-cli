@@ -1,6 +1,10 @@
 {
 	"name": "cookiedough-mono-workspace",
 	"private": true,
+	"scripts": {
+		"setup": "yarn",
+		"run:base": "npm run build --workspaces && npm run run:base --workspace=cookiedough-cli"
+	},
 	"workspaces": [
 		"./packages/cookiedough-cli"
 	]

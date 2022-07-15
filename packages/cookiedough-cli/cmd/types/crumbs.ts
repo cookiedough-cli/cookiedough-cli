@@ -50,5 +50,6 @@ export type RepositoryCrumbs = {
 export type FlavorCrumbSchema = {
 	tag_name: string;
 	recipe_path: string;
+	_doughpath: string;
 	doughmap: ChoiceCollection;
 };

@@ -1,6 +1,7 @@
 {
 	"tag_name": "node",
 	"recipe_path": "/.flavors/node/",
+	"_doughpath": "/.flavors/_copy_/node/",
 	"doughmap": [
 		{
 			"name": "pkg_mgr",
@@ -62,7 +63,13 @@
 			"name": "eslint",
 			"message": "configure linter?",
 			"type": "confirm",
-			"default": false
+			"default": true
+		},
+		{
+			"name": "prettier",
+			"message": "setup prettier?",
+			"type": "confirm",
+			"default": true
 		}
 	]
 }
