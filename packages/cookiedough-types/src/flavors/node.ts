@@ -1,3 +1,5 @@
+import { CrumbOptions } from '../crumbs';
+
 export type NodeModule = [string, string];
 
 export const BabelBaseModules: NodeModule[] = [
@@ -50,3 +52,30 @@ export const ESLintTSModules: NodeModule[] = [
 	['@typescript-eslint/eslint-plugin', '-D'],
 	['@typescript-eslint/parser', '-D'],
 ];
+
+export type NodeFlavorRecipe = {
+	preset: string;
+	pkg_mgr: string;
+	build_tools: string;
+	compiler: string;
+	bundler: string;
+	eslint: boolean;
+};
+// package manager type
+export type NodeModulePackager = {
+	name: string; //name of process to run
+	installSelf: string; //command to install self if not installed / detected on system
+	installPkgSignature: string; //prefix for adding packages between the process and the packagename
+};
+
+// setup the type for the installer + packages to install within for the shell prefix like yarn add vs npm install etc
+export type MappedNodeFlavor = {
+	installer: NodeModulePackager;
+	node_modules: NodeModule[];
+};
+export type NodeRecipeToFileMap = {
+	config: CrumbOptions;
+	recipe: NodeFlavorRecipe;
+	installer: NodeModulePackager;
+	packages: NodeModule[];
+};

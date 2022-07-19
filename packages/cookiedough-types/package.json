@@ -1,6 +1,6 @@
 {
 	"name": "@cookiedough/types",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"private": false,
 	"main": "build/index.js",
 	"repository": "git@github.com:cookiedough-cli/cookiedough-cli.git",
@@ -11,8 +11,8 @@
   	"scripts": {
 		"build": "tsc",
 		"test": "nyc mocha",
-		"lint": "prettier --write ./cmd",
-		"lint:check": "prettier --check ./cmd"
+		"lint": "prettier --write ./src",
+		"lint:check": "prettier --check ./src"
   	},
   	"devDependencies": {
 		"@types/inquirer": "^8.2.1",

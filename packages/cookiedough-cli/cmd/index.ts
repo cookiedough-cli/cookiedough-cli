@@ -1,4 +1,8 @@
-import { useCMDRecipe, useDefaultConfig, __log } from './internal';
+import {
+	useCMDRecipe,
+	useDefaultConfig,
+	__log
+} from './internal';
 /**
  * @public
  * entry point for command-line interface
