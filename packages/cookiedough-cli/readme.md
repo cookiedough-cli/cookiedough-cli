@@ -10,6 +10,4 @@ work in progress - customizable project generation
 cookiedough <command> [...args]
 ```
 
-- [Configuration](docs/reference/configuration.md)
-- [Command Reference](docs/reference/commands.md)
-- [Arguments](docs/reference/args.md)
+- [Wiki](https://github.com/cookiedough-cli/cookiedough-cli/wiki)

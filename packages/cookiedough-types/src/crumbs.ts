@@ -1,6 +1,17 @@
-import { ListQuestion } from 'inquirer';
-import { useCreate, useManPage } from '../internal/handler';
-import { CrumbInlineType, CrumbOptions } from '@cookiedough/types';
+import { LogLevel } from './log';
+import { ChoiceCollection } from 'inquirer';
+/**
+ * Runtime Constants
+ */
+// todo - possibly change to permalink
+export const ENV_RAW_SOURCE =
+	'https://raw.githubusercontent.com/cookiedough-cli/cookiedough-cli/main/';
+export const ENV_COOKIE_BASE = '.env';
+export const ENV_CRUMB_DEFAULT_FILE = '.defaults.json';
+export const ENV_COOKIE_COPY_DIR = '.flavors/_copy_';
+export const ENV_V_CONFIG_FILENAME = 'cookiedough.json';
+export const ENV_FLAVOR_FILE = 'flavor.json';
+export const ENV_DOUGH_FILE = 'doughmap.json';
 
 /**
  * Inline Arg Map
@@ -154,33 +165,55 @@ export type PathConfigOptions = {
 	out?: string; // base path to use to write new files during processing
 	root_config?: string; // path of parent config to extend
 };
-
-export type ValidLogData = any;
-
 /**
- * Core Preset Flavor Options
- * todo: add more than node
+ * Process Types
  */
-export const FlavorInquiry: ListQuestion = {
-	type: 'list',
-	name: 'flavor',
-	message: 'choose project flavor',
-	choices: ['node'],
+
+// process-specific configuration parameters - all optional
+export type ProcessCrumbs = {
+	add_files_from?: string[]; // directories to copy files into the new project from
+	allow_cwd_write?: boolean;
+	always_use_prompt?: boolean; // boolean whether to override settings default template in config
+	default_flavor?: string; // name of template to run against prompter
+	detatched?: boolean; // run in caller process or spawn its own
+	disable_color?: boolean; //disables colored output in terminal
+	dry?: boolean; // run without doing anything, just print the would-be output
+	overwrite_existing_out?: boolean;
+	shell_prefix?: string; //prefix the process using this config with a shell wrapper command to run, followed by &&, followed by the process (ie cd ~/)
 };
 
-/**
- * Full List of Commands to interpret at runtime
- * todo: commented sections
- */
-export const CMDList: CookieCMD<any>[] = [
-	{
-		signature: 'create',
-		alias: ['', null],
-		callback: useCreate,
-	},
-	{
-		signature: 'help',
-		alias: ['manpage', 'man'],
-		callback: async () => useManPage(),
-	},
-];
+export type LogCrumbs = {
+	level?: LogLevel;
+	path?: string;
+	write_logs?: boolean;
+};
+
+export type CrumbInlineType = {
+	short: string;
+	long: string;
+	tag: string;
+	config_tag: string;
+	type: 'string' | 'boolean';
+};
+
+// configuration as an object
+export type CrumbOptions = {
+	path?: PathConfigOptions; // path related config options
+	process?: ProcessCrumbs; // runtime related config options
+	repository?: RepositoryCrumbs; // options to configure auto repo setup/integrations
+};
+
+export type RepositoryCrumbs = {
+	ctx_base_path?: string; // child path of the context its written to, to be written to
+	init?: boolean; //init a repo and enable parsing of other attributes in the type
+	submodule_map?: any; //todo - set up map of submodules to automatically set up in the initialized repo
+	type?: string; //type eg git, gitlab, bitbucket
+	template_url?: string; // url of template repo to use for creation
+};
+
+export type FlavorCrumbSchema = {
+	tag_name: string;
+	recipe_path: string;
+	_copypath: string;
+	doughmap: ChoiceCollection;
+};

@@ -1,6 +1,6 @@
 import { format } from 'util';
 import { ValidLogData } from '..';
-import { LogFilePath, LogType } from '../../types/log';
+import { LogFilePath, LogType } from '@cookiedough/types';
 import { color } from 'terminal-color';
 
 export function __log(val: string, mode?: string): string {

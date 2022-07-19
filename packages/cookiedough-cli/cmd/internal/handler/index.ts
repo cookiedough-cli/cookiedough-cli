@@ -9,4 +9,3 @@ export * from './help';
 export * from './edit';
 export * from './create';
 export * from '..';
-export * from '../../types';

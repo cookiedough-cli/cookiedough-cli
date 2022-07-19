@@ -1,0 +1,62 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/18.2.0/bin/node /opt/homebrew/bin/yarn
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/abs/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/abs/.cargo/bin:/Users/abs/.local/bin:/Users/abs/Documents/github/flutter/bin:/Users/abs/.local/bin:/Users/abs/.local/bin:/Users/abs/Documents/github/flutter/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.2.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/abs/Documents/github/cookiedough-cli/packages/cookiedough-types/package.json: Unexpected token } in JSON at position 905
+      at JSON.parse (<anonymous>)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (/opt/homebrew/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /opt/homebrew/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "@cookiedough/types",
+    "version": "0.0.1",
+    "private": false,
+    "main": "build/index.js",
+    "repository": "git@github.com:cookiedough-cli/cookiedough-cli.git",
+    "homepage": "https://github.com/cookiedough-cli/cookiedough-cli",
+    "author": "abschill (https://blog.abschill.com/)",
+    "license": "MIT",
+    "scripts": {
+      "build": "tsc",
+      "test": "nyc mocha",
+      "lint": "prettier --write ./cmd",
+      "lint:check": "prettier --check ./cmd"
+    },
+    "devDependencies": {
+      "@types/inquirer": "^8.2.1",
+      "@types/node": "^17.0.32",
+      "@typescript-eslint/eslint-plugin": "^5.23.0",
+      "@typescript-eslint/parser": "^5.23.0",
+      "eslint": "^8.17.0",
+      "eslint-import-resolver-typescript": "^2.7.1",
+      "mocha": "^10.0.0",
+      "nyc": "^15.1.0",
+      "prettier": "^2.7.1",
+      "prettier-eslint": "^15.0.1",
+      "typescript": "^4.6.4"
+    },
+    "dependencies": {
+      "inquirer": "^8.2.4",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

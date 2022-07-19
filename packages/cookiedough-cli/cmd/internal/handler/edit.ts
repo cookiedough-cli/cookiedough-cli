@@ -1,4 +1,4 @@
-import { CookieProcessRecipe } from '.';
+import { CookieProcessRecipe } from '@cookiedough/types';
 import { log, useDirectoryConfig, useHomeDir } from '..';
 
 export async function useInteractiveEdit(recipe: CookieProcessRecipe) {

@@ -6,3 +6,4 @@ export type LogLevel = typeof LogLevels[number];
 export const LogTypes = ['success', 'info', 'warning', 'error'] as const;
 export type LogType = typeof LogTypes[number];
 export type LogFilePath = string;
+export type ValidLogData = any;
