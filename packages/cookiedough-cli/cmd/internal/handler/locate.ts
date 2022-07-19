@@ -1,5 +1,4 @@
 import { useHomeDir, log } from '@cookiedough/internal';
-import { color } from 'terminal-color';
 
 export function useLocator(): void {
 	const caller_dir = process.cwd();

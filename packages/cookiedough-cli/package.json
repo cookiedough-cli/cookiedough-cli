@@ -1,6 +1,6 @@
 {
 	"name": "cookiedough-cli",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"bin": {
 		"cookiedough": "index.cjs"
 	},
@@ -28,7 +28,6 @@
 		"lint:check": "prettier --check ./cmd"
 	},
 	"devDependencies": {
-		"@types/fs-extra": "^9.0.13",
 		"@types/inquirer": "^8.2.1",
 		"@types/node": "^17.0.32",
 		"@typescript-eslint/eslint-plugin": "^5.23.0",
@@ -45,11 +44,9 @@
 		"@cookiedough/internal": "^0.0.3",
 		"@cookiedough/types": "^0.0.5",
 		"axios": "^0.27.2",
-		"fs-extra": "^10.1.0",
-		"inquirer": "^8.2.4",
-		"terminal-color": "^0.2.0"
+		"inquirer": "^8.2.4"
 	},
 	"man": [
-		"./.env/.assets/manpage.txt"
+		"./manpage.txt"
 	]
 }
