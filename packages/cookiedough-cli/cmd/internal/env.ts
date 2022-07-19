@@ -1,11 +1,7 @@
 import { ListQuestion } from 'inquirer';
-import {
-	useCreate
-} from '../internal/handler';
+import { useCreate } from '../internal/handler';
 import { useManPage } from '@cookiedough/internal'
-import {
-	CookieCMD
-} from '@cookiedough/types';
+import { CookieCMD } from '@cookiedough/types';
 
 /**
  * Core Preset Flavor Options
