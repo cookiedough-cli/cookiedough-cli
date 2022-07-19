@@ -1,4 +1,4 @@
-import { useCMDRecipe } from './internal';
+import { useCMDRecipe } from './handle';
 import { __log, useDefaultConfig } from '@cookiedough/internal';
 /**
  * @public

@@ -1,5 +1,4 @@
-import { useCreate } from './handler';
-import { CMDList } from '.';
+import { useCreate } from './create';
 import {
 	CookieProcessRecipe,
 	ENV_INLINE_ARGS
@@ -9,6 +8,39 @@ import {
 	useDefaultConfig,
 	useGlobalConfigWithCWD
 } from '@cookiedough/internal';
+export { Inquirer, prompt } from 'inquirer';
+import { ListQuestion } from 'inquirer';
+import { useManPage } from '@cookiedough/internal'
+import { CookieCMD } from '@cookiedough/types';
+
+/**
+ * Core Preset Flavor Options
+ * todo: add more than node
+ */
+export const FlavorInquiry: ListQuestion = {
+	type: 'list',
+	name: 'flavor',
+	message: 'choose project flavor',
+	choices: ['node'],
+};
+
+/**
+ * Full List of Commands to interpret at runtime
+ * todo: commented sections
+ */
+export const CMDList: CookieCMD<any>[] = [
+	{
+		signature: 'create',
+		alias: ['', null],
+		callback: useCreate,
+	},
+	{
+		signature: 'help',
+		alias: ['manpage', 'man'],
+		callback: async () => useManPage(),
+	},
+];
+
 /**
  *
  * @returns recipe for the called process context

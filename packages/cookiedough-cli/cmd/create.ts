@@ -13,7 +13,7 @@ import {
 import {
 	prompt,
 	FlavorInquiry,
-} from '..';
+} from './handle';
 
 /**
  *
