@@ -1,8 +1,8 @@
 import {
 	useCMDRecipe,
-	useDefaultConfig,
-	__log
+	useDefaultConfig
 } from './internal';
+import { __log } from '@cookiedough/internal';
 /**
  * @public
  * entry point for command-line interface

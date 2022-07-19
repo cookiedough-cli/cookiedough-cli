@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const { useCookieDough } = require('./build/cmd/index.js');
+const { useCookieDough } = require('./build/index.js');
 
 useCookieDough();

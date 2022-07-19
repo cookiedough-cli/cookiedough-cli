@@ -5,12 +5,14 @@ import {
 	ENV_RAW_SOURCE,
 	FlavorDoughMap
 } from '@cookiedough/types';
-import { retrieveExtern } from '.';
+import {
+	retrieveExtern,
+	log,
+	useSysInfo
+} from '@cookiedough/internal';
 import {
 	prompt,
 	FlavorInquiry,
-	log,
-	useSysInfo,
 } from '..';
 
 /**

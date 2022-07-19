@@ -1,11 +1,11 @@
-import { log, useHomeDir, useDirectoryConfig } from '..';
+import { log, useHomeDir } from '@cookiedough/internal';
 import { CookieProcessRecipe } from '@cookiedough/types';
 
 export function useDoctor(recipe: CookieProcessRecipe) {
 	log('reslolved recipe:', 'info');
 	log(recipe);
-	log('directory config:', 'info');
-	log(useDirectoryConfig(process.cwd()));
-	log('root config:', 'info');
-	log(useDirectoryConfig(useHomeDir()));
+	// log('directory config:', 'info');
+	// log(useDirectoryConfig(process.cwd()));
+	// log('root config:', 'info');
+	// log(useDirectoryConfig(useHomeDir()));
 }

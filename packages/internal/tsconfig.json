@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+		"resolveJsonModule": true,
+        "outDir": "build",
+		"rootDir": "./src",
+		"baseUrl": "./src",
+		"allowJs": true,
+		"declaration": true,
+		"esModuleInterop": true,
+		"pretty": true,
+        "checkJs": false,
+    	"module": "CommonJS",
+        "target": "ES6"
+	},
+	"include": [
+		"src/**/*"
+	]
+}

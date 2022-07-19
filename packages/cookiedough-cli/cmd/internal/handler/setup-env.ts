@@ -1,14 +1,15 @@
 import { CookieProcessRecipe } from '@cookiedough/types';
 import { resolve } from 'path';
 import {
+	prompt,
+	useConfigList,
+} from '..';
+import {
+	useCopyMachine,
 	useHomeDir,
 	log,
-	prompt,
 	useFileList,
-	useConfigList,
-	useCopyMachine,
-} from '..';
-
+} from '@cookiedough/internal'
 export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 	const home_dir = useHomeDir();
 	log(recipe);

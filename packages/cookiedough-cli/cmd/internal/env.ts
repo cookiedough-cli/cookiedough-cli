@@ -1,8 +1,8 @@
 import { ListQuestion } from 'inquirer';
 import {
-	useCreate,
-	useManPage
+	useCreate
 } from '../internal/handler';
+import { useManPage } from '@cookiedough/internal'
 import {
 	CookieCMD
 } from '@cookiedough/types';

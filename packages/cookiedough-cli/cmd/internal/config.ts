@@ -1,7 +1,7 @@
 import { resolve } from 'path';
-import { useFileList, useHomeDir } from './util';
+import { useFileList, useHomeDir } from '@cookiedough/internal';
 import axios from 'axios';
-import { log } from '.';
+import { log } from '@cookiedough/internal';
 import {
 	CrumbOptions,
 	ENV_RAW_SOURCE,
