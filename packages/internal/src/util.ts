@@ -12,7 +12,7 @@ import {
 import { ENV_RAW_SOURCE, ENV_COOKIE_BASE } from './env';
 import { homedir, arch, platform, type } from 'os';
 
-export const hasValidUrlPattern = (input: string) => (input.includes('https://') || input.includes('http'));
+export const hasValidUrlPattern = (input: string) => (input.includes('https://') || input.includes('http://'));
 
 /**
  * TODO: setup error handlers & winston
