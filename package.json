@@ -6,6 +6,8 @@
 		"run:base": "npm run build --workspaces && npm run run:base --workspace=cookiedough-cli"
 	},
 	"workspaces": [
-		"./packages/cookiedough-cli"
+		"./packages/cookiedough-cli",
+		"./packages/internal",
+		"./packages/cookiedough-types"
 	]
 }

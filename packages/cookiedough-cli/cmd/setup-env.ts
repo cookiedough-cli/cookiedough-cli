@@ -9,5 +9,4 @@ import {
 export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 	const home_dir = useHomeDir();
 	log(recipe);
-
 }

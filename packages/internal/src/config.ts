@@ -6,7 +6,7 @@ import {
 	ENV_RAW_SOURCE,
 	ENV_COOKIE_BASE,
 	ENV_CRUMB_DEFAULT_FILE,
-	ENV_V_CONFIG_FILENAME
+	ENV_V_CONFIG_FILENAME,
 } from '@cookiedough/types';
 
 /**

@@ -15,7 +15,7 @@
 		"build:dry": "./scripts/build/dry-list",
 		"build:docs": "./scripts/build/docs",
 		"build:release": "./scripts/clean/remove-old && ./scripts/build/tsc",
-		"build": "./scripts/build/tsc",
+		"build": "yarn lint && ./scripts/build/tsc",
 		"setup": "chmod +x ./scripts/**/* && ./scripts/setup",
 		"run:base": "./scripts/run/base",
 		"run:locate": "./scripts/run/locate",

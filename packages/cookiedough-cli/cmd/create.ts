@@ -3,17 +3,10 @@ import {
 	CrumbOptions,
 	FlavorCrumbSchema,
 	ENV_RAW_SOURCE,
-	FlavorDoughMap
+	FlavorDoughMap,
 } from '@cookiedough/types';
-import {
-	retrieveExtern,
-	log,
-	useSysInfo
-} from '@cookiedough/internal';
-import {
-	prompt,
-	FlavorInquiry,
-} from './handle';
+import { retrieveExtern, log, useSysInfo } from '@cookiedough/internal';
+import { prompt, FlavorInquiry } from './handle';
 
 /**
  *

@@ -1,16 +1,13 @@
 import { useCreate } from './create';
-import {
-	CookieProcessRecipe,
-	ENV_INLINE_ARGS
-} from '@cookiedough/types';
+import { CookieProcessRecipe, ENV_INLINE_ARGS } from '@cookiedough/types';
 import {
 	log,
 	useDefaultConfig,
-	useGlobalConfigWithCWD
+	useGlobalConfigWithCWD,
 } from '@cookiedough/internal';
 export { Inquirer, prompt } from 'inquirer';
 import { ListQuestion } from 'inquirer';
-import { useManPage } from '@cookiedough/internal'
+import { useManPage } from '@cookiedough/internal';
 import { CookieCMD } from '@cookiedough/types';
 
 /**

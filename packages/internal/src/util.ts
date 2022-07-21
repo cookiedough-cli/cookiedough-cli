@@ -63,8 +63,10 @@ export const useCopyMachine = (src: string, dest: string) =>
 	copySync(src, dest);
 export const useHomeDir = () => homedir();
 
-export const useManPage = async() => {
-	const res = await retrieveExtern<string>(`${ENV_RAW_SOURCE}${ENV_COOKIE_BASE}/.assets/manpage.txt`);
+export const useManPage = async () => {
+	const res = await retrieveExtern<string>(
+		`${ENV_RAW_SOURCE}${ENV_COOKIE_BASE}/.assets/manpage.txt`
+	);
 	console.log(res);
 	process.exit(0);
-}
+};
