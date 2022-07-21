@@ -11,14 +11,8 @@ import {
 } from 'fs-extra';
 import { ENV_RAW_SOURCE, ENV_COOKIE_BASE } from './env';
 import { homedir, arch, platform, type } from 'os';
-export function hasUrlPattern(input: string): RegExpMatchArray | null {
-	const match = input.match(
-		/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/gi
-	);
-	if (!match) return null;
-	if (match.length === 0) return null;
-	return match;
-}
+
+export const hasValidUrlPattern = (input: string) => (input.includes('https://') || input.includes('http'));
 
 /**
  * TODO: setup error handlers & winston
