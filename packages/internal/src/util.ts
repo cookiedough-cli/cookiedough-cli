@@ -1,14 +1,8 @@
 import axios from 'axios';
 import { execSync } from 'child_process';
 import { join, resolve } from 'path';
-import {
-	ENV_RAW_SOURCE,
-	ENV_COOKIE_BASE
- } from './env';
-import {
-	FlavorCrumbSchema,
-	SystemOverview
-} from '@cookiedough/types';
+import { ENV_RAW_SOURCE, ENV_COOKIE_BASE } from './env';
+import { FlavorCrumbSchema, SystemOverview } from '@cookiedough/types';
 import {
 	copySync,
 	ensureDirSync,
@@ -16,19 +10,15 @@ import {
 	emptyDirSync,
 	readFileSync,
 } from 'fs-extra';
-import {
-	homedir,
-	arch,
-	platform,
-	type
-} from 'os';
+import { homedir, arch, platform, type } from 'os';
 
 /**
  *
  * @param input url to check
  * @returns bool if it has a protocol prefix or not
  */
-export const hasValidUrlPattern = (input: string) => (input.includes('https://') || input.includes('http://'));
+export const hasValidUrlPattern = (input: string) =>
+	input.includes('https://') || input.includes('http://');
 
 /**
  * TODO: setup error handlers & winston
@@ -52,7 +42,8 @@ export const call = (cmd: string) => execSync(cmd);
  * @param cmd command to run in the dir
  * @returns nothing
  */
-export const callFrom = (from: string, cmd: string) => execSync(`cd ${from} && ${cmd}`);
+export const callFrom = (from: string, cmd: string) =>
+	execSync(`cd ${from} && ${cmd}`);
 /**
  *
  * @param p path to create if it doesn't exist
@@ -78,7 +69,8 @@ export const usePowerWasher = (dir: string) => emptyDirSync(dir);
  * @param dest place to write files to
  * @returns
  */
-export const useCopyMachine = (src: string, dest: string) => copySync(src, dest);
+export const useCopyMachine = (src: string, dest: string) =>
+	copySync(src, dest);
 /**
  *
  * @returns home directory of process's sys
@@ -101,8 +93,6 @@ export const useSysInfo = () =>
 		cwd: process.cwd(),
 		home: homedir(),
 	};
-
-
 
 export const useManPage = async () => {
 	const res = await retrieveExtern<string>(

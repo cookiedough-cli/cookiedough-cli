@@ -66,9 +66,9 @@ export function log(
 	// todo - handle fs writer if needed
 	switch (type) {
 		case 'error':
-			return _error(__log(type, data));
+			return _error(__log(data, type));
 		case 'warning':
-			return _warn(__log(type, data));
+			return _warn(__log(data, type));
 		default:
 			return console.log(__log(data, type ?? 'info'));
 	}
