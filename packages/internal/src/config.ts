@@ -38,7 +38,7 @@ export async function useDirectoryConfig(
 	dir: string
 ): Promise<CrumbOptions | null> {
 	let match: string;
-	const filesInBase = useFileList(dir);
+	const filesInBase = await useFileList(dir);
 	for await (const file of filesInBase) {
 		if (file === ENV_V_CONFIG_FILENAME) {
 			match = file;
@@ -58,7 +58,7 @@ export async function useDirectoryConfig(
 export async function useGlobalConfigWithCWD(): Promise<CrumbOptions> {
 	const wd = process.cwd();
 	let match: string;
-	const filesInBase = useFileList(wd);
+	const filesInBase = await useFileList(wd);
 	for await (const file of filesInBase) {
 		if (file === ENV_V_CONFIG_FILENAME) {
 			match = file;
@@ -67,7 +67,7 @@ export async function useGlobalConfigWithCWD(): Promise<CrumbOptions> {
 	}
 	if (!match) {
 		const home = useHomeDir();
-		const filesInHome = useFileList(home);
+		const filesInHome = await useFileList(home);
 		for await (const file of filesInHome) {
 			if (file === ENV_V_CONFIG_FILENAME) {
 				match = file;

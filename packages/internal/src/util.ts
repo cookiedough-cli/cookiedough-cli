@@ -3,6 +3,8 @@ import { execSync } from 'child_process';
 import { join, resolve } from 'path';
 import { ENV_RAW_SOURCE, ENV_COOKIE_BASE } from './env';
 import { FlavorCrumbSchema, SystemOverview } from '@cookiedough/types';
+import { readdir, readFile } from 'fs/promises';
+import mime_type from 'mime-types';
 import {
 	copySync,
 	ensureDirSync,
@@ -33,14 +35,14 @@ export async function retrieveExtern<T>(url: string): Promise<T> {
 /**
  *
  * @param cmd command to run synchronously
- * @returns nothing
+ * @returns buffer
  */
 export const call = (cmd: string) => execSync(cmd);
 /**
  *
  * @param from directory to cd into before running the next arg
  * @param cmd command to run in the dir
- * @returns nothing
+ * @returns buffer
  */
 export const callFrom = (from: string, cmd: string) =>
 	execSync(`cd ${from} && ${cmd}`);
@@ -55,7 +57,7 @@ export const useValidWritePath = (p: string) => ensureDirSync(p);
  * @param dir dir to list files in
  * @returns list of files as string[]
  */
-export const useFileList = (dir: string) => readdirSync(dir);
+export const useFileList = async (dir: string) => readdirSync(dir);
 /**
  *
  * @param dir dir to clear all files from
@@ -101,3 +103,35 @@ export const useManPage = async () => {
 	console.log(res);
 	process.exit(0);
 };
+
+export async function* get_files(dir: string): AsyncGenerator<any> {
+	const dirents = await readdir(dir, { withFileTypes: true });
+	for (const dirent of dirents) {
+		const res = resolve(dir, dirent.name);
+		if (dirent.isDirectory()) {
+			yield* get_files(res);
+		} else {
+			yield {
+				_basepath: dir,
+				_abspath: res,
+			};
+		}
+	}
+}
+
+export async function recur_fs(dir: string): Promise<any> {
+	const files = [];
+	for await (const f of get_files(dir)) files.push(f);
+	return {
+		path: dir,
+		files,
+	};
+}
+
+export function __mime_type(path: string, as_obj?: boolean) {
+	const _type = mime_type.contentType(path).toString();
+	if (as_obj) {
+		return { 'Content-Type': _type };
+	}
+	return _type;
+}
