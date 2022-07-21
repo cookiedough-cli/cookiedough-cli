@@ -1,7 +1,14 @@
 import axios from 'axios';
 import { execSync } from 'child_process';
 import { join, resolve } from 'path';
-import { FlavorCrumbSchema, SystemOverview } from '@cookiedough/types';
+import {
+	ENV_RAW_SOURCE,
+	ENV_COOKIE_BASE
+ } from './env';
+import {
+	FlavorCrumbSchema,
+	SystemOverview
+} from '@cookiedough/types';
 import {
 	copySync,
 	ensureDirSync,
@@ -9,9 +16,18 @@ import {
 	emptyDirSync,
 	readFileSync,
 } from 'fs-extra';
-import { ENV_RAW_SOURCE, ENV_COOKIE_BASE } from './env';
-import { homedir, arch, platform, type } from 'os';
+import {
+	homedir,
+	arch,
+	platform,
+	type
+} from 'os';
 
+/**
+ *
+ * @param input url to check
+ * @returns bool if it has a protocol prefix or not
+ */
 export const hasValidUrlPattern = (input: string) => (input.includes('https://') || input.includes('http://'));
 
 /**
@@ -24,14 +40,50 @@ export async function retrieveExtern<T>(url: string): Promise<T> {
 	if (res.status === 200) return <T>res.data;
 	throw res.data;
 }
+/**
+ *
+ * @param cmd command to run synchronously
+ * @returns nothing
+ */
+export const call = (cmd: string) => execSync(cmd);
+/**
+ *
+ * @param from directory to cd into before running the next arg
+ * @param cmd command to run in the dir
+ * @returns nothing
+ */
+export const callFrom = (from: string, cmd: string) => execSync(`cd ${from} && ${cmd}`);
+/**
+ *
+ * @param p path to create if it doesn't exist
+ * @returns nothing
+ */
+export const useValidWritePath = (p: string) => ensureDirSync(p);
+/**
+ *
+ * @param dir dir to list files in
+ * @returns list of files as string[]
+ */
+export const useFileList = (dir: string) => readdirSync(dir);
+/**
+ *
+ * @param dir dir to clear all files from
+ * @returns empty directory
+ */
+export const usePowerWasher = (dir: string) => emptyDirSync(dir);
 
-export function _call(cmd: string): void {
-	execSync(cmd);
-}
-
-export function _callFrom(from: string, cmd: string): void {
-	execSync(`cd ${from} && ${cmd}`);
-}
+/**
+ *
+ * @param src place to copy files from
+ * @param dest place to write files to
+ * @returns
+ */
+export const useCopyMachine = (src: string, dest: string) => copySync(src, dest);
+/**
+ *
+ * @returns home directory of process's sys
+ */
+export const useHomeDir = () => homedir();
 
 export function validFlavorMod(json: FlavorCrumbSchema): boolean {
 	const keys = Object.keys(json);
@@ -50,12 +102,7 @@ export const useSysInfo = () =>
 		home: homedir(),
 	};
 
-export const useValidWritePath = (p: string) => ensureDirSync(p);
-export const useFileList = (dir: string) => readdirSync(dir);
-export const usePowerWasher = (dir: string) => emptyDirSync(dir);
-export const useCopyMachine = (src: string, dest: string) =>
-	copySync(src, dest);
-export const useHomeDir = () => homedir();
+
 
 export const useManPage = async () => {
 	const res = await retrieveExtern<string>(
