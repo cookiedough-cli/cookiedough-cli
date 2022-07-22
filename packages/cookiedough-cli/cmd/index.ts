@@ -1,3 +1,8 @@
+/**
+ * @module Entrypoint
+ *
+ * This file contains the top-level scope for the CLI process after being run by the user
+ */
 import { useCMDRecipe } from './handle';
 import { __log, useDefaultConfig } from '@cookiedough/internal';
 /**

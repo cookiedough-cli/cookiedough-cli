@@ -1,3 +1,10 @@
+/**
+ * @module Help
+ *
+ * This file contains the handlers for the `locate` command in the cookiedough cli,
+ * and is responsible for printing the location of the most global config file being
+ * parsed by the runtime on the local system
+ */
 import { useHomeDir, log } from '@cookiedough/internal';
 
 export function useLocator(): void {

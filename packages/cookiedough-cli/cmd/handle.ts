@@ -1,3 +1,8 @@
+/**
+ * @module Handle
+ *
+ * This file contains the handlers mapped to the callbacks that put together the CLI itself at parsetime.
+ */
 import { useCreate } from './create';
 import { CookieProcessRecipe, ENV_INLINE_ARGS } from '@cookiedough/types';
 import {
