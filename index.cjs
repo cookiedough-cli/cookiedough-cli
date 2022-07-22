@@ -11,11 +11,14 @@ const {
 	useSysInfo,
 	call
 } = require('@cookiedough/internal');
+const { useCookieDough } = require('cookiedough-cli');
 log('Logger Success', 'success');
 log('Logger Failure', 'error');
 log('Logger Warning', 'warning');
 log('Logger Info', 'info');
 
-log(useSysInfo());
-const buf = call('ls');
-log(buf.toString().replace(/\n/g, ','));
+// log(useSysInfo());
+// const buf = call('ls');
+// log(buf.toString().replace(/\n/g, ','));
+
+useCookieDough();
