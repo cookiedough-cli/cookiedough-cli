@@ -79,6 +79,11 @@ export const useCopyMachine = (src: string, dest: string) =>
  */
 export const useHomeDir = () => homedir();
 
+/**
+ *
+ * @param json flavor crumb schema to validate
+ * @returns whether or not it is valid
+ */
 export function validFlavorMod(json: FlavorCrumbSchema): boolean {
 	const keys = Object.keys(json);
 	if (!keys.includes('tag_name')) return false;
@@ -86,7 +91,10 @@ export function validFlavorMod(json: FlavorCrumbSchema): boolean {
 	if (!json.doughmap || json.doughmap.length > 1) return false;
 	return true;
 }
-
+/**
+ *
+ * @returns system internal for process helpers
+ */
 export const useSysInfo = () =>
 	<SystemOverview>{
 		arch: arch(),
@@ -96,6 +104,9 @@ export const useSysInfo = () =>
 		home: homedir(),
 	};
 
+/**
+ * Print manpage from the git main branch then exit process
+ */
 export const useManPage = async () => {
 	const res = await retrieveExtern<string>(
 		`${ENV_RAW_SOURCE}${ENV_COOKIE_BASE}/.assets/manpage.txt`
@@ -104,6 +115,11 @@ export const useManPage = async () => {
 	process.exit(0);
 };
 
+/**
+ * @private get_files
+ * Runs the Generator from the base directory in the arguments
+ * @param dir base directory to run the generator function on
+ */
 export async function* get_files(dir: string): AsyncGenerator<any> {
 	const dirents = await readdir(dir, { withFileTypes: true });
 	for (const dirent of dirents) {
@@ -118,7 +134,11 @@ export async function* get_files(dir: string): AsyncGenerator<any> {
 		}
 	}
 }
-
+/**
+ *
+ * @param dir entry dir
+ * @returns Array of retrieved files (todo: type) from the base dir
+ */
 export async function recur_fs(dir: string): Promise<any> {
 	const files = [];
 	for await (const f of get_files(dir)) files.push(f);
