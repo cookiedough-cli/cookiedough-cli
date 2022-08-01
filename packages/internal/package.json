@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"@types/inquirer": "^8.2.1",
+		"@types/mime-types": "^2.1.1",
 		"@types/node": "^17.0.32",
 		"@typescript-eslint/eslint-plugin": "^5.23.0",
 		"@typescript-eslint/parser": "^5.23.0",
@@ -31,6 +32,7 @@
 		"@cookiedough/types": "0.0.5",
 		"axios": "^0.27.2",
 		"fs-extra": "^10.1.0",
+		"mime-types": "^2.1.35",
 		"terminal-color": "^0.2.0"
 	}
 }
