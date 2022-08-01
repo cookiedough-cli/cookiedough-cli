@@ -18,6 +18,13 @@ export const ENV_DOUGH_FILE = 'doughmap.json';
  */
 export const ENV_INLINE_ARGS: CrumbInlineType[] = [
 	{
+		long: '--auto',
+		short: '-a',
+		tag: 'auto',
+		config_tag: null,
+		type: 'boolean',
+	},
+	{
 		long: '--config',
 		short: '-c',
 		tag: 'load_config',

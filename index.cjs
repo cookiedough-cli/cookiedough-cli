@@ -9,7 +9,8 @@
 const {
 	log,
 	useSysInfo,
-	call
+	call,
+	useConfig,
 } = require('@cookiedough/internal');
 const { useCookieDough } = require('cookiedough-cli');
 log('Logger Success', 'success');
@@ -19,6 +20,5 @@ log('Logger Info', 'info');
 
 // log(useSysInfo());
 // const buf = call('ls');
-// log(buf.toString().replace(/\n/g, ','));
-
+// useConfig(process.cwd()).then(console.log);
 useCookieDough();

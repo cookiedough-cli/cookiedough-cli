@@ -57,7 +57,7 @@ export const useValidWritePath = (p: string) => ensureDirSync(p);
  * @param dir dir to list files in
  * @returns list of files as string[]
  */
-export const useFileList = async (dir: string) => readdirSync(dir);
+export const useFileList = (dir: string) => readdirSync(dir);
 /**
  *
  * @param dir dir to clear all files from

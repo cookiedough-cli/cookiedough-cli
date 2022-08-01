@@ -4,3 +4,4 @@ yarn.lock
 pkg-cache
 build
 .DS_STORE
+.coverage
