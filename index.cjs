@@ -20,5 +20,5 @@ log('Logger Info', 'info');
 
 // log(useSysInfo());
 // const buf = call('ls');
-// useConfig(process.cwd()).then(console.log);
-useCookieDough();
+useConfig(process.cwd()).then(console.log);
+// useCookieDough();

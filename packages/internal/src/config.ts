@@ -6,8 +6,8 @@ import {
 	ENV_RAW_SOURCE,
 	ENV_COOKIE_BASE,
 	ENV_CRUMB_DEFAULT_FILE,
-	ENV_V_CONFIG_FILENAME,
 } from '@cookiedough/types';
+import { ENV_CONFIG_FILENAMES } from './env';
 
 /**
  * @function useDefaultConfig
@@ -19,6 +19,16 @@ export async function useDefaultConfig() {
 	);
 	return res.data;
 }
+
+export function matchConfigs(list: string[]) {
+	const out = [];
+	for (const fname of ENV_CONFIG_FILENAMES) {
+		if (list.includes(fname)) {
+			out.push(fname);
+		}
+	}
+	return out;
+}
 /**
  *
  * @param dir directory to get the matched config from
@@ -26,15 +36,10 @@ export async function useDefaultConfig() {
  */
 export async function useConfig(dir: string): Promise<CrumbOptions | null> {
 	const filesInBase = await readdir(dir);
-	if (!filesInBase.includes(ENV_V_CONFIG_FILENAME)) {
-		return null;
-	}
+	const configs = matchConfigs(filesInBase);
 	const raw_config = (
 		await import(
-			resolve(
-				dir,
-				filesInBase.filter((f) => f === ENV_V_CONFIG_FILENAME).shift()
-			)
+			resolve(dir, filesInBase.filter((f) => f === configs[0]).shift())
 		)
 	)?.default;
 	const clean_config = {};
@@ -44,6 +49,7 @@ export async function useConfig(dir: string): Promise<CrumbOptions | null> {
 		const val = entry[1];
 		if (Object.keys(defaults).includes(entry[0])) {
 			clean_config[key] = val;
+			clean_config[key] = { ...defaults[key], ...clean_config[key] };
 		}
 	}
 	return <CrumbOptions>{ ...defaults, ...clean_config };

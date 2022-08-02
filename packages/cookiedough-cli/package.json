@@ -1,6 +1,6 @@
 {
 	"name": "cookiedough-cli",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"bin": {
 		"cookiedough": "index.cjs"
 	},
@@ -14,9 +14,12 @@
 	"scripts": {
 		"build:dry": "./scripts/build/dry-list",
 		"build:docs": "./scripts/build/docs",
-		"build:release": "./scripts/clean/remove-old && ./scripts/build/tsc",
-		"build": "yarn lint && ./scripts/build/tsc",
-		"setup": "chmod +x ./scripts/**/* && ./scripts/setup",
+		"prebuild:release": "./scripts/clean/remove-old",
+		"build:release": "./scripts/build/tsc",
+		"prebuild": "yarn lint",
+		"build": "./scripts/build/tsc",
+		"presetup": "chmod +x ./scripts/**/*",
+		"setup": "./scripts/setup",
 		"run:base": "./scripts/run/base",
 		"run:locate": "./scripts/run/locate",
 		"run:help": "./scripts/run/help",
@@ -41,7 +44,7 @@
 		"typescript": "^4.6.4"
 	},
 	"dependencies": {
-		"@cookiedough/internal": "^0.0.7",
+		"@cookiedough/internal": "^0.0.10",
 		"@cookiedough/types": "^0.0.6",
 		"axios": "^0.27.2",
 		"inquirer": "^8.2.4"

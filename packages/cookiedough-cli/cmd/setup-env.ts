@@ -14,5 +14,6 @@ import {
 
 export function useInteractiveEnvSetup(recipe: CookieProcessRecipe) {
 	const home_dir = useHomeDir();
+	log(home_dir);
 	log(recipe);
 }
